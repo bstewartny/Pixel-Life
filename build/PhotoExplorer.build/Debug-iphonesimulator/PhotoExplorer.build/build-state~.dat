@@ -1,1580 +1,0 @@
-TPhotoExplorer
-v7
-r0
-t313202721.086082
-cCheck dependencies
-cProcessInfoPlistFile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/Info.plist PhotoExplorer-Info.plist
-cCompileXIB /Users/bstewart/Documents/PhotoExplorer/MainWindow.xib
-cCompileXIB /Users/bstewart/Documents/PhotoExplorer/PhotoExplorerViewController.xib
-cCompileXIB /Users/bstewart/Documents/PhotoExplorer/PictureFeedScrollView.xib
-cCompileXIB /Users/bstewart/Documents/PhotoExplorer/PictureFeedGridView.xib
-cProcessPCH /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch.gch PhotoExplorer_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/main.o /Users/bstewart/Documents/PhotoExplorer/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerAppDelegate.o /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerViewController.o /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASINetworkQueue.o /Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIInputStream.o /Users/bstewart/Documents/PhotoExplorer/ASIInputStream.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIHTTPRequest.o /Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIFormDataRequest.o /Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDownloadCache.o /Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataDecompressor.o /Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataCompressor.o /Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIAuthenticationDialog.o /Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Reachability.o /Users/bstewart/Documents/PhotoExplorer/Reachability.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Picture.o /Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureView.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeed.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedScrollViewController.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/TestPictureFeed.o /Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Resize.o /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Alpha.o /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+RoundedCorner.o /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIColor+AQGridView.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIsSetContiguous.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIndexesOutsideSet.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateItem.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateInfo.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewData.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewController.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewCell.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewAnimatorItem.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridView.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedGridViewController.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewCell.o /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cLd /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer normal i386
-cGenerateDSYMFile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app.dSYM /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer
-cTouch /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
-c000000004CC128950000000000000110
-t1287727253
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
-c000000004CC1224400000000001C3D40
-t1287725636
-s1850688
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFNetwork.h
-c000000004CC1221800000000000004CF
-t1287725592
-s1231
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
-c000000004CC1219F0000000000000AB3
-t1287725471
-s2739
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004CC12246000000000029B310
-t1287725638
-s2732816
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004CC1226D000000000029D5D0
-t1287725677
-s2741712
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004CC1225F0000000000001466
-t1287725663
-s5222
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSIndexSet.h
-c000000004CC1225F0000000000001554
-t1287725663
-s5460
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/MobileCoreServices.framework/Headers/MobileCoreServices.h
-c000000004CC122CF00000000000000EB
-t1287725775
-s235
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
-c000000004CC122D0000000000005BF20
-t1287725776
-s376608
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/CALayer.h
-c000000004CC1233D00000000000075D9
-t1287725885
-s30169
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
-c000000004CC1233C00000000000000C4
-t1287725884
-s196
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
-c000000004CC12431000000000015CDB0
-t1287726129
-s1428912
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/SystemConfiguration.framework/Headers/SystemConfiguration.h
-c000000004CC121E80000000000001A58
-t1287725544
-s6744
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
-c000000004CC121F60000000000068970
-t1287725558
-s428400
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIColor.h
-c000000004CC1282100000000000009FD
-t1287727137
-s2557
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004CC1281F0000000000000AA1
-t1287727135
-s2721
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h
-c000000004CC1281F00000000000038E3
-t1287727135
-s14563
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004CC12883000000000074D7B0
-t1287727235
-s7657392
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/CommonCrypto/CommonHMAC.h
-c000000004A11E8210000000000000DE2
-t1242687521
-s3554
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/arpa/inet.h
-c000000004CB3E46D0000000000001533
-t1286857837
-s5427
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/ifaddrs.h
-c000000004CB3E4770000000000000782
-t1286857847
-s1922
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/libkern/OSAtomic.h
-c000000004CB3E4860000000000002519
-t1286857862
-s9497
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/netdb.h
-c000000004A4181220000000000003057
-t1245806882
-s12375
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/netinet/in.h
-c000000004CBFACA90000000000005462
-t1287629993
-s21602
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/netinet6/in6.h
-c000000004CBFACA80000000000004F61
-t1287629992
-s20321
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/objc/objc.h
-c000000004CB935700000000000000A2F
-t1287206256
-s2607
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/objc/runtime.h
-c000000004CB9357000000000000053F9
-t1287206256
-s21497
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/stdio.h
-c000000004CB3E48600000000000040AC
-t1286857862
-s16556
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/sys/socket.h
-c000000004CBFACAC0000000000005A69
-t1287629996
-s23145
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/include/zlib.h
-c000000004CC109BF00000000000102A5
-t1287719359
-s66213
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/usr/lib/libz.1.2.3.dylib
-c000000004CC109C300000000000123B0
-t1287719363
-s74672
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView+CellLayout.h
-c000000004CFAB55A000000000000099E
-t1291498842
-s2462
-i<UIKit/UIKit.h>
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView+CellLocationDelegation.h
-c000000004CFAB55A0000000000000741
-t1291498842
-s1857
-i<Foundation/Foundation.h>
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.h
-c000000004CFAB55A00000000000025EC
-t1291498842
-s9708
-i<UIKit/UIKit.h>
-i"AQGridViewCell.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.m
-c000000004CFAB55A000000000000FE24
-t1291498842
-s65060
-i"AQGridView.h"
-i"AQGridViewUpdateItem.h"
-i"AQGridViewAnimatorItem.h"
-i"AQGridViewData.h"
-i"AQGridViewUpdateInfo.h"
-i"AQGridViewCell+AQGridViewCellPrivate.h"
-i"AQGridView+CellLocationDelegation.h"
-i"NSIndexSet+AQIsSetContiguous.h"
-i"NSIndexSet+AQIndexesOutsideSet.h"
-i<libkern/OSAtomic.h>
-i<objc/objc.h>
-i<objc/runtime.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.h
-c000000004CFAB55A0000000000000280
-t1291498842
-s640
-i<UIKit/UIKit.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.m
-c000000004CFAB55A00000000000004E1
-t1291498842
-s1249
-i"AQGridViewAnimatorItem.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell+AQGridViewCellPrivate.h
-c000000004CFAB55A00000000000008A7
-t1291498842
-s2215
-i"AQGridViewCell.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.h
-c000000004CFAB55A00000000000014FA
-t1291498842
-s5370
-i<UIKit/UIKit.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.m
-c000000004CFAB55A0000000000004FFA
-t1291498842
-s20474
-i"AQGridViewCell.h"
-i"AQGridViewCell+AQGridViewCellPrivate.h"
-i"UIColor+AQGridView.h"
-i<QuartzCore/QuartzCore.h>
-i"AQGridViewCell_png.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.h
-c000000004CFAB55A00000000000007D8
-t1291498842
-s2008
-i<UIKit/UIKit.h>
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.m
-c000000004CFAB55A000000000000133E
-t1291498842
-s4926
-i"AQGridViewController.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.h
-c000000004CFAB55A0000000000000D13
-t1291498842
-s3347
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.m
-c000000004CFAB55A0000000000001DA2
-t1291498842
-s7586
-i"AQGridViewData.h"
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.h
-c000000004CFAB55A0000000000001176
-t1291498842
-s4470
-i<Foundation/Foundation.h>
-i"AQGridViewUpdateItem.h"
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.m
-c000000004CFAB55A00000000000062C6
-t1291498842
-s25286
-i"AQGridViewUpdateInfo.h"
-i"AQGridViewData.h"
-i"AQGridView+CellLayout.h"
-i"AQGridView+CellLocationDelegation.h"
-i"AQGridViewCell+AQGridViewCellPrivate.h"
-i"AQGridViewAnimatorItem.h"
-i<UIKit/UIView.h>
-i<QuartzCore/CALayer.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.h
-c000000004CFAB55A0000000000000B21
-t1291498842
-s2849
-i<Foundation/Foundation.h>
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.m
-c000000004CFAB55A0000000000000FA8
-t1291498842
-s4008
-i"AQGridViewUpdateItem.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.h
-c000000004CFAB55A000000000000012B
-t1291498842
-s299
-i<Foundation/NSIndexSet.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.m
-c000000004CFAB55A0000000000000214
-t1291498842
-s532
-i<Foundation/Foundation.h>
-i"NSIndexSet+AQIndexesOutsideSet.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.h
-c000000004CFAB55A0000000000000104
-t1291498842
-s260
-i<Foundation/Foundation.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.m
-c000000004CFAB55A0000000000000161
-t1291498842
-s353
-i"NSIndexSet+AQIsSetContiguous.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.h
-c000000004CFAB55A0000000000000701
-t1291498842
-s1793
-i<Foundation/Foundation.h>
-i<UIKit/UIColor.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.m
-c000000004CFAB55A000000000000072D
-t1291498842
-s1837
-i"UIColor+AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.h
-c000000004CFA4FD40000000000000453
-t1291472852
-s1107
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.m
-c000000004CFA4FD40000000000003DB6
-t1291472852
-s15798
-i"ASIAuthenticationDialog.h"
-i"ASIHTTPRequest.h"
-i<QuartzCore/QuartzCore.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/ASICacheDelegate.h
-c000000004CFA4FD400000000000011CE
-t1291472852
-s4558
-i<Foundation/Foundation.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.h
-c000000004CFA4FD40000000000000691
-t1291472852
-s1681
-i<Foundation/Foundation.h>
-i<zlib.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.m
-c000000004CFA4FD4000000000000199A
-t1291472852
-s6554
-i"ASIDataCompressor.h"
-i"ASIHTTPRequest.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.h
-c000000004CFA4FD400000000000006A3
-t1291472852
-s1699
-i<Foundation/Foundation.h>
-i<zlib.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.m
-c000000004CFA4FD400000000000018C2
-t1291472852
-s6338
-i"ASIDataDecompressor.h"
-i"ASIHTTPRequest.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.h
-c000000004CFA4FD40000000000000804
-t1291472852
-s2052
-i<Foundation/Foundation.h>
-i"ASICacheDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.m
-c000000004CFA4FD400000000000041FC
-t1291472852
-s16892
-i"ASIDownloadCache.h"
-i"ASIHTTPRequest.h"
-i<CommonCrypto/CommonHMAC.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.h
-c000000004CFA4FD40000000000000A6D
-t1291472852
-s2669
-i<Foundation/Foundation.h>
-i"ASIHTTPRequest.h"
-i"ASIHTTPRequestConfig.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.m
-c000000004CFA4FD40000000000002B6A
-t1291472852
-s11114
-i"ASIFormDataRequest.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.h
-c000000004CFA4FD4000000000000A94C
-t1291472852
-s43340
-i<Foundation/Foundation.h>
-i<CFNetwork/CFNetwork.h>
-i<stdio.h>
-i"ASIHTTPRequestConfig.h"
-i"ASIHTTPRequestDelegate.h"
-i"ASIProgressDelegate.h"
-i"ASICacheDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.m
-c000000004CFA4FD40000000000028379
-t1291472852
-s164729
-i"ASIHTTPRequest.h"
-i"Reachability.h"
-i"ASIAuthenticationDialog.h"
-i<MobileCoreServices/MobileCoreServices.h>
-i<SystemConfiguration/SystemConfiguration.h>
-i"ASIInputStream.h"
-i"ASIDataDecompressor.h"
-i"ASIDataCompressor.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequestConfig.h
-c000000004CFA4FD400000000000003B0
-t1291472852
-s944
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequestDelegate.h
-c000000004CFA4FD4000000000000063E
-t1291472852
-s1598
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIInputStream.h
-c000000004CFA4FD400000000000003C9
-t1291472852
-s969
-i<Foundation/Foundation.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIInputStream.m
-c000000004CFA4FD40000000000000C14
-t1291472852
-s3092
-i"ASIInputStream.h"
-i"ASIHTTPRequest.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.h
-c000000004CFA4FD4000000000000120D
-t1291472852
-s4621
-i<Foundation/Foundation.h>
-i"ASIHTTPRequestDelegate.h"
-i"ASIProgressDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.m
-c000000004CFA4FD40000000000002C8D
-t1291472852
-s11405
-i"ASINetworkQueue.h"
-i"ASIHTTPRequest.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/ASIProgressDelegate.h
-c000000004CFA4FD40000000000000678
-t1291472852
-s1656
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.h
-c000000004CFA87160000000000000284
-t1291486998
-s644
-i<UIKit/UIKit.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m
-c000000004CFADDED0000000000000A22
-t1291509229
-s2594
-i"PhotoExplorerAppDelegate.h"
-i"PictureFeedGridViewController.h"
-i"PictureFeed.h"
-i"TestPictureFeed.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.h
-c000000004CFA53A800000000000000F9
-t1291473832
-s249
-i<UIKit/UIKit.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.m
-c000000004CFA53A80000000000000569
-t1291473832
-s1385
-i"PhotoExplorerViewController.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.h
-c000000004CFADCBD00000000000001B1
-t1291508925
-s433
-i<Foundation/Foundation.h>
-i"AQGridViewCell.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m
-c000000004CFADCD70000000000000FEB
-t1291508951
-s4075
-i"PhotoGridViewCell.h"
-i"Picture.h"
-i<QuartzCore/QuartzCore.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.h
-c000000004CFADCBD000000000000025B
-t1291508925
-s603
-i<UIKit/UIKit.h>
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m
-c000000004CFADCBD00000000000017E4
-t1291508925
-s6116
-i"PhotoGridViewController.h"
-i"PictureFeed.h"
-i"PictureFeedDelegate.h"
-i"PictureViewDelegate.h"
-i"PictureView.h"
-i"Picture.h"
-i"PhotoExplorerAppDelegate.h"
-i"Reachability.h"
-i"PhotoGridViewCell.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.h
-c000000004CFA582500000000000001F4
-t1291474981
-s500
-i<Foundation/Foundation.h>
-i"PictureDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m
-c000000004CFA89C10000000000000730
-t1291487681
-s1840
-i"Picture.h"
-i"ASIHTTPRequest.h"
-i"PhotoExplorerAppDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureDelegate.h
-c000000004CFA58250000000000000181
-t1291474981
-s385
-i<Foundation/Foundation.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureDelegate.m
-c000000004CFA57CE00000000000000D2
-t1291474894
-s210
-i"PictureDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.h
-c000000004CFA6335000000000000017F
-t1291477813
-s383
-i<Foundation/Foundation.h>
-i"PictureFeedDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m
-c000000004CFA7FFB00000000000005F1
-t1291485179
-s1521
-i"PictureFeed.h"
-i"Picture.h"
-i"ASIHTTPRequest.h"
-i"PhotoExplorerAppDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedDelegate.h
-c000000004CFA633500000000000001A6
-t1291477813
-s422
-i<Foundation/Foundation.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedDelegate.m
-c000000004CFA618200000000000000DE
-t1291477378
-s222
-i"PictureFeedDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.h
-c000000004CFADEF0000000000000026A
-t1291509488
-s618
-i<UIKit/UIKit.h>
-i"AQGridView.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m
-c000000004CFADE0F0000000000001923
-t1291509263
-s6435
-i"PictureFeedGridViewController.h"
-i"PictureFeed.h"
-i"PictureFeedDelegate.h"
-i"PictureViewDelegate.h"
-i"PictureView.h"
-i"Picture.h"
-i"PhotoExplorerAppDelegate.h"
-i"Reachability.h"
-i"PhotoGridViewCell.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.h
-c000000004CFA85FF000000000000023B
-t1291486719
-s571
-i<UIKit/UIKit.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m
-c000000004CFAB3BD0000000000001E6E
-t1291498429
-s7790
-i"PictureFeedScrollViewController.h"
-i"PictureFeed.h"
-i"PictureFeedDelegate.h"
-i"PictureViewDelegate.h"
-i"PictureView.h"
-i"Picture.h"
-i"PhotoExplorerAppDelegate.h"
-i"Reachability.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.h
-c000000004CFA5DD000000000000001B5
-t1291476432
-s437
-i<Foundation/Foundation.h>
-i"PictureDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.m
-c000000004CFAB1EB0000000000000BA8
-t1291497963
-s2984
-i"PictureView.h"
-i"Picture.h"
-i<QuartzCore/QuartzCore.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureViewDelegate.h
-c000000004CFA5D7500000000000000EB
-t1291476341
-s235
-i<Foundation/Foundation.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/PictureViewDelegate.m
-c000000004CFA5D7500000000000000DE
-t1291476341
-s222
-i"PictureViewDelegate.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.h
-c000000004CFA7FFB00000000000000FD
-t1291485179
-s253
-i<Foundation/Foundation.h>
-i"PictureFeed.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.m
-c000000004CFA800700000000000002CE
-t1291485191
-s718
-i"TestPictureFeed.h"
-i"Picture.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.h
-c000000004CFAB0DD000000000000016D
-t1291497693
-s365
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.m
-c000000004CFAB0DF000000000000167C
-t1291497695
-s5756
-i"UIImage+Alpha.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.h
-c000000004CFAAFE90000000000000338
-t1291497449
-s824
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.m
-c000000004CFAAFF000000000000020B7
-t1291497456
-s8375
-i"UIImage+Resize.h"
-i"UIImage+RoundedCorner.h"
-i"UIImage+Alpha.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.h
-c000000004CFAB0D70000000000000171
-t1291497687
-s369
-
-N/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.m
-c000000004CFAB0DA0000000000000DF1
-t1291497690
-s3569
-i"UIImage+RoundedCorner.h"
-i"UIImage+Alpha.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/MainWindow.xib
-c000000004CFA871100000000000047AF
-t1291486993
-s18351
-
-N/Users/bstewart/Documents/PhotoExplorer/PhotoExplorerViewController.xib
-c000000004CFA53A80000000000003EF9
-t1291473832
-s16121
-
-N/Users/bstewart/Documents/PhotoExplorer/PhotoExplorer_Prefix.pch
-c000000004CFA53A800000000000000C3
-t1291473832
-s195
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/PictureFeedGridView.xib
-c000000004CFADF680000000000005379
-t1291509608
-s21369
-
-N/Users/bstewart/Documents/PhotoExplorer/PictureFeedScrollView.xib
-c000000004CFAAC820000000000004660
-t1291496578
-s18016
-
-N/Users/bstewart/Documents/PhotoExplorer/Reachability.h
-c000000004CFA4FD40000000000001D0E
-t1291472852
-s7438
-i<Foundation/Foundation.h>
-i<SystemConfiguration/SystemConfiguration.h>
-
-N/Users/bstewart/Documents/PhotoExplorer/Reachability.m
-c000000004CFA4FD40000000000005E0C
-t1291472852
-s24076
-i<sys/socket.h>
-i<netinet/in.h>
-i<netinet6/in6.h>
-i<arpa/inet.h>
-i<ifaddrs.h>
-i<netdb.h>
-i<CoreFoundation/CoreFoundation.h>
-i"Reachability.h"
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app
-t1291509921
-s306
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app.dSYM
-t1291509921
-s102
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/Info.plist
-t1291509916
-s822
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/MainWindow.nib
-t1291509916
-s990
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer
-t1291509920
-s600296
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorerViewController.nib
-t1291509916
-s764
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PictureFeedGridView.nib
-t1291509917
-s1136
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PictureFeedScrollView.nib
-t1291509917
-s1032
-
-N/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PkgInfo
-t1291509916
-s8
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridView.o
-t1291509920
-s181480
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewAnimatorItem.o
-t1291509920
-s42268
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewCell.o
-t1291509920
-s92884
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewController.o
-t1291509920
-s55780
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewData.o
-t1291509920
-s62536
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateInfo.o
-t1291509920
-s95764
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateItem.o
-t1291509920
-s17300
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIAuthenticationDialog.o
-t1291509919
-s107968
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataCompressor.o
-t1291509919
-s23140
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataDecompressor.o
-t1291509919
-s23236
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDownloadCache.o
-t1291509918
-s61092
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIFormDataRequest.o
-t1291509918
-s47440
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIHTTPRequest.o
-t1291509919
-s486556
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIInputStream.o
-t1291509918
-s28976
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASINetworkQueue.o
-t1291509918
-s61244
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIndexesOutsideSet.o
-t1291509920
-s7416
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIsSetContiguous.o
-t1291509920
-s7068
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorer.LinkFileList
-c000000004CFAE09C0000000000001298
-t1291509916
-s4760
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerAppDelegate.o
-t1291509918
-s58256
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerViewController.o
-t1291509918
-s38180
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewCell.o
-t1291509920
-s50040
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewController.o
-t1291508926
-s71572
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Picture.o
-t1291509919
-s56792
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureDelegate.o
-t2
-s0
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeed.o
-t1291509919
-s53328
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedDelegate.o
-t2
-s0
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedGridViewController.o
-t1291509920
-s72980
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedScrollViewController.o
-t1291509919
-s70992
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureView.o
-t1291509919
-s48540
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureViewDelegate.o
-t2
-s0
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Reachability.o
-t1291509919
-s33844
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/TestPictureFeed.o
-t1291509919
-s9544
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIColor+AQGridView.o
-t1291509920
-s6624
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Alpha.o
-t1291509919
-s15036
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Resize.o
-t1291509919
-s19408
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+RoundedCorner.o
-t1291509919
-s12448
-
-N/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/main.o
-t1291509918
-s6304
-
-N/Users/bstewart/Documents/PhotoExplorer/main.m
-c000000004CFA53A80000000000000168
-t1291473832
-s360
-i<UIKit/UIKit.h>
-
-N/var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch.gch
-t1291509917
-s15453392
-
-NPhotoExplorer-Info.plist
-c000000004CFA53A800000000000004D6
-t1291473832
-s1238
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies313202716#313202716#0(0"0(0#1#0"8619388640#0"0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridView.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.483194
-e313202720.905139
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridView.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@71"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.m313202720#313202720#0(0"0(0#0#63"/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.m8622129888#2068"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridView.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridView.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewAnimatorItem.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.388311
-e313202720.483088
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewAnimatorItem.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@83"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.m313202720#313202720#0(0"0(0#0#75"/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.m8619248544#2092"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewAnimatorItem.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewAnimatorItem.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewCell.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.374606
-e313202720.613728
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewCell.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@75"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.m313202720#313202720#0(0"0(0#0#67"/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.m8609715168#2076"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewCell.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewCell.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewController.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.281641
-e313202720.388206
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewController.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@81"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.m313202720#313202720#0(0"0(0#0#73"/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.m8613650304#2088"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewController.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewController.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewData.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.156482
-e313202720.281539
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewData.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@75"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.m313202720#313202720#0(0"0(0#0#67"/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.m8620316960#2076"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewData.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewData.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateInfo.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.125974
-e313202720.374503
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateInfo.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@81"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.m313202720#313202720#0(0"0(0#0#73"/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.m8620747968#2088"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateInfo.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateInfo.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateItem.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.061742
-e313202720.156374
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateItem.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@81"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.m313202720#313202720#0(0"0(0#0#73"/Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.m8622510176#2088"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/AQGridViewUpdateItem.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/AQGridViewUpdateItem.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIAuthenticationDialog.o /Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.106012
-e313202719.301427
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIAuthenticationDialog.o
-x/Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@73"Compile /Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.m313202719#313202719#0(0"0(0#0#65"/Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.m8622679840#2083"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASIAuthenticationDialog.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIAuthenticationDialog.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataCompressor.o /Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.004810
-e313202719.105914
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataCompressor.o
-x/Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@67"Compile /Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.m313202719#313202719#0(0"0(0#0#59"/Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.m8620630976#2071"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASIDataCompressor.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataCompressor.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataDecompressor.o /Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.901863
-e313202719.004708
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataDecompressor.o
-x/Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@69"Compile /Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.m313202718#313202719#0(0"0(0#0#61"/Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.m8621034144#2075"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASIDataDecompressor.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDataDecompressor.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDownloadCache.o /Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.731271
-e313202718.901752
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDownloadCache.o
-x/Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@66"Compile /Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.m313202718#313202718#0(0"0(0#0#58"/Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.m8622767328#2069"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASIDownloadCache.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIDownloadCache.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIFormDataRequest.o /Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.591833
-e313202718.731169
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIFormDataRequest.o
-x/Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@68"Compile /Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.m313202718#313202718#0(0"0(0#0#60"/Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.m8619638272#2073"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASIFormDataRequest.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIFormDataRequest.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIHTTPRequest.o /Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.538535
-e313202719.729860
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIHTTPRequest.o
-x/Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@64"Compile /Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.m313202718#313202719#0(0"0(0#0#56"/Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.m8620032128#2065"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASIHTTPRequest.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIHTTPRequest.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIInputStream.o /Users/bstewart/Documents/PhotoExplorer/ASIInputStream.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.448291
-e313202718.538429
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIInputStream.o
-x/Users/bstewart/Documents/PhotoExplorer/ASIInputStream.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@64"Compile /Users/bstewart/Documents/PhotoExplorer/ASIInputStream.m313202718#313202718#0(0"0(0#0#56"/Users/bstewart/Documents/PhotoExplorer/ASIInputStream.m8620553376#2065"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASIInputStream.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASIInputStream.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASINetworkQueue.o /Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.415194
-e313202718.591510
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASINetworkQueue.o
-x/Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@65"Compile /Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.m313202718#313202718#0(0"0(0#0#57"/Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.m8620794912#2067"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/ASINetworkQueue.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/ASINetworkQueue.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIndexesOutsideSet.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.057622
-e313202720.125867
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIndexesOutsideSet.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@91"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.m313202720#313202720#0(0"0(0#0#83"/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.m8619285568#2108"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIndexesOutsideSet.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIndexesOutsideSet.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIsSetContiguous.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.988878
-e313202720.057513
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIsSetContiguous.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@89"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.m313202719#313202720#0(0"0(0#0#81"/Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.m8619566976#2104"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/NSIndexSet+AQIsSetContiguous.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/NSIndexSet+AQIsSetContiguous.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerAppDelegate.o /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.150640
-e313202718.415083
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerAppDelegate.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m: In function '-[PhotoExplorerAppDelegate application:didFinishLaunchingWithOptions:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: no '-initWithPictureFeed:' method found
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: (Messages without a matching method signature
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: will be assumed to return 'id' and accept
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: '...' as arguments.)
-lSLF07#2@82"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m313202718#313202718#0(663"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m: In function '-[PhotoExplorerAppDelegate application:didFinishLaunchingWithOptions:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: no '-initWithPictureFeed:' method found/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: (Messages without a matching method signature/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: will be assumed to return 'id' and accept/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m:33: warning: '...' as arguments.)2(22@39"No '-initWithPictureFeed:' method found313202718#162#128#0(6@74"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m313202029#33#0#33#0#19"no '*' method found0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)313202718#290#134#0(6@74"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m313202029#33#0#33#0#0"0(0#0#74"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m8621036128#2093"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerAppDelegate.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerAppDelegate.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerViewController.o /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.376141
-e313202718.448172
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerViewController.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@85"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.m313202718#313202718#0(0"0(0#0#77"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.m8622704128#2099"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoExplorerViewController.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorerViewController.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewCell.o /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.741551
-e313202720.847940
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewCell.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m: In function '-[PhotoGridViewCell setPicture:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m:54: warning: class 'PhotoGridViewCell' does not implement the 'PictureDelegate' protocol
-lSLF07#2@75"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m313202720#313202720#0(274"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m: In function '-[PhotoGridViewCell setPicture:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m:54: warning: class 'PhotoGridViewCell' does not implement the 'PictureDelegate' protocol1(22@75"Class 'PhotoGridViewCell' does not implement the 'PictureDelegate' protocol313202720#117#157#0(6@67"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m313201751#54#0#54#0#45"class '*' does not implement the '*' protocol0(0#0#67"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m8619554720#2079"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewCell.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewCell.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewController.o /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313201725.984258
-e313201726.136060
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewController.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m: In function '-[PhotoGridViewController reloadFeed]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: 'PhotoGridViewController' may not respond to '-showLoadingView'
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: (Messages without a matching method signature
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: will be assumed to return 'id' and accept
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: '...' as arguments.)
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m: In function '-[PhotoGridViewController pictureFeed:didFindPictures:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:86: warning: local declaration of 'pictures' hides instance variable
-lSLF07#2@81"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m313201725#313201726#0(938"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m: In function '-[PhotoGridViewController reloadFeed]':/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: 'PhotoGridViewController' may not respond to '-showLoadingView'/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: (Messages without a matching method signature/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: will be assumed to return 'id' and accept/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:52: warning: '...' as arguments.)/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m: In function '-[PhotoGridViewController pictureFeed:didFindPictures:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m:86: warning: local declaration of 'pictures' hides instance variable3(22@63"'PhotoGridViewController' may not respond to '-showLoadingView'313201726#128#151#0(6@73"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m313201725#52#0#52#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)313201726#279#133#0(6@73"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m313201725#52#0#52#0#0"0(22@55"Local declaration of 'pictures' hides instance variable313201726#795#143#0(6@73"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m313201725#86#0#86#0#0"0(0#0#73"/Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m8621665472#2091"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PhotoGridViewController.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoGridViewController.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Picture.o /Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.418916
-e313202719.521788
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Picture.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m: In function '-[Picture image]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: 'Picture' may not respond to '-loadURL:'
-o/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: (Messages without a matching method signature
-o/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: will be assumed to return 'id' and accept
-o/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: '...' as arguments.)
-lSLF07#2@65"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m313202719#313202719#0(525"/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m: In function '-[Picture image]':/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: 'Picture' may not respond to '-loadURL:'/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: (Messages without a matching method signature/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: will be assumed to return 'id' and accept/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m:28: warning: '...' as arguments.)2(22@40"'Picture' may not respond to '-loadURL:'313202719#91#112#0(6@57"/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m313180481#28#0#28#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)313202719#203#117#0(6@57"/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m313180481#28#0#28#0#0"0(0#0#57"/Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m8620461760#2059"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/Picture.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Picture.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureDelegate.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeed.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.629750
-e313202719.732229
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeed.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m: In function '-[PictureFeed fetch]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: 'PictureFeed' may not respond to '-createFetchRequest'
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: (Messages without a matching method signature
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: will be assumed to return 'id' and accept
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: '...' as arguments.)
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m: In function '-[PictureFeed createFetchRequest]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:42: warning: control reaches end of non-void function
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m: In function '-[PictureFeed getPicturesFromResponseData:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:47: warning: control reaches end of non-void function
-lSLF07#2@69"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m313202719#313202719#0(1029"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m: In function '-[PictureFeed fetch]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: 'PictureFeed' may not respond to '-createFetchRequest'/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: (Messages without a matching method signature/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: will be assumed to return 'id' and accept/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:27: warning: '...' as arguments.)/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m: In function '-[PictureFeed createFetchRequest]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:42: warning: control reaches end of non-void function/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m: In function '-[PictureFeed getPicturesFromResponseData:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m:47: warning: control reaches end of non-void function4(22@54"'PictureFeed' may not respond to '-createFetchRequest'313202719#99#130#0(6@61"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m313177979#27#0#27#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)313202719#229#121#0(6@61"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m313177979#27#0#27#0#0"0(22@40"Control reaches end of non-void function313202719#675#116#0(6@61"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m313177979#42#0#42#0#40"control reaches end of non-void function0(22@40"Control reaches end of non-void function313202719#913#116#0(6@61"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m313177979#47#0#47#0#40"control reaches end of non-void function0(0#0#61"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m8619260608#2067"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeed.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeed.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedDelegate.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedGridViewController.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202720.613830
-e313202720.741440
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedGridViewController.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m: In function '-[PictureFeedGridViewController initWithPictureFeed:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:28: warning: local declaration of 'pictureFeed' hides instance variable
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:29: warning: class 'PictureFeedGridViewController' does not implement the 'PictureFeedDelegate' protocol
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m: In function '-[PictureFeedGridViewController reloadFeed]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: 'PictureFeedGridViewController' may not respond to '-showLoadingView'
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: (Messages without a matching method signature
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: will be assumed to return 'id' and accept
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: '...' as arguments.)
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m: In function '-[PictureFeedGridViewController pictureFeed:didFindPictures:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:98: warning: local declaration of 'pictures' hides instance variable
-lSLF07#2@87"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m313202720#313202720#0(1485"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m: In function '-[PictureFeedGridViewController initWithPictureFeed:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:28: warning: local declaration of 'pictureFeed' hides instance variable/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:29: warning: class 'PictureFeedGridViewController' does not implement the 'PictureFeedDelegate' protocol/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m: In function '-[PictureFeedGridViewController reloadFeed]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: 'PictureFeedGridViewController' may not respond to '-showLoadingView'/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: (Messages without a matching method signature/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: will be assumed to return 'id' and accept/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:64: warning: '...' as arguments.)/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m: In function '-[PictureFeedGridViewController pictureFeed:didFindPictures:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m:98: warning: local declaration of 'pictures' hides instance variable5(22@58"Local declaration of 'pictureFeed' hides instance variable313202720#150#152#0(6@79"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m313202063#28#0#28#0#0"0(22@91"Class 'PictureFeedGridViewController' does not implement the 'PictureFeedDelegate' protocol313202720#302#185#0(6@79"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m313202063#29#0#29#0#45"class '*' does not implement the '*' protocol0(22@69"'PictureFeedGridViewController' may not respond to '-showLoadingView'313202720#627#163#0(6@79"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m313202063#64#0#64#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)313202720#790#139#0(6@79"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m313202063#64#0#64#0#0"0(22@55"Local declaration of 'pictures' hides instance variable313202720#1336#149#0(6@79"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m313202063#98#0#98#0#0"0(0#0#79"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m8620660768#2103"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedGridViewController.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedGridViewController.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedScrollViewController.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.730091
-e313202719.882820
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedScrollViewController.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PictureFeedScrollViewController initWithPictureFeed:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:27: warning: local declaration of 'pictureFeed' hides instance variable
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:28: warning: class 'PictureFeedScrollViewController' does not implement the 'PictureFeedDelegate' protocol
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PictureFeedScrollViewController reloadFeed]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: 'PictureFeedScrollViewController' may not respond to '-showLoadingView'
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: (Messages without a matching method signature
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: will be assumed to return 'id' and accept
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: '...' as arguments.)
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PictureFeedScrollViewController pictureFeed:didFindPictures:]':
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:99: warning: local declaration of 'pictures' hides instance variable
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:100: warning: 'PictureFeedScrollViewController' may not respond to '-reloadPictureViews'
-o/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:101: warning: 'PictureFeedScrollViewController' may not respond to '-loadVisiblePictureViews'
-lSLF07#2@89"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313202719#313202719#0(1862"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PictureFeedScrollViewController initWithPictureFeed:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:27: warning: local declaration of 'pictureFeed' hides instance variable/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:28: warning: class 'PictureFeedScrollViewController' does not implement the 'PictureFeedDelegate' protocol/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PictureFeedScrollViewController reloadFeed]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: 'PictureFeedScrollViewController' may not respond to '-showLoadingView'/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: (Messages without a matching method signature/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: will be assumed to return 'id' and accept/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:65: warning: '...' as arguments.)/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PictureFeedScrollViewController pictureFeed:didFindPictures:]':/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:99: warning: local declaration of 'pictures' hides instance variable/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:100: warning: 'PictureFeedScrollViewController' may not respond to '-reloadPictureViews'/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:101: warning: 'PictureFeedScrollViewController' may not respond to '-loadVisiblePictureViews'7(22@58"Local declaration of 'pictureFeed' hides instance variable313202719#154#154#0(6@81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313191229#27#0#27#0#0"0(22@93"Class 'PictureFeedScrollViewController' does not implement the 'PictureFeedDelegate' protocol313202719#308#189#0(6@81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313191229#28#0#28#0#45"class '*' does not implement the '*' protocol0(22@71"'PictureFeedScrollViewController' may not respond to '-showLoadingView'313202719#641#167#0(6@81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313191229#65#0#65#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)313202719#808#141#0(6@81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313191229#65#0#65#0#0"0(22@55"Local declaration of 'pictures' hides instance variable313202719#1364#151#0(6@81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313191229#99#0#99#0#0"0(22@74"'PictureFeedScrollViewController' may not respond to '-reloadPictureViews'313202719#1515#171#0(6@81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313191229#100#0#100#0#26"'*' may not respond to '*'0(22@79"'PictureFeedScrollViewController' may not respond to '-loadVisiblePictureViews'313202719#1686#176#0(6@81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m313191229#101#0#101#0#26"'*' may not respond to '*'0(0#0#81"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m8622939232#2107"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureFeedScrollViewController.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureView.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.521900
-e313202719.629648
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureView.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@69"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.m313202719#313202719#0(0"0(0#0#61"/Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.m8619994240#2067"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/PictureView.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureView.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PictureViewDelegate.o /Users/bstewart/Documents/PhotoExplorer/Classes/PictureViewDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Reachability.o /Users/bstewart/Documents/PhotoExplorer/Reachability.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.301529
-e313202719.418804
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Reachability.o
-x/Users/bstewart/Documents/PhotoExplorer/Reachability.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@62"Compile /Users/bstewart/Documents/PhotoExplorer/Reachability.m313202719#313202719#0(0"0(0#0#54"/Users/bstewart/Documents/PhotoExplorer/Reachability.m8620691008#2061"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Reachability.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/Reachability.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/TestPictureFeed.o /Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.732317
-e313202719.798633
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/TestPictureFeed.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@73"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.m313202719#313202719#0(0"0(0#0#65"/Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.m8621437760#2075"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/TestPictureFeed.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/TestPictureFeed.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIColor+AQGridView.o /Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.981086
-e313202720.061639
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIColor+AQGridView.o
-x/Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@79"Compile /Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.m313202719#313202720#0(0"0(0#0#71"/Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.m8608303680#2084"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/AQGridView/UIColor+AQGridView.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIColor+AQGridView.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Alpha.o /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.882926
-e313202719.980980
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Alpha.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@71"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.m313202719#313202719#0(0"0(0#0#63"/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.m8620009568#2071"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Alpha.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Alpha.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Resize.o /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.798732
-e313202719.897214
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Resize.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@72"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.m313202719#313202719#0(0"0(0#0#64"/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.m8620620000#2073"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+Resize.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+Resize.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+RoundedCorner.o /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202719.897315
-e313202719.988587
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+RoundedCorner.o
-x/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@79"Compile /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.m313202719#313202719#0(0"0(0#0#71"/Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.m8619101856#2087"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/Classes/UIImage+RoundedCorner.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/UIImage+RoundedCorner.o0#
-
-CCompileC build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/main.o /Users/bstewart/Documents/PhotoExplorer/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202718.149588
-e313202718.376031
-r1
-xCompileC
-xbuild/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/main.o
-x/Users/bstewart/Documents/PhotoExplorer/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@54"Compile /Users/bstewart/Documents/PhotoExplorer/main.m313202718#313202718#0(0"0(0#0#46"/Users/bstewart/Documents/PhotoExplorer/main.m8610481472#2045"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -include /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch -c /Users/bstewart/Documents/PhotoExplorer/main.m -o /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/main.o0#
-
-CCompileXIB /Users/bstewart/Documents/PhotoExplorer/MainWindow.xib
-s313202716.316721
-e313202716.710139
-r1
-xCompileXIB
-x/Users/bstewart/Documents/PhotoExplorer/MainWindow.xib
-lSLF07#2@25"CompileXIB MainWindow.xib313202716#313202716#0(0"0(0#0#54"/Users/bstewart/Documents/PhotoExplorer/MainWindow.xib8621870144#579"    cd /Users/bstewart/Documents/PhotoExplorer    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/MainWindow.nib /Users/bstewart/Documents/PhotoExplorer/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
-
-CCompileXIB /Users/bstewart/Documents/PhotoExplorer/PhotoExplorerViewController.xib
-s313202716.317485
-e313202716.739320
-r1
-xCompileXIB
-x/Users/bstewart/Documents/PhotoExplorer/PhotoExplorerViewController.xib
-lSLF07#2@42"CompileXIB PhotoExplorerViewController.xib313202716#313202716#0(0"0(0#0#71"/Users/bstewart/Documents/PhotoExplorer/PhotoExplorerViewController.xib8621436160#613"    cd /Users/bstewart/Documents/PhotoExplorer    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorerViewController.nib /Users/bstewart/Documents/PhotoExplorer/PhotoExplorerViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
-
-CCompileXIB /Users/bstewart/Documents/PhotoExplorer/PictureFeedGridView.xib
-s313202716.739418
-e313202717.169220
-r1
-xCompileXIB
-x/Users/bstewart/Documents/PhotoExplorer/PictureFeedGridView.xib
-lSLF07#2@34"CompileXIB PictureFeedGridView.xib313202716#313202717#0(0"0(0#0#63"/Users/bstewart/Documents/PhotoExplorer/PictureFeedGridView.xib8611376416#597"    cd /Users/bstewart/Documents/PhotoExplorer    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PictureFeedGridView.nib /Users/bstewart/Documents/PhotoExplorer/PictureFeedGridView.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
-
-CCompileXIB /Users/bstewart/Documents/PhotoExplorer/PictureFeedScrollView.xib
-s313202716.710240
-e313202717.149489
-r1
-xCompileXIB
-x/Users/bstewart/Documents/PhotoExplorer/PictureFeedScrollView.xib
-lSLF07#2@36"CompileXIB PictureFeedScrollView.xib313202716#313202717#0(0"0(0#0#65"/Users/bstewart/Documents/PhotoExplorer/PictureFeedScrollView.xib8618649120#601"    cd /Users/bstewart/Documents/PhotoExplorer    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PictureFeedScrollView.nib /Users/bstewart/Documents/PhotoExplorer/PictureFeedScrollView.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
-
-CGenerateDSYMFile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app.dSYM /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer
-s313202721.005171
-e313202721.082309
-r1
-xGenerateDSYMFile
-x/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app.dSYM
-x/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer
-lSLF07#2@127"GenerateDSYMFile build/Debug-iphonesimulator/PhotoExplorer.app.dSYM build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer313202721#313202721#0(0"0(0#0#99"/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer8611014272#404"    cd /Users/bstewart/Documents/PhotoExplorer    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer -o /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app.dSYM0#
-
-CLd /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer normal i386
-s313202720.905237
-e313202721.005057
-r1
-xLd
-x/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer
-xnormal
-xi386
-lSLF07#2@104"Link /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer313202720#313202721#0(0"0(0#0#0"8608255392#1049"    cd /Users/bstewart/Documents/PhotoExplorer    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -filelist /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/Objects-normal/i386/PhotoExplorer.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CFNetwork -framework SystemConfiguration -framework MobileCoreServices -lz.1.2.3 -framework QuartzCore -o /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PhotoExplorer0#
-
-CProcessInfoPlistFile /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/Info.plist PhotoExplorer-Info.plist
-s313202716.312839
-e313202716.316637
-r1
-xProcessInfoPlistFile
-x/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/Info.plist
-xPhotoExplorer-Info.plist
-lSLF07#2@32"Process PhotoExplorer-Info.plist313202716#313202716#0(0"0(0#0#64"/Users/bstewart/Documents/PhotoExplorer/PhotoExplorer-Info.plist8623169024#500"    cd /Users/bstewart/Documents/PhotoExplorer    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility PhotoExplorer-Info.plist -genpkginfo /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app/Info.plist0#
-
-CProcessPCH /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch.gch PhotoExplorer_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s313202717.169356
-e313202718.149429
-r1
-xProcessPCH
-x/var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch.gch
-xPhotoExplorer_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@35"Precompile PhotoExplorer_Prefix.pch313202717#313202718#0(0"0(0#0#64"/Users/bstewart/Documents/PhotoExplorer/PhotoExplorer_Prefix.pch8610165600#1930"    cd /Users/bstewart/Documents/PhotoExplorer    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-generated-files.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-own-target-headers.hmap -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-all-target-headers.hmap -iquote /Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/PhotoExplorer-project-headers.hmap -F/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator -I/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/include -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources/i386 -I/Users/bstewart/Documents/PhotoExplorer/build/PhotoExplorer.build/Debug-iphonesimulator/PhotoExplorer.build/DerivedSources -c /Users/bstewart/Documents/PhotoExplorer/PhotoExplorer_Prefix.pch -o /var/folders/nT/nT6iMGQtE2WtAB31lU75rU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoExplorer_Prefix-ayaucbilclziclelptsiqjjmdsuy/PhotoExplorer_Prefix.pch.gch0#
-
-CTouch /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app
-s313202721.082402
-e313202721.086040
-r1
-xTouch
-x/Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app
-lSLF07#2@91"Touch /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app313202721#313202721#0(0"0(0#0#0"8623151744#286"    cd /Users/bstewart/Documents/PhotoExplorer    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/bstewart/Documents/PhotoExplorer/build/Debug-iphonesimulator/PhotoExplorer.app0#
-

@@ -1,9 +1,0 @@
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m:12: error: no declaration of property 'uid' found in the interface
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m:12: error: no declaration of property 'name' found in the interface
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m: In function '-[User dealloc]':
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m:16: error: 'uid' undeclared (first use in this function)
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m:16: error: (Each undeclared identifier is reported only once
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m:16: error: for each function it appears in.)
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m:17: error: 'name' undeclared (first use in this function)
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m: At top level:
-/Users/bstewart/Documents/PhotoExplorer/Classes/User.m:18: warning: method possibly missing a [super dealloc] call
