@@ -1,0 +1,12 @@
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'name' requires method '-name' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'name' requires the method 'setName:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'from' requires method '-from' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'from' requires the method 'setFrom:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'link' requires method '-link' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'link' requires the method 'setLink:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'created_date' requires method '-created_date' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'created_date' requires the method 'setCreated_date:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'updated_date' requires method '-updated_date' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'updated_date' requires the method 'setUpdated_date:' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'uid' requires method '-uid' to be defined - use @synthesize, @dynamic or provide a method implementation
+/Users/bstewart/Documents/PhotoExplorer/Classes/Album.m:27: warning: property 'uid' requires the method 'setUid:' to be defined - use @synthesize, @dynamic or provide a method implementation

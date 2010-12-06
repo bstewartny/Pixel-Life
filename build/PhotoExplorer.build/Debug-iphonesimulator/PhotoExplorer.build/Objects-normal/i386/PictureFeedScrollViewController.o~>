@@ -1,0 +1,31 @@
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:9:31: error: PicturesScrollView.h: No such file or directory
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:14: warning: cannot find interface declaration for 'PicturesScrollView'
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:14: error: expected identifier or '(' before 'synchronized'
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PicturesScrollView initWithPictures:]':
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:18: error: no super class declared in @interface for 'PicturesScrollView'
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:20: error: request for member 'pictures' in something not a structure or union
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:22: error: request for member 'view' in something not a structure or union
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PicturesScrollView addPicturesToScrollView]':
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:31: error: 'scrollView' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:31: error: (Each undeclared identifier is reported only once
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:31: error: for each function it appears in.)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:34: error: 'pictures' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:41: error: 'PictureImageView' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:41: error: 'picView' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:45: warning: unused variable 'imageView'
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:49: error: expression does not have a valid object type
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PicturesScrollView setPictureFrames]':
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:58: error: 'scrollView' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:68: error: 'PictureImageView' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:68: error: 'picture' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:72: warning: unused variable 'imageView'
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:75: error: expression does not have a valid object type
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:76: error: 'pictures' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PicturesScrollView didReceiveMemoryWarning]':
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:113: error: no super class declared in @interface for 'PicturesScrollView'
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PicturesScrollView viewDidUnload]':
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:119: error: no super class declared in @interface for 'PicturesScrollView'
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m: In function '-[PicturesScrollView dealloc]':
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:126: error: 'pictures' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:127: error: 'scrollView' undeclared (first use in this function)
+/Users/bstewart/Documents/PhotoExplorer/Classes/PictureFeedScrollViewController.m:128: error: no super class declared in @interface for 'PicturesScrollView'

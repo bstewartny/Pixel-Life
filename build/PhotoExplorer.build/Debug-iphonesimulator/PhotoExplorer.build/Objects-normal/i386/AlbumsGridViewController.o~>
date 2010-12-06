@@ -1,0 +1,5 @@
+/Users/bstewart/Documents/PhotoExplorer/Classes/AlbumsGridViewController.m: In function '-[AlbumsGridViewController gridView:didSelectItemAtIndex:]':
+/Users/bstewart/Documents/PhotoExplorer/Classes/AlbumsGridViewController.m:41: warning: no '-initWithFeed:title:' method found
+/Users/bstewart/Documents/PhotoExplorer/Classes/AlbumsGridViewController.m:41: warning: (Messages without a matching method signature
+/Users/bstewart/Documents/PhotoExplorer/Classes/AlbumsGridViewController.m:41: warning: will be assumed to return 'id' and accept
+/Users/bstewart/Documents/PhotoExplorer/Classes/AlbumsGridViewController.m:41: warning: '...' as arguments.)
