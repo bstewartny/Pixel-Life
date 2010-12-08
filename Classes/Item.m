@@ -25,7 +25,7 @@
 	[user release];
 	[created_date release];
 	[updated_date release];
-	
+	[super dealloc];
 }
 
 

@@ -42,7 +42,7 @@
 	 }
 	 */
 	
-	NSLog(@"json=%@",[json description]);
+	//NSLog(@"json=%@",[json description]);
 	
 	NSArray * a=[json objectForKey:@"data"];
 	
@@ -57,7 +57,7 @@
 		
 		Picture * picture=[[Picture alloc] init];
 		
-		picture.imageURL=[d objectForKey:@"picture"];
+		picture.thumbnailURL=[d objectForKey:@"picture"];
 		
 		picture.user=friend;
 		

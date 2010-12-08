@@ -23,6 +23,25 @@
 		self.feed.delegate=self;
 		self.navigationItem.title=title;
 		self.title=title;
+		
+		//self.wantsFullScreenLayout=NO;
+		
+		CGRect bounds=[[UIScreen mainScreen] bounds];
+		
+		spinningWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(bounds.size.width/2-10, bounds.size.height/2-10, 20.0, 20.0)];
+		spinningWheel.contentMode=UIViewContentModeCenter;
+		spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+		spinningWheel.autoresizingMask=
+					UIViewAutoresizingFlexibleLeftMargin |  
+					UIViewAutoresizingFlexibleRightMargin  |
+					UIViewAutoresizingFlexibleTopMargin   |
+					UIViewAutoresizingFlexibleBottomMargin;
+		
+		spinningWheel.hidesWhenStopped=YES;
+		[spinningWheel stopAnimating];
+		
+		[self.view addSubview:spinningWheel];
+	
     }
     return self;
 }
@@ -81,27 +100,34 @@
 {
 	NSLog(@"showLoadingView");
 	
-    if (loadingView == nil)
+	[spinningWheel startAnimating];
+	[self.view bringSubviewToFront:spinningWheel];
+	
+   /* if (loadingView == nil)
     {
         loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
         //loadingView.opaque = NO;
         loadingView.backgroundColor = [UIColor blackColor];
         //loadingView.alpha = 0.5;
 		
-        UIActivityIndicatorView *spinningWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-20, self.view.bounds.size.height/2-20, 37.0, 37.0)];
-        [spinningWheel startAnimating];
-        spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        UIActivityIndicatorView *spinningWheel = [[UIActivityIndicatorView alloc] init]; //WithFrame:CGRectMake(self.view.bounds.size.width/2-20, self.view.bounds.size.height/2-20, 20.0, 20.0)];
+		spinningWheel.contentMode=UIViewContentModeCenter;
+		spinningWheel.hidesWhenStopped=YES;
+		[spinningWheel startAnimating];
+        spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
         [loadingView addSubview:spinningWheel];
         [spinningWheel release];
     }
     
-    [self.view addSubview:loadingView];
+    [self.view addSubview:loadingView];*/
 }
 
 - (void)hideLoadingView
 {
 	NSLog(@"hideLoadingView");
-    [loadingView removeFromSuperview];
+	[spinningWheel stopAnimating];
+	[self.view sendSubviewToBack:spinningWheel];
+  //  [loadingView removeFromSuperview];
 }
 
 - (void) viewDidLoad
@@ -120,7 +146,16 @@
 	
     [self.gridView reloadData];
 	
-	[self reloadGrid];
+	//[self reloadGrid];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	if([items count]==0)
+	{
+		[self reloadGrid];
+	}
 }
 
 // Override to allow orientations other than the default portrait orientation.
@@ -136,9 +171,10 @@
 
 - (void) viewDidUnload
 {
+	NSLog(@"GridViewController.viewDidUnload");
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-    self.gridView = nil;
+    //self.gridView = nil;
 }
 
  
@@ -229,10 +265,13 @@
 }
 
 - (void)dealloc {
+	NSLog(@"GridViewController.dealloc");
+	
 	[items release];
     [feed setDelegate:nil];
     [feed release];
 	[gridView release];
+	[spinningWheel release];
     [super dealloc];
 }
 

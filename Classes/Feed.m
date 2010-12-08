@@ -49,6 +49,12 @@
 - (void)requestDone:(ASIHTTPRequest *)request
 {
 	NSLog(@"Feed.requestDone");
+	
+	if([request didUseCachedResponse])
+	{
+		NSLog(@"Got request from cache...");
+	}
+
     NSData *data = [request responseData];
 	
 	NSArray * items=[self getItemsFromResponseData:data];

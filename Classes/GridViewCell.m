@@ -33,6 +33,7 @@
 
 - (void) startLoading
 {
+	scrollingWheel.frame=CGRectMake(self.frame.size.width/2-10, self.frame.size.height/2-10, 20.0, 20.0);
 	[self.contentView bringSubviewToFront:scrollingWheel];
 	[scrollingWheel startAnimating];
 }

@@ -14,8 +14,15 @@
 @interface PhotoGridViewCell : GridViewCell {
 	Picture * picture;
 	UIImageView * imageView;
-	UILabel * titleLabel;
-	UILabel * descriptionLabel;
+	UILabel * label1;
+	UILabel * label2;
+	UILabel * label3;
+	BOOL showBorder;
+	NSCalendar * gregorian;
+	NSDateFormatter * format;
+	CGSize maxImageSize;
 }
 @property(nonatomic,retain) Picture * picture;
+@property(nonatomic) BOOL showBorder;
+
 @end

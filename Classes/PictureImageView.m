@@ -35,18 +35,25 @@
 
 - (void) load
 {
-	NSLog(@"PictureImageView.load");
+	//NSLog(@"PictureImageView.load");
 	// The getter in the Picture class is overloaded...!
     // If the image is not yet downloaded, it returns nil and 
     // begins the asynchronous downloading of the image.
     UIImage *img = picture.image;
 	if (img == nil)
     {
+		if([picture hasLoadedThumbnail])
+		{
+			self.image=picture.thumbnail;
+		}
 		delegateWasSet=YES;
 		[picture setDelegate:self];
 		[self startLoading];
     }
-	self.image=img;
+	else 
+	{
+		self.image=img;
+	}
 }
 
 - (void)picture:(Picture *)picture didLoadImage:(UIImage *)img
@@ -76,6 +83,7 @@
 
 - (void) dealloc
 {
+	//NSLog(@"PictureImageView.dealloc");
 	if(delegateWasSet)
 		[picture setDelegate:nil];
 	[picture release];

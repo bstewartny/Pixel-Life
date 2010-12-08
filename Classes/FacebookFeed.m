@@ -20,7 +20,22 @@
 	
 	self.facebook=facebook;
 	
+	formatter = [[NSDateFormatter alloc] init];
+	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+	
+	NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+	
+	[formatter setLocale:enUS];
+	[enUS release];
+	
+	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];//2010-11-30T21:05:41+0000
+	
 	return self;
+}
+
+- (NSDate*) dateFromString:(NSString*)date
+{
+	return [formatter dateFromString:date];
 }
 
 - (NSString*) createGraphUrl:(NSString*)path
@@ -51,15 +66,20 @@
 	// subclass
 }
 
+- (NSString*) escapeQueryValue:(NSString*)value
+{
+	return (NSString *)CFURLCreateStringByAddingPercentEscapes(
+													NULL, /* allocator */
+													(CFStringRef)value,
+													NULL, /* charactersToLeaveUnescaped */
+													(CFStringRef)@"!*'();:@&=+$,/?%#[]",
+													kCFStringEncodingUTF8);
+}
+
 - (ASIHTTPRequest*)createFetchRequest
 {
-
-	NSString* escaped_token = (NSString *)CFURLCreateStringByAddingPercentEscapes(
-																				  NULL, /* allocator */
-																				  (CFStringRef)facebook.accessToken,
-																				  NULL, /* charactersToLeaveUnescaped */
-																				  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-																				  kCFStringEncodingUTF8);
+	NSString* escaped_token = [self escapeQueryValue:facebook.accessToken];
+	
 	NSString * seperator=@"?";
 	
 	NSString * path=[self graphPath];
@@ -90,6 +110,7 @@
 - (void) dealloc
 {
 	[facebook release];
+	[formatter release];
 	[super dealloc];
 }
 

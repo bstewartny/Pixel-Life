@@ -14,6 +14,7 @@
 @synthesize pictureFeed,picture;
 @synthesize description;
 @synthesize location;
+@synthesize count;
 
 
 - (void) dealloc

@@ -15,5 +15,6 @@
 {
 	[uid release];
 	[name release];
+	[super dealloc];
 }
 @end

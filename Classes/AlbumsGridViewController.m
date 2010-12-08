@@ -23,6 +23,8 @@
 	{
 		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 200.0, 150.0)
 											  reuseIdentifier: cellIdentifier] autorelease];
+		photoCell.showBorder=YES; // not for profile pics...
+		
 		photoCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
 	}
 	
@@ -39,7 +41,7 @@
 	Album * album=(Album*)[items objectAtIndex:index];
 	// show album...
 	PictureFeedGridViewController * picturesController=[[PictureFeedGridViewController alloc] initWithFeed:album.pictureFeed title:album.name];
-	
+	//picturesController.view.frame = [[UIScreen mainScreen] bounds];
 	[[self navigationController] pushViewController:picturesController animated:YES];
 	
 	[picturesController release];

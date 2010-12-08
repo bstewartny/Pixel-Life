@@ -166,6 +166,7 @@
 
 - (void) dealloc
 {
+	NSLog(@"PictureViewController.dealloc");
 	[picture setDelegate:nil];
 	[picture release];
 	[scrollingWheel release];

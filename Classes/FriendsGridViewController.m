@@ -9,19 +9,22 @@
 #import "FriendsGridViewController.h"
 #import "Friend.h"
 #import "PhotoGridViewCell.h"
+#import "FriendGridViewCell.h"
 #import "AlbumsGridViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 @implementation FriendsGridViewController
 
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
     static NSString * cellIdentifier = @"CellIdentifier";
 	
-    PhotoGridViewCell * photoCell = (PhotoGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
+    FriendGridViewCell * photoCell = (FriendGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 200.0, 150.0)
+		photoCell = [[[FriendGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 200.0, 150.0)
 											  reuseIdentifier: cellIdentifier] autorelease];
+		
+		photoCell.showBorder=NO; // not for profile pics...
 		photoCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
 	}
 	
@@ -38,10 +41,15 @@
 	Friend  * friend=(Friend*)[items objectAtIndex:index];
 	// show album...
 	
+	CATransition *transition = [CATransition animation];
+	transition.duration = 0.5;
+	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	transition.subtype = kCATransitionReveal;
 	 
 	AlbumsGridViewController * controller=[[AlbumsGridViewController alloc] initWithFeed:friend.albumFeed title:[NSString stringWithFormat:@"%@'s Albums",friend.name]];
+	[controller.view.layer addAnimation:transition forKey:nil];
 	
-	[[self navigationController] pushViewController:controller animated:YES];
+	[[self navigationController] pushViewController:controller animated:NO];
 	
 	[controller release];
 }

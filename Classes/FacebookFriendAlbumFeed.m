@@ -55,7 +55,7 @@
 	 }
 	 */
 	
-	NSLog(@"json=%@",[json description]);
+	//NSLog(@"json=%@",[json description]);
 	
 	NSArray * a=[json objectForKey:@"data"];
 	
@@ -67,16 +67,20 @@
 		album.uid=[d objectForKey:@"id"];
 		album.name=[d objectForKey:@"name"];
 		album.url=[d objectForKey:@"link"];
-		album.created_date=[NSDate date];
-		album.updated_date=[NSDate date];
+		album.created_date=[self dateFromString:[d objectForKey:@"created_time"]];
+		album.updated_date=[self dateFromString:[d objectForKey:@"updated_time"]];
+		
+		album.count=[[d objectForKey:@"count"] intValue];
 		
 		Picture * picture=[[Picture alloc] init];
 		
-		//picture.imageURL=@"http://i.cdn.turner.com/cnn/2010/POLITICS/12/04/senate.tax.vote/story.senate.senatetv.jpg";
-		
-		picture.imageURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture",album.uid]];
+		picture.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture",album.uid]];
 		picture.name=album.name;
+		
+		picture.description=[NSString stringWithFormat:@"%d photos",album.count];
 		picture.user=album.user;
+		picture.created_date=album.created_date;
+		picture.updated_date=album.updated_date;
 		
 		album.picture=picture;
 		

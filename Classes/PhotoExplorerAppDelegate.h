@@ -17,6 +17,8 @@
 	UINavigationController * navController;
 	UISegmentedControl * segmentedControl;
 	Facebook * facebook;
+	NSString * accessToken;
+	NSDate * expirationDate;
 }
 @property (nonatomic, retain) NSOperationQueue *downloadQueue;
 

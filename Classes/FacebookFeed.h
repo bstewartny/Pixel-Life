@@ -12,6 +12,7 @@
 
 @interface FacebookFeed : Feed {
 	Facebook * facebook;
+	NSDateFormatter * formatter;
 }
 @property(nonatomic,retain) Facebook * facebook;
 - (id) initWithFacebook:(Facebook*)facebook;

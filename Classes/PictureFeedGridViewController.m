@@ -23,6 +23,8 @@
 	{
 		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 200.0, 150.0)
 												 reuseIdentifier: cellIdentifier] autorelease];
+		photoCell.showBorder=YES; // not for profile pics...
+		
 		photoCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
 	}
 	
@@ -35,14 +37,9 @@
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
 {
-	Picture * picture=(Picture*)[items objectAtIndex:index];
-	// show album...
-	
 	PicturesScrollViewController * controller=[[PicturesScrollViewController alloc] initWithPictures:items];
 	
 	controller.currentItemIndex=index;
-	
-	//PictureViewController *controller=[[PictureViewController alloc] initWithPicture:picture];
 	
 	[[self navigationController] pushViewController:controller animated:YES];
 	
