@@ -26,6 +26,13 @@
 		//self.navigationController.navigationBar.translucent=YES;
 		//self.wantsFullScreenLayout=YES;
 		
+		
+		self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action:)] autorelease];
+		
+		
+		
+		
+		
 		UITapGestureRecognizer * gr=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
 		
 		gr.numberOfTapsRequired=2;
@@ -39,11 +46,33 @@
 	}
     return self;
 }
-
+- (void) action:(id)sender
+{
+	
+}
 - (void) doubleTap:(UIGestureRecognizer*)gr
 {
 	// toggle nav bar
 	[self toggleNavigationBar];
+}
+
+- (CGRect) getBounds
+{
+	
+	CGRect b= scrollView.bounds;
+	
+	if(b.size.width==1024 && b.size.height==704)
+	{
+		b.size.height=748;
+	}
+	if (b.size.width==768 && b.size.height==960) {
+		b.size.height=1004;
+	}
+	
+	NSLog(@"getBounds: %@",NSStringFromCGRect(b));
+	
+	return b;
+	//return [[UIScreen mainScreen] bounds];
 }
 
 -(void) addPicturesToScrollView
@@ -51,7 +80,7 @@
 	CGFloat left=0;
 	CGFloat top=0;
 	
-	CGRect frame=scrollView.bounds;
+	CGRect frame=[self getBounds];
 	
 	CGFloat width=frame.size.width;
 	CGFloat height=frame.size.height;
@@ -78,8 +107,12 @@
 {
 	CGFloat left=0;
 	CGFloat top=0;
-	CGFloat width=scrollView.bounds.size.width;
-	CGFloat height=scrollView.bounds.size.height;
+	
+	CGRect frame=[self getBounds];
+	
+	
+	CGFloat width=frame.size.width;
+	CGFloat height=frame.size.height;
 	
 	for(PictureImageView * picView in scrollView.subviews)
 	{

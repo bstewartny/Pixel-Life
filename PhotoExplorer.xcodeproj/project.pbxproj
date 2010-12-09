@@ -30,7 +30,6 @@
 		B04825DA12ABCFE000F61433 /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04825D912ABCFE000F61433 /* GridViewController.m */; };
 		B04825DD12ABD3F200F61433 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04825DC12ABD3F200F61433 /* Feed.m */; };
 		B04825E112ABD78900F61433 /* GridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B04825E012ABD78900F61433 /* GridViewCell.m */; };
-		B04825E412AC1A2900F61433 /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B04825E312AC1A2900F61433 /* AlbumGridViewCell.m */; };
 		B048260112AD0D6300F61433 /* TestAlbumFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B048260012AD0D6300F61433 /* TestAlbumFeed.m */; };
 		B048264A12AD249300F61433 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = B048264912AD249300F61433 /* Item.m */; };
 		B048264D12AD24D600F61433 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B048264C12AD24D600F61433 /* User.m */; };
@@ -84,6 +83,8 @@
 		B0A13D0F12AAFC9B00999009 /* PictureFeedGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D0E12AAFC9B00999009 /* PictureFeedGridViewController.m */; };
 		B0A13D1312AB0F4E00999009 /* PhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D1212AB0F4E00999009 /* PhotoGridViewCell.m */; };
 		B0A13D4B12AB168A00999009 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A13D4A12AB168A00999009 /* GridView.xib */; };
+		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
+		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,8 +134,6 @@
 		B04825DE12ABD3FD00F61433 /* FeedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
 		B04825DF12ABD78900F61433 /* GridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewCell.h; sourceTree = "<group>"; };
 		B04825E012ABD78900F61433 /* GridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewCell.m; sourceTree = "<group>"; };
-		B04825E212AC1A2900F61433 /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
-		B04825E312AC1A2900F61433 /* AlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewCell.m; sourceTree = "<group>"; };
 		B04825FF12AD0D6300F61433 /* TestAlbumFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAlbumFeed.h; sourceTree = "<group>"; };
 		B048260012AD0D6300F61433 /* TestAlbumFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAlbumFeed.m; sourceTree = "<group>"; };
 		B048264812AD249300F61433 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -240,6 +239,10 @@
 		B0A13D1112AB0F4E00999009 /* PhotoGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGridViewCell.h; sourceTree = "<group>"; };
 		B0A13D1212AB0F4E00999009 /* PhotoGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGridViewCell.m; sourceTree = "<group>"; };
 		B0A13D4A12AB168A00999009 /* GridView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridView.xib; sourceTree = "<group>"; };
+		B0A8177612B063D00096162D /* PictureGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureGridViewCell.h; sourceTree = "<group>"; };
+		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
+		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
+		B0A8188112B076890096162D /* AlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,8 +422,6 @@
 				B04825D912ABCFE000F61433 /* GridViewController.m */,
 				B04825DF12ABD78900F61433 /* GridViewCell.h */,
 				B04825E012ABD78900F61433 /* GridViewCell.m */,
-				B04825E212AC1A2900F61433 /* AlbumGridViewCell.h */,
-				B04825E312AC1A2900F61433 /* AlbumGridViewCell.m */,
 				B048268212AD306100F61433 /* FriendsGridViewController.h */,
 				B048268312AD306100F61433 /* FriendsGridViewController.m */,
 				B048271512AD38AF00F61433 /* PictureViewController.h */,
@@ -431,6 +432,10 @@
 				B048287012AD5A0B00F61433 /* PictureImageView.m */,
 				B05C4D0412AFD6D800CA0EFA /* FriendGridViewCell.h */,
 				B05C4D0512AFD6D800CA0EFA /* FriendGridViewCell.m */,
+				B0A8177612B063D00096162D /* PictureGridViewCell.h */,
+				B0A8177712B063D00096162D /* PictureGridViewCell.m */,
+				B0A8188012B076890096162D /* AlbumGridViewCell.h */,
+				B0A8188112B076890096162D /* AlbumGridViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -639,7 +644,6 @@
 				B04825DA12ABCFE000F61433 /* GridViewController.m in Sources */,
 				B04825DD12ABD3F200F61433 /* Feed.m in Sources */,
 				B04825E112ABD78900F61433 /* GridViewCell.m in Sources */,
-				B04825E412AC1A2900F61433 /* AlbumGridViewCell.m in Sources */,
 				B048260112AD0D6300F61433 /* TestAlbumFeed.m in Sources */,
 				B048264A12AD249300F61433 /* Item.m in Sources */,
 				B048264D12AD24D600F61433 /* User.m in Sources */,
@@ -669,6 +673,8 @@
 				B04B1F1112AEDF08006FA4E2 /* FacebookLikesFeed.m in Sources */,
 				B05C4D0612AFD6D800CA0EFA /* FriendGridViewCell.m in Sources */,
 				B05C4D5612AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m in Sources */,
+				B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */,
+				B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

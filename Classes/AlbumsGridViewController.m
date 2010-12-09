@@ -8,7 +8,7 @@
 
 #import "AlbumsGridViewController.h"
 #import "Album.h"
-#import "PhotoGridViewCell.h"
+#import "AlbumGridViewCell.h"
 #import "PictureFeedGridViewController.h"
 
 @implementation AlbumsGridViewController
@@ -18,10 +18,10 @@
 {
     static NSString * cellIdentifier = @"CellIdentifier";
 	
-    PhotoGridViewCell * photoCell = (PhotoGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
+    AlbumGridViewCell * photoCell = (AlbumGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 200.0, 150.0)
+		photoCell = [[[AlbumGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 224.0, 168.0)
 											  reuseIdentifier: cellIdentifier] autorelease];
 		photoCell.showBorder=YES; // not for profile pics...
 		
@@ -45,6 +45,12 @@
 	[[self navigationController] pushViewController:picturesController animated:YES];
 	
 	[picturesController release];
+}
+
+- (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
+{
+    return ( CGSizeMake(224.0, 168.0) );
+	//return ( CGSizeMake(168.0, 168.0) );
 }
  
 @end

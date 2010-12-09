@@ -21,19 +21,24 @@
     FriendGridViewCell * photoCell = (FriendGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[FriendGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 200.0, 150.0)
+		photoCell = [[[FriendGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 192.0, 192.0)
 											  reuseIdentifier: cellIdentifier] autorelease];
 		
-		photoCell.showBorder=NO; // not for profile pics...
 		photoCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
 	}
 	
 	Friend  * friend=(Friend*)[items objectAtIndex:index];
-	photoCell.picture=[friend picture];
+	photoCell.picture=friend.picture;
 	
 	
 	
 	return photoCell;
+}
+
+- (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
+{
+    //return ( CGSizeMake(224.0, 168.0) );
+	return ( CGSizeMake(192.0, 192.0) );
 }
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index

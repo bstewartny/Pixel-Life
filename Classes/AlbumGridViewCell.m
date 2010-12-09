@@ -1,164 +1,130 @@
 //
-//  PhotoGridViewCell.m
+//  AlbumGridViewCell.m
 //  PhotoExplorer
 //
-//  Created by Robert Stewart on 12/4/10.
+//  Created by Robert Stewart on 12/8/10.
 //  Copyright 2010 Evernote. All rights reserved.
 //
 
 #import "AlbumGridViewCell.h"
-#import "Album.h"
-#import "Picture.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Picture.h"
 
 @implementation AlbumGridViewCell
-@synthesize album;
-
-- (id) initWithFrame: (CGRect) frame reuseIdentifier: (NSString *) aReuseIdentifier
-{
-    self = [super initWithFrame: frame reuseIdentifier: aReuseIdentifier];
-    if ( self == nil )
-        return nil;
-    
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, frame.size.width-10, frame.size.height-50)];
-	imageView.clipsToBounds = NO;
-	imageView.layer.borderColor=[UIColor whiteColor].CGColor;
-	imageView.layer.borderWidth=6;
-	
-	imageView.contentMode = UIViewContentModeScaleAspectFit;
-	
-    self.backgroundColor = [UIColor blackColor];
-	
-    self.contentView.backgroundColor = self.backgroundColor;
-    
-	imageView.backgroundColor = self.backgroundColor;
-    
-    [self.contentView addSubview: imageView];
-    
-	titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, frame.size.height-40, frame.size.width-20, 20)];
-	titleLabel.textAlignment=UITextAlignmentCenter;
-	titleLabel.font=[UIFont boldSystemFontOfSize:16];
-	titleLabel.textColor=[UIColor whiteColor];
-	titleLabel.backgroundColor=[UIColor blackColor];
-	 
-	[self.contentView addSubview:titleLabel];
-	
-	dateLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, frame.size.height-20, frame.size.width-20, 20)];
-	dateLabel.textAlignment=UITextAlignmentCenter;
-	dateLabel.font=[UIFont boldSystemFontOfSize:12];
-	dateLabel.textColor=[UIColor whiteColor];
-	dateLabel.backgroundColor=[UIColor blackColor];
-	 
-	[self.contentView addSubview:dateLabel];
-	
-    return self;
-}
 
 - (void) setImage:(UIImage*)image
 {
 	if(image==nil)
 	{
 		imageView.image=nil;
+		
+		[layerView1 removeFromSuperview];
+		[layerView2 removeFromSuperview];
+		
+		if(showBorder)
+		{
+			imageView.layer.borderColor=[UIColor clearColor].CGColor;
+			imageView.layer.borderWidth=0;
+		}
 		return;
 	}
 	
-	/*CGRect frame=self.frame;
-	 
-	 CGSize maxSize=CGSizeMake(frame.size.width-20,frame.size.height-60);
-	 
-	 CGSize size=image.size;
-	 
-	 CGFloat widthFactor = maxSize.width / size.width;
-	 CGFloat heightFactor = maxSize.height / size.height;
-	 CGFloat scaleFactor;
-	 
-	 if (widthFactor > heightFactor) 
-	 scaleFactor = widthFactor; // scale to fit height
-	 else
-	 scaleFactor = heightFactor; // scale to fit width
-	 
-	 CGFloat scaledWidth  = size.width * scaleFactor;
-	 CGFloat scaledHeight =  size.height * scaleFactor;
-	 
-	 CGSize newSize=CGSizeMake(scaledWidth, scaledHeight);
-	 
-	 
-	 imageView.frame=CGRectMake(frame.size.width-newSize.width/2,frame.size.height-40-newSize.height /2,newSize.width,newSize.height);
-	 imageView.layer.borderColor=[UIColor whiteColor].CGColor;
-	 imageView.layer.borderWidth=10;*/
+	if(image.size.width > maxImageSize.width ||
+	   image.size.height > maxImageSize.height)
+	{
+		imageView.contentMode=UIViewContentModeScaleAspectFit;
+		
+		CGFloat viewRatio=maxImageSize.width / maxImageSize.height;
+		CGFloat imageRatio=image.size.width/image.size.height;
+		
+		if(viewRatio > imageRatio)
+		{
+			// view is more "wide" than image, so image will hit top/bottom first
+			// so we make width narrower according to ratio
+			CGFloat new_width=maxImageSize.height * (image.size.width/image.size.height);
+			imageView.frame=CGRectMake((maxImageSize.width-new_width)/2, 5, new_width,maxImageSize.height);
+		}
+		else 
+		{
+			// view is less "wide" than image, so image will hit left/right first
+			// so we make height smaller according to ratio
+			CGFloat new_height=maxImageSize.width * (image.size.width/image.size.height);
+			imageView.frame=CGRectMake(5, 5+(maxImageSize.height-new_height), maxImageSize.width,new_height);
+		}
+		
+		
+		if(showBorder)
+		{
+			imageView.layer.borderColor=[UIColor whiteColor].CGColor;
+			imageView.layer.borderWidth=4;
+		}
+	}
+	else 
+	{
+		imageView.contentMode=UIViewContentModeCenter;
+		imageView.frame=CGRectMake((self.frame.size.width-image.size.width)/2, 5+(maxImageSize.height- image.size.height   ), image.size.width,image.size.height);
+		
+		if(showBorder)
+		{
+			imageView.layer.borderColor=[UIColor whiteColor].CGColor;
+			imageView.layer.borderWidth=4;
+		}
+	}
+	
+	imageView.layer.shadowRadius=4.0;
+	imageView.layer.shadowColor=[UIColor darkGrayColor].CGColor;
+	imageView.layer.shadowOpacity=0.5;
+	imageView.layer.shadowOffset=CGSizeMake(2,2);
+	imageView.transform=CGAffineTransformMakeRotation(-0.1);
+	//imageView.layer.borderWidth=1;
+	//imageView.layer.borderColor=[UIColor clearColor].CGColor;
+	imageView.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+	
+	
+	[layerView1 removeFromSuperview];
+	[layerView2 removeFromSuperview];
+	
+	layerView1=[[UIView alloc] initWithFrame:imageView.frame];
+	layerView1.backgroundColor=[UIColor whiteColor];
+	layerView1.transform = CGAffineTransformMakeRotation (0.2);
+	layerView1.layer.shadowRadius=2.0;
+	layerView1.layer.shadowColor=[UIColor darkGrayColor].CGColor;
+	layerView1.layer.shadowOpacity=0.5;
+	layerView1.layer.shadowOffset=CGSizeMake(2,2);
+	layerView1.layer.borderWidth=1;
+	layerView1.layer.borderColor=[UIColor clearColor].CGColor;
+	layerView1.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+	
+	layerView2=[[UIView alloc] initWithFrame:imageView.frame];
+	layerView2.backgroundColor=[UIColor whiteColor];
+	layerView2.transform = CGAffineTransformMakeRotation (-0.3);
+	layerView2.layer.shadowRadius=2.0;
+	layerView2.layer.shadowColor=[UIColor darkGrayColor].CGColor;
+	layerView2.layer.shadowOpacity=0.5;
+	layerView2.layer.shadowOffset=CGSizeMake(2,2);
+	layerView2.layer.borderWidth=1;
+	layerView2.layer.borderColor=[UIColor clearColor].CGColor;
+	layerView2.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+	
+	
+	[self.contentView addSubview:layerView1];
+	[self.contentView sendSubviewToBack:layerView1];
+	
+	[self.contentView addSubview:layerView2];
+	[self.contentView sendSubviewToBack:layerView2];
+
+	[layerView1 release];
+	[layerView2 release];
+	
+
 	
 	imageView.image = image;
 }
 
-- (void)setAlbum:(Album *)newAlbum
-{
-    if (newAlbum != album)
-    {
-		titleLabel.text=newAlbum.name;
-		dateLabel.text=nil;
-		
-        album.picture.delegate = nil;
-        [album release];
-        album = nil;
-        
-        album = [newAlbum retain];
-        [album.picture setDelegate:self];
-        
-        if (album != nil)
-        {
-            // This is to avoid the item loading the image
-            // when this setter is called; we only want that
-            // to happen depending on the scrolling of the table
-            if ([album.picture hasLoadedImage])
-            {
-				[self setImage:album.picture.image];
-            }
-            else
-            {
-				[self setImage:nil];
-            }
-        }
-    }
-}
-
-- (void)load
-{
-	NSLog(@"PictureView.loadImage");
-	// The getter in the Picture class is overloaded...!
-    // If the image is not yet downloaded, it returns nil and 
-    // begins the asynchronous downloading of the image.
-    UIImage *image = album.picture.image;
-	if (image == nil)
-    {
-		[self startLoading];
-    }
-	[self setImage:image];
-}
-
-- (void)picture:(Picture *)picture didLoadImage:(UIImage *)image
-{
-	NSLog(@"PictureView.didLoadImage");
-    [self setImage:image];
-	[self finishedLoading];
-    [self bringSubviewToFront:imageView];
-	[imageView setNeedsDisplay];
-}
-
-- (void)picture:(Picture *)picture couldNotLoadImageError:(NSError *)error
-{
-	NSLog(@"PictureView.couldNotLoadImageError: %@",[error userInfo]);
-    // Here we could show a "default" or "placeholder" image...
-    [self finishedLoading];
-}
-
 - (void) dealloc
 {
-	[imageView release];
-	[titleLabel release];
-	[dateLabel release];
-    [album.picture setDelegate:nil];
-    [album release];
-	
+	//[layerView1 release];
+	//[layerView2 release];
 	[super dealloc];
 }
 

@@ -238,7 +238,8 @@
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-    return ( CGSizeMake(224.0, 168.0) );
+    //return ( CGSizeMake(224.0, 168.0) );
+	return ( CGSizeMake(168.0, 168.0) );
 }
 
 - (void)didReceiveMemoryWarning {

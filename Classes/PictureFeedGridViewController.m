@@ -21,7 +21,7 @@
     PhotoGridViewCell * photoCell = (PhotoGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 200.0, 150.0)
+		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 168.0, 168.0)
 												 reuseIdentifier: cellIdentifier] autorelease];
 		photoCell.showBorder=YES; // not for profile pics...
 		

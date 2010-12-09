@@ -17,6 +17,8 @@
     if ( self == nil )
         return nil;
 
+	//self.contentView.layer.borderWidth=1;
+	//self.contentView.layer.borderColor=[UIColor whiteColor].CGColor;
 	scrollingWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(frame.size.width/2-10, frame.size.height/2-10, 20.0, 20.0)];
 	scrollingWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 	scrollingWheel.hidesWhenStopped = YES;

@@ -7,13 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GridViewCell.h"
+#import "PictureGridViewCell.h"
 
-@class Picture;
-
-@interface PhotoGridViewCell : GridViewCell {
-	Picture * picture;
-	UIImageView * imageView;
+@interface PhotoGridViewCell : PictureGridViewCell {
 	UILabel * label1;
 	UILabel * label2;
 	UILabel * label3;
@@ -22,7 +18,6 @@
 	NSDateFormatter * format;
 	CGSize maxImageSize;
 }
-@property(nonatomic,retain) Picture * picture;
 @property(nonatomic) BOOL showBorder;
 
 @end
