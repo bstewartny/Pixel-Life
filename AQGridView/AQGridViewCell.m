@@ -202,9 +202,10 @@
 
 - (void) makeSubviewsOfView: (UIView *) aView nonOpaqueWithBackgroundColor: (UIColor *) color
 {
+	
 	for ( UIView * view in aView.subviews )
 	{
-		if ( view.opaque )
+		/*if ( view.opaque )
 		{
 			NSMutableDictionary * info = (NSMutableDictionary *) CFDictionaryGetValue( _selectionColorInfo, view );
 			if ( info == nil )
@@ -217,10 +218,10 @@
 			if ( value == nil )
 				value = [NSNull null];
 			[info setObject: value forKey: @"backgroundColor"];
-			
+			NSLog(@"setting subview opaque=no");
 			view.opaque = NO;
 			view.backgroundColor = color;
-		}
+		}*/
 		
 		[self makeSubviewsOfView: view nonOpaqueWithBackgroundColor: color];
 	}
@@ -239,7 +240,7 @@
 			
 			if ( value == [NSNull null] )
 				value = nil;
-			
+			NSLog(@"setting subview opaque=yes");
 			view.opaque = YES;
 			view.backgroundColor = value;
 		}

@@ -33,8 +33,8 @@
 	nameView.backgroundColor=[UIColor blackColor];
 	nameView.alpha=0.5;
 	
-	[self.contentView addSubview:nameView];
-	[self.contentView bringSubviewToFront:nameView];
+	[imageView addSubview:nameView];
+	[imageView bringSubviewToFront:nameView];
 	
 	[nameView release];
 	
@@ -44,6 +44,7 @@
 	firstNameLabel.backgroundColor=[UIColor clearColor];
 	
 	[nameView addSubview:firstNameLabel];
+	[nameView bringSubviewToFront:firstNameLabel];
 	
 	lastNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(10,25,rect.size.width-20,15)];
 	lastNameLabel.font=[UIFont boldSystemFontOfSize:14];
@@ -51,6 +52,7 @@
 	lastNameLabel.backgroundColor=[UIColor clearColor];
 	
 	[nameView addSubview:lastNameLabel];
+	[nameView bringSubviewToFront:lastNameLabel];
 	
 	return self;
 }
@@ -65,7 +67,7 @@
 {
 	[lastNameLabel release];
 	[firstNameLabel release];
-	[super release];
+	[super dealloc];
 }
 
 @end

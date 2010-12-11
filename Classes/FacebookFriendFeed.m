@@ -26,7 +26,7 @@
 {
 	NSLog(@"createFetchRequest");
 	
-	NSString * friend_query=@"SELECT uid,first_name,last_name,middle_name,name,pic_small,pic,birthday_date FROM user WHERE uid in (select uid2 from friend where uid1=me())";
+	NSString * friend_query=@"SELECT uid,first_name,last_name,middle_name,name,pic_big,pic_small,pic,birthday_date FROM user WHERE uid in (select uid2 from friend where uid1=me())";
 	
 	NSString * escaped_query=[self escapeQueryValue:friend_query];
 	
@@ -57,6 +57,7 @@
 		Picture * picture=[[Picture alloc] init];
 		
 		picture.thumbnailURL=[d objectForKey:@"pic"];
+		picture.imageURL=[d objectForKey:@"pic_big"];
 		
 		picture.user=friend;
 		

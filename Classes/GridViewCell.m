@@ -36,14 +36,14 @@
 - (void) startLoading
 {
 	scrollingWheel.frame=CGRectMake(self.frame.size.width/2-10, self.frame.size.height/2-10, 20.0, 20.0);
-	[self.contentView bringSubviewToFront:scrollingWheel];
+	//[self.contentView bringSubviewToFront:scrollingWheel];
 	[scrollingWheel startAnimating];
 }
 
 - (void) finishedLoading
 {
 	[scrollingWheel stopAnimating];
-	[self.contentView sendSubviewToBack:scrollingWheel];
+	//[self.contentView sendSubviewToBack:scrollingWheel];
 }
 
 - (void) dealloc

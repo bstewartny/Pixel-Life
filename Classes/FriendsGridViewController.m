@@ -18,6 +18,10 @@
 {
     static NSString * cellIdentifier = @"CellIdentifier";
 	
+	CGFloat width=self.view.bounds.size.width;
+	
+	NSLog(@"cellForItemAtIndex: width=%f",width);
+
     FriendGridViewCell * photoCell = (FriendGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
@@ -37,6 +41,9 @@
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
+	CGFloat width=self.view.bounds.size.width;
+	NSLog(@"portraitGridCellSizeForGridView: width=%f",width);
+
     //return ( CGSizeMake(224.0, 168.0) );
 	return ( CGSizeMake(192.0, 192.0) );
 }
