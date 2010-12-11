@@ -25,7 +25,7 @@
     FriendGridViewCell * photoCell = (FriendGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[FriendGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 192.0, 192.0)
+		photoCell = [[[FriendGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 170.0, 170.0)
 											  reuseIdentifier: cellIdentifier] autorelease];
 		
 		photoCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
@@ -45,7 +45,7 @@
 	NSLog(@"portraitGridCellSizeForGridView: width=%f",width);
 
     //return ( CGSizeMake(224.0, 168.0) );
-	return ( CGSizeMake(192.0, 192.0) );
+	return ( CGSizeMake(170.0, 170.0) );
 }
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index

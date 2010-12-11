@@ -57,7 +57,14 @@
 		Picture * picture=[[Picture alloc] init];
 		
 		picture.thumbnailURL=[d objectForKey:@"pic"];
+		
 		picture.imageURL=[d objectForKey:@"pic_big"];
+		
+		if(picture.imageURL==nil)
+		{
+			picture.imageURL=picture.thumbnailURL;
+		}
+		
 		
 		picture.user=friend;
 		

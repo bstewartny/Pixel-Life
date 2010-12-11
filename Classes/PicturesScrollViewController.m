@@ -35,7 +35,7 @@
 		
 		UITapGestureRecognizer * gr=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
 		
-		gr.numberOfTapsRequired=2;
+		gr.numberOfTapsRequired=1;
 		
 		[self.scrollView addGestureRecognizer:gr];
 		
@@ -275,12 +275,16 @@
     // Return YES for supported orientations.
     return YES;
 }
-
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	self.scrollView.hidden=YES;
+}
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
 	[self setPictureFrames];
 	[self goToCurrentItem];
 	[self loadVisiblePictures];
+	self.scrollView.hidden=NO;
 }
  
 - (void)didReceiveMemoryWarning {

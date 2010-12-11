@@ -10,6 +10,8 @@
 #import "Picture.h"
 #import <QuartzCore/QuartzCore.h>
 #import "User.h"
+#import "GridViewController.h"
+#import "AQGridView.h"
 
 @implementation PhotoGridViewCell
 @synthesize showBorder;
@@ -36,11 +38,37 @@
 	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-28, frame.size.width-10, 14)];
 	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-14, frame.size.width-10, 14)];
 	
+	
+	UIPinchGestureRecognizer * p=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
+	
+	[imageView addGestureRecognizer:p];
+	
+	[p release];
+	
+	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];
 	[self.contentView addSubview:label3];
 		
     return self;
+}
+
+
+- (void)pinch:(UIGestureRecognizer*)g
+{
+	UIPinchGestureRecognizer * p=(UIPinchGestureRecognizer*)g;
+	
+	NSLog(@"pinch: velocity: %f, scale: %f",p.velocity,p.scale);
+	if(p.velocity>0)
+	{
+		GridViewController * controller=[self parentViewController];
+	
+		AQGridView * gridView=[controller gridView];
+	
+		NSUInteger index=[gridView indexForCell:self];
+	
+		[controller gridView:gridView didSelectItemAtIndex:index];
+	}
 }
 
 - (UILabel*)createLabelWithFrame:(CGRect)frame

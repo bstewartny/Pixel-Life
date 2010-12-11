@@ -1140,6 +1140,9 @@ NSString * const AQGridViewSelectionDidChangeNotification = @"AQGridViewSelectio
 	if ( [hitView isKindOfClass: [UIControl class]] )
 		return ( NO );
 	
+	if ( [[[hitView superview] superview] isKindOfClass: [AQGridViewCell class]] )
+		return ( YES );
+	
 	if ( [[hitView superview] isKindOfClass: [AQGridViewCell class]] )
 		return ( YES );
 	

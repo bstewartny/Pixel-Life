@@ -25,14 +25,24 @@
 	format = [[NSDateFormatter alloc] init];
 	[format setDateFormat:@"MMM d, yyyy"];
 	
-    imageView.frame = CGRectMake(5, 10, frame.size.width-10, frame.size.height-55);
+    imageView.frame = CGRectMake(5, 5, frame.size.width-10, frame.size.height-60);
 	imageView.clipsToBounds = NO;
 	maxImageSize=CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-	label1=[self createLabelWithFrame:CGRectMake(5, frame.size.height-42, frame.size.width-10, 14)];
-	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-28, frame.size.width-10, 14)];
-	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-14, frame.size.width-10, 14)];
+	layerView1=[[UIView alloc] initWithFrame:imageView.frame];
+	layerView2=[[UIView alloc] initWithFrame:imageView.frame];
+	layerView1.backgroundColor=[UIColor clearColor];
+	layerView2.backgroundColor=[UIColor clearColor];
+	
+	[self.contentView addSubview:layerView1];
+	[self.contentView addSubview:layerView2];
+	[self.contentView sendSubviewToBack:layerView1];
+	[self.contentView sendSubviewToBack:layerView2];
+	
+	label1=[self createLabelWithFrame:CGRectMake(5, frame.size.height-45, frame.size.width-10, 14)];
+	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-30, frame.size.width-10, 14)];
+	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-16, frame.size.width-10, 14)];
 	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];
@@ -49,11 +59,14 @@
 	{
 		imageView.image=nil;
 		
-		[layerView1 removeFromSuperview];
+		layerView1.backgroundColor=[UIColor clearColor];
+		layerView2.backgroundColor=[UIColor clearColor];
+		
+		/*[layerView1 removeFromSuperview];
 		[layerView2 removeFromSuperview];
 		layerView1=nil;
 		layerView2=nil;
-		
+		*/
 		if(showBorder)
 		{
 			imageView.layer.borderColor=[UIColor clearColor].CGColor;
@@ -89,7 +102,7 @@
 		if(showBorder)
 		{
 			imageView.layer.borderColor=[UIColor whiteColor].CGColor;
-			imageView.layer.borderWidth=4;
+			imageView.layer.borderWidth=8;
 		}
 	}
 	else 
@@ -106,60 +119,27 @@
 	
 	imageView.layer.shadowRadius=4.0;
 	imageView.layer.shadowColor=[UIColor blackColor].CGColor;
-	imageView.layer.shadowOpacity=0.5;
-	//imageView.layer.shadowOffset=CGSizeMake(2,2);
+	imageView.layer.shadowOpacity=1.0;
 	imageView.layer.shadowPath=[UIBezierPath bezierPathWithRect:imageView.bounds].CGPath;
-	//imageView.layer.shadowPath=[UIBezierPath bezierPath].CGPath;
-	//imageView.transform=CGAffineTransformMakeRotation(-0.1);
-	//imageView.layer.borderWidth=1;
-	//imageView.layer.borderColor=[UIColor clearColor].CGColor;
-	//imageView.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
 	
+	layerView1.frame=CGRectMake(imageView.frame.origin.x+4, imageView.frame.origin.y+4, imageView.frame.size.width, imageView.frame.size.height);
+	layerView2.frame=CGRectMake(imageView.frame.origin.x+8, imageView.frame.origin.y+8, imageView.frame.size.width, imageView.frame.size.height);
 	
-	if(layerView1==nil || layerView2==nil)
-	{
-		layerView1=[[UIView alloc] initWithFrame:imageView.frame];
-		layerView2=[[UIView alloc] initWithFrame:imageView.frame];
-		[self.contentView addSubview:layerView1];
-		[self.contentView sendSubviewToBack:layerView1];
-		
-		[self.contentView addSubview:layerView2];
-		[self.contentView sendSubviewToBack:layerView2];
-	}
-	else 
-	{
-		layerView1.frame=imageView.frame;
-		layerView2.frame=imageView.frame;
-	}
+	layerView1.backgroundColor=[UIColor lightGrayColor];
+	layerView2.backgroundColor=[UIColor lightGrayColor];
 	
-	//layerView1=[[UIView alloc] initWithFrame:imageView.frame];
-	layerView1.backgroundColor=[UIColor whiteColor];
-	layerView1.transform = CGAffineTransformMakeRotation (0.05);
 	layerView1.layer.shadowRadius=3.0;
 	layerView1.layer.shadowColor=[UIColor blackColor].CGColor;
-	layerView1.layer.shadowOpacity=0.7;
-	layerView1.layer.shadowOffset=CGSizeMake(2,2);
+	layerView1.layer.shadowOpacity=1.0;
+	layerView1.layer.shadowOffset=CGSizeMake(0,0);
 	layerView1.layer.shadowPath=[UIBezierPath bezierPathWithRect:layerView1.bounds].CGPath;
-	layerView2.layer.borderWidth=1;
-	layerView2.layer.borderColor=[UIColor darkGrayColor].CGColor;
-	//layerView1.layer.borderWidth=1;
-	//layerView1.layer.borderColor=[UIColor clearColor].CGColor;
-	//layerView1.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
 	
-	//layerView2=[[UIView alloc] initWithFrame:imageView.frame];
-	layerView2.backgroundColor=[UIColor whiteColor];
-	layerView2.transform = CGAffineTransformMakeRotation (-0.03);
 	layerView2.layer.shadowRadius=3.0;
 	layerView2.layer.shadowColor=[UIColor blackColor].CGColor;
-	layerView2.layer.shadowOpacity=0.5;
-	layerView2.layer.shadowOffset=CGSizeMake(2,2);
-	layerView2.layer.shadowPath=[UIBezierPath bezierPathWithRect:layerView2.bounds].CGPath;
-	layerView2.layer.borderWidth=1;
-	layerView2.layer.borderColor=[UIColor darkGrayColor].CGColor;
-	//layerView2.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
-		
+	layerView2.layer.shadowOpacity=1.0;
+	layerView2.layer.shadowOffset=CGSizeMake(0,0);
+	layerView2.layer.shadowPath=[UIBezierPath bezierPathWithRect:layerView1.bounds].CGPath;
 	
-
 	imageView.image = image;
 }
 
