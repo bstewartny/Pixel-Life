@@ -60,6 +60,7 @@
 		B04B1EAD12AEBCE9006FA4E2 /* FacebookFriendsAlbumsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04B1EAC12AEBCE9006FA4E2 /* FacebookFriendsAlbumsFeed.m */; };
 		B04B1EE812AED7AE006FA4E2 /* FacebookFriendsPhotosFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04B1EE712AED7AE006FA4E2 /* FacebookFriendsPhotosFeed.m */; };
 		B04B1F1112AEDF08006FA4E2 /* FacebookLikesFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04B1F1012AEDF08006FA4E2 /* FacebookLikesFeed.m */; };
+		B04BC82C12B52FFA007217A3 /* FacebookFriendListsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */; };
 		B05C4D0612AFD6D800CA0EFA /* FriendGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C4D0512AFD6D800CA0EFA /* FriendGridViewCell.m */; };
 		B05C4D5612AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C4D5512AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m */; };
 		B087D86512AA8CE3008259E9 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B087D85212AA8CE3008259E9 /* ASINetworkQueue.m */; };
@@ -193,6 +194,8 @@
 		B04B1EE712AED7AE006FA4E2 /* FacebookFriendsPhotosFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendsPhotosFeed.m; sourceTree = "<group>"; };
 		B04B1F0F12AEDF08006FA4E2 /* FacebookLikesFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLikesFeed.h; sourceTree = "<group>"; };
 		B04B1F1012AEDF08006FA4E2 /* FacebookLikesFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLikesFeed.m; sourceTree = "<group>"; };
+		B04BC82A12B52FFA007217A3 /* FacebookFriendListsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendListsFeed.h; sourceTree = "<group>"; };
+		B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendListsFeed.m; sourceTree = "<group>"; };
 		B05C4D0412AFD6D800CA0EFA /* FriendGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendGridViewCell.h; sourceTree = "<group>"; };
 		B05C4D0512AFD6D800CA0EFA /* FriendGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendGridViewCell.m; sourceTree = "<group>"; };
 		B05C4D5412AFDC3000CA0EFA /* FacebookMyAlbumsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookMyAlbumsFeed.h; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				B04B1F1012AEDF08006FA4E2 /* FacebookLikesFeed.m */,
 				B05C4D5412AFDC3000CA0EFA /* FacebookMyAlbumsFeed.h */,
 				B05C4D5512AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m */,
+				B04BC82A12B52FFA007217A3 /* FacebookFriendListsFeed.h */,
+				B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -675,6 +680,7 @@
 				B05C4D5612AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m in Sources */,
 				B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */,
 				B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */,
+				B04BC82C12B52FFA007217A3 /* FacebookFriendListsFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

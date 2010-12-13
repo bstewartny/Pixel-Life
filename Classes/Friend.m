@@ -21,6 +21,16 @@
 @synthesize albumFeed;
 @synthesize picture;
 
+
+- (NSComparisonResult)compareFriend:(Friend *)p
+{
+    return [[NSString stringWithFormat:@"%@, %@", 
+			 [self last_name], [self first_name]]
+            compare:
+            [NSString stringWithFormat:@"%@, %@", 
+			 [p last_name], [p first_name]]];
+}
+
 - (void) dealloc
 {
 	[first_name release];

@@ -95,6 +95,14 @@
 		[friend release];
 	}
 	
+	// sort alphabetically by name...
+	// sort by last name then first name...
+	[friends sortUsingSelector:@selector(compareFriend:)];
+	
+	for(Friend * f in friends)
+	{
+		NSLog(@"sorted name: %@, %@",f.last_name,f.first_name);
+	}
 	
 	return friends;
 }

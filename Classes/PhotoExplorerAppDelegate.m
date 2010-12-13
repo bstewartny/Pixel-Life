@@ -121,7 +121,7 @@ static NSString* kAppId = @"144746058889817";
 	if(![facebook isSessionValid])
 	{
 		[facebook authorize:kAppId permissions:[NSArray arrayWithObjects:
-											@"read_stream",@"friends_photos", @"user_photos",@"offline_access",nil] delegate:self];
+											@"read_stream",@"friends_photos", @"read_friendlist",@"user_photos",@"offline_access",nil] delegate:self];
 	}
 }
 
