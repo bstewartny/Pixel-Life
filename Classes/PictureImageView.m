@@ -8,6 +8,7 @@
 
 #import "PictureImageView.h"
 #import "Picture.h"
+//#import "PictureCaptionViewController.h"
 
 @implementation PictureImageView
 @synthesize picture;
@@ -24,6 +25,11 @@
 	scrollingWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 	scrollingWheel.hidesWhenStopped = YES;
 	[scrollingWheel stopAnimating];
+	
+	//captionViewController=[[PictureCaptionViewController alloc] initWithPicture:picture];
+	//captionViewController.view.frame=CGRectMake(20, frame.size.height-100, 400, 80);
+	
+	//[self addSubview:captionViewController.view];
 	
 	self.contentMode=UIViewContentModeScaleAspectFit;
 	self.backgroundColor=[UIColor blackColor];
@@ -59,6 +65,7 @@
 - (void)picture:(Picture *)picture didLoadImage:(UIImage *)img
 {
 	self.image=img;
+	
 	[self finishedLoading];
 	[self setNeedsDisplay];
 }
@@ -82,7 +89,9 @@
 }
 
 - (void) dealloc
-{
+{	
+	//[captionViewController release];
+	 
 	//NSLog(@"PictureImageView.dealloc");
 	if(delegateWasSet)
 		[picture setDelegate:nil];
