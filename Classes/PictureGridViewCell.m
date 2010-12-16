@@ -69,7 +69,6 @@
 
 - (void)load
 {
-	NSLog(@"PhotoGridViewCell.load");
 	// The getter in the Picture class is overloaded...!
     // If the image is not yet downloaded, it returns nil and 
     // begins the asynchronous downloading of the image.

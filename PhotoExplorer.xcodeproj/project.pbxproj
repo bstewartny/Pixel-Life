@@ -90,6 +90,12 @@
 		B0E9794C12BA5EE600721B33 /* FacebookFriendListFriendFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9794B12BA5EE600721B33 /* FacebookFriendListFriendFeed.m */; };
 		B0E9795512BA653100721B33 /* FriendListsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9795412BA653100721B33 /* FriendListsGridViewController.m */; };
 		B0E9795812BA6E7E00721B33 /* FriendListGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9795712BA6E7E00721B33 /* FriendListGridViewCell.m */; };
+		B0E97A6612BA972B00721B33 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E97A6512BA972B00721B33 /* Comment.m */; };
+		B0E97A6912BA97F800721B33 /* FacebookPhotoCommentsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E97A6812BA97F800721B33 /* FacebookPhotoCommentsFeed.m */; };
+		B0E97A7812BA9D6700721B33 /* PhotoCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E97A7712BA9D6700721B33 /* PhotoCommentsViewController.m */; };
+		B0E97A9012BA9FF800721B33 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */; };
+		B0E97AA612BAA5B900721B33 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */; };
+		B0E97AA912BAA7A300721B33 /* PhotoCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -256,6 +262,16 @@
 		B0E9795412BA653100721B33 /* FriendListsGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListsGridViewController.m; sourceTree = "<group>"; };
 		B0E9795612BA6E7E00721B33 /* FriendListGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListGridViewCell.h; sourceTree = "<group>"; };
 		B0E9795712BA6E7E00721B33 /* FriendListGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListGridViewCell.m; sourceTree = "<group>"; };
+		B0E97A6412BA972B00721B33 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		B0E97A6512BA972B00721B33 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		B0E97A6712BA97F800721B33 /* FacebookPhotoCommentsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookPhotoCommentsFeed.h; sourceTree = "<group>"; };
+		B0E97A6812BA97F800721B33 /* FacebookPhotoCommentsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookPhotoCommentsFeed.m; sourceTree = "<group>"; };
+		B0E97A7612BA9D6700721B33 /* PhotoCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCommentsViewController.h; sourceTree = "<group>"; };
+		B0E97A7712BA9D6700721B33 /* PhotoCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCommentsViewController.m; sourceTree = "<group>"; };
+		B0E97A8E12BA9FF800721B33 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotoCommentsView.xib; path = Classes/PhotoCommentsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				B0E978E912B989C500721B33 /* Images */,
+				B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */,
 				2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* PhotoExplorer-Info.plist */,
@@ -334,6 +351,7 @@
 				B048271B12AD3B2A00F61433 /* PictureView.xib */,
 				B048289712AD5EA800F61433 /* PicturesScrollView.xib */,
 				B02CD22612B9559A00D4407C /* PictureCaptionView.xib */,
+				B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -457,6 +475,10 @@
 				B0E9795412BA653100721B33 /* FriendListsGridViewController.m */,
 				B0E9795612BA6E7E00721B33 /* FriendListGridViewCell.h */,
 				B0E9795712BA6E7E00721B33 /* FriendListGridViewCell.m */,
+				B0E97A7612BA9D6700721B33 /* PhotoCommentsViewController.h */,
+				B0E97A7712BA9D6700721B33 /* PhotoCommentsViewController.m */,
+				B0E97A8E12BA9FF800721B33 /* CommentTableViewCell.h */,
+				B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -500,6 +522,10 @@
 				B0E9794812BA5D1300721B33 /* FriendList.m */,
 				B0E9794A12BA5EE600721B33 /* FacebookFriendListFriendFeed.h */,
 				B0E9794B12BA5EE600721B33 /* FacebookFriendListFriendFeed.m */,
+				B0E97A6412BA972B00721B33 /* Comment.h */,
+				B0E97A6512BA972B00721B33 /* Comment.m */,
+				B0E97A6712BA97F800721B33 /* FacebookPhotoCommentsFeed.h */,
+				B0E97A6812BA97F800721B33 /* FacebookPhotoCommentsFeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -632,6 +658,8 @@
 				B04828FB12AD657600F61433 /* FBDialog.bundle in Resources */,
 				B02CD22712B9559A00D4407C /* PictureCaptionView.xib in Resources */,
 				B0E978ED12B989D000721B33 /* icon.png in Resources */,
+				B0E97AA612BAA5B900721B33 /* CommentTableViewCell.xib in Resources */,
+				B0E97AA912BAA7A300721B33 /* PhotoCommentsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +737,10 @@
 				B0E9794C12BA5EE600721B33 /* FacebookFriendListFriendFeed.m in Sources */,
 				B0E9795512BA653100721B33 /* FriendListsGridViewController.m in Sources */,
 				B0E9795812BA6E7E00721B33 /* FriendListGridViewCell.m in Sources */,
+				B0E97A6612BA972B00721B33 /* Comment.m in Sources */,
+				B0E97A6912BA97F800721B33 /* FacebookPhotoCommentsFeed.m in Sources */,
+				B0E97A7812BA9D6700721B33 /* PhotoCommentsViewController.m in Sources */,
+				B0E97A9012BA9FF800721B33 /* CommentTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

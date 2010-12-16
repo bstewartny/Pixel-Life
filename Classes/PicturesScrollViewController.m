@@ -2,6 +2,9 @@
 #import "Picture.h"
 #import "PictureImageView.h"
 #import "User.h"
+#import "FacebookPhotoCommentsFeed.h"
+#import "PhotoCommentsViewController.h"
+
 
 @implementation PicturesScrollViewController
 @synthesize scrollView, toolbar,pictures,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
@@ -33,7 +36,17 @@
 
 - (void) action:(id)sender
 {
+	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebook:[[[UIApplication sharedApplication] delegate] facebook] picture:[self.pictures objectAtIndex:currentItemIndex]];
 	
+	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed title:@"Comments"];
+	
+	controller.modalPresentationStyle=UIModalPresentationFormSheet;
+	controller.view.backgroundColor=[UIColor clearColor];
+	
+	[self presentModalViewController:controller animated:YES];
+	
+	[feed release];
+	[controller release];					  
 }
 
 - (void) doubleTap:(UIGestureRecognizer*)gr
@@ -192,8 +205,6 @@
 			NSLog(@"Found intersection rect...");
 			currentItemIndex=i;
 			[picView load];
-			
-		
 		}
 		
 		i++;
