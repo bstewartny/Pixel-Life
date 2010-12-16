@@ -1,14 +1,5 @@
-//
-//  PictureImageView.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/6/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "PictureImageView.h"
 #import "Picture.h"
-//#import "PictureCaptionViewController.h"
 
 @implementation PictureImageView
 @synthesize picture;
@@ -26,11 +17,6 @@
 	scrollingWheel.hidesWhenStopped = YES;
 	[scrollingWheel stopAnimating];
 	
-	//captionViewController=[[PictureCaptionViewController alloc] initWithPicture:picture];
-	//captionViewController.view.frame=CGRectMake(20, frame.size.height-100, 400, 80);
-	
-	//[self addSubview:captionViewController.view];
-	
 	self.contentMode=UIViewContentModeScaleAspectFit;
 	self.backgroundColor=[UIColor blackColor];
 	
@@ -41,7 +27,6 @@
 
 - (void) load
 {
-	//NSLog(@"PictureImageView.load");
 	// The getter in the Picture class is overloaded...!
     // If the image is not yet downloaded, it returns nil and 
     // begins the asynchronous downloading of the image.
@@ -60,6 +45,16 @@
 	{
 		self.image=img;
 	}
+}
+
+- (void) unload
+{
+	self.image=nil;
+	if([picture hasLoadedThumbnail])
+	{
+		self.image=picture.thumbnail;
+	}
+	[picture setImage:nil];
 }
 
 - (void)picture:(Picture *)picture didLoadImage:(UIImage *)img
@@ -90,11 +85,10 @@
 
 - (void) dealloc
 {	
-	//[captionViewController release];
-	 
-	//NSLog(@"PictureImageView.dealloc");
 	if(delegateWasSet)
+	{
 		[picture setDelegate:nil];
+	}
 	[picture release];
 	[scrollingWheel release];
 	[super dealloc];

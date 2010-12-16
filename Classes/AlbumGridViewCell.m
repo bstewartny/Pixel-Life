@@ -1,11 +1,3 @@
-//
-//  AlbumGridViewCell.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/8/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "AlbumGridViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Picture.h"
@@ -51,8 +43,6 @@
     return self;
 }
 
-
-
 - (void) setImage:(UIImage*)image
 {
 	if(image==nil)
@@ -62,11 +52,6 @@
 		layerView1.backgroundColor=[UIColor clearColor];
 		layerView2.backgroundColor=[UIColor clearColor];
 		
-		/*[layerView1 removeFromSuperview];
-		[layerView2 removeFromSuperview];
-		layerView1=nil;
-		layerView2=nil;
-		*/
 		if(showBorder)
 		{
 			imageView.layer.borderColor=[UIColor clearColor].CGColor;

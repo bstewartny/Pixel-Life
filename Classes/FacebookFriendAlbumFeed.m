@@ -1,11 +1,3 @@
-//
-//  FacebookFriendAlbumFeed.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/6/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "FacebookFriendAlbumFeed.h"
 #import "ASIHTTPRequest.h"
 #import "FBConnect.h"
@@ -14,7 +6,6 @@
 #import "Friend.h"
 #import "Picture.h"
 #import "FacebookAlbumPictureFeed.h"
-
 
 @implementation FacebookFriendAlbumFeed
 @synthesize friend;
@@ -36,27 +27,7 @@
 - (NSArray*) getItemsFromJson:(NSDictionary*)json
 {
 	NSMutableArray * albums=[[[NSMutableArray alloc] init] autorelease];
-	/*
-	 {
-	 "data": [
-	 {
-	 "id": "688152358",
-	 "name": "Sue Roth Stewart",
-	 "first_name": "Sue",
-	 "last_name": "Stewart",
-	 "birthday": "10/11",
-	 "location": {
-	 "id": "107745065915449",
-	 "name": "Huntington, New York"
-	 },
-	 "picture": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/hs458.snc4/50109_688152358_53882_q.jpg"
-	 }
-	 ]
-	 }
-	 */
-	
-	//NSLog(@"json=%@",[json description]);
-	
+		
 	NSArray * a=[json objectForKey:@"data"];
 	
 	for (NSDictionary * d in a) {
@@ -89,7 +60,6 @@
 		album.pictureFeed=pictureFeed;
 		
 		[pictureFeed release];
-		
 		
 		[picture release];
 		[albums addObject:album];

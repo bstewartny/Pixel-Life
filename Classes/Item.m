@@ -1,11 +1,3 @@
-//
-//  Item.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/6/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "Item.h"
 #import "User.h"
 
@@ -27,7 +19,5 @@
 	[updated_date release];
 	[super dealloc];
 }
-
-
 
 @end

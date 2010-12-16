@@ -1,11 +1,3 @@
-//
-//  PictureViewController.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/6/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "PictureViewController.h"
 #import "Picture.h"
 
@@ -38,8 +30,7 @@
 	[self.view sendSubviewToBack:scrollingWheel];
 }
 
- // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
- - (void)viewDidLoad {
+- (void)viewDidLoad {
 	 
 	 [super viewDidLoad];
 	 
@@ -140,33 +131,20 @@
 
 - (void)picture:(Picture *)picture couldNotLoadImageError:(NSError *)error
 {
-	// Here we could show a "default" or "placeholder" image...
-    [self finishedLoading];
+	[self finishedLoading];
 }
 
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	 return YES;
- }
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return YES;
+}
  
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
 - (void)viewDidUnload {
     [super viewDidUnload];
-	// Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 	[picture setDelegate:nil];
-		
 }
 
 - (void) dealloc
 {
-	NSLog(@"PictureViewController.dealloc");
 	[picture setDelegate:nil];
 	[picture release];
 	[scrollingWheel release];

@@ -1,11 +1,3 @@
-//
-//  UserSettings.m
-//  Untitled
-//
-//  Created by Robert Stewart on 2/17/10.
-//  Copyright 2010 InfoNgen. All rights reserved.
-//
-
 #import "UserSettings.h"
 
 @implementation UserSettings
@@ -19,13 +11,10 @@
 		[defaults setObject:valueString forKey:key];
 		[defaults synchronize];
 	}
-
 }
 
 + (NSString *)getSetting:(NSString*)key
 {
-	NSLog(@"UserSettings.getSetting: %@",key);
-	
 	NSUserDefaults * defaults=[NSUserDefaults standardUserDefaults];
 	NSString * val=nil;
 	if(defaults)
@@ -58,8 +47,6 @@
 		}
 		[defaults synchronize];
 	}
-	
-	NSLog(@"Setting value is: %@",val);
 	
 	if(val==nil) return @"";
 	

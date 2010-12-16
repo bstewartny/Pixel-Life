@@ -1,11 +1,3 @@
-//
-//  FacebookFeed.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/6/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "FacebookFeed.h"
 #import "ASIHTTPRequest.h"
 #import "FBConnect.h"
@@ -92,11 +84,7 @@
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@%@access_token=%@",path,seperator,escaped_token];
 	
-	NSLog(@"FacebookFeed.createFetchRequest: %@",url);
-	
 	ASIHTTPRequest * request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	//ASIHTTPRequest * request=[ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
 	
 	request.requestMethod=@"GET";
 	

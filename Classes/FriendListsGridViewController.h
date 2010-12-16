@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "GridViewController.h"
 
-@interface FriendsGridViewController : GridViewController {
+@interface FriendListsGridViewController : GridViewController {
 
 }
 

@@ -1,11 +1,3 @@
-//
-//  FriendGridViewCell.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/8/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "FriendGridViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Picture.h"
@@ -20,10 +12,7 @@
 	
 	NSLog(@"FriendGridViewCell frame: %@",NSStringFromCGRect(frame));
 	
-	CGRect rect=frame; //self.contentView.bounds;
-	
-	//self.contentView.layer.borderWidth=2;
-	//self.contentView.layer.borderColor=[UIColor whiteColor].CGColor;
+	CGRect rect=frame; 
 	
 	imageView.frame =CGRectMake(5,5, rect.size.width-10, rect.size.height-10);
 	imageView.clipsToBounds = YES;
@@ -68,6 +57,7 @@
 	firstNameLabel.text=newPicture.name;
 	lastNameLabel.text=newPicture.description;
 }
+
 - (void)setPicture:(Picture *)newPicture
 {
     if (newPicture != picture)
@@ -97,9 +87,9 @@
         }
     }
 }
+
 - (void)load
 {
-	NSLog(@"FriendGridViewCell.load");
 	// The getter in the Picture class is overloaded...!
     // If the image is not yet downloaded, it returns nil and 
     // begins the asynchronous downloading of the image.
@@ -110,6 +100,7 @@
     }
 	[self setImage:image];
 }
+
 -(void)dealloc
 {
 	[lastNameLabel release];

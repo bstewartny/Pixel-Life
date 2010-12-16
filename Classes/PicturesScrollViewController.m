@@ -1,10 +1,10 @@
 #import "PicturesScrollViewController.h"
 #import "Picture.h"
 #import "PictureImageView.h"
-//#import "PictureCaptionViewController.h"
 #import "User.h"
+
 @implementation PicturesScrollViewController
-@synthesize scrollView, toolbar,pictures,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDescriptionLabel,infoDateLabel;
+@synthesize scrollView, toolbar,pictures,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
 
 - (id)initWithPictures:(NSArray*)pictures
 {
@@ -23,16 +23,10 @@
 		
 		[gr release];
 		
-		//captionViewController=[[PictureCaptionViewController alloc] initWithPicture:nil];
-		//captionViewController.view.frame=CGRectMake(20, frame.size.height-100, frame.size.width, 80);
-		//captionViewController.view.autoresizingMask=
-		//	UIViewAutoresizingFlexibleLeftMargin   |
-		//	UIViewAutoresizingFlexibleWidth        |
-		//	UIViewAutoresizingFlexibleRightMargin  |
-		//	UIViewAutoresizingFlexibleTopMargin;
+		format = [[NSDateFormatter alloc] init];
+		[format setDateFormat:@"MMM d, yyyy"];
 		
-		//[self.view addSubview:captionViewController.view];
-		
+		picViews=[[NSMutableArray alloc] init];
 	}
     return self;
 }
@@ -72,6 +66,8 @@
 	CGFloat width=frame.size.width;
 	CGFloat height=frame.size.height;
 	
+	[picViews removeAllObjects];
+	
 	for(Picture * picture in pictures)
 	{
 		CGFloat x=left;
@@ -82,6 +78,8 @@
 		PictureImageView * picView=[[PictureImageView alloc] initWithFrame:frame picture:picture];
 		
 		[scrollView addSubview:picView];
+		
+		[picViews addObject:picView];
 		
 		[picView release];
 		
@@ -100,19 +98,16 @@
 	CGFloat width=frame.size.width;
 	CGFloat height=frame.size.height;
 	
-	for(PictureImageView * picView in scrollView.subviews)
+	for(PictureImageView * picView in picViews)
 	{
-		if([picView isKindOfClass:[PictureImageView class]])
-		{
-			CGFloat x=left;
-			CGFloat y=top;
-			
-			CGRect frame=CGRectMake(x,y,width,height);
-			picView.frame=frame;
-			[picView setNeedsDisplay];
-			
-			left+=width;
-		}
+		CGFloat x=left;
+		CGFloat y=top;
+		
+		CGRect frame=CGRectMake(x,y,width,height);
+		picView.frame=frame;
+		[picView setNeedsDisplay];
+		
+		left+=width;
 	}
 	[scrollView setContentSize:CGSizeMake([pictures count]*width, height)];
 	[scrollView setNeedsDisplay];
@@ -149,7 +144,7 @@
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	NSTimer * myTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(toggleNavigationBarWithTimer:) userInfo:nil repeats:NO];
+	NSTimer * myTimer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(toggleNavigationBarWithTimer:) userInfo:nil repeats:NO];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -174,41 +169,72 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-	NSLog(@"scrollViewDidEndDecelerating");
 	[self loadVisiblePictures]; 
 }
 
 - (void) loadVisiblePictures
 {
-	NSLog(@"loadVisiblePictures");
 	PictureImageView * prev=nil;
 	BOOL prevLoaded=NO;
 	int i=0;
 	
-	for (PictureImageView * picView in scrollView.subviews) 
+	BOOL unloadImages=NO;
+	
+	if([scrollView.subviews count] > 20)
 	{
-		if([ picView isKindOfClass:[PictureImageView class]])
+		unloadImages=YES;
+	}
+	
+	for(PictureImageView * picView in picViews)
+	{
+		if(CGRectIntersectsRect(picView.frame, scrollView.bounds))
 		{
-			if(CGRectIntersectsRect(picView.frame, scrollView.bounds))
+			NSLog(@"Found intersection rect...");
+			currentItemIndex=i;
+			[picView load];
+			
+		
+		}
+		
+		i++;
+	}
+	
+	int prevItemIndex=-1;
+	// also preload prev and next images
+	if(currentItemIndex>0)
+	{
+		prevItemIndex=currentItemIndex-1;
+		[[picViews objectAtIndex:prevItemIndex] load];
+	}
+	int nextItemindex=-1;
+	if(currentItemIndex < ([pictures count]-1))
+	{
+		nextItemindex=currentItemIndex+1;
+		[[picViews objectAtIndex:nextItemindex] load];
+	}
+	if(unloadImages)
+	{
+		i=0;
+		for(PictureImageView * picView in picViews)
+		{
+			if(prevItemIndex>-1)
 			{
-				NSLog(@"Found intersection rect...");
-				currentItemIndex=i;
-				[prev load];
-				[picView load];
-				prevLoaded=YES;
-			}
-			else	
-			{
-				if(prevLoaded)
+				if(i<prevItemIndex)
 				{
-					[picView load];
-					prevLoaded=NO;
+					[picView unload];
 				}
 			}
-			prev=picView;
+			if(nextItemindex>-1)
+			{
+				if (i>nextItemindex) 
+				{
+					[picView unload];
+				}
+			}
 			i++;
 		}
 	}
+
 	self.navigationItem.title=[NSString stringWithFormat:@"%d of %d",currentItemIndex+1,[pictures count]];
 	
 	// show info view...
@@ -223,9 +249,7 @@
 	
 	infoNameLabel.text=currentPicture.name;
 	
-	infoDescriptionLabel.text=currentPicture.description;
-	
-	infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@",currentPicture.user.name,[currentPicture.created_date description]];
+	infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@",currentPicture.user.name,[format stringFromDate:currentPicture.created_date]];
 	
 	if([[currentPicture.user picture] hasLoadedThumbnail])
 	{
@@ -246,14 +270,10 @@
 
 - (void) showInfoView
 {
-	
+	CGRect rect2=infoView.frame;
+	rect2.origin.y= self.view.frame.size.height-rect2.size.height;	
+	self.infoView.frame=rect2;
 }
-
-- (void) hideInfoView
-{
-	
-}
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -270,19 +290,20 @@
 	[self goToCurrentItem];
 	[self loadVisiblePictures];
 	self.scrollView.hidden=NO;
+	// show info view again because navigation bar will re-show if it was hidden...
+	[self showInfoView];
 }
  
 - (void)dealloc {
 	[pictures release];
 	[toolbar release];
 	[scrollView release];
-	//[captionViewController release];
 	[infoImageView release];
 	[infoUserLabel release];
 	[infoNameLabel release];
-	[infoDescriptionLabel release];
 	[infoDateLabel release];
-	
+	[picViews release];
+	[format release];
 	[infoView release];
 	
     [super dealloc];

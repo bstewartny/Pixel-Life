@@ -1,11 +1,3 @@
-//
-//  PhotoGridViewCell.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/4/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "PhotoGridViewCell.h"
 #import "Picture.h"
 #import <QuartzCore/QuartzCore.h>
@@ -25,7 +17,6 @@
 	gregorian=[[NSCalendar alloc]
 							initWithCalendarIdentifier:NSGregorianCalendar];
 	
-	
 	format = [[NSDateFormatter alloc] init];
 	[format setDateFormat:@"MMM d, yyyy"];
 	
@@ -37,7 +28,6 @@
 	label1=[self createLabelWithFrame:CGRectMake(5, frame.size.height-42, frame.size.width-10, 14)];
 	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-28, frame.size.width-10, 14)];
 	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-14, frame.size.width-10, 14)];
-	
 	
 	UIPinchGestureRecognizer * p=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
 	
@@ -52,7 +42,6 @@
 		
     return self;
 }
-
 
 - (void)pinch:(UIGestureRecognizer*)g
 {
@@ -117,11 +106,10 @@
 			imageView.frame=CGRectMake(5, 5+(maxImageSize.height-new_height), maxImageSize.width,new_height);
 		}
 
-		
 		if(showBorder)
 		{
-		imageView.layer.borderColor=[UIColor whiteColor].CGColor;
-		imageView.layer.borderWidth=4;
+			imageView.layer.borderColor=[UIColor whiteColor].CGColor;
+			imageView.layer.borderWidth=4;
 		}
 	}
 	else 
@@ -143,16 +131,15 @@
 {
 	NSDate *todayDate = [NSDate date];
 	 
-	NSDateComponents * today_components=[gregorian components:(NSDayCalendarUnit|NSWeekCalendarUnit) fromDate:todayDate];
+	NSDateComponents * today_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:todayDate];
 	
-	
-	NSDateComponents * item_components=[gregorian components:(NSDayCalendarUnit|NSWeekCalendarUnit) fromDate:date];
+	NSDateComponents * item_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:date];
 	
 	NSString * display;
 	
-	if([today_components day] == [item_components day] &&
-	   [today_components month] == [item_components month] &&
-	   [today_components year] == [item_components year])
+	if(([today_components day] == [item_components day]) &&
+	   ([today_components month] == [item_components month]) &&
+	   ([today_components year] == [item_components year]))
 	{
 		if([today_components hour]==[item_components hour])
 		{
@@ -183,7 +170,6 @@
 	else 
 	{
 		// return just date Mmm dd
-		[format setDateFormat:@"MMM d, yyyy"];
 		display = [format stringFromDate:date];
 	}
 	

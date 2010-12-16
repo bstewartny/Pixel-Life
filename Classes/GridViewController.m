@@ -1,11 +1,3 @@
-    //
-//  GridViewController.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/5/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "GridViewController.h"
 #import "PhotoExplorerAppDelegate.h"
 #import "Reachability.h"
@@ -23,8 +15,6 @@
 		self.feed.delegate=self;
 		self.navigationItem.title=title;
 		self.title=title;
-		
-		//self.wantsFullScreenLayout=NO;
 		
 		CGRect bounds=[[UIScreen mainScreen] bounds];
 		
@@ -48,12 +38,10 @@
 
 - (void)reloadGrid
 {
-	NSLog(@"reloadGrid");
-    // Check if the remote server is available
+	// Check if the remote server is available
     Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
     PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
-	// [reachManager setHostName:@"www.facebook.com"];
-    NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
+	NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
     if (remoteHostStatus == NotReachable)
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -82,7 +70,6 @@
 
 - (void)feed:(Feed *)feed didFindItems:(NSArray *)items 
 {
-	NSLog(@"didFindPictures");
 	self.items=items;
 	[gridView reloadData];
 	[gridView updateVisibleGridCellsNow];
@@ -98,36 +85,14 @@
 
 - (void)showLoadingView
 {
-	NSLog(@"showLoadingView");
-	
 	[spinningWheel startAnimating];
 	[self.view bringSubviewToFront:spinningWheel];
-	
-   /* if (loadingView == nil)
-    {
-        loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
-        //loadingView.opaque = NO;
-        loadingView.backgroundColor = [UIColor blackColor];
-        //loadingView.alpha = 0.5;
-		
-        UIActivityIndicatorView *spinningWheel = [[UIActivityIndicatorView alloc] init]; //WithFrame:CGRectMake(self.view.bounds.size.width/2-20, self.view.bounds.size.height/2-20, 20.0, 20.0)];
-		spinningWheel.contentMode=UIViewContentModeCenter;
-		spinningWheel.hidesWhenStopped=YES;
-		[spinningWheel startAnimating];
-        spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        [loadingView addSubview:spinningWheel];
-        [spinningWheel release];
-    }
-    
-    [self.view addSubview:loadingView];*/
 }
 
 - (void)hideLoadingView
 {
-	NSLog(@"hideLoadingView");
 	[spinningWheel stopAnimating];
 	[self.view sendSubviewToBack:spinningWheel];
-  //  [loadingView removeFromSuperview];
 }
 
 - (void) viewDidLoad
@@ -145,8 +110,6 @@
 	self.gridView.backgroundColor=[UIColor blackColor];
 	
     [self.gridView reloadData];
-	
-	//[self reloadGrid];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -168,16 +131,6 @@
 {
 	[self loadVisibleCells]; 
 }
-
-- (void) viewDidUnload
-{
-	NSLog(@"GridViewController.viewDidUnload");
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-    //self.gridView = nil;
-}
-
- 
 
 - (IBAction) shuffle
 {
@@ -206,19 +159,16 @@
 	 _imageNames = [destArray copy];
 	 */
     [self.gridView endUpdates];
-    
-    //[sourceArray release];
-    //[destArray release];
+   
 }
 
- 
+
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
-		// subclass
+	// subclass
 	return nil;
 }
  
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView; 
 {
     // Method is called when the decelerating comes to a stop.
@@ -235,20 +185,10 @@
     }
 }
 
-
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-    //return ( CGSizeMake(224.0, 168.0) );
-	return ( CGSizeMake(168.0, 168.0) );
+    return ( CGSizeMake(168.0, 168.0) );
 }
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
- 
 
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) aGridView
 {
@@ -257,17 +197,13 @@
 
 - (void) loadVisibleCells
 {
-	NSLog(@"loadVisibleCells");
 	for(GridViewCell * cell in [gridView visibleCells])
 	{
-		NSLog(@"[cell loadImage]");
 		[cell load];
 	}
 }
 
 - (void)dealloc {
-	NSLog(@"GridViewController.dealloc");
-	
 	[items release];
     [feed setDelegate:nil];
     [feed release];

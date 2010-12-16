@@ -1,11 +1,3 @@
-    //
-//  AlbumsGridViewController.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/5/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "AlbumsGridViewController.h"
 #import "Album.h"
 #import "AlbumGridViewCell.h"
@@ -13,7 +5,6 @@
 
 @implementation AlbumsGridViewController
  
-
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
     static NSString * cellIdentifier = @"CellIdentifier";
@@ -31,8 +22,6 @@
 	Album * album=(Album*)[items objectAtIndex:index];
 	photoCell.picture=[album picture];
 	 
-	
-	
 	return photoCell;
 }
 
@@ -41,7 +30,6 @@
 	Album * album=(Album*)[items objectAtIndex:index];
 	// show album...
 	PictureFeedGridViewController * picturesController=[[PictureFeedGridViewController alloc] initWithFeed:album.pictureFeed title:album.name];
-	//picturesController.view.frame = [[UIScreen mainScreen] bounds];
 	[[self navigationController] pushViewController:picturesController animated:YES];
 	
 	[picturesController release];
@@ -50,7 +38,6 @@
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
     return ( CGSizeMake(224.0, 244.0) );
-	//return ( CGSizeMake(168.0, 168.0) );
 }
  
 @end

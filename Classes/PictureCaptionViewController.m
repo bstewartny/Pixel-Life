@@ -1,11 +1,3 @@
-//
-//  PictureCaptionViewController.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/15/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "PictureCaptionViewController.h"
 #import "Picture.h"
 #import "Friend.h"
@@ -46,7 +38,6 @@
 	//[self.view sendSubviewToBack:scrollingWheel];
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
 	[super viewDidLoad];
@@ -64,15 +55,6 @@
 			[self startLoading];
 		}
 	}
-	
-	/*UITapGestureRecognizer * tapRecognizer=[[UITapGestureRecognizer alloc] initWithTarget:self	action:@selector(toggleZoom:)];
-	
-	tapRecognizer.numberOfTapsRequired=2;
-	
-	[self.view addGestureRecognizer:tapRecognizer];
-	
-	[tapRecognizer release];
-	*/
 }
 
 - (void)toggleZoom:(UIGestureRecognizer *)gestureRecognizer
@@ -132,19 +114,9 @@
 	return YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
 - (void)viewDidUnload {
     [super viewDidUnload];
-	// Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 	[friendPicture setDelegate:nil];
-	
 }
 
 - (void) dealloc

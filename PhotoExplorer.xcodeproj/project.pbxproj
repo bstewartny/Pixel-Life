@@ -32,11 +32,9 @@
 		B04825DA12ABCFE000F61433 /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04825D912ABCFE000F61433 /* GridViewController.m */; };
 		B04825DD12ABD3F200F61433 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04825DC12ABD3F200F61433 /* Feed.m */; };
 		B04825E112ABD78900F61433 /* GridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B04825E012ABD78900F61433 /* GridViewCell.m */; };
-		B048260112AD0D6300F61433 /* TestAlbumFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B048260012AD0D6300F61433 /* TestAlbumFeed.m */; };
 		B048264A12AD249300F61433 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = B048264912AD249300F61433 /* Item.m */; };
 		B048264D12AD24D600F61433 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B048264C12AD24D600F61433 /* User.m */; };
 		B048267E12AD2BC200F61433 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = B048267D12AD2BC200F61433 /* Friend.m */; };
-		B048268112AD2E8500F61433 /* TestFriendFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B048268012AD2E8500F61433 /* TestFriendFeed.m */; };
 		B048268412AD306100F61433 /* FriendsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B048268312AD306100F61433 /* FriendsGridViewController.m */; };
 		B048271712AD38AF00F61433 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B048271612AD38AF00F61433 /* PictureViewController.m */; };
 		B048271C12AD3B2A00F61433 /* PictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B048271B12AD3B2A00F61433 /* PictureView.xib */; };
@@ -79,7 +77,6 @@
 		B087D87712AA8D34008259E9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B087D87612AA8D34008259E9 /* MobileCoreServices.framework */; };
 		B087D87912AA8D4C008259E9 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B087D87812AA8D4C008259E9 /* libz.1.2.3.dylib */; };
 		B087D8B912AA8DDC008259E9 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = B087D8B812AA8DDC008259E9 /* Picture.m */; };
-		B087D90612AAB5DB008259E9 /* TestPictureFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B087D90512AAB5DB008259E9 /* TestPictureFeed.m */; };
 		B087DA5312AAE792008259E9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5112AAE792008259E9 /* UIImage+Resize.m */; };
 		B087DA5F12AAE86D008259E9 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5B12AAE86D008259E9 /* UIImage+Alpha.m */; };
 		B087DA6012AAE86D008259E9 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5D12AAE86D008259E9 /* UIImage+RoundedCorner.m */; };
@@ -88,6 +85,11 @@
 		B0A13D4B12AB168A00999009 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A13D4A12AB168A00999009 /* GridView.xib */; };
 		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
+		B0E978ED12B989D000721B33 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E978EC12B989D000721B33 /* icon.png */; };
+		B0E9794912BA5D1300721B33 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9794812BA5D1300721B33 /* FriendList.m */; };
+		B0E9794C12BA5EE600721B33 /* FacebookFriendListFriendFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9794B12BA5EE600721B33 /* FacebookFriendListFriendFeed.m */; };
+		B0E9795512BA653100721B33 /* FriendListsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9795412BA653100721B33 /* FriendListsGridViewController.m */; };
+		B0E9795812BA6E7E00721B33 /* FriendListGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9795712BA6E7E00721B33 /* FriendListGridViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,16 +142,12 @@
 		B04825DE12ABD3FD00F61433 /* FeedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
 		B04825DF12ABD78900F61433 /* GridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewCell.h; sourceTree = "<group>"; };
 		B04825E012ABD78900F61433 /* GridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewCell.m; sourceTree = "<group>"; };
-		B04825FF12AD0D6300F61433 /* TestAlbumFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAlbumFeed.h; sourceTree = "<group>"; };
-		B048260012AD0D6300F61433 /* TestAlbumFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAlbumFeed.m; sourceTree = "<group>"; };
 		B048264812AD249300F61433 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		B048264912AD249300F61433 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		B048264B12AD24D600F61433 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		B048264C12AD24D600F61433 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		B048267C12AD2BC200F61433 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		B048267D12AD2BC200F61433 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
-		B048267F12AD2E8500F61433 /* TestFriendFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFriendFeed.h; sourceTree = "<group>"; };
-		B048268012AD2E8500F61433 /* TestFriendFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFriendFeed.m; sourceTree = "<group>"; };
 		B048268212AD306100F61433 /* FriendsGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsGridViewController.h; sourceTree = "<group>"; };
 		B048268312AD306100F61433 /* FriendsGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsGridViewController.m; sourceTree = "<group>"; };
 		B048271512AD38AF00F61433 /* PictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewController.h; sourceTree = "<group>"; };
@@ -234,8 +232,6 @@
 		B087D8B712AA8DDC008259E9 /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picture.h; sourceTree = "<group>"; };
 		B087D8B812AA8DDC008259E9 /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Picture.m; sourceTree = "<group>"; };
 		B087D8BA12AA8F4E008259E9 /* PictureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureDelegate.h; sourceTree = "<group>"; };
-		B087D90412AAB5DB008259E9 /* TestPictureFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPictureFeed.h; sourceTree = "<group>"; };
-		B087D90512AAB5DB008259E9 /* TestPictureFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPictureFeed.m; sourceTree = "<group>"; };
 		B087DA5112AAE792008259E9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		B087DA5212AAE792008259E9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		B087DA5B12AAE86D008259E9 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
@@ -251,6 +247,15 @@
 		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
 		B0A8188112B076890096162D /* AlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewCell.m; sourceTree = "<group>"; };
+		B0E978EC12B989D000721B33 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		B0E9794712BA5D1300721B33 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
+		B0E9794812BA5D1300721B33 /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
+		B0E9794A12BA5EE600721B33 /* FacebookFriendListFriendFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendListFriendFeed.h; sourceTree = "<group>"; };
+		B0E9794B12BA5EE600721B33 /* FacebookFriendListFriendFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendListFriendFeed.m; sourceTree = "<group>"; };
+		B0E9795312BA653100721B33 /* FriendListsGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListsGridViewController.h; sourceTree = "<group>"; };
+		B0E9795412BA653100721B33 /* FriendListsGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListsGridViewController.m; sourceTree = "<group>"; };
+		B0E9795612BA6E7E00721B33 /* FriendListGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListGridViewCell.h; sourceTree = "<group>"; };
+		B0E9795712BA6E7E00721B33 /* FriendListGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListGridViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +326,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B0E978E912B989C500721B33 /* Images */,
 				2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* PhotoExplorer-Info.plist */,
@@ -447,6 +453,10 @@
 				B0A8188112B076890096162D /* AlbumGridViewCell.m */,
 				B02CD20E12B9515000D4407C /* PictureCaptionViewController.h */,
 				B02CD20F12B9515000D4407C /* PictureCaptionViewController.m */,
+				B0E9795312BA653100721B33 /* FriendListsGridViewController.h */,
+				B0E9795412BA653100721B33 /* FriendListsGridViewController.m */,
+				B0E9795612BA6E7E00721B33 /* FriendListGridViewCell.h */,
+				B0E9795712BA6E7E00721B33 /* FriendListGridViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -457,23 +467,17 @@
 				B087D8B712AA8DDC008259E9 /* Picture.h */,
 				B087D8B812AA8DDC008259E9 /* Picture.m */,
 				B087D8BA12AA8F4E008259E9 /* PictureDelegate.h */,
-				B087D90412AAB5DB008259E9 /* TestPictureFeed.h */,
-				B087D90512AAB5DB008259E9 /* TestPictureFeed.m */,
 				B04825CB12ABCED300F61433 /* Album.h */,
 				B04825CC12ABCED300F61433 /* Album.m */,
 				B04825DB12ABD3F200F61433 /* Feed.h */,
 				B04825DC12ABD3F200F61433 /* Feed.m */,
 				B04825DE12ABD3FD00F61433 /* FeedDelegate.h */,
-				B04825FF12AD0D6300F61433 /* TestAlbumFeed.h */,
-				B048260012AD0D6300F61433 /* TestAlbumFeed.m */,
 				B048264812AD249300F61433 /* Item.h */,
 				B048264912AD249300F61433 /* Item.m */,
 				B048264B12AD24D600F61433 /* User.h */,
 				B048264C12AD24D600F61433 /* User.m */,
 				B048267C12AD2BC200F61433 /* Friend.h */,
 				B048267D12AD2BC200F61433 /* Friend.m */,
-				B048267F12AD2E8500F61433 /* TestFriendFeed.h */,
-				B048268012AD2E8500F61433 /* TestFriendFeed.m */,
 				B048290E12AD663F00F61433 /* FacebookFriendFeed.h */,
 				B048290F12AD663F00F61433 /* FacebookFriendFeed.m */,
 				B048298112AD76A000F61433 /* FacebookFriendAlbumFeed.h */,
@@ -492,6 +496,10 @@
 				B05C4D5512AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m */,
 				B04BC82A12B52FFA007217A3 /* FacebookFriendListsFeed.h */,
 				B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */,
+				B0E9794712BA5D1300721B33 /* FriendList.h */,
+				B0E9794812BA5D1300721B33 /* FriendList.m */,
+				B0E9794A12BA5EE600721B33 /* FacebookFriendListFriendFeed.h */,
+				B0E9794B12BA5EE600721B33 /* FacebookFriendListFriendFeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -559,6 +567,14 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		B0E978E912B989C500721B33 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B0E978EC12B989D000721B33 /* icon.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -615,6 +631,7 @@
 				B048289812AD5EA800F61433 /* PicturesScrollView.xib in Resources */,
 				B04828FB12AD657600F61433 /* FBDialog.bundle in Resources */,
 				B02CD22712B9559A00D4407C /* PictureCaptionView.xib in Resources */,
+				B0E978ED12B989D000721B33 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +654,6 @@
 				B087D86C12AA8CE3008259E9 /* ASIAuthenticationDialog.m in Sources */,
 				B087D86F12AA8CF7008259E9 /* Reachability.m in Sources */,
 				B087D8B912AA8DDC008259E9 /* Picture.m in Sources */,
-				B087D90612AAB5DB008259E9 /* TestPictureFeed.m in Sources */,
 				B087DA5312AAE792008259E9 /* UIImage+Resize.m in Sources */,
 				B087DA5F12AAE86D008259E9 /* UIImage+Alpha.m in Sources */,
 				B087DA6012AAE86D008259E9 /* UIImage+RoundedCorner.m in Sources */,
@@ -658,11 +674,9 @@
 				B04825DA12ABCFE000F61433 /* GridViewController.m in Sources */,
 				B04825DD12ABD3F200F61433 /* Feed.m in Sources */,
 				B04825E112ABD78900F61433 /* GridViewCell.m in Sources */,
-				B048260112AD0D6300F61433 /* TestAlbumFeed.m in Sources */,
 				B048264A12AD249300F61433 /* Item.m in Sources */,
 				B048264D12AD24D600F61433 /* User.m in Sources */,
 				B048267E12AD2BC200F61433 /* Friend.m in Sources */,
-				B048268112AD2E8500F61433 /* TestFriendFeed.m in Sources */,
 				B048268412AD306100F61433 /* FriendsGridViewController.m in Sources */,
 				B048271712AD38AF00F61433 /* PictureViewController.m in Sources */,
 				B048286E12AD579100F61433 /* PicturesScrollViewController.m in Sources */,
@@ -691,6 +705,10 @@
 				B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */,
 				B04BC82C12B52FFA007217A3 /* FacebookFriendListsFeed.m in Sources */,
 				B02CD21012B9515000D4407C /* PictureCaptionViewController.m in Sources */,
+				B0E9794912BA5D1300721B33 /* FriendList.m in Sources */,
+				B0E9794C12BA5EE600721B33 /* FacebookFriendListFriendFeed.m in Sources */,
+				B0E9795512BA653100721B33 /* FriendListsGridViewController.m in Sources */,
+				B0E9795812BA6E7E00721B33 /* FriendListGridViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

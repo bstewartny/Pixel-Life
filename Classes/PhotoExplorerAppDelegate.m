@@ -1,11 +1,3 @@
-//
-//  PhotoExplorerAppDelegate.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/4/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "PhotoExplorerAppDelegate.h"
 #import "AlbumsGridViewController.h"
 #import "FriendsGridViewController.h"
@@ -15,19 +7,21 @@
 #import "FacebookFriendsPhotosFeed.h"
 #import "FacebookLikesFeed.h"
 #import "Feed.h"
-#import "TestAlbumFeed.h"
-#import "TestPictureFeed.h"
-#import	"TestFriendFeed.h"
 #import "FBConnect.h"
 #import "FacebookFriendFeed.h"
 #import "UserSettings.h"
 #import "ASIHTTPRequest.h"
 #import "ASIDownloadCache.h"
+#import "FacebookFriendsAlbumsFeed.h"
+#import "FriendListsGridViewController.h"
+#import "FacebookFriendListsFeed.h"
+
 // Your Facebook APP Id must be set before running this example
 // See http://www.facebook.com/developers/createapp.php
 // Also, your application must bind to the fb[app_id]:// URL
 // scheme (substitue [app_id] for your real Facebook app id).
-static NSString* kAppId = @"144746058889817";
+//static NSString* kAppId = @"144746058889817";
+static NSString* kAppId = @"174754232546721";
 
 @implementation PhotoExplorerAppDelegate
 
@@ -40,9 +34,6 @@ static NSString* kAppId = @"144746058889817";
 {
     return (PhotoExplorerAppDelegate *)[UIApplication sharedApplication].delegate;
 }
-
-#pragma mark -
-#pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
@@ -59,13 +50,14 @@ static NSString* kAppId = @"144746058889817";
 	
 	facebook=[[Facebook alloc] init];
 	
+	NSLog(@"setting facebook accessToken to %@",accessToken);
 	facebook.accessToken=accessToken;
 	facebook.expirationDate=expirationDate;
 	
 	navController=[[UINavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
-	segmentedControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Albums",@"My Friends",@"Recent Photos",@"My Likes",nil]];
+	segmentedControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Photo Albums",@"My Friend Lists",@"All My Friends",nil]];
 	segmentedControl.segmentedControlStyle=UISegmentedControlStyleBar;
 	
 	[segmentedControl addTarget:self
@@ -97,17 +89,20 @@ static NSString* kAppId = @"144746058889817";
 			[self showMyAlbums];
 			break;
 		case 1:
+			[self showAllLists];
+			break;
+		case 2:
 			[self showAllFriends];
 			break;
 		//case 1:
 		//	[self showAllAlbums];
 		//	break;
-		case 2:
-			[self showAllPictures];
-			break;
-		case 3:
-			[self showAllLikes];
-			break;
+		//case 3:
+		//	[self showAllPictures];
+		//	break;
+		//case 4:
+		//	[self showAllLikes];
+		//	break;
 		//case 4:
 		//	[self showAllEvents];
 		//	break;
@@ -120,8 +115,12 @@ static NSString* kAppId = @"144746058889817";
 {
 	if(![facebook isSessionValid])
 	{
+		NSLog(@"session is NOT valid, calling facebook.authorize...");
 		[facebook authorize:kAppId permissions:[NSArray arrayWithObjects:
-											@"read_stream",@"friends_photos", @"read_friendlist",@"user_photos",@"offline_access",nil] delegate:self];
+											@"read_stream",@"friends_photos", @"read_friendlists",@"user_photos",@"offline_access",nil] delegate:self];
+	}
+	else {
+		NSLog(@"session is valid, NOT calling facebook.authorize...");
 	}
 }
 
@@ -134,7 +133,7 @@ static NSString* kAppId = @"144746058889817";
 	{
 		accessToken=facebook.accessToken;
 		expirationDate=facebook.expirationDate;
-	
+		[self saveData];
 		[self showAllFriends];
 	}
 }
@@ -156,6 +155,7 @@ static NSString* kAppId = @"144746058889817";
 	accessToken=nil;
 	expirationDate=nil;
 }
+
 - (void) showMyAlbums
 {
 	if(![facebook isSessionValid])
@@ -170,11 +170,10 @@ static NSString* kAppId = @"144746058889817";
 	segmentedControl.selectedSegmentIndex=0;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
-	
 }
+
 - (void) showAllFriends
 {
-	// do facebook login if needed
 	if(![facebook isSessionValid])
 	{
 		[self login];
@@ -183,14 +182,30 @@ static NSString* kAppId = @"144746058889817";
 	
 	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebook:facebook];
 	
-	//TestFriendFeed * testFeed=[[TestFriendFeed alloc] init];
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"All Friends"];
+	controller.navigationItem.titleView=segmentedControl;
+	segmentedControl.selectedSegmentIndex=2;
+	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[feed release];
+}
+
+- (void) showAllLists
+{
+	if(![facebook isSessionValid])
+	{
+		[self login];
+		return;
+	}
+	
+	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebook:facebook];
+	
+	FriendListsGridViewController * controller=[[FriendListsGridViewController alloc] initWithFeed:feed title:@"My Lists"];
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=1;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
 }
-
+/*
 - (void) showAllAlbums
 {
 	if(![facebook isSessionValid])
@@ -219,7 +234,7 @@ static NSString* kAppId = @"144746058889817";
 	
 	PictureFeedGridViewController * controller=[[PictureFeedGridViewController alloc] initWithFeed:feed title:@"All Pictures"];
 	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=2;
+	segmentedControl.selectedSegmentIndex=3;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
 }
@@ -236,30 +251,11 @@ static NSString* kAppId = @"144746058889817";
 	
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"Likes"];
 	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=3;
+	segmentedControl.selectedSegmentIndex=4;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
 }
-
-- (void) showAllEvents
-{
-	if(![facebook isSessionValid])
-	{
-		[self login];
-		return;
-	}
-	
-	/*
-	[navController popToRootViewControllerAnimated:YES];
-	TestEventFeed * testFeed=[[TestEventFeed alloc] init];
-	EventFeedGridViewController * controller=[[EventFeedGridViewController alloc] initWithFeed:testFeed];
-	 controller.navigationItem.titleView=segmentedControl;
-	 segmentedControl.selectedSegmentIndex=4;
-	[navController pushViewController:controller animated:YES];
-	
-	[testFeed release];*/
-}
-
+*/
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -282,7 +278,6 @@ static NSString* kAppId = @"144746058889817";
 	[self saveData];
 }
 
-
 - (void) loadArchivedData
 {
 	NSLog(@"loadArchivedData");
@@ -295,7 +290,6 @@ static NSString* kAppId = @"144746058889817";
 		
 		NSData * data =[[NSMutableData alloc]
 						initWithContentsOfFile:filePath];
-		
 		if (data) 
 		{
 			NSKeyedUnarchiver * unarchiver = [[NSKeyedUnarchiver alloc]
@@ -310,8 +304,6 @@ static NSString* kAppId = @"144746058889817";
 			
 			[data release];
 		}
-		
-		
 	}
 	@catch (NSException * e) {
 		NSLog(@"Exception in loadArchivedData");
@@ -359,16 +351,11 @@ static NSString* kAppId = @"144746058889817";
 	}
 }
 
-
-#pragma mark -
-#pragma mark Memory management
-
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
 }
-
 
 - (void)dealloc {
 	[downloadQueue release];

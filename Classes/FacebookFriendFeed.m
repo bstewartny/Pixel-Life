@@ -1,11 +1,3 @@
-//
-//  FacebookFriendFeed.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/6/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "FacebookFriendFeed.h"
 #import "FBConnect.h"
 #import "JSON.h"
@@ -13,19 +5,11 @@
 #import "Picture.h"
 #import "FacebookFriendAlbumFeed.h"
 #import "ASIHTTPRequest.h"
-@implementation FacebookFriendFeed
 
-/*
-- (NSString*) graphPath
-{
-	return @"me/friends?fields=id,name,first_name,last_name,birthday,location,picture";
-}
-*/
+@implementation FacebookFriendFeed
 
 - (ASIHTTPRequest*)createFetchRequest
 {
-	NSLog(@"createFetchRequest");
-	
 	NSString * friend_query=@"SELECT uid,first_name,last_name,middle_name,name,pic_big,pic_small,pic,birthday_date FROM user WHERE uid in (select uid2 from friend where uid1=me())";
 	
 	NSString * escaped_query=[self escapeQueryValue:friend_query];
@@ -65,7 +49,6 @@
 			picture.imageURL=picture.thumbnailURL;
 		}
 		
-		
 		picture.user=friend;
 		
 		if([friend.first_name length]>0)
@@ -77,8 +60,6 @@
 		{
 			picture.description=friend.name;
 		}
-		
-		//picture.name=friend.name;
 		
 		FacebookFriendAlbumFeed * albumFeed=[[FacebookFriendAlbumFeed alloc] initWithFacebook:facebook friend:friend];
 		
@@ -99,37 +80,12 @@
 	// sort by last name then first name...
 	[friends sortUsingSelector:@selector(compareFriend:)];
 	
-	for(Friend * f in friends)
-	{
-		NSLog(@"sorted name: %@, %@",f.last_name,f.first_name);
-	}
-	
 	return friends;
 }
 
 - (NSArray*) getItemsFromJsonOLD:(NSDictionary*)json
 {
 	NSMutableArray * friends=[[[NSMutableArray alloc] init] autorelease];
-	/*
-	 {
-	 "data": [
-	 {
-	 "id": "688152358",
-	 "name": "Sue Roth Stewart",
-	 "first_name": "Sue",
-	 "last_name": "Stewart",
-	 "birthday": "10/11",
-	 "location": {
-	 "id": "107745065915449",
-	 "name": "Huntington, New York"
-	 },
-	 "picture": "http://profile.ak.fbcdn.net/hprofile-ak-snc4/hs458.snc4/50109_688152358_53882_q.jpg"
-	 }
-	 ]
-	 }
-	 */
-	
-	//NSLog(@"json=%@",[json description]);
 	
 	NSArray * a=[json objectForKey:@"data"];
 	
@@ -157,8 +113,6 @@
 		{
 			picture.description=friend.name;
 		}
-		
-		//picture.name=friend.name;
 		
 		FacebookFriendAlbumFeed * albumFeed=[[FacebookFriendAlbumFeed alloc] initWithFacebook:facebook friend:friend];
 		
