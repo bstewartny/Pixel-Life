@@ -3,126 +3,48 @@
 #import "Reachability.h"
 #import "Feed.h"
 #import "CommentTableViewCell.h"
+#import "Comment.h"
+#import "AddCommentTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
+
+#import "User.h"
 
 @implementation PhotoCommentsViewController
-@synthesize tableView,items,feed;
+@synthesize tableView,comments;
 
-
-
-
-
-- (id)initWithFeed:(Feed*)feed title:(NSString*)title
+- (id)initWithComments:(NSArray*)comments title:(NSString*)title
 {
     if(self=[super initWithNibName:@"PhotoCommentsView" bundle:nil])
 	{
-		self.feed=feed;
-		self.feed.delegate=self;
+		self.comments=comments;
 		self.navigationItem.title=title;
 		self.title=title;
-		
-		CGRect bounds=[[UIScreen mainScreen] bounds];
-		
-		spinningWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(bounds.size.width/2-10, bounds.size.height/2-10, 20.0, 20.0)];
-		spinningWheel.contentMode=UIViewContentModeCenter;
-		spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-		spinningWheel.autoresizingMask=
-		
-		UIViewAutoresizingFlexibleLeftMargin |  
-		UIViewAutoresizingFlexibleRightMargin  |
-		UIViewAutoresizingFlexibleTopMargin   |
-		UIViewAutoresizingFlexibleBottomMargin;
-		
-		spinningWheel.hidesWhenStopped=YES;
-		[spinningWheel stopAnimating];
-		
-		[self.view addSubview:spinningWheel];
-		
-		self.view.opaque=NO;
-		self.view.backgroundColor=[UIColor blackColor];
-		self.view.alpha=0.8;
-		
-		self.tableView.backgroundColor=[UIColor blackColor];
-		self.tableView.alpha=0.8;
-		self.tableView.opaque=NO;
     }
     return self;
 }
+
 - (IBAction) close:(id)sender
 {
 	[[self parentViewController] dismissModalViewControllerAnimated:YES]; 
 }
-- (void) reloadTable
-{
-	// Check if the remote server is available
-    Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
-    PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
-	NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
-    if (remoteHostStatus == NotReachable)
-    {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-        NSString *msg = @"Facebook is not reachable! This requires Internet connectivity.";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Problem" 
-                                                        message:msg 
-                                                       delegate:nil 
-                                              cancelButtonTitle:@"OK" 
-                                              otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        return;
-    }
-    else if (remoteHostStatus == ReachableViaWiFi)
-    {
-        [appDelegate.downloadQueue setMaxConcurrentOperationCount:4];
-    }
-    else if (remoteHostStatus == ReachableViaWWAN)
-    {
-        [appDelegate.downloadQueue setMaxConcurrentOperationCount:NSOperationQueueDefaultMaxConcurrentOperationCount];
-    }
-    
-    [self showLoadingView];
-	[feed fetch];
-}
-- (void)feed:(Feed *)feed didFindItems:(NSArray *)items 
-{
-	self.items=items;
-	[tableView reloadData];
-	//[gridView updateVisibleGridCellsNow];
-	[self loadVisibleCells];
-	[self hideLoadingView];
-}
-
-- (void)feed:(Feed *)feed didFailWithError:(NSString *)errorMsg
-{
-	NSLog(@"didFailWithError: %@",errorMsg);
-    [self hideLoadingView];
-}
 
 - (void)showLoadingView
 {
-	[spinningWheel startAnimating];
-	[self.view bringSubviewToFront:spinningWheel];
+	//[spinningWheel startAnimating];
+	//[self.view bringSubviewToFront:spinningWheel];
 }
 
 - (void)hideLoadingView
 {
-	[spinningWheel stopAnimating];
-	[self.view sendSubviewToBack:spinningWheel];
-}
-
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self.tableView reloadData];
+	//[spinningWheel stopAnimating];
+	//[self.view sendSubviewToBack:spinningWheel];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	if([items count]==0)
-	{
-		[self reloadTable];
-	}
+	[tableView reloadData];
+	[self loadVisibleCells];
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation
@@ -150,6 +72,7 @@
         [self loadVisibleCells]; 
     }
 }
+
 - (void) loadVisibleCells
 {
 	for(CommentTableViewCell * cell in [tableView visibleCells])
@@ -158,30 +81,67 @@
 	}
 }
 
+- (UITableViewCell *)loadCellFromNibNamed:(NSString*)nib
+{
+	NSArray * topLevelObjects=[[NSBundle mainBundle] loadNibNamed:nib owner:nil options:nil];
+	
+	for(id currentObject in topLevelObjects)
+	{
+		if([currentObject isKindOfClass:[UITableViewCell class]])
+		{
+			return currentObject;
+		}
+	}
+	return nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	Comment * comment=[items objectAtIndex:indexPath.row];
+	//if(indexPath.row==[comments count])
+	//{
+	//if(indexPath.section==1)
+	//{
+	//	// add new comment row
+	//	AddCommentTableViewCell * cell=(AddCommentTableViewCell*)[self loadCellFromNibNamed:@"AddCommentTableViewCell"];
+	//	cell.selectionStyle=UITableViewCellSelectionStyleNone;
+	//	return cell;
+	//}
+	
+	Comment * comment=[comments objectAtIndex:indexPath.row];
+	
+	/*UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+	
+	cell.backgroundColor=[UIColor viewFlipsideBackgroundColor];
+	
+	cell.imageView.image=[UIImage imageNamed:@"icon.png"];
+	
+	///cell.imageView.frame=CGRectMake(5,5,50,50);
+	//cell.imageView.autoresizingMask=UIViewAutoresizingFlexibleBottomMargin |
+	//								UIViewAutoresizingFlexibleRightMargin;	
+	
+	cell.textLabel.text=comment.user.name;
+	cell.textLabel.textColor=[UIColor whiteColor];
+	cell.textLabel.font=[UIFont boldSystemFontOfSize:14];
+	
+	//cell.detailTextLabel.text = @"Multi-Line\nText";
+	cell.detailTextLabel.textColor=[UIColor whiteColor];
+	cell.detailTextLabel.numberOfLines = 10;
+	cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+	
+	cell.detailTextLabel.text=comment.message;
+	
+	return cell;
+	*/
 	static NSString * cellIdentifier = @"CommentTableViewCellIdentifier";
 	
 	CommentTableViewCell * cell=(CommentTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	
 	if(cell==nil)
 	{
-		NSArray * topLevelObjects=[[NSBundle mainBundle] loadNibNamed:@"CommentTableViewCell" owner:nil options:nil];
+		cell=(CommentTableViewCell*)[self loadCellFromNibNamed:@"CommentTableViewCell"];
 		
-		for(id currentObject in topLevelObjects)
-		{
-			if([currentObject isKindOfClass:[UITableViewCell class]])
-			{
-				cell=(CommentTableViewCell*)currentObject;
-				break;
-			}
-		}
-		
-		if(cell==nil)
-		{
-			NSLog(@"Failed to find table view cell in NIB!!!");
-		}
+		cell.selectionStyle=UITableViewCellSelectionStyleNone;
+	
 	}
 	
 	cell.comment=comment;
@@ -191,22 +151,59 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [items count];
+	return [comments count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 80.0;
+	NSLog(@"heightForRowAtIndexPath");
+	
+	CGFloat width=self.contentSizeForViewInPopover.width-80;
+	
+	Comment * comment=[comments objectAtIndex:indexPath.row];
+	
+	return [CommentTableViewCell cellHeightForComment:comment];
+	/*
+	CGSize constraint = CGSizeMake(width, 20000.0f);
+	
+	CGSize size=[comment.message sizeWithFont:[UIFont systemFontOfSize:17.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+	
+	NSLog(@"message: %@",comment.message);
+	
+	NSLog(@"system size=%@",NSStringFromCGSize(size));
+
+	CGSize size2=[comment.message sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+	
+	NSLog(@"helvetica size=%@",NSStringFromCGSize(size2));
+	
+	if(size.height>34.0)
+	{
+		CGFloat newHeight=size.height+32.0;
+		
+		NSLog(@"setting cell height to %f", newHeight);
+		
+		return newHeight;  
+	}
+	else 
+	{
+		return 65.0;
+	}*/
+}
+
+- (CGSize) contentSizeForViewInPopover
+{
+	return CGSizeMake(320.0, 600);
 }
 
 - (void)dealloc {
-	[feed setDelegate:nil];
-	[feed release];
-	[items release];
+	[comments release];
 	[tableView release];
-	[spinningWheel release];
-    [super dealloc];
+	[super dealloc];
 }
-
 
 @end

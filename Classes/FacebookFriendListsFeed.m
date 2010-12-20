@@ -46,7 +46,7 @@
 		{
 			NSString * user_id=[[members objectAtIndex:0] objectForKey:@"id"];
 			NSString * user_name=[[members objectAtIndex:0] objectForKey:@"name"];
-			picture.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture",user_id]];
+			picture.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture?type=large",user_id]];
 			picture.imageURL=picture.thumbnailURL;
 			User * user=[[User alloc] init];
 			user.uid=user_id;

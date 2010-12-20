@@ -5,7 +5,7 @@
 #import "Album.h"
 #import "Friend.h"
 #import "Picture.h"
-
+#import "Comment.h"
 @implementation FacebookAlbumPictureFeed
 @synthesize album;
 
@@ -20,7 +20,7 @@
 }
 - (NSString*) graphPath
 {
-	return [NSString stringWithFormat:@"%@/photos?limit=1000&fields=id,picture,source,width,height,link,created_time,updated_time,name",album.uid];
+	return [NSString stringWithFormat:@"%@/photos?limit=1000&fields=id,comments,picture,source,width,height,link,created_time,updated_time,name",album.uid];
 }
 
 - (NSArray*) getItemsFromJson:(NSDictionary*)json
@@ -47,7 +47,76 @@
 		picture.url=[d objectForKey:@"link"];
 		picture.created_date=[self dateFromString:[d objectForKey:@"created_time"]];
 		picture.updated_date=[self dateFromString:[d objectForKey:@"updated_time"]];
-		 
+		
+		NSDictionary * comments_dict=[d objectForKey:@"comments"];
+		
+		if(comments_dict)
+		{
+			NSMutableArray * comments=[[NSMutableArray alloc] init];
+			for(NSDictionary * c in [comments_dict objectForKey:@"data"])
+			{
+		
+				Comment * comment=[[Comment alloc] init];
+				
+				comment.uid=[c objectForKey:@"id"];
+				comment.name=[c objectForKey:@"message"];
+				comment.message=comment.name;
+				
+				// test long message
+				/*for(int i=0;i<2;i++)
+				{
+					comment.message=[comment.message stringByAppendingFormat:@" %@",comment.message];    //       @"Hey that is a nice picture!!!!  When can we get together soon to have a play date!?  See ya :$#$$#$#$#. Blahd ldflsjf alsdkfja dksfjal sfasdf ";
+				}*/
+				
+				comment.created_date=[self dateFromString:[c objectForKey:@"created_time"]];
+				comment.updated_date=comment.created_date;
+				
+				User * user=[[User alloc] init];
+				
+				user.uid=[[c objectForKey:@"from"] objectForKey:@"id"];
+				user.name=[[c objectForKey:@"from"] objectForKey:@"name"];
+				
+				comment.user=user;
+				
+				Picture * pic=[[Picture alloc] init];
+				
+				pic.name=user.name;
+				pic.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture",user.uid]];
+				pic.imageURL=picture.thumbnailURL;
+				
+				comment.picture=pic;
+				
+				[pic release];
+				
+				[user release];
+				
+				// test: add lots of comments...
+				for(int i=0;i<10;i++)
+				{
+					[comments addObject:comment];
+				}
+				[comment release];
+			}
+			
+			picture.comments=comments;
+			
+			[comments release];
+		}
+		
+		if([picture.comments count]>0)
+		{
+			if([picture.comments count]==1)
+			{
+				picture.description=@"1 comment"; //[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
+			}
+			else 
+			{
+				picture.description=[NSString stringWithFormat:@"%d comments",[picture.comments count]];
+			}
+		}
+		
+		
+		
 		[pictures addObject:picture];
 		
 		[picture release];

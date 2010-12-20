@@ -156,6 +156,30 @@ static NSString* kAppId = @"174754232546721";
 	expirationDate=nil;
 }
 
+
+- (void) addCommentToPhoto:(Picture*)picture comment:(NSString*)comment
+{
+	if(![facebook isSessionValid])
+	{
+		return;
+	}
+	// TODO
+	
+}
+
+- (void) likePhoto:(Picture*)picture
+{
+	if(![facebook isSessionValid])
+	{
+		return;
+	}
+	// TODO
+}
+
+
+
+
+
 - (void) showMyAlbums
 {
 	if(![facebook isSessionValid])

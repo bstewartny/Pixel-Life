@@ -1,6 +1,10 @@
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface PicturesScrollViewController : UIViewController {
+#define kLikeActionSheet 1
+#define kActionActionSheet 2
+
+@interface PicturesScrollViewController : UIViewController<MFMailComposeViewControllerDelegate> {
 	IBOutlet UIScrollView * scrollView;
 	NSArray * pictures;
 	NSMutableArray * picViews;
@@ -12,6 +16,11 @@
 	IBOutlet UILabel * infoDateLabel;
 	NSDateFormatter * format;
 	IBOutlet UIView * infoView;
+	IBOutlet UILabel * commentCountLabel;
+	UIPopoverController * addCommentPopover;
+	UIPopoverController * showCommentsPopover;
+	UIBarButtonItem * showCommentsButton;
+	BOOL cancelRemoveBars;
 	
 }
 @property(nonatomic,retain) NSArray * pictures;
@@ -23,5 +32,7 @@
 @property(nonatomic,retain) IBOutlet UILabel * infoUserLabel;
 @property(nonatomic,retain) IBOutlet UILabel * infoNameLabel;
 @property(nonatomic,retain) IBOutlet UILabel * infoDateLabel;
+@property(nonatomic,retain) IBOutlet UILabel * commentCountLabel;
 
+- (IBAction) showComments:(id)sender;
 @end

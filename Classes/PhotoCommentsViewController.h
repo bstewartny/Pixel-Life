@@ -1,22 +1,14 @@
 #import <UIKit/UIKit.h>
 
-@class Feed;
-
 @interface PhotoCommentsViewController : UIViewController {
 	IBOutlet UITableView * tableView;
-	UIView *loadingView;
-	NSArray * items;
-	Feed * feed;
-	UIActivityIndicatorView * spinningWheel;
+	NSArray * comments;
 }
-@property(nonatomic,retain)Feed * feed;
-@property(nonatomic,retain)NSArray * items;
+@property(nonatomic,retain)NSArray * comments;
 @property (nonatomic, retain) IBOutlet UITableView * tableView;
 
 - (void) reloadTable;
-- (id)initWithFeed:(Feed*)feed title:(NSString*)title;
-
+- (id)initWithComments:(NSArray*)comments title:(NSString*)title;
 - (IBAction) close:(id)sender;
-
 
 @end

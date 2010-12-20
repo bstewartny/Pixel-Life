@@ -2,7 +2,7 @@
 @class Facebook;
 
 @class PhotoExplorerViewController;
-
+@class Picture;
 @interface PhotoExplorerAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	NSOperationQueue * downloadQueue;
@@ -18,6 +18,11 @@
 @property(nonatomic,retain) Facebook * facebook;
 
 + (PhotoExplorerAppDelegate*) sharedAppDelegate;
+
+
+- (void) addCommentToPhoto:(Picture*)picture comment:(NSString*)comment;
+- (void) likePhoto:(Picture*)picture;
+
 
 @end
 

@@ -85,6 +85,10 @@
 		B0A13D4B12AB168A00999009 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A13D4A12AB168A00999009 /* GridView.xib */; };
 		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
+		B0DFB84012BE8B9A0051F301 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */; };
+		B0DFB84412BE8C870051F301 /* AddCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DFB84312BE8C870051F301 /* AddCommentView.xib */; };
+		B0DFB8FD12BEA4E30051F301 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DFB8FC12BEA4E30051F301 /* MessageUI.framework */; };
+		B0DFB91012BEA6C20051F301 /* FacebookGraphPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFB90F12BEA6C20051F301 /* FacebookGraphPost.m */; };
 		B0E978ED12B989D000721B33 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E978EC12B989D000721B33 /* icon.png */; };
 		B0E9794912BA5D1300721B33 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9794812BA5D1300721B33 /* FriendList.m */; };
 		B0E9794C12BA5EE600721B33 /* FacebookFriendListFriendFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9794B12BA5EE600721B33 /* FacebookFriendListFriendFeed.m */; };
@@ -96,6 +100,16 @@
 		B0E97A9012BA9FF800721B33 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */; };
 		B0E97AA612BAA5B900721B33 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */; };
 		B0E97AA912BAA7A300721B33 /* PhotoCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */; };
+		B0F9FCFB12BBEDCA00CF2F74 /* icon_comment_add.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */; };
+		B0F9FCFC12BBEDCA00CF2F74 /* icon_comment_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */; };
+		B0F9FD0012BBEDEE00CF2F74 /* icon_favorities_add.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCFD12BBEDEE00CF2F74 /* icon_favorities_add.png */; };
+		B0F9FD0112BBEDEE00CF2F74 /* icon_favorities_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCFE12BBEDEE00CF2F74 /* icon_favorities_remove.png */; };
+		B0F9FD0212BBEDEE00CF2F74 /* icon_favorities.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCFF12BBEDEE00CF2F74 /* icon_favorities.png */; };
+		B0F9FD0412BBEE4E00CF2F74 /* icon_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FD0312BBEE4E00CF2F74 /* icon_settings.png */; };
+		B0F9FD0612BBEE6700CF2F74 /* icon_star.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FD0512BBEE6700CF2F74 /* icon_star.png */; };
+		B0F9FD3512BBF10000CF2F74 /* BlankToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F9FD3412BBF10000CF2F74 /* BlankToolbar.m */; };
+		B0F9FE2F12BDA07100CF2F74 /* AddCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F9FE2E12BDA07100CF2F74 /* AddCommentTableViewCell.m */; };
+		B0F9FE3112BDA10E00CF2F74 /* AddCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FE3012BDA10E00CF2F74 /* AddCommentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,6 +267,12 @@
 		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
 		B0A8188112B076890096162D /* AlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewCell.m; sourceTree = "<group>"; };
+		B0DFB83E12BE8B9A0051F301 /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
+		B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
+		B0DFB84312BE8C870051F301 /* AddCommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentView.xib; sourceTree = "<group>"; };
+		B0DFB8FC12BEA4E30051F301 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B0DFB90E12BEA6C20051F301 /* FacebookGraphPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookGraphPost.h; sourceTree = "<group>"; };
+		B0DFB90F12BEA6C20051F301 /* FacebookGraphPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookGraphPost.m; sourceTree = "<group>"; };
 		B0E978EC12B989D000721B33 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		B0E9794712BA5D1300721B33 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
 		B0E9794812BA5D1300721B33 /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
@@ -272,6 +292,18 @@
 		B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotoCommentsView.xib; path = Classes/PhotoCommentsView.xib; sourceTree = "<group>"; };
+		B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_comment_add.png; sourceTree = "<group>"; };
+		B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_comment_ok.png; sourceTree = "<group>"; };
+		B0F9FCFD12BBEDEE00CF2F74 /* icon_favorities_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_favorities_add.png; sourceTree = "<group>"; };
+		B0F9FCFE12BBEDEE00CF2F74 /* icon_favorities_remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_favorities_remove.png; sourceTree = "<group>"; };
+		B0F9FCFF12BBEDEE00CF2F74 /* icon_favorities.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_favorities.png; sourceTree = "<group>"; };
+		B0F9FD0312BBEE4E00CF2F74 /* icon_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_settings.png; sourceTree = "<group>"; };
+		B0F9FD0512BBEE6700CF2F74 /* icon_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_star.png; sourceTree = "<group>"; };
+		B0F9FD3312BBF10000CF2F74 /* BlankToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankToolbar.h; sourceTree = "<group>"; };
+		B0F9FD3412BBF10000CF2F74 /* BlankToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankToolbar.m; sourceTree = "<group>"; };
+		B0F9FE2D12BDA07100CF2F74 /* AddCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentTableViewCell.h; sourceTree = "<group>"; };
+		B0F9FE2E12BDA07100CF2F74 /* AddCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentTableViewCell.m; sourceTree = "<group>"; };
+		B0F9FE3012BDA10E00CF2F74 /* AddCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +319,7 @@
 				B087D87712AA8D34008259E9 /* MobileCoreServices.framework in Frameworks */,
 				B087D87912AA8D4C008259E9 /* libz.1.2.3.dylib in Frameworks */,
 				B03C72EB12AAF1590055AD00 /* QuartzCore.framework in Frameworks */,
+				B0DFB8FD12BEA4E30051F301 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +385,8 @@
 				B048289712AD5EA800F61433 /* PicturesScrollView.xib */,
 				B02CD22612B9559A00D4407C /* PictureCaptionView.xib */,
 				B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */,
+				B0F9FE3012BDA10E00CF2F74 /* AddCommentTableViewCell.xib */,
+				B0DFB84312BE8C870051F301 /* AddCommentView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -362,6 +397,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				B0DFB8FC12BEA4E30051F301 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -479,6 +515,10 @@
 				B0E97A7712BA9D6700721B33 /* PhotoCommentsViewController.m */,
 				B0E97A8E12BA9FF800721B33 /* CommentTableViewCell.h */,
 				B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */,
+				B0F9FE2D12BDA07100CF2F74 /* AddCommentTableViewCell.h */,
+				B0F9FE2E12BDA07100CF2F74 /* AddCommentTableViewCell.m */,
+				B0DFB83E12BE8B9A0051F301 /* AddCommentViewController.h */,
+				B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -526,6 +566,8 @@
 				B0E97A6512BA972B00721B33 /* Comment.m */,
 				B0E97A6712BA97F800721B33 /* FacebookPhotoCommentsFeed.h */,
 				B0E97A6812BA97F800721B33 /* FacebookPhotoCommentsFeed.m */,
+				B0DFB90E12BEA6C20051F301 /* FacebookGraphPost.h */,
+				B0DFB90F12BEA6C20051F301 /* FacebookGraphPost.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -541,6 +583,8 @@
 				B087DA5E12AAE86D008259E9 /* UIImage+RoundedCorner.h */,
 				B087DA5112AAE792008259E9 /* UIImage+Resize.m */,
 				B087DA5212AAE792008259E9 /* UIImage+Resize.h */,
+				B0F9FD3312BBF10000CF2F74 /* BlankToolbar.h */,
+				B0F9FD3412BBF10000CF2F74 /* BlankToolbar.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -596,6 +640,13 @@
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B0F9FD0512BBEE6700CF2F74 /* icon_star.png */,
+				B0F9FD0312BBEE4E00CF2F74 /* icon_settings.png */,
+				B0F9FCFD12BBEDEE00CF2F74 /* icon_favorities_add.png */,
+				B0F9FCFE12BBEDEE00CF2F74 /* icon_favorities_remove.png */,
+				B0F9FCFF12BBEDEE00CF2F74 /* icon_favorities.png */,
+				B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */,
+				B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */,
 				B0E978EC12B989D000721B33 /* icon.png */,
 			);
 			name = Images;
@@ -660,6 +711,15 @@
 				B0E978ED12B989D000721B33 /* icon.png in Resources */,
 				B0E97AA612BAA5B900721B33 /* CommentTableViewCell.xib in Resources */,
 				B0E97AA912BAA7A300721B33 /* PhotoCommentsView.xib in Resources */,
+				B0F9FCFB12BBEDCA00CF2F74 /* icon_comment_add.png in Resources */,
+				B0F9FCFC12BBEDCA00CF2F74 /* icon_comment_ok.png in Resources */,
+				B0F9FD0012BBEDEE00CF2F74 /* icon_favorities_add.png in Resources */,
+				B0F9FD0112BBEDEE00CF2F74 /* icon_favorities_remove.png in Resources */,
+				B0F9FD0212BBEDEE00CF2F74 /* icon_favorities.png in Resources */,
+				B0F9FD0412BBEE4E00CF2F74 /* icon_settings.png in Resources */,
+				B0F9FD0612BBEE6700CF2F74 /* icon_star.png in Resources */,
+				B0F9FE3112BDA10E00CF2F74 /* AddCommentTableViewCell.xib in Resources */,
+				B0DFB84412BE8C870051F301 /* AddCommentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +801,10 @@
 				B0E97A6912BA97F800721B33 /* FacebookPhotoCommentsFeed.m in Sources */,
 				B0E97A7812BA9D6700721B33 /* PhotoCommentsViewController.m in Sources */,
 				B0E97A9012BA9FF800721B33 /* CommentTableViewCell.m in Sources */,
+				B0F9FD3512BBF10000CF2F74 /* BlankToolbar.m in Sources */,
+				B0F9FE2F12BDA07100CF2F74 /* AddCommentTableViewCell.m in Sources */,
+				B0DFB84012BE8B9A0051F301 /* AddCommentViewController.m in Sources */,
+				B0DFB91012BEA6C20051F301 /* FacebookGraphPost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

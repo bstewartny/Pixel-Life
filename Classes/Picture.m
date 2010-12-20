@@ -3,7 +3,7 @@
 #import "PhotoExplorerAppDelegate.h"
 
 @implementation Picture
-@synthesize image,imageURL,delegate,width,height,thumbnailURL,thumbnail,description;
+@synthesize image,imageURL,comments,delegate,width,height,thumbnailURL,thumbnail,description;
 
 - (BOOL) hasLoadedImage
 {
@@ -56,6 +56,22 @@
 	{
 		NSLog(@"Got image from cache...");
 	}
+	if([request isEqual:thumbnailRequest])
+	{
+		[thumbnailRequest release];
+		thumbnailRequest=nil;
+	}
+	if([request isEqual:imageRequest])
+	{
+		[imageRequest release];
+		imageRequest=nil;
+	}
+	if(dealloc_called)
+	{
+		NSLog(@"calling dealloc from imageRequestDone...");
+		[self dealloc];
+		return;
+	}
 	NSData *data = [request responseData];
     
 	UIImage *remoteImage = [[UIImage alloc] initWithData:data];
@@ -73,31 +89,59 @@
 	{
 		NSLog(@"Got thumbnail from cache...");
 	}
-	if([request isEqual:thumbnailRequest])
-	{
-		[thumbnailRequest release];
-		thumbnailRequest=nil;
-	}
-	if([request isEqual:imageRequest])
-	{
-		[imageRequest release];
-		imageRequest=nil;
-	}
+	
 	if(dealloc_called)
 	{
+		@try 
+		{
+			if([request isEqual:thumbnailRequest])
+			{
+				[thumbnailRequest release];
+				thumbnailRequest=nil;
+			}
+			else 
+			{
+				if([request isEqual:imageRequest])
+				{
+					[imageRequest release];
+					imageRequest=nil;
+				}
+			}
+		}
+		@catch (NSException * e) {
+			NSLog(@"Error releasing request in thumbnailRequestDone");
+		}
+		 
+		NSLog(@"calling dealloc from thumbnailRequestDone...");
 		[self dealloc];
 		return;
 	}
-	
-	NSData *data = [request responseData];
-    
-	UIImage *remoteImage = [[UIImage alloc] initWithData:data];
-    self.thumbnail = remoteImage;
-    if ([delegate respondsToSelector:@selector(picture:didLoadImage:)])
-    {
-        [delegate picture:self didLoadImage:remoteImage];
-    }
-    [remoteImage release];
+	else 
+	{
+		NSData *data = [request responseData];
+		
+		UIImage *remoteImage = [[UIImage alloc] initWithData:data];
+		self.thumbnail = remoteImage;
+		if ([delegate respondsToSelector:@selector(picture:didLoadImage:)])
+		{
+			[delegate picture:self didLoadImage:remoteImage];
+		}
+		[remoteImage release];
+		
+		if([request isEqual:thumbnailRequest])
+		{
+			[thumbnailRequest release];
+			thumbnailRequest=nil;
+		}
+		else 
+		{
+			if([request isEqual:imageRequest])
+			{
+				[imageRequest release];
+				imageRequest=nil;
+			}
+		}
+	}
 }
 
 - (void)requestWentWrong:(ASIHTTPRequest *)request
@@ -110,13 +154,18 @@
 		[thumbnailRequest release];
 		thumbnailRequest=nil;
 	}
-	if([request isEqual:imageRequest])
+	else 
 	{
-		[imageRequest release];
-		imageRequest=nil;
+		if([request isEqual:imageRequest])
+		{
+			[imageRequest release];
+			imageRequest=nil;
+		}
 	}
+
 	if(dealloc_called)
 	{
+		NSLog(@"calling dealloc from requestWentWrong...");
 		[self dealloc];
 		return;
 	}
@@ -157,12 +206,26 @@
 {
 	if(imageRequest)
 	{
+		NSLog(@"Picture.dealloc: imageRequest still exists, cancelling request...");
 		dealloc_called=YES;
+		@try {
+			[imageRequest cancel];
+		}
+		@catch (NSException * e) {
+			NSLog(@"Error calling imageRequest.cancel");
+		}
 		return;
 	}
 	if(thumbnailRequest)
 	{
+		NSLog(@"Picture.dealloc: thumbnailRequest still exists, cancelling request...");
 		dealloc_called=YES;
+		@try {
+			[thumbnailRequest cancel];
+		}
+		@catch (NSException * e) {
+			NSLog(@"Error calling thumbnailRequest.cancel");
+		}
 		return;
 	}
 	delegate=nil;
@@ -171,7 +234,8 @@
 	[thumbnail release];
 	[thumbnailURL release];
 	[description release];
-	
+	[comments release];
+	NSLog(@"Picture.dealloc completed...");
 	[super dealloc];
 }
 @end

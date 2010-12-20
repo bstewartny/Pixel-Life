@@ -208,11 +208,28 @@
 			label2.text=newPicture.description;
 			label3.text=[self shortDisplayDateWithPicture:newPicture];
 		}
+		else {
+			label2.text=[self shortDisplayDateWithPicture:newPicture];
+			
+		}
+/*
+		if([newPicture.comments count]>0)
+		{
+			if([newPicture.comments count]==1)
+			{
+				label2.text=@"1 comment"; //[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
+			}
+			else 
+			{
+				label2.text=[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
+			}
+			label3.text=[self shortDisplayDateWithPicture:newPicture];
+		}
 		else 
 		{
 			label2.text=[self shortDisplayDateWithPicture:newPicture];
 		}
-		
+		*/
 	}
 	else 
 	{
@@ -221,10 +238,26 @@
 			label1.text=newPicture.description;
 			label2.text=[self shortDisplayDateWithPicture:newPicture];
 		}
+		else {
+			label1.text=[self shortDisplayDateWithPicture:newPicture];
+			
+		}
+		/*if([newPicture.comments count]>0)
+		{
+			if([newPicture.comments count]==1)
+			{
+				label1.text=@"1 comment"; //[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
+			}
+			else 
+			{
+				label1.text=[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
+			}
+			label2.text=[self shortDisplayDateWithPicture:newPicture];
+		}
 		else 
 		{
 			label1.text=[self shortDisplayDateWithPicture:newPicture];
-		}
+		}*/
 	}
 }
 

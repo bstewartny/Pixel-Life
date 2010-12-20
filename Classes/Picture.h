@@ -16,12 +16,14 @@
 	ASIHTTPRequest *thumbnailRequest;
 	ASIHTTPRequest *imageRequest;
 	BOOL dealloc_called;
+	NSArray * comments;
 }
 @property(nonatomic,retain) NSString * imageURL;
 @property(nonatomic,retain) NSString * thumbnailURL;
 @property(nonatomic,retain) NSString * description;
 @property(nonatomic,retain) UIImage * image;
 @property(nonatomic,retain) UIImage * thumbnail;
+@property(nonatomic,retain) NSArray * comments;
 @property(nonatomic) NSInteger width;
 @property(nonatomic) NSInteger height;
 @property(nonatomic,assign) NSObject<PictureDelegate> * delegate;
