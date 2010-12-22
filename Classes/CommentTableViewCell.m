@@ -2,9 +2,55 @@
 #import "Comment.h"
 #import "Picture.h"
 #import "User.h"
-@implementation CommentTableViewCell
-@synthesize comment,userLabel,messageLabel,userImageView,scrollingWheel;
 
+#define kCellPadding 5
+#define kImageSize 50
+#define kUserLabelHeight 20
+#define kDateLabelHeight 20
+#define kUserLabelFontSize 17.0
+#define kDateLabelFontSize 14.0
+#define kMessageLabelFontSize 17.0
+
+@implementation CommentTableViewCell
+@synthesize comment,userLabel,messageLabel,userImageView,scrollingWheel,dateLabel;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+	if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
+	{
+		self.backgroundColor=[UIColor viewFlipsideBackgroundColor];
+		self.contentView.backgroundColor=[UIColor viewFlipsideBackgroundColor];
+		
+		userLabel=[[UILabel alloc] initWithFrame:CGRectZero];
+		userLabel.backgroundColor=[UIColor clearColor];
+		userLabel.font=[UIFont boldSystemFontOfSize:kUserLabelFontSize];
+		userLabel.textColor=[UIColor whiteColor];
+		
+		messageLabel=[[UILabel alloc] initWithFrame:CGRectZero];
+		messageLabel.backgroundColor=[UIColor clearColor];
+		messageLabel.font=[UIFont systemFontOfSize:kMessageLabelFontSize];
+		messageLabel.numberOfLines=20.0;
+		messageLabel.lineBreakMode=UILineBreakModeWordWrap;
+		messageLabel.textColor=[UIColor whiteColor];
+		
+		dateLabel=[[UILabel alloc] initWithFrame:CGRectZero];
+		dateLabel.backgroundColor=[UIColor clearColor];
+		dateLabel.font=[UIFont systemFontOfSize:kDateLabelFontSize];
+		dateLabel.textColor=[UIColor lightGrayColor];
+		
+		userImageView=[[UIImageView alloc] initWithFrame:CGRectZero];
+		scrollingWheel=[[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
+		scrollingWheel.hidesWhenStopped=YES;
+		scrollingWheel.activityIndicatorViewStyle=UIActivityIndicatorViewStyleGray;
+		
+		[self.contentView addSubview:userLabel];
+		[self.contentView addSubview:messageLabel];
+		[self.contentView addSubview:dateLabel];
+		[self.contentView addSubview:userImageView];
+	}
+	return self;
+	
+}
 - (void)setComment:(Comment *)newComment
 {
     if (newComment != comment)
@@ -18,9 +64,9 @@
         
 		NSDateFormatter * format = [[[NSDateFormatter alloc] init] autorelease];
 		[format setDateFormat:@"MMM d, yyyy"];
-		
+		userLabel.text=comment.user.name;
 		messageLabel.text=comment.message;
-		userLabel.text=[NSString stringWithFormat:@"by %@ on %@",comment.user.name,[format stringFromDate:comment.created_date]];
+		dateLabel.text=[NSString stringWithFormat:@"on %@",[format stringFromDate:comment.created_date]];
 		
         if (comment.picture != nil)
         {
@@ -42,36 +88,40 @@
 - (void) layoutSubviews
 {
 	[super layoutSubviews];
-	
-	self.userImageView.frame=CGRectMake(5,7, 50,50);  
-	
-	CGFloat message_height=[CommentTableViewCell heightForMessage:self.comment.message withWidth:self.messageLabel.frame.size.width];
 
-	NSLog(@"message_height in layoutSubviews: %f",message_height);
+	CGFloat cellWidth=self.frame.size.width;
 	
-	self.messageLabel.frame=CGRectMake(60, 7, self.messageLabel.frame.size.width, message_height);
+	self.userImageView.frame=CGRectMake(kCellPadding,kCellPadding, kImageSize,kImageSize);  
+	self.scrollingWheel.frame=CGRectMake(kCellPadding+((kImageSize-20)/2),kCellPadding+((kImageSize-20)/2), 20,20);  
+	
+	CGFloat labelsLeft=kImageSize + (2*kCellPadding);
+	CGFloat labelsWidth=cellWidth - (labelsLeft + (2*kCellPadding));
+	CGFloat message_height=[CommentTableViewCell heightForMessage:self.comment.message withWidth:labelsWidth];
 
-	self.userLabel.frame=CGRectMake(60,7+message_height+3,self.userLabel.frame.size.width,self.userLabel.frame.size.height);
+	self.userLabel.frame=CGRectMake(labelsLeft, kCellPadding, labelsWidth, kUserLabelHeight );
+	
+	self.messageLabel.frame=CGRectMake(labelsLeft, kCellPadding+kUserLabelHeight+kCellPadding, labelsWidth, message_height);
+
+	self.dateLabel.frame=CGRectMake(labelsLeft,kCellPadding+kUserLabelHeight+kCellPadding+message_height+kCellPadding,labelsWidth,kDateLabelHeight);
 }
 	
 + (CGFloat) heightForMessage:(NSString*)message withWidth:(CGFloat)width
 {
-	NSLog(@"heightForMessage: %f",width);
 	CGSize constraint=CGSizeMake(width, 20000.0);
 	
-	CGSize size=[message sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+	CGSize size=[message sizeWithFont:[UIFont systemFontOfSize:kMessageLabelFontSize] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
 				 
 	return size.height;
 }
 				 
-+ (CGFloat) cellHeightForComment:(Comment*)comment
++ (CGFloat) cellHeightForComment:(Comment*)comment withCellWidth:(CGFloat)cellWidth
 {
-	CGFloat message_height=[CommentTableViewCell heightForMessage:comment.message withWidth:240];
+	CGFloat labelsLeft=kImageSize + (2*kCellPadding);
+	CGFloat labelsWidth=cellWidth - (labelsLeft + (2*kCellPadding));
+	CGFloat message_height=[CommentTableViewCell heightForMessage:comment.message withWidth:labelsWidth];
 	
-	NSLog(@"message_height in cellHeightForComment: %f",message_height);
-	
-	CGFloat height=message_height + 7 + 25;
-	
+	// height of other labels and padding above and below message label
+	CGFloat height=kCellPadding + kUserLabelHeight + kCellPadding + message_height + kCellPadding + kDateLabelHeight + kCellPadding;	
 	if(height>65.0)
 	{
 		return height;
@@ -88,12 +138,13 @@
 	if(image!=nil)
 	{
 		[self finishedLoading];
+		[self setNeedsLayout];
 	}
-	[self setNeedsLayout];
 }
 
 - (void) load
 {
+	if(dealloc_called) return;
 	NSLog(@"load called on comment cell...");
 	// The getter in the Picture class is overloaded...!
     // If the image is not yet downloaded, it returns nil and 
@@ -111,12 +162,14 @@
 
 - (void)picture:(Picture *)picture didLoadImage:(UIImage *)image
 {
+	if(dealloc_called) return;
 	[self setImage:image];
 	[self finishedLoading];
 }
 
 - (void)picture:(Picture *)picture couldNotLoadImageError:(NSError *)error
 {
+	if(dealloc_called) return;
 	// Here we could show a "default" or "placeholder" image...
     [self finishedLoading];
 }
@@ -124,6 +177,7 @@
 - (void) startLoading
 {
 	[scrollingWheel startAnimating];
+	[self setNeedsLayout];
 }
 
 - (void) finishedLoading
@@ -134,12 +188,16 @@
 }
 
 - (void) dealloc
-{
+{	
+	dealloc_called=YES;
+	
 	[scrollingWheel release];
 	scrollingWheel=nil;
+	[comment.picture setDelegate:nil];
 	[comment release];
 	[userLabel release];
 	[userImageView release];
+	[dateLabel release];
 	[messageLabel release];
 	[super dealloc];
 }

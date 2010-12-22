@@ -5,7 +5,7 @@
 @interface FacebookFriendAlbumFeed : FacebookFeed {
 	Friend * friend;
 }
-@property(nonatomic,retain) Friend * friend;
+@property(nonatomic,assign) Friend * friend;
 
 - (id) initWithFacebook:(Facebook*)facebook friend:(Friend*)friend;
 

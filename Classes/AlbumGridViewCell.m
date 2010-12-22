@@ -126,6 +126,8 @@
 	layerView2.layer.shadowPath=[UIBezierPath bezierPathWithRect:layerView1.bounds].CGPath;
 	
 	imageView.image = image;
+	
+	[self setNeedsLayout];
 }
 
 - (void) dealloc

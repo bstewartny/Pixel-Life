@@ -9,7 +9,7 @@
 {
     static NSString * cellIdentifier = @"CellIdentifier";
 	
-    AlbumGridViewCell * photoCell = (AlbumGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
+    AlbumGridViewCell * photoCell = nil; //(AlbumGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
 		photoCell = [[[AlbumGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 224.0, 244.0)

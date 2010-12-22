@@ -7,7 +7,10 @@
 #import "BlankToolbar.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AddCommentViewController.h"
-
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "PhotoExplorerAppDelegate.h"
+#import "Facebook.h"
 
 @implementation PicturesScrollViewController
 @synthesize scrollView, toolbar,pictures,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
@@ -88,17 +91,21 @@
 		
 		[tools release];
 		
-		
-		
-		
-		
-		UITapGestureRecognizer * gr=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+		UITapGestureRecognizer * gr=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
 		
 		gr.numberOfTapsRequired=1;
 		
 		[self.scrollView addGestureRecognizer:gr];
 		
 		[gr release];
+		
+		UITapGestureRecognizer * gr2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+		
+		gr2.numberOfTapsRequired=2;
+		
+		[self.scrollView addGestureRecognizer:gr2];
+		
+		[gr2 release];
 		
 		format = [[NSDateFormatter alloc] init];
 		[format setDateFormat:@"MMM d, yyyy"];
@@ -111,9 +118,16 @@
 - (IBAction) showComments:(id)sender
 {
 	cancelRemoveBars=YES;
+	
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 	
-	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithComments:picture.comments title:@"Comments"];
+	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	
+	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebook:facebook  picture:picture];
+	
+	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments"];
+	
+	[feed release];
 	
 	if(showCommentsPopover==nil)
 	{
@@ -154,12 +168,65 @@
 }
 - (void) sendComment:(NSString*)comment
 {
+	[addCommentPopover dismissPopoverAnimated:YES];
 	if([comment length]>0)
 	{
 		// push to queue
+		ASIHTTPRequest *request = [self createCommentRequest:comment];  
+		if(request)
+		{
+			[request setDelegate:self];
+			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
+			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
+			NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+			[queue addOperation:request];
+			[request release];
+		}
 	}
-	[addCommentPopover dismissPopoverAnimated:YES];
 }
+- (ASIHTTPRequest*) createCommentRequest:(NSString*)message
+{
+	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
+
+	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	
+	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",picture.uid];
+	
+	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	
+	request.requestMethod=@"POST";
+	
+	[request addPostValue:facebook.accessToken forKey:@"access_token"];
+	[request addPostValue:message forKey:@"message"];
+	request.userInfo=[NSDictionary dictionaryWithObjectsAndKeys:picture,@"picture",nil];
+	
+	return request;
+}
+
+- (void)sendCommentRequestDone:(ASIHTTPRequest *)request
+{
+	NSLog(@"sendCommentRequestDone");
+	
+	Picture * picture=[request.userInfo objectForKey:@"picture"];
+	
+	if(picture)
+	{
+		picture.commentCount++;
+	}
+	
+	// refresh comments for picture...
+	[self updateInfoView];
+}
+
+- (void)sendCommentRequestWentWrong:(ASIHTTPRequest *)request
+{
+	NSError *error = [request error];
+
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error userInfo] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+}
+
 - (IBAction) addFavorite:(id)sender
 {
 	// add photo to users favorite items list
@@ -178,6 +245,53 @@
 	
 	[sheet release];
 }
+- (void) likePhoto
+{
+	// push to queue
+	ASIHTTPRequest *request = [self createLikeRequest];  
+	if(request)
+	{
+		[request setDelegate:self];
+		[request setDidFinishSelector:@selector(sendLikeRequestDone:)];
+		[request setDidFailSelector:@selector(sendLikeRequestWentWrong:)];
+		NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+		[queue addOperation:request];
+		[request release];
+	}	
+}
+
+- (ASIHTTPRequest*) createLikeRequest
+{
+	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
+	
+	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	
+	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",picture.uid];
+	
+	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	
+	request.requestMethod=@"POST";
+	
+	[request addPostValue:facebook.accessToken forKey:@"access_token"];
+	
+	return request;
+}
+
+- (void)sendLikeRequestDone:(ASIHTTPRequest *)request
+{
+	NSLog(@"sendCommentRequestDone");
+	
+	// refresh comments for picture...
+}
+
+- (void)sendLikeRequestWentWrong:(ASIHTTPRequest *)request
+{
+	NSError *error = [request error];
+	
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error liking photo" message:[error userInfo] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -186,6 +300,7 @@
 		if(buttonIndex==0)
 		{
 			// like on facebook
+			[self likePhoto];
 		}
 		/*if(buttonIndex==1)
 		{
@@ -245,9 +360,26 @@
 	}
 }
 
-- (void) doubleTap:(UIGestureRecognizer*)gr
+- (void) singleTap:(UIGestureRecognizer*)gr
 {
 	[self toggleNavigationBar];
+}
+- (void) doubleTap:(UIGestureRecognizer*)gr
+{
+	[self toggleZoom];
+}
+- (void) toggleZoom
+{
+	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
+	
+	if(picView.contentMode==UIViewContentModeScaleAspectFit)
+	{
+		picView.contentMode=UIViewContentModeScaleAspectFill;
+	}
+	else 
+	{
+		picView.contentMode=UIViewContentModeScaleAspectFit;
+	}
 }
 
 - (CGRect) getBounds
@@ -402,7 +534,7 @@
 	{
 		if(CGRectIntersectsRect(picView.frame, scrollView.bounds))
 		{
-			NSLog(@"Found intersection rect...");
+			NSLog(@"Found intersection rect...setting currentItemIndex=%d");
 			currentItemIndex=i;
 			[picView load];
 		}
@@ -454,21 +586,23 @@
 
 - (void) updateInfoView
 {
+	NSLog(@"updateInfoView: currentItemIndex=%d",currentItemIndex );
+		  
 	Picture * currentPicture=[pictures objectAtIndex:currentItemIndex];
 	
 	NSLog(@"updateInfoView: %@",currentPicture.name);
 	
 	infoNameLabel.text=currentPicture.name;
 	
-	if([currentPicture.comments count]>0)
+	if(currentPicture.commentCount>0)
 	{
-		if([currentPicture.comments count]==1)
+		if(currentPicture.commentCount==1)
 		{
 			infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@ - 1 comment",currentPicture.user.name,[format stringFromDate:currentPicture.created_date]];
 		}
 		else 
 		{
-			infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@ - %d comments",currentPicture.user.name,[format stringFromDate:currentPicture.created_date],[currentPicture.comments count]];
+			infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@ - %d comments",currentPicture.user.name,[format stringFromDate:currentPicture.created_date],currentPicture.commentCount];
 		}
 	}
 	else 
@@ -476,7 +610,10 @@
 		infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@",currentPicture.user.name,[format stringFromDate:currentPicture.created_date]];
 	}
 
-	if([[currentPicture.user picture] hasLoadedThumbnail])
+	infoImageView.picture=[currentPicture.user picture];
+	[infoImageView load];
+	
+	/*if([[currentPicture.user picture] hasLoadedThumbnail])
 	{
 		infoImageView.image=[[currentPicture.user picture] thumbnail];
 	}
@@ -490,9 +627,9 @@
 		{
 			infoImageView.image=nil;
 		}
-	}
+	}*/
 	
-	if ([currentPicture.comments count]>0) 
+	if (currentPicture.commentCount>0) 
 	{
 		showCommentsButton.enabled=YES;
 	}
@@ -500,7 +637,6 @@
 	{
 		showCommentsButton.enabled=NO;
 	}
-	//self.commentCountLabel.text=[NSString stringWithFormat:@"%d",[currentPicture.comments count]];
 }
 
 - (void) showInfoView
@@ -528,6 +664,7 @@
 	// show info view again because navigation bar will re-show if it was hidden...
 	[self showInfoView];
 }
+
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
 	if(popoverController==showCommentsPopover)
@@ -535,16 +672,18 @@
 		[showCommentsPopover release];
 		showCommentsPopover=nil;
 	}
-	else {
+	else 
+	{
 		if(popoverController==addCommentPopover)
 		{
 			[addCommentPopover release];
 			addCommentPopover=nil;
 		}
 	}
-
 }
-- (void)dealloc {
+
+- (void)dealloc 
+{
 	[pictures release];
 	[toolbar release];
 	[scrollView release];

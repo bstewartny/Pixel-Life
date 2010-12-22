@@ -5,7 +5,7 @@
 @interface FacebookPhotoCommentsFeed : FacebookFeed {
 	Picture * picture;
 }
-@property(nonatomic,retain) Picture * picture;
+@property(nonatomic,assign) Picture * picture;
 
 - (id) initWithFacebook:(Facebook*)facebook picture:(Picture*)picture;
 

@@ -15,7 +15,7 @@
 #import "FacebookFriendsAlbumsFeed.h"
 #import "FriendListsGridViewController.h"
 #import "FacebookFriendListsFeed.h"
-
+#import "ImageCache.h"
 // Your Facebook APP Id must be set before running this example
 // See http://www.facebook.com/developers/createapp.php
 // Also, your application must bind to the fb[app_id]:// URL
@@ -29,6 +29,7 @@ static NSString* kAppId = @"174754232546721";
 @synthesize downloadQueue;
 @synthesize navController;
 @synthesize facebook;
+@synthesize imageCache;
 
 + (PhotoExplorerAppDelegate *)sharedAppDelegate
 {
@@ -38,11 +39,13 @@ static NSString* kAppId = @"174754232546721";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
 	ASIDownloadCache * cache=[ASIDownloadCache sharedCache];
-	cache.shouldRespectCacheControlHeaders=NO;
+	cache.shouldRespectCacheControlHeaders=YES;
 	
 	[cache setDefaultCachePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy|ASIFallbackToCacheIfLoadFailsCachePolicy];
 	
 	[ASIHTTPRequest setDefaultCache:cache];
+	
+	imageCache=[[ImageCache alloc] init];
 	
 	downloadQueue = [[NSOperationQueue alloc] init];
 	
@@ -386,6 +389,7 @@ static NSString* kAppId = @"174754232546721";
 	[navController release];
 	[segmentedControl release];
 	[facebook release];
+	[imageCache release];
     [window release];
     [super dealloc];
 }

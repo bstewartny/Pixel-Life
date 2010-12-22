@@ -10,16 +10,14 @@
 #import "User.h"
 
 @implementation PhotoCommentsViewController
-@synthesize tableView,comments;
+@synthesize tableView;
 
-- (id)initWithComments:(NSArray*)comments title:(NSString*)title
+- (id)initWithFeed:(Feed*)feed title:(NSString*)title
 {
-    if(self=[super initWithNibName:@"PhotoCommentsView" bundle:nil])
+    if(self=[super initWithFeed:feed title:title withNibName:@"PhotoCommentsView"])
 	{
-		self.comments=comments;
-		self.navigationItem.title=title;
-		self.title=title;
-    }
+		tableView.backgroundColor=[UIColor viewFlipsideBackgroundColor];
+	}
     return self;
 }
 
@@ -28,28 +26,10 @@
 	[[self parentViewController] dismissModalViewControllerAnimated:YES]; 
 }
 
-- (void)showLoadingView
+- (void) reloadData
 {
-	//[spinningWheel startAnimating];
-	//[self.view bringSubviewToFront:spinningWheel];
-}
-
-- (void)hideLoadingView
-{
-	//[spinningWheel stopAnimating];
-	//[self.view sendSubviewToBack:spinningWheel];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
 	[tableView reloadData];
 	[self loadVisibleCells];
-}
-
-- (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation
-{
-    return YES;
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -81,67 +61,19 @@
 	}
 }
 
-- (UITableViewCell *)loadCellFromNibNamed:(NSString*)nib
-{
-	NSArray * topLevelObjects=[[NSBundle mainBundle] loadNibNamed:nib owner:nil options:nil];
-	
-	for(id currentObject in topLevelObjects)
-	{
-		if([currentObject isKindOfClass:[UITableViewCell class]])
-		{
-			return currentObject;
-		}
-	}
-	return nil;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//if(indexPath.row==[comments count])
-	//{
-	//if(indexPath.section==1)
-	//{
-	//	// add new comment row
-	//	AddCommentTableViewCell * cell=(AddCommentTableViewCell*)[self loadCellFromNibNamed:@"AddCommentTableViewCell"];
-	//	cell.selectionStyle=UITableViewCellSelectionStyleNone;
-	//	return cell;
-	//}
+	Comment * comment=[items objectAtIndex:indexPath.row];
 	
-	Comment * comment=[comments objectAtIndex:indexPath.row];
-	
-	/*UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-	
-	cell.backgroundColor=[UIColor viewFlipsideBackgroundColor];
-	
-	cell.imageView.image=[UIImage imageNamed:@"icon.png"];
-	
-	///cell.imageView.frame=CGRectMake(5,5,50,50);
-	//cell.imageView.autoresizingMask=UIViewAutoresizingFlexibleBottomMargin |
-	//								UIViewAutoresizingFlexibleRightMargin;	
-	
-	cell.textLabel.text=comment.user.name;
-	cell.textLabel.textColor=[UIColor whiteColor];
-	cell.textLabel.font=[UIFont boldSystemFontOfSize:14];
-	
-	//cell.detailTextLabel.text = @"Multi-Line\nText";
-	cell.detailTextLabel.textColor=[UIColor whiteColor];
-	cell.detailTextLabel.numberOfLines = 10;
-	cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-	
-	cell.detailTextLabel.text=comment.message;
-	
-	return cell;
-	*/
 	static NSString * cellIdentifier = @"CommentTableViewCellIdentifier";
 	
-	CommentTableViewCell * cell=(CommentTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	CommentTableViewCell * cell=nil;//(CommentTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	
 	if(cell==nil)
 	{
-		cell=(CommentTableViewCell*)[self loadCellFromNibNamed:@"CommentTableViewCell"];
+		cell=[[CommentTableViewCell alloc] initWithStyle:UITableViewStylePlain reuseIdentifier:cellIdentifier];
 		
 		cell.selectionStyle=UITableViewCellSelectionStyleNone;
-	
 	}
 	
 	cell.comment=comment;
@@ -151,7 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [comments count];
+	return [items count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -161,47 +93,31 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"heightForRowAtIndexPath");
+	Comment * comment=[items objectAtIndex:indexPath.row];
 	
-	CGFloat width=self.contentSizeForViewInPopover.width-80;
-	
-	Comment * comment=[comments objectAtIndex:indexPath.row];
-	
-	return [CommentTableViewCell cellHeightForComment:comment];
-	/*
-	CGSize constraint = CGSizeMake(width, 20000.0f);
-	
-	CGSize size=[comment.message sizeWithFont:[UIFont systemFontOfSize:17.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-	
-	NSLog(@"message: %@",comment.message);
-	
-	NSLog(@"system size=%@",NSStringFromCGSize(size));
-
-	CGSize size2=[comment.message sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-	
-	NSLog(@"helvetica size=%@",NSStringFromCGSize(size2));
-	
-	if(size.height>34.0)
-	{
-		CGFloat newHeight=size.height+32.0;
-		
-		NSLog(@"setting cell height to %f", newHeight);
-		
-		return newHeight;  
-	}
-	else 
-	{
-		return 65.0;
-	}*/
+	return [CommentTableViewCell cellHeightForComment:comment withCellWidth:self.contentSizeForViewInPopover.width];
 }
 
 - (CGSize) contentSizeForViewInPopover
 {
-	return CGSizeMake(320.0, 600);
+	/*if([items count]<4)
+	{
+		CGFloat height=0;
+		
+		for(Comment * comment in items)
+		{
+			height+=[CommentTableViewCell cellHeightForComment:comment withCellWidth:320.0];
+		}
+		
+		return CGSizeMake(320.0,height);
+	}
+	else 
+	{*/
+		return CGSizeMake(320.0, 600);
+	//}
 }
 
 - (void)dealloc {
-	[comments release];
 	[tableView release];
 	[super dealloc];
 }

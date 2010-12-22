@@ -5,7 +5,7 @@
 @interface FacebookAlbumPictureFeed : FacebookFeed {
 	Album * album;
 }
-@property(nonatomic,retain) Album * album;
+@property(nonatomic,assign) Album * album;
 
 - (id) initWithFacebook:(Facebook*)facebook album:(Album*)album;
 

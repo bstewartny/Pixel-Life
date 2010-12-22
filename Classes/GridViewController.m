@@ -5,126 +5,30 @@
 #import "GridViewCell.h"
 
 @implementation GridViewController
-@synthesize gridView,items,feed;
+@synthesize gridView;
 
 - (id)initWithFeed:(Feed*)feed title:(NSString*)title
 {
-    if(self=[super initWithNibName:@"GridView" bundle:nil])
+    if(self=[super initWithFeed:feed title:title withNibName:@"GridView"])
 	{
-		self.feed=feed;
-		self.feed.delegate=self;
-		self.navigationItem.title=title;
-		self.title=title;
+		self.gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+		self.gridView.autoresizesSubviews = YES;
+		self.gridView.delegate = self;
+		self.gridView.dataSource = self;
 		
-		CGRect bounds=[[UIScreen mainScreen] bounds];
-		
-		spinningWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(bounds.size.width/2-10, bounds.size.height/2-10, 20.0, 20.0)];
-		spinningWheel.contentMode=UIViewContentModeCenter;
-		spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-		spinningWheel.autoresizingMask=
-					UIViewAutoresizingFlexibleLeftMargin |  
-					UIViewAutoresizingFlexibleRightMargin  |
-					UIViewAutoresizingFlexibleTopMargin   |
-					UIViewAutoresizingFlexibleBottomMargin;
-		
-		spinningWheel.hidesWhenStopped=YES;
-		[spinningWheel stopAnimating];
-		
-		[self.view addSubview:spinningWheel];
-	
+		self.gridView.separatorStyle = AQGridViewCellSeparatorStyleEmptySpace;
+		self.gridView.resizesCellWidthToFit = NO;
+		self.gridView.separatorColor = nil;
+		self.gridView.backgroundColor=[UIColor blackColor];
     }
     return self;
 }
 
-- (void)reloadGrid
+- (void) reloadData
 {
-	// Check if the remote server is available
-    Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
-    PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
-	NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
-    if (remoteHostStatus == NotReachable)
-    {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-        NSString *msg = @"Facebook is not reachable! This requires Internet connectivity.";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Problem" 
-                                                        message:msg 
-                                                       delegate:nil 
-                                              cancelButtonTitle:@"OK" 
-                                              otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-        return;
-    }
-    else if (remoteHostStatus == ReachableViaWiFi)
-    {
-        [appDelegate.downloadQueue setMaxConcurrentOperationCount:4];
-    }
-    else if (remoteHostStatus == ReachableViaWWAN)
-    {
-        [appDelegate.downloadQueue setMaxConcurrentOperationCount:NSOperationQueueDefaultMaxConcurrentOperationCount];
-    }
-    
-    [self showLoadingView];
-	[feed fetch];
-}
-
-- (void)feed:(Feed *)feed didFindItems:(NSArray *)items 
-{
-	self.items=items;
 	[gridView reloadData];
 	[gridView updateVisibleGridCellsNow];
 	[self loadVisibleCells];
-	[self hideLoadingView];
-}
-
-- (void)feed:(Feed *)feed didFailWithError:(NSString *)errorMsg
-{
-	NSLog(@"didFailWithError: %@",errorMsg);
-    [self hideLoadingView];
-}
-
-- (void)showLoadingView
-{
-	[spinningWheel startAnimating];
-	[self.view bringSubviewToFront:spinningWheel];
-}
-
-- (void)hideLoadingView
-{
-	[spinningWheel stopAnimating];
-	[self.view sendSubviewToBack:spinningWheel];
-}
-
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-	self.gridView.autoresizesSubviews = YES;
-	self.gridView.delegate = self;
-	self.gridView.dataSource = self;
-    
-	self.gridView.separatorStyle = AQGridViewCellSeparatorStyleEmptySpace;
-	self.gridView.resizesCellWidthToFit = NO;
-	self.gridView.separatorColor = nil;
-	self.gridView.backgroundColor=[UIColor blackColor];
-	
-    [self.gridView reloadData];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-	if([items count]==0)
-	{
-		[self reloadGrid];
-	}
-}
-
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation
-{
-    return YES;
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -134,34 +38,34 @@
 
 - (IBAction) shuffle
 {
-    //NSMutableArray * sourceArray = [_imageNames mutableCopy];
-    //NSMutableArray * destArray = [[NSMutableArray alloc] initWithCapacity: [sourceArray count]];
+    NSMutableArray * sourceArray = [items mutableCopy];
+    NSMutableArray * destArray = [[NSMutableArray alloc] initWithCapacity: [sourceArray count]];
     
     [self.gridView beginUpdates];
     
-    /*srandom( time(NULL) );
-	 while ( [sourceArray count] != 0 )
-	 {
-	 NSUInteger index = (NSUInteger)(random() % [sourceArray count]);
-	 id item = [sourceArray objectAtIndex: index];
-	 
-	 // queue the animation
-	 [self.gridView moveItemAtIndex: [_imageNames indexOfObject: item]
-	 toIndex: [destArray count]
-	 withAnimation: AQGridViewItemAnimationFade];
-	 
-	 // modify source & destination arrays
-	 [destArray addObject: item];
-	 [sourceArray removeObjectAtIndex: index];
-	 }
-	 
-	 [_imageNames release];
-	 _imageNames = [destArray copy];
-	 */
-    [self.gridView endUpdates];
-   
-}
+    srandom( time(NULL) );
+	while ( [sourceArray count] != 0 )
+	{
+		NSUInteger index = (NSUInteger)(random() % [sourceArray count]);
+		id item = [sourceArray objectAtIndex: index];
+			
+		// queue the animation
+		[self.gridView moveItemAtIndex: [items indexOfObject: item]
+								toIndex: [destArray count]
+						 withAnimation: AQGridViewItemAnimationFade];
 
+		// modify source & destination arrays
+		[destArray addObject: item];
+		[sourceArray removeObjectAtIndex: index];
+	}
+
+	[items release];
+	items = [destArray copy];
+	 
+	[self.gridView endUpdates];
+	
+	[self loadVisibleCells];
+}
 
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
@@ -204,12 +108,8 @@
 }
 
 - (void)dealloc {
-	[items release];
-    [feed setDelegate:nil];
-    [feed release];
 	[gridView release];
-	[spinningWheel release];
-    [super dealloc];
+	[super dealloc];
 }
 
 

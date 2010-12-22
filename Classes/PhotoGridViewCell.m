@@ -29,12 +29,12 @@
 	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-28, frame.size.width-10, 14)];
 	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-14, frame.size.width-10, 14)];
 	
-	UIPinchGestureRecognizer * p=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
+	/*UIPinchGestureRecognizer * p=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
 	
 	[imageView addGestureRecognizer:p];
 	
 	[p release];
-	
+	*/
 	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];
@@ -125,6 +125,7 @@
 	}
 
 	imageView.image = image;
+	[self setNeedsLayout];
 }
 
 - (NSString*) shortDisplayDate:(NSDate*)date

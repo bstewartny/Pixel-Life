@@ -52,7 +52,11 @@
 		
 		if(comments_dict)
 		{
-			NSMutableArray * comments=[[NSMutableArray alloc] init];
+			//NSMutableArray * comments=[[NSMutableArray alloc] init];
+			NSArray * comments=[comments_dict objectForKey:@"data"];
+			
+			picture.commentCount=[comments count];
+			/*
 			for(NSDictionary * c in [comments_dict objectForKey:@"data"])
 			{
 		
@@ -61,12 +65,6 @@
 				comment.uid=[c objectForKey:@"id"];
 				comment.name=[c objectForKey:@"message"];
 				comment.message=comment.name;
-				
-				// test long message
-				/*for(int i=0;i<2;i++)
-				{
-					comment.message=[comment.message stringByAppendingFormat:@" %@",comment.message];    //       @"Hey that is a nice picture!!!!  When can we get together soon to have a play date!?  See ya :$#$$#$#$#. Blahd ldflsjf alsdkfja dksfjal sfasdf ";
-				}*/
 				
 				comment.created_date=[self dateFromString:[c objectForKey:@"created_time"]];
 				comment.updated_date=comment.created_date;
@@ -90,32 +88,27 @@
 				
 				[user release];
 				
-				// test: add lots of comments...
-				for(int i=0;i<10;i++)
-				{
-					[comments addObject:comment];
-				}
+				[comments addObject:comment];
+				
 				[comment release];
 			}
 			
 			picture.comments=comments;
 			
-			[comments release];
+			[comments release];*/
 		}
 		
-		if([picture.comments count]>0)
+		if(picture.commentCount>0)
 		{
-			if([picture.comments count]==1)
+			if(picture.commentCount==1)
 			{
-				picture.description=@"1 comment"; //[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
+				picture.description=@"1 comment";
 			}
 			else 
 			{
-				picture.description=[NSString stringWithFormat:@"%d comments",[picture.comments count]];
+				picture.description=[NSString stringWithFormat:@"%d comments",picture.commentCount];
 			}
 		}
-		
-		
 		
 		[pictures addObject:picture];
 		
@@ -127,7 +120,7 @@
 
 - (void) dealloc
 {
-	[album release];
+	//[album release];
 	[super dealloc];
 }
 

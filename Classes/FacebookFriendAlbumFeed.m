@@ -34,7 +34,24 @@
 		
 		Album  * album=[[Album alloc] init];
 		
-		album.user=friend;
+		if(friend)
+		{
+			album.user=friend;
+		}
+		else 
+		{
+			Friend * fr=[[Friend alloc] init];
+			fr.name=[[d objectForKey:@"from"] objectForKey:@"name"];
+			fr.uid=[[d objectForKey:@"from"] objectForKey:@"id"];
+			Picture * pic=[[Picture alloc] init];
+			pic.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture?type=large",fr.uid]];
+			pic.imageURL=pic.thumbnailURL;
+			fr.picture=pic;
+			[pic release];
+			album.user=fr;
+			[fr release];
+		}
+
 		album.uid=[d objectForKey:@"id"];
 		album.name=[d objectForKey:@"name"];
 		album.url=[d objectForKey:@"link"];
@@ -49,7 +66,7 @@
 		picture.name=album.name;
 		
 		picture.description=[NSString stringWithFormat:@"%d photos",album.count];
-		picture.user=album.user;
+		//picture.user=album.user;
 		picture.created_date=album.created_date;
 		picture.updated_date=album.updated_date;
 		
@@ -72,7 +89,7 @@
 
 - (void) dealloc
 {
-	[friend release];
+	//[friend release];
 	[super dealloc];
 }
 

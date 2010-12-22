@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
+#import "FeedViewController.h"
 
-@interface PhotoCommentsViewController : UIViewController {
+@interface PhotoCommentsViewController : FeedViewController {
 	IBOutlet UITableView * tableView;
 	NSArray * comments;
 }
-@property(nonatomic,retain)NSArray * comments;
 @property (nonatomic, retain) IBOutlet UITableView * tableView;
 
 - (void) reloadTable;

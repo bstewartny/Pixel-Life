@@ -69,7 +69,7 @@
 
 - (void) dealloc
 {
-	[picture release];
+	//[picture release];
 	[super dealloc];
 }
 @end

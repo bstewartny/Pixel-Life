@@ -30,6 +30,10 @@
 - (void) setImage:(UIImage*)image
 {
 	imageView.image = image;
+	if(image!=nil)
+	{
+		[self setNeedsLayout];
+	}
 }
 
 - (void)setPictureLabels:(Picture *)newPicture

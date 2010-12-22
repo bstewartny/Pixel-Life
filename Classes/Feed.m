@@ -16,6 +16,7 @@
 	ASIHTTPRequest *request = [self createFetchRequest]; //[[ASIHTTPRequest alloc] initWithURL:url];
     if(request)
 	{
+		NSLog(@"Fetching feed: %@",[request.url description]);
 		[request setDelegate:self];
 		[request setDidFinishSelector:@selector(requestDone:)];
 		[request setDidFailSelector:@selector(requestWentWrong:)];
@@ -39,7 +40,7 @@
 {
 	if([request didUseCachedResponse])
 	{
-		NSLog(@"Got response from cache...");
+		NSLog(@"Got response from cache for: %@",[request.url description]);
 	}
 
     NSData *data = [request responseData];

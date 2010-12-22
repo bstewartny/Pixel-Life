@@ -10,7 +10,7 @@
 {
     static NSString * cellIdentifier = @"CellIdentifier";
    
-    PhotoGridViewCell * photoCell = (PhotoGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
+    PhotoGridViewCell * photoCell = nil; //(PhotoGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
 		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 168.0, 168.0)

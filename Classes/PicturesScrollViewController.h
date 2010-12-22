@@ -3,14 +3,14 @@
 
 #define kLikeActionSheet 1
 #define kActionActionSheet 2
-
+@class PictureImageView;
 @interface PicturesScrollViewController : UIViewController<MFMailComposeViewControllerDelegate> {
 	IBOutlet UIScrollView * scrollView;
 	NSArray * pictures;
 	NSMutableArray * picViews;
 	NSInteger currentItemIndex;
 	IBOutlet UIToolbar * toolbar;
-	IBOutlet UIImageView * infoImageView;
+	IBOutlet PictureImageView * infoImageView;
 	IBOutlet UILabel * infoUserLabel;
 	IBOutlet UILabel * infoNameLabel;
 	IBOutlet UILabel * infoDateLabel;

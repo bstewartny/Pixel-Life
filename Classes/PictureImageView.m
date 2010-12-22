@@ -16,7 +16,7 @@
 	scrollingWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 	scrollingWheel.hidesWhenStopped = YES;
 	[scrollingWheel stopAnimating];
-	
+	self.clipsToBounds=YES;
 	self.contentMode=UIViewContentModeScaleAspectFit;
 	self.backgroundColor=[UIColor blackColor];
 	

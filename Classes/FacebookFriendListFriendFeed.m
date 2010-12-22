@@ -38,7 +38,7 @@
 
 - (void) dealloc
 {
-	[friendList release];
+	//[friendList release];
 	[super dealloc];
 }
 
