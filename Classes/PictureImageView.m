@@ -54,7 +54,8 @@
 	{
 		self.image=picture.thumbnail;
 	}
-	[picture setImage:nil];
+	[picture unloadImage];
+	//[picture setImage:nil];
 }
 
 - (void)picture:(Picture *)picture didLoadImage:(UIImage *)img

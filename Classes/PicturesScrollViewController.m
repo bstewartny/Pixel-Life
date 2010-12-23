@@ -117,6 +117,11 @@
 
 - (IBAction) showComments:(id)sender
 {
+	if(showCommentsPopover)
+	{
+		return;
+	}
+	
 	cancelRemoveBars=YES;
 	
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
@@ -129,15 +134,9 @@
 	
 	[feed release];
 	
-	if(showCommentsPopover==nil)
-	{
-		showCommentsPopover=[[UIPopoverController alloc] initWithContentViewController:controller];
-		showCommentsPopover.delegate=self;
-	}
-	else 
-	{
-		showCommentsPopover.contentViewController=controller;
-	}
+	showCommentsPopover=[[UIPopoverController alloc] initWithContentViewController:controller];
+	
+	showCommentsPopover.delegate=self;
 	
 	[showCommentsPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 	
@@ -146,21 +145,20 @@
 
 - (IBAction) addComment:(id)sender
 {
+	if(addCommentPopover)
+	{
+		return;
+	}
+	
 	cancelRemoveBars=YES;
+	
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 
 	AddCommentViewController * controller=[[AddCommentViewController alloc] initWithPicture:picture];
 	controller.delegate=self;
-	if(addCommentPopover==nil)
-	{
-		addCommentPopover=[[UIPopoverController alloc] initWithContentViewController:controller];
-		addCommentPopover.delegate=self;
-		 
-	}
-	else 
-	{
-		addCommentPopover.contentViewController=controller;
-	}
+	 
+	addCommentPopover=[[UIPopoverController alloc] initWithContentViewController:controller];
+	addCommentPopover.delegate=self;
 	
 	[addCommentPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 	

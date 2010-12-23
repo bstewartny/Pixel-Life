@@ -22,6 +22,7 @@
 		self.feed.delegate=self;
 		self.navigationItem.title=title;
 		self.title=title;
+		self.view.backgroundColor=[UIColor blackColor];
 		
 		CGRect bounds=[[UIScreen mainScreen] bounds];
 		
@@ -29,11 +30,11 @@
 		spinningWheel.contentMode=UIViewContentModeCenter;
 		spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 		spinningWheel.autoresizingMask=
-		UIViewAutoresizingFlexibleLeftMargin |  
-		UIViewAutoresizingFlexibleRightMargin  |
-		UIViewAutoresizingFlexibleTopMargin   |
-		UIViewAutoresizingFlexibleBottomMargin;
-		
+			UIViewAutoresizingFlexibleLeftMargin |  
+			UIViewAutoresizingFlexibleRightMargin  |
+			UIViewAutoresizingFlexibleTopMargin   |
+			UIViewAutoresizingFlexibleBottomMargin;
+			
 		spinningWheel.hidesWhenStopped=YES;
 		[spinningWheel stopAnimating];
 		

@@ -1,11 +1,3 @@
-//
-//  AsyncImage.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/22/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "AsyncImage.h"
 #import "ASIHTTPRequest.h"
 #import "PhotoExplorerAppDelegate.h"
@@ -23,31 +15,19 @@
 	}
 }
 
-- (UIImage*) getImageFromCacheWithUrl:(NSString*)url
+- (UIImage*) getImageFromCacheWithUrl:(NSString*)withUrl
 {
-	return [[[PhotoExplorerAppDelegate sharedAppDelegate] imageCache] imageForUrl:url];
+	return [[[PhotoExplorerAppDelegate sharedAppDelegate] imageCache] imageForUrl:withUrl];
 }
 
-- (void) addImageToCache:(UIImage*)image withUrl:(NSString*)url
+- (void) addImageToCache:(UIImage*)image withUrl:(NSString*)withUrl
 {
-	[[[PhotoExplorerAppDelegate sharedAppDelegate] imageCache] setImage:image forUrl:url];
+	[[[PhotoExplorerAppDelegate sharedAppDelegate] imageCache] setImage:image forUrl:withUrl];
 }
 
 - (BOOL) hasLoadedImage
 {
 	return (image!=nil);
-}
-
-- (void) setImage:(UIImage *)newImage
-{
-	@synchronized(self)
-	{
-		if(newImage!=image)
-		{
-			[image release];
-			image=[newImage retain];
-		}
-	}
 }
 
 - (UIImage*)image
@@ -62,14 +42,10 @@
 				self.image=cachedImage;
 				return cachedImage;
 			}
-			if(!downloadFailed)
-			{
-				NSURL * url=[NSURL URLWithString:self.url];
-				[self loadImage:url];
-			}
+			[self loadImage:[NSURL URLWithString:self.url]];
 		}
 	}
-	
+
 	return image;
 }
 
@@ -81,25 +57,34 @@
 		{
 			NSLog(@"Got image from cache...");
 		}
+		
 		if(dealloc_called)
 		{
 			[self releaseRequest:request];
+			
 			NSLog(@"calling dealloc from imageRequestDone...");
+		
 			[self dealloc];
-			return;
 		}
-		NSData *data = [request responseData];
-		
-		UIImage *remoteImage = [[UIImage alloc] initWithData:data];
-		self.image = remoteImage;
-		[self addImageToCache:remoteImage withUrl:self.url];
-		if ([delegate respondsToSelector:@selector(picture:didLoadImage:)])
+		else 
 		{
-			[delegate picture:self didLoadImage:remoteImage];
+			NSData *data = [request responseData];
+			
+			UIImage *remoteImage = [[UIImage alloc] initWithData:data];
+			
+			self.image = remoteImage;
+			
+			[self addImageToCache:remoteImage withUrl:self.url];
+			
+			if ([delegate respondsToSelector:@selector(image:didLoadImage:)])
+			{
+				[delegate image:self didLoadImage:remoteImage];
+			}
+			
+			[remoteImage release];
+			
+			[self releaseRequest:request];
 		}
-		[remoteImage release];
-		
-		[self releaseRequest:request];
 	}
 }
 
@@ -124,7 +109,6 @@
 {
 	@synchronized(self)
 	{
-		//downloadFailed=YES;
 		NSError *error = [request error];
 		
 		[self releaseRequest:request];
@@ -133,12 +117,13 @@
 		{
 			NSLog(@"calling dealloc from requestWentWrong...");
 			[self dealloc];
-			return;
 		}
-		
-		if ([delegate respondsToSelector:@selector(picture:couldNotLoadImageError:)])
+		else 
 		{
-			[delegate picture:self couldNotLoadImageError:error];
+			if ([delegate respondsToSelector:@selector(image:couldNotLoadImageError:)])
+			{
+				[delegate image:self couldNotLoadImageError:error];
+			}
 		}
 	}
 }
@@ -156,17 +141,14 @@
 			{
 				[delegate picture:self didLoadImage:cachedImage];
 			}
-			return;
 		}
-		
-		if(downloadFailed) return;
-		
-		if(imageRequest)
+		else 
 		{
-			// already submitted...
-			return;
+			if(imageRequest==nil) // otherwise request already submitted...
+			{
+				imageRequest = [self createAndSubmitImageRequest:url];
+			}
 		}
-		imageRequest = [self createAndSubmitImageRequest:url];
 	}
 }
 
@@ -202,14 +184,15 @@
 	{
 		NSLog(@"Picture.dealloc: imageRequest still exists, cancelling request...");
 		[self cancelRequest:imageRequest];
-		return;
 	}
-	delegate=nil;
-	[image release];
-	[url release];
-	NSLog(@"AsyncImage.dealloc completed...");
-	[super dealloc];
-}
-
+	else 
+	{
+		delegate=nil;
+		[image release];
+		[url release];
+		NSLog(@"AsyncImage.dealloc completed...");
+		[super dealloc];
+	}
+}  
 
 @end

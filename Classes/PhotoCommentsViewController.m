@@ -77,7 +77,7 @@
 	}
 	
 	cell.comment=comment;
-	
+	[cell load];
 	return cell;
 }
 

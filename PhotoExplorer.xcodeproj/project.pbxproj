@@ -38,7 +38,6 @@
 		B048264D12AD24D600F61433 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B048264C12AD24D600F61433 /* User.m */; };
 		B048267E12AD2BC200F61433 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = B048267D12AD2BC200F61433 /* Friend.m */; };
 		B048268412AD306100F61433 /* FriendsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B048268312AD306100F61433 /* FriendsGridViewController.m */; };
-		B048271712AD38AF00F61433 /* PictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B048271612AD38AF00F61433 /* PictureViewController.m */; };
 		B048271C12AD3B2A00F61433 /* PictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B048271B12AD3B2A00F61433 /* PictureView.xib */; };
 		B048286E12AD579100F61433 /* PicturesScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B048286D12AD579100F61433 /* PicturesScrollViewController.m */; };
 		B048287112AD5A0B00F61433 /* PictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B048287012AD5A0B00F61433 /* PictureImageView.m */; };
@@ -174,8 +173,6 @@
 		B048267D12AD2BC200F61433 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		B048268212AD306100F61433 /* FriendsGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsGridViewController.h; sourceTree = "<group>"; };
 		B048268312AD306100F61433 /* FriendsGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsGridViewController.m; sourceTree = "<group>"; };
-		B048271512AD38AF00F61433 /* PictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureViewController.h; sourceTree = "<group>"; };
-		B048271612AD38AF00F61433 /* PictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureViewController.m; sourceTree = "<group>"; };
 		B048271B12AD3B2A00F61433 /* PictureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureView.xib; sourceTree = "<group>"; };
 		B048286C12AD579100F61433 /* PicturesScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicturesScrollViewController.h; sourceTree = "<group>"; };
 		B048286D12AD579100F61433 /* PicturesScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicturesScrollViewController.m; sourceTree = "<group>"; };
@@ -267,6 +264,7 @@
 		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
 		B0A8188112B076890096162D /* AlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewCell.m; sourceTree = "<group>"; };
+		B0B8A87B12C382ED00F1924C /* AsyncImageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageDelegate.h; sourceTree = "<group>"; };
 		B0DFB83E12BE8B9A0051F301 /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
 		B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		B0DFB84312BE8C870051F301 /* AddCommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentView.xib; sourceTree = "<group>"; };
@@ -492,8 +490,6 @@
 				B04825E012ABD78900F61433 /* GridViewCell.m */,
 				B048268212AD306100F61433 /* FriendsGridViewController.h */,
 				B048268312AD306100F61433 /* FriendsGridViewController.m */,
-				B048271512AD38AF00F61433 /* PictureViewController.h */,
-				B048271612AD38AF00F61433 /* PictureViewController.m */,
 				B048286C12AD579100F61433 /* PicturesScrollViewController.h */,
 				B048286D12AD579100F61433 /* PicturesScrollViewController.m */,
 				B048286F12AD5A0B00F61433 /* PictureImageView.h */,
@@ -563,6 +559,7 @@
 				B0E97A6812BA97F800721B33 /* FacebookPhotoCommentsFeed.m */,
 				B02D83FF12C28AC800D34BD8 /* AsyncImage.h */,
 				B02D840012C28AC800D34BD8 /* AsyncImage.m */,
+				B0B8A87B12C382ED00F1924C /* AsyncImageDelegate.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -765,7 +762,6 @@
 				B048264D12AD24D600F61433 /* User.m in Sources */,
 				B048267E12AD2BC200F61433 /* Friend.m in Sources */,
 				B048268412AD306100F61433 /* FriendsGridViewController.m in Sources */,
-				B048271712AD38AF00F61433 /* PictureViewController.m in Sources */,
 				B048286E12AD579100F61433 /* PicturesScrollViewController.m in Sources */,
 				B048287112AD5A0B00F61433 /* PictureImageView.m in Sources */,
 				B04828EA12AD656900F61433 /* NSObject+SBJSON.m in Sources */,

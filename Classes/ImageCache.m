@@ -25,7 +25,7 @@
 	if(url==nil) return nil;
 	@synchronized(cache)
 	{
-		return nil;//(UIImage*)[cache objectForKey:url];
+		return (UIImage*)[cache objectForKey:url];
 	}
 }
 
@@ -38,7 +38,7 @@
 		{
 			@synchronized(cache)
 			{
-				//[cache setObject:image forKey:url];
+				[cache setObject:image forKey:url];
 			}
 		}
 	}

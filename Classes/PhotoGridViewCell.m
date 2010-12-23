@@ -29,13 +29,6 @@
 	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-28, frame.size.width-10, 14)];
 	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-14, frame.size.width-10, 14)];
 	
-	/*UIPinchGestureRecognizer * p=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
-	
-	[imageView addGestureRecognizer:p];
-	
-	[p release];
-	*/
-	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];
 	[self.contentView addSubview:label3];
@@ -43,22 +36,6 @@
     return self;
 }
 
-- (void)pinch:(UIGestureRecognizer*)g
-{
-	UIPinchGestureRecognizer * p=(UIPinchGestureRecognizer*)g;
-	
-	NSLog(@"pinch: velocity: %f, scale: %f",p.velocity,p.scale);
-	if(p.velocity>0)
-	{
-		GridViewController * controller=[self parentViewController];
-	
-		AQGridView * gridView=[controller gridView];
-	
-		NSUInteger index=[gridView indexForCell:self];
-	
-		[controller gridView:gridView didSelectItemAtIndex:index];
-	}
-}
 
 - (UILabel*)createLabelWithFrame:(CGRect)frame
 {
@@ -209,28 +186,10 @@
 			label2.text=newPicture.description;
 			label3.text=[self shortDisplayDateWithPicture:newPicture];
 		}
-		else {
-			label2.text=[self shortDisplayDateWithPicture:newPicture];
-			
-		}
-/*
-		if([newPicture.comments count]>0)
-		{
-			if([newPicture.comments count]==1)
-			{
-				label2.text=@"1 comment"; //[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
-			}
-			else 
-			{
-				label2.text=[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
-			}
-			label3.text=[self shortDisplayDateWithPicture:newPicture];
-		}
 		else 
 		{
 			label2.text=[self shortDisplayDateWithPicture:newPicture];
 		}
-		*/
 	}
 	else 
 	{
@@ -239,26 +198,10 @@
 			label1.text=newPicture.description;
 			label2.text=[self shortDisplayDateWithPicture:newPicture];
 		}
-		else {
-			label1.text=[self shortDisplayDateWithPicture:newPicture];
-			
-		}
-		/*if([newPicture.comments count]>0)
-		{
-			if([newPicture.comments count]==1)
-			{
-				label1.text=@"1 comment"; //[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
-			}
-			else 
-			{
-				label1.text=[NSString stringWithFormat:@"%d comments",[newPicture.comments count]];
-			}
-			label2.text=[self shortDisplayDateWithPicture:newPicture];
-		}
 		else 
 		{
 			label1.text=[self shortDisplayDateWithPicture:newPicture];
-		}*/
+		}
 	}
 }
 
