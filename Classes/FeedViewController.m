@@ -43,8 +43,25 @@
     }
     return self;
 }
+
+- (void) logout
+{
+	[[PhotoExplorerAppDelegate sharedAppDelegate] logout];
+}
+
+- (void) clearCache
+{
+	[[PhotoExplorerAppDelegate sharedAppDelegate] clearCache];
+}
+
 - (void)reloadFeed
 {
+	if([items count]>0)
+	{
+		// already loaded...
+		return;
+	}
+	
 	// Check if the remote server is available
     Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
     PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
@@ -108,15 +125,16 @@
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
+	[self reloadFeed];
 	[self reloadData];
 }
 
-- (void) viewDidLoad
+/*- (void) viewDidLoad
 {
     [super viewDidLoad];
     
     [self reloadFeed];
-}
+}*/
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation

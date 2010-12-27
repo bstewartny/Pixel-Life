@@ -85,6 +85,8 @@
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@%@access_token=%@",path,seperator,escaped_token];
 	
 	ASIHTTPRequest * request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	[request setSecondsToCache:60*60*24*3]; // Cache for 3 days
 	
 	request.requestMethod=@"GET";
 	

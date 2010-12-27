@@ -611,22 +611,6 @@
 	infoImageView.picture=[currentPicture.user picture];
 	[infoImageView load];
 	
-	/*if([[currentPicture.user picture] hasLoadedThumbnail])
-	{
-		infoImageView.image=[[currentPicture.user picture] thumbnail];
-	}
-	else 
-	{
-		if([[currentPicture.user picture] hasLoadedImage])
-		{
-			infoImageView.image=[[currentPicture.user picture] image];
-		}
-		else 
-		{
-			infoImageView.image=nil;
-		}
-	}*/
-	
 	if (currentPicture.commentCount>0) 
 	{
 		showCommentsButton.enabled=YES;

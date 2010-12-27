@@ -29,6 +29,11 @@
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
 {
+	if(index<0 || index>([items count]-1))
+	{
+		// some bug in grid view allows bogus selections sometimes...
+		return;
+	}
 	PicturesScrollViewController * controller=[[PicturesScrollViewController alloc] initWithPictures:items];
 	
 	controller.currentItemIndex=index;

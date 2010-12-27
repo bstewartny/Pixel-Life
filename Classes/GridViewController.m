@@ -17,8 +17,8 @@
 		self.gridView.dataSource = self;
 		
 		self.gridView.separatorStyle = AQGridViewCellSeparatorStyleEmptySpace;
-		self.gridView.resizesCellWidthToFit = NO;
-		self.gridView.separatorColor = nil;
+		self.gridView.resizesCellWidthToFit = YES;
+		self.gridView.separatorColor = [UIColor blackColor];
 		self.gridView.backgroundColor=[UIColor blackColor];
     }
     return self;

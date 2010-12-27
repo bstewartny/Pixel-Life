@@ -4,10 +4,11 @@
 @class PhotoExplorerViewController;
 @class Picture;
 @class ImageCache;
+@class FadeNavigationController;
 @interface PhotoExplorerAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	NSOperationQueue * downloadQueue;
-	UINavigationController * navController;
+	FadeNavigationController * navController;
 	UISegmentedControl * segmentedControl;
 	Facebook * facebook;
 	NSString * accessToken;
@@ -16,7 +17,7 @@
 }
 @property (nonatomic, retain) NSOperationQueue *downloadQueue;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UINavigationController * navController;
+@property (nonatomic, retain) IBOutlet FadeNavigationController * navController;
 @property(nonatomic,retain) Facebook * facebook;
 @property(nonatomic,retain) ImageCache * imageCache;
 + (PhotoExplorerAppDelegate*) sharedAppDelegate;

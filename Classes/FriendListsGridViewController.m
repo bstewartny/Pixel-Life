@@ -6,6 +6,7 @@
 
 @implementation FriendListsGridViewController
 
+
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
     static NSString * cellIdentifier = @"CellIdentifier";
@@ -32,6 +33,11 @@
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
 {
+	if(index<0 || index>([items count]-1))
+	{
+		// some bug in grid view allows bogus selections sometimes...
+		return;
+	}
 	FriendList  * list=(FriendList*)[items objectAtIndex:index];
 		
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:list.friendFeed title:list.name];

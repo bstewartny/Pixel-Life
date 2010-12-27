@@ -87,7 +87,6 @@
 		B0DFB84012BE8B9A0051F301 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */; };
 		B0DFB84412BE8C870051F301 /* AddCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DFB84312BE8C870051F301 /* AddCommentView.xib */; };
 		B0DFB8FD12BEA4E30051F301 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DFB8FC12BEA4E30051F301 /* MessageUI.framework */; };
-		B0E978ED12B989D000721B33 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E978EC12B989D000721B33 /* icon.png */; };
 		B0E9794912BA5D1300721B33 /* FriendList.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9794812BA5D1300721B33 /* FriendList.m */; };
 		B0E9794C12BA5EE600721B33 /* FacebookFriendListFriendFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9794B12BA5EE600721B33 /* FacebookFriendListFriendFeed.m */; };
 		B0E9795512BA653100721B33 /* FriendListsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E9795412BA653100721B33 /* FriendListsGridViewController.m */; };
@@ -98,6 +97,8 @@
 		B0E97A9012BA9FF800721B33 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */; };
 		B0E97AA612BAA5B900721B33 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */; };
 		B0E97AA912BAA7A300721B33 /* PhotoCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */; };
+		B0F309D512C43D8D00773BFF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F309D412C43D8D00773BFF /* icon.png */; };
+		B0F30A2312C443E300773BFF /* FadeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F30A2212C443E300773BFF /* FadeNavigationController.m */; };
 		B0F95D3812C19BF900F43881 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F95D3712C19BF900F43881 /* 05-shuffle.png */; };
 		B0F9FCFB12BBEDCA00CF2F74 /* icon_comment_add.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */; };
 		B0F9FCFC12BBEDCA00CF2F74 /* icon_comment_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */; };
@@ -115,7 +116,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* PhotoExplorerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoExplorerAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* PhotoExplorerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoExplorerAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* PhotoExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* PixelLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoExplorerViewController.xib; sourceTree = "<group>"; };
@@ -269,7 +270,6 @@
 		B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		B0DFB84312BE8C870051F301 /* AddCommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentView.xib; sourceTree = "<group>"; };
 		B0DFB8FC12BEA4E30051F301 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B0E978EC12B989D000721B33 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		B0E9794712BA5D1300721B33 /* FriendList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendList.h; sourceTree = "<group>"; };
 		B0E9794812BA5D1300721B33 /* FriendList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendList.m; sourceTree = "<group>"; };
 		B0E9794A12BA5EE600721B33 /* FacebookFriendListFriendFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendListFriendFeed.h; sourceTree = "<group>"; };
@@ -288,6 +288,9 @@
 		B0E97A8F12BA9FF800721B33 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotoCommentsView.xib; path = Classes/PhotoCommentsView.xib; sourceTree = "<group>"; };
+		B0F309D412C43D8D00773BFF /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		B0F30A2112C443E300773BFF /* FadeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeNavigationController.h; sourceTree = "<group>"; };
+		B0F30A2212C443E300773BFF /* FadeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FadeNavigationController.m; sourceTree = "<group>"; };
 		B0F95D3712C19BF900F43881 /* 05-shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-shuffle.png"; sourceTree = "<group>"; };
 		B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_comment_add.png; sourceTree = "<group>"; };
 		B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_comment_ok.png; sourceTree = "<group>"; };
@@ -337,7 +340,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* PhotoExplorer.app */,
+				1D6058910D05DD3D006BFB54 /* PixelLife.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -516,6 +519,8 @@
 				B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */,
 				B083801E12C1454B00E999A8 /* FeedViewController.h */,
 				B083801F12C1454B00E999A8 /* FeedViewController.m */,
+				B0F30A2112C443E300773BFF /* FadeNavigationController.h */,
+				B0F30A2212C443E300773BFF /* FadeNavigationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -634,6 +639,7 @@
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B0F309D412C43D8D00773BFF /* icon.png */,
 				B0F95D3712C19BF900F43881 /* 05-shuffle.png */,
 				B0F9FD0512BBEE6700CF2F74 /* icon_star.png */,
 				B0F9FD0312BBEE4E00CF2F74 /* icon_settings.png */,
@@ -642,7 +648,6 @@
 				B0F9FCFF12BBEDEE00CF2F74 /* icon_favorities.png */,
 				B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */,
 				B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */,
-				B0E978EC12B989D000721B33 /* icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -650,9 +655,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* PhotoExplorer */ = {
+		1D6058900D05DD3D006BFB54 /* PixelLife */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PhotoExplorer" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PixelLife" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -662,9 +667,9 @@
 			);
 			dependencies = (
 			);
-			name = PhotoExplorer;
+			name = PixelLife;
 			productName = PhotoExplorer;
-			productReference = 1D6058910D05DD3D006BFB54 /* PhotoExplorer.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* PixelLife.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -686,7 +691,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* PhotoExplorer */,
+				1D6058900D05DD3D006BFB54 /* PixelLife */,
 			);
 		};
 /* End PBXProject section */
@@ -703,7 +708,6 @@
 				B048289812AD5EA800F61433 /* PicturesScrollView.xib in Resources */,
 				B04828FB12AD657600F61433 /* FBDialog.bundle in Resources */,
 				B02CD22712B9559A00D4407C /* PictureCaptionView.xib in Resources */,
-				B0E978ED12B989D000721B33 /* icon.png in Resources */,
 				B0E97AA612BAA5B900721B33 /* CommentTableViewCell.xib in Resources */,
 				B0E97AA912BAA7A300721B33 /* PhotoCommentsView.xib in Resources */,
 				B0F9FCFB12BBEDCA00CF2F74 /* icon_comment_add.png in Resources */,
@@ -716,6 +720,7 @@
 				B0F9FE3112BDA10E00CF2F74 /* AddCommentTableViewCell.xib in Resources */,
 				B0DFB84412BE8C870051F301 /* AddCommentView.xib in Resources */,
 				B0F95D3812C19BF900F43881 /* 05-shuffle.png in Resources */,
+				B0F309D512C43D8D00773BFF /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +804,7 @@
 				B083802012C1454B00E999A8 /* FeedViewController.m in Sources */,
 				B02D83AD12C27BE500D34BD8 /* ImageCache.m in Sources */,
 				B02D840112C28AC800D34BD8 /* AsyncImage.m in Sources */,
+				B0F30A2312C443E300773BFF /* FadeNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,7 +821,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PhotoExplorer_Prefix.pch;
 				INFOPLIST_FILE = "PhotoExplorer-Info.plist";
-				PRODUCT_NAME = PhotoExplorer;
+				PRODUCT_NAME = PixelLife;
 			};
 			name = Debug;
 		};
@@ -827,7 +833,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PhotoExplorer_Prefix.pch;
 				INFOPLIST_FILE = "PhotoExplorer-Info.plist";
-				PRODUCT_NAME = PhotoExplorer;
+				PRODUCT_NAME = PixelLife;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -836,11 +842,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: robert stewart (48WE8248AA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D959819-1D4C-4761-9A85-B4E6A21DC4ED";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -850,12 +857,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: robert stewart (48WE8248AA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D959819-1D4C-4761-9A85-B4E6A21DC4ED";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -864,7 +872,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PhotoExplorer" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PixelLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

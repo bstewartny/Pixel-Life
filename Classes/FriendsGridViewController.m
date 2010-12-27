@@ -35,16 +35,23 @@
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
 {
+	if(index<0 || index>([items count]-1))
+	{
+		// some bug in grid view allows bogus selections sometimes...
+		return;
+	}
+
 	Friend  * friend=(Friend*)[items objectAtIndex:index];
 	
 	[self showFriendAlbums:friend];
 }
+
 - (void) showFriendAlbums:(Friend*)friend
 {
 	AlbumsGridViewController * controller=[[AlbumsGridViewController alloc] initWithFeed:friend.albumFeed title:[NSString stringWithFormat:@"%@'s Albums",friend.name]];
 	
-	[[self navigationController] pushViewController:controller animated:YES];
-	
+	[[self navigationController] pushViewController:controller animated:NO];
+		
 	[controller release];
 }
 
@@ -58,13 +65,60 @@
 	searchBar.backgroundColor=[UIColor clearColor];
 	searchBar.opaque=NO;
 	searchBar.barStyle=UIBarStyleBlack;
+	searchBar.autoresizingMask=0;
 	
 	searchController=[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
 	searchController.delegate=self;
 	searchController.searchResultsDelegate=self;
 	searchController.searchResultsDataSource=self;
 	
+	
+	
+										   
+		
+	
+	
+	
 	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:searchBar] autorelease];
+	//self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(settings:)] autorelease];
+	
+}
+
+- (void) settings:(id)sender
+{
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Clear cache" otherButtonTitles:@"Logout",nil];
+	
+	[actionSheet showFromBarButtonItem:sender animated:YES];
+	
+	[actionSheet release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	NSLog(@"actionSheet:clickedButtonAtIndex:%d",buttonIndex);
+	
+	if(buttonIndex==0)
+	{
+		// clear cache
+		[self clearCache];
+	}
+	if(buttonIndex==1)
+	{
+		// logout
+		[self logout];
+	}
+}
+/*- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	[searchController setActive:NO animated:NO];
+	[searchController setActive:YES animated:NO];
+}*/
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	// yet another cocoa hack in order to work around some sdk bug... need to reset frame after device was rotated in
+	// another view, otherwise UISearchDisplayController makes the search box too big...
+	searchBar.frame=CGRectMake(0,5,150,30);
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText

@@ -16,6 +16,8 @@
 #import "FriendListsGridViewController.h"
 #import "FacebookFriendListsFeed.h"
 #import "ImageCache.h"
+#import "FadeNavigationController.h"
+
 // Your Facebook APP Id must be set before running this example
 // See http://www.facebook.com/developers/createapp.php
 // Also, your application must bind to the fb[app_id]:// URL
@@ -42,7 +44,7 @@ static NSString* kAppId = @"174754232546721";
 	cache.shouldRespectCacheControlHeaders=YES;
 	
 	[cache setDefaultCachePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy|ASIFallbackToCacheIfLoadFailsCachePolicy];
-	
+	 
 	[ASIHTTPRequest setDefaultCache:cache];
 	
 	imageCache=[[ImageCache alloc] init];
@@ -57,7 +59,7 @@ static NSString* kAppId = @"174754232546721";
 	facebook.accessToken=accessToken;
 	facebook.expirationDate=expirationDate;
 	
-	navController=[[UINavigationController alloc] init] ;
+	navController=[[FadeNavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
 	segmentedControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Photo Albums",@"My Friend Lists",@"All My Friends",nil]];
@@ -141,6 +143,30 @@ static NSString* kAppId = @"174754232546721";
 	}
 }
 
+- (void) logout
+{
+	@try {
+		[facebook logout:self];
+	}
+	@catch (NSException * e) {
+	}
+	@finally {
+	}
+}
+
+- (void) clearCache
+{
+	@try {
+		ASIDownloadCache * cache=[ASIDownloadCache sharedCache];
+		[cache clearCachedResponsesForStoragePolicy:ASICacheForSessionDurationCacheStoragePolicy];
+		[cache clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	}
+	@catch (NSException * e) {
+	}
+	@finally {
+	}
+}
+
 /**
  * Called when the user dismissed the dialog without logging in.
  */
@@ -148,6 +174,8 @@ static NSString* kAppId = @"174754232546721";
 {
 	accessToken=nil;
 	expirationDate=nil;
+	
+	[self showAllFriends];
 }
 
 /**
@@ -157,6 +185,9 @@ static NSString* kAppId = @"174754232546721";
 {
 	accessToken=nil;
 	expirationDate=nil;
+	
+	// redisplay UI...
+	[self showAllFriends];
 }
 
 
