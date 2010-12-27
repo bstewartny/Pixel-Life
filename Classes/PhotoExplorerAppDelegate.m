@@ -17,6 +17,8 @@
 #import "FacebookFriendListsFeed.h"
 #import "ImageCache.h"
 #import "FadeNavigationController.h"
+#import "BlankToolbar.h"
+#import "Reachability.h"
 
 // Your Facebook APP Id must be set before running this example
 // See http://www.facebook.com/developers/createapp.php
@@ -63,6 +65,7 @@ static NSString* kAppId = @"174754232546721";
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
 	segmentedControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Photo Albums",@"My Friend Lists",@"All My Friends",nil]];
+	
 	segmentedControl.segmentedControlStyle=UISegmentedControlStyleBar;
 	
 	[segmentedControl addTarget:self
@@ -99,18 +102,6 @@ static NSString* kAppId = @"174754232546721";
 		case 2:
 			[self showAllFriends];
 			break;
-		//case 1:
-		//	[self showAllAlbums];
-		//	break;
-		//case 3:
-		//	[self showAllPictures];
-		//	break;
-		//case 4:
-		//	[self showAllLikes];
-		//	break;
-		//case 4:
-		//	[self showAllEvents];
-		//	break;
 		default:
 			break;
 	}
@@ -120,9 +111,18 @@ static NSString* kAppId = @"174754232546721";
 {
 	if(![facebook isSessionValid])
 	{
-		NSLog(@"session is NOT valid, calling facebook.authorize...");
-		[facebook authorize:kAppId permissions:[NSArray arrayWithObjects:
+		Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
+		NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
+		if (remoteHostStatus == NotReachable)
+		{
+			// dont try to authorize...
+		}
+		else
+		{
+			NSLog(@"session is NOT valid, calling facebook.authorize...");
+			[facebook authorize:kAppId permissions:[NSArray arrayWithObjects:
 											@"read_stream",@"friends_photos", @"read_friendlists",@"user_photos",@"offline_access",nil] delegate:self];
+		}
 	}
 	else {
 		NSLog(@"session is valid, NOT calling facebook.authorize...");
@@ -157,6 +157,7 @@ static NSString* kAppId = @"174754232546721";
 - (void) clearCache
 {
 	@try {
+		[imageCache clear];
 		ASIDownloadCache * cache=[ASIDownloadCache sharedCache];
 		[cache clearCachedResponsesForStoragePolicy:ASICacheForSessionDurationCacheStoragePolicy];
 		[cache clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
@@ -185,6 +186,8 @@ static NSString* kAppId = @"174754232546721";
 {
 	accessToken=nil;
 	expirationDate=nil;
+	[self clearCache];
+	[self saveData];
 	
 	// redisplay UI...
 	[self showAllFriends];
@@ -210,10 +213,6 @@ static NSString* kAppId = @"174754232546721";
 	// TODO
 }
 
-
-
-
-
 - (void) showMyAlbums
 {
 	if(![facebook isSessionValid])
@@ -224,6 +223,7 @@ static NSString* kAppId = @"174754232546721";
 	
 	FacebookMyAlbumsFeed * feed=[[FacebookMyAlbumsFeed alloc] initWithFacebook:facebook];
 	AlbumsGridViewController * controller=[[AlbumsGridViewController alloc] initWithFeed:feed title:@"My Albums"];
+	[self addSettingsButtonToController:controller];
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=0;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
@@ -241,10 +241,47 @@ static NSString* kAppId = @"174754232546721";
 	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebook:facebook];
 	
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"All Friends"];
+	[self addSettingsButtonToController:controller];
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
+}
+
+- (void) addSettingsButtonToController:(UIViewController*)controller
+{
+	BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 150, 44.01)];
+	
+	tools.backgroundColor=[UIColor clearColor];
+	tools.opaque=NO;
+	
+	NSMutableArray * toolItems=[[NSMutableArray alloc] init];
+	
+	UIBarButtonItem * b;
+	
+	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(settings:)];
+	[toolItems addObject:b];
+	[b release];
+	
+	b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	b.width=10;
+	[toolItems addObject:b];
+	[b release];
+	
+	b=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+	[toolItems addObject:b];
+	[b release];
+	
+	b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	[toolItems addObject:b];
+	[b release];
+
+	[tools setItems:toolItems animated:NO];
+	
+	controller.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:tools] autorelease];
+	
+	[tools release];	
+	[toolItems release];
 }
 
 - (void) showAllLists
@@ -258,62 +295,49 @@ static NSString* kAppId = @"174754232546721";
 	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebook:facebook];
 	
 	FriendListsGridViewController * controller=[[FriendListsGridViewController alloc] initWithFeed:feed title:@"My Lists"];
-	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=1;
-	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-	[feed release];
-}
-/*
-- (void) showAllAlbums
-{
-	if(![facebook isSessionValid])
-	{
-		[self login];
-		return;
-	}
+	[self addSettingsButtonToController:controller];
 	
-	FacebookFriendsAlbumsFeed * feed=[[FacebookFriendsAlbumsFeed alloc] initWithFacebook:facebook];
-	AlbumsGridViewController * controller=[[AlbumsGridViewController alloc] initWithFeed:feed title:@"All Albums"];
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=1;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
 }
 
-- (void) showAllPictures
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if(![facebook isSessionValid])
+	NSLog(@"actionSheet:clickedButtonAtIndex:%d",buttonIndex);
+	if(actionSheet.tag==kActionSheetSettings)
 	{
-		[self login];
-		return;
+		if(buttonIndex==0)
+		{
+			// clear cache
+			[self clearCache];
+		}
+		if(buttonIndex==1)
+		{
+			// logout
+			[self logout];
+		}
 	}
-	
-	FacebookFriendsPhotosFeed * feed=[[FacebookFriendsPhotosFeed alloc] initWithFacebook:facebook];
-	
-	PictureFeedGridViewController * controller=[[PictureFeedGridViewController alloc] initWithFeed:feed title:@"All Pictures"];
-	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=3;
-	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-	[feed release];
 }
 
-- (void) showAllLikes
+- (void) refresh:(id)sender
 {
-	if(![facebook isSessionValid])
-	{
-		[self login];
-		return;
-	}
-	
-	FacebookLikesFeed * feed=[[FacebookLikesFeed alloc] initWithFacebook:facebook];
-	
-	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"Likes"];
-	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=4;
-	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-	[feed release];
+	FeedViewController * feedController=self.navController.topViewController;
+	[feedController refresh];
 }
-*/
+
+- (void) settings:(id)sender
+{
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Clear cache" otherButtonTitles:@"Logout",nil];
+	
+	actionSheet.tag=kActionSheetSettings;
+	
+	[actionSheet showFromBarButtonItem:sender animated:YES];
+	
+	[actionSheet release];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -413,6 +437,18 @@ static NSString* kAppId = @"174754232546721";
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
+	@try 
+	{
+		NSLog(@"applicationDidReceiveMemoryWarning: clearing image cache...");
+		[self clearCache];
+	}
+	@catch (NSException * e) 
+	{
+		
+	}
+	@finally 
+	{
+	}
 }
 
 - (void)dealloc {

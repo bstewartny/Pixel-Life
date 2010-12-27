@@ -5,23 +5,11 @@
 
 @implementation AlbumsGridViewController
  
- 
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (NSString*) noDataMessage
 {
-	NSLog(@"actionSheet:clickedButtonAtIndex:%d",buttonIndex);
-	
-	if(buttonIndex==0)
-	{
-		// clear cache
-		[self clearCache];
-	}
-	if(buttonIndex==1)
-	{
-		// logout
-		[self logout];
-	}
+	return @"No shared albums found on Facebook for this user.";
 }
+
 
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {

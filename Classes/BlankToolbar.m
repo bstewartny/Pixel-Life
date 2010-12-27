@@ -1,11 +1,3 @@
-//
-//  BlankToolbar.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/17/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "BlankToolbar.h"
 
 

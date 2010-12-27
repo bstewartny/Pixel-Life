@@ -9,6 +9,11 @@
 
 @implementation FriendsGridViewController
 
+- (NSString*) noDataMessage
+{
+	return @"No friends found on Facebook for the current user.";
+}
+
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
     static NSString * cellIdentifier = @"CellIdentifier";
@@ -72,42 +77,10 @@
 	searchController.searchResultsDelegate=self;
 	searchController.searchResultsDataSource=self;
 	
-	
-	
-										   
-		
-	
-	
-	
 	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:searchBar] autorelease];
-	//self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(settings:)] autorelease];
-	
 }
 
-- (void) settings:(id)sender
-{
-	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Clear cache" otherButtonTitles:@"Logout",nil];
-	
-	[actionSheet showFromBarButtonItem:sender animated:YES];
-	
-	[actionSheet release];
-}
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	NSLog(@"actionSheet:clickedButtonAtIndex:%d",buttonIndex);
-	
-	if(buttonIndex==0)
-	{
-		// clear cache
-		[self clearCache];
-	}
-	if(buttonIndex==1)
-	{
-		// logout
-		[self logout];
-	}
-}
 /*- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
 	[searchController setActive:NO animated:NO];

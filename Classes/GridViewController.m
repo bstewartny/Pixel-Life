@@ -31,6 +31,9 @@
 	[self loadVisibleCells];
 }
 
+
+
+
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
 	[self loadVisibleCells]; 

@@ -29,6 +29,12 @@
 
 - (NSArray*) getItemsFromJson:(NSDictionary*)json
 {
+	if(![json isKindOfClass:[NSArray class]])
+	{
+		NSLog(@"json object is not an array: %@",[json description]);
+		return nil;
+	}
+	
 	NSMutableArray * friends=[[[NSMutableArray alloc] init] autorelease];
 	
 	for (NSDictionary * d in json) {

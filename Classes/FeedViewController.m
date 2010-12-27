@@ -1,11 +1,3 @@
-    //
-//  FeedViewController.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/21/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "FeedViewController.h"
 #import "Feed.h"
 #import "PhotoExplorerAppDelegate.h"
@@ -43,15 +35,27 @@
     }
     return self;
 }
-
-- (void) logout
+- (void) refresh
 {
-	[[PhotoExplorerAppDelegate sharedAppDelegate] logout];
-}
-
-- (void) clearCache
-{
-	[[PhotoExplorerAppDelegate sharedAppDelegate] clearCache];
+	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
+    PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
+	NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
+    if (remoteHostStatus == NotReachable)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        NSString *msg = @"This app requires internet connectivity.";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook unreachable!" 
+                                                        message:msg 
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+	
+	[self showLoadingView];
+	[feed fetch];
 }
 
 - (void)reloadFeed
@@ -69,7 +73,7 @@
     if (remoteHostStatus == NotReachable)
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self];
-        NSString *msg = @"This app requires internet connectivity. Data will be loaded from cache if available.";
+        NSString *msg = @"This app requires internet connectivity.";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook unreachable!" 
                                                         message:msg 
                                                        delegate:nil 
@@ -95,8 +99,63 @@
 - (void)feed:(Feed *)feed didFindItems:(NSArray *)items 
 {
 	self.items=items;
-	[self reloadData];
+	if([items count]==0)
+	{
+		[self showNoDataMessage];
+	}
+	else 
+	{
+		[self reloadData];
+	}
+
 	[self hideLoadingView];
+}
+
+- (void) showNoDataMessage
+{
+	NSLog(@"showNoDataMessage");
+	
+	UILabel * label=[[UILabel alloc] initWithFrame:self.view.frame];
+	label.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin    |
+	UIViewAutoresizingFlexibleWidth         |
+	UIViewAutoresizingFlexibleRightMargin  |
+	UIViewAutoresizingFlexibleTopMargin    |
+	UIViewAutoresizingFlexibleHeight       |
+	UIViewAutoresizingFlexibleBottomMargin;
+	label.textAlignment=UITextAlignmentCenter;
+	label.numberOfLines=20;
+	label.backgroundColor=[UIColor clearColor];
+	label.textColor=[UIColor lightGrayColor];
+	label.font=[UIFont boldSystemFontOfSize:20];
+	
+	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
+    NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
+    if (remoteHostStatus == NotReachable)
+    {
+		label.text= @"Facebook is unreachable.";
+	}
+	else
+	{
+		label.text=[self noDataMessage];
+	}
+	
+	[self.view addSubview:label];
+	[self.view bringSubviewToFront:label];
+	[label release];
+}
+
+- (NSString*) noDataMessage
+{
+	
+	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
+    NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
+    if (remoteHostStatus == NotReachable)
+    {
+		return @"Facebook is unreachable.";
+	}
+	
+	
+	return @"No data found for request.";
 }
 
 - (void) reloadData
@@ -128,13 +187,6 @@
 	[self reloadFeed];
 	[self reloadData];
 }
-
-/*- (void) viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self reloadFeed];
-}*/
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation

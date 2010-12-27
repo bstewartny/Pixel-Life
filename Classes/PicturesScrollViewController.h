@@ -28,7 +28,7 @@
 @property(nonatomic) NSInteger currentItemIndex;
 @property(nonatomic,retain) IBOutlet UIToolbar * toolbar;
 @property(nonatomic,retain) IBOutlet UIView * infoView;
-@property(nonatomic,retain) IBOutlet UIImageView * infoImageView;
+@property(nonatomic,retain) IBOutlet PictureImageView * infoImageView;
 @property(nonatomic,retain) IBOutlet UILabel * infoUserLabel;
 @property(nonatomic,retain) IBOutlet UILabel * infoNameLabel;
 @property(nonatomic,retain) IBOutlet UILabel * infoDateLabel;

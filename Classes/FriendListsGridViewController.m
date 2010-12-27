@@ -6,6 +6,10 @@
 
 @implementation FriendListsGridViewController
 
+- (NSString*) noDataMessage
+{
+	return @"No friend lists found on Facebook for the current user.";
+}
 
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {

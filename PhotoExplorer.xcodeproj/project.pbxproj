@@ -79,6 +79,7 @@
 		B087DA5312AAE792008259E9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5112AAE792008259E9 /* UIImage+Resize.m */; };
 		B087DA5F12AAE86D008259E9 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5B12AAE86D008259E9 /* UIImage+Alpha.m */; };
 		B087DA6012AAE86D008259E9 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5D12AAE86D008259E9 /* UIImage+RoundedCorner.m */; };
+		B09E917B12C913B80013E885 /* PictureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B09E917A12C913B80013E885 /* PictureScrollView.m */; };
 		B0A13D0F12AAFC9B00999009 /* PictureFeedGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D0E12AAFC9B00999009 /* PictureFeedGridViewController.m */; };
 		B0A13D1312AB0F4E00999009 /* PhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D1212AB0F4E00999009 /* PhotoGridViewCell.m */; };
 		B0A13D4B12AB168A00999009 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A13D4A12AB168A00999009 /* GridView.xib */; };
@@ -256,6 +257,8 @@
 		B087DA5C12AAE86D008259E9 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		B087DA5D12AAE86D008259E9 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		B087DA5E12AAE86D008259E9 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		B09E917912C913B80013E885 /* PictureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureScrollView.h; sourceTree = "<group>"; };
+		B09E917A12C913B80013E885 /* PictureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureScrollView.m; sourceTree = "<group>"; };
 		B0A13D0D12AAFC9B00999009 /* PictureFeedGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureFeedGridViewController.h; sourceTree = "<group>"; };
 		B0A13D0E12AAFC9B00999009 /* PictureFeedGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureFeedGridViewController.m; sourceTree = "<group>"; };
 		B0A13D1112AB0F4E00999009 /* PhotoGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGridViewCell.h; sourceTree = "<group>"; };
@@ -521,6 +524,8 @@
 				B083801F12C1454B00E999A8 /* FeedViewController.m */,
 				B0F30A2112C443E300773BFF /* FadeNavigationController.h */,
 				B0F30A2212C443E300773BFF /* FadeNavigationController.m */,
+				B09E917912C913B80013E885 /* PictureScrollView.h */,
+				B09E917A12C913B80013E885 /* PictureScrollView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -805,6 +810,7 @@
 				B02D83AD12C27BE500D34BD8 /* ImageCache.m in Sources */,
 				B02D840112C28AC800D34BD8 /* AsyncImage.m in Sources */,
 				B0F30A2312C443E300773BFF /* FadeNavigationController.m in Sources */,
+				B09E917B12C913B80013E885 /* PictureScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

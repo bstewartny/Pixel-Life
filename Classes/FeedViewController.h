@@ -1,12 +1,7 @@
-//
-//  FeedViewController.h
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/21/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+
+
+
 @class Feed;
 
 @interface FeedViewController : UIViewController {
@@ -17,6 +12,8 @@
 }
 @property(nonatomic,retain)Feed * feed;
 @property(nonatomic,retain)NSArray * items;
+
+- (void) refresh;
 
 - (void)reloadFeed;
 - (void)reloadData;

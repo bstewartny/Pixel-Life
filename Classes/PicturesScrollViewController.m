@@ -11,19 +11,13 @@
 #import "ASIFormDataRequest.h"
 #import "PhotoExplorerAppDelegate.h"
 #import "Facebook.h"
+//#import "PictureScrollView.h"
 
 @implementation PicturesScrollViewController
 @synthesize scrollView, toolbar,pictures,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 { 
-	// did user send email? if so mark last published date of newsletter to now...
-	
-	/*if(result==MFMailComposeResultSent)
-	 {
-	 
-	 }*/
-	
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -34,10 +28,6 @@
 		self.pictures=pictures;
 		 
 		self.view.backgroundColor=[UIColor blackColor];
-		//self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action:)] autorelease];
-		
-		//self.commentCountLabel.layer.cornerRadius=9.0;
-		//self.commentCountLabel.text=@"0";
 		
 		BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 250, 44.01)];
 		
@@ -91,13 +81,16 @@
 		
 		[tools release];
 		
-		UITapGestureRecognizer * gr=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
 		
-		gr.numberOfTapsRequired=1;
+		UISwipeGestureRecognizer * swup=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUp:)];
+		swup.direction=UISwipeGestureRecognizerDirectionUp;
+		[self.infoView addGestureRecognizer:swup];
 		
-		[self.scrollView addGestureRecognizer:gr];
+		UISwipeGestureRecognizer * swdwn=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown:)];
+		swdwn.direction=UISwipeGestureRecognizerDirectionDown;
+		[self.infoView addGestureRecognizer:swdwn];
 		
-		[gr release];
+		
 		
 		UITapGestureRecognizer * gr2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
 		
@@ -105,7 +98,15 @@
 		
 		[self.scrollView addGestureRecognizer:gr2];
 		
+		UITapGestureRecognizer * gr=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+		gr.numberOfTapsRequired=1;
+		[gr requireGestureRecognizerToFail:gr2];
+		[self.scrollView addGestureRecognizer:gr];
+		
+		[gr release];
 		[gr2 release];
+		
+		
 		
 		format = [[NSDateFormatter alloc] init];
 		[format setDateFormat:@"MMM d, yyyy"];
@@ -357,6 +358,21 @@
 		}
 	}
 }
+- (void) swipeUp:(UIGestureRecognizer*)gr
+{
+	[UIView beginAnimations:@"swipeup" context:nil];
+	self.infoView.frame=CGRectMake(0, self.infoView.frame.origin.y-50, self.infoView.frame.size.width, self.infoView.frame.size.height+50);
+	[UIView commitAnimations];
+}
+
+- (void) swipeDown:(UIGestureRecognizer*)gr
+{
+	[self toggleNavigationBar];
+	/*
+	[UIView beginAnimations:@"swipeup" context:nil];
+	self.infoView.frame=CGRectMake(0, self.infoView.frame.origin.y-50, self.infoView.frame.size.width, self.infoView.frame.size.height);
+	[UIView commitAnimations];*/
+}
 
 - (void) singleTap:(UIGestureRecognizer*)gr
 {
@@ -369,6 +385,9 @@
 - (void) toggleZoom
 {
 	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
+	//[UIView beginAnimations:@"zoom" context:nil];
+	//[UIView setAnimationDuration:3.0];
+	 
 	
 	if(picView.contentMode==UIViewContentModeScaleAspectFit)
 	{
@@ -378,6 +397,7 @@
 	{
 		picView.contentMode=UIViewContentModeScaleAspectFit;
 	}
+	//[UIView commitAnimations];
 }
 
 - (CGRect) getBounds
@@ -413,7 +433,9 @@
 		
 		CGRect frame=CGRectMake(x,y,width,height);
 		
+		
 		PictureImageView * picView=[[PictureImageView alloc] initWithFrame:frame picture:picture];
+		//PictureScrollView * picView=[[PictureScrollView alloc] initWithFrame:frame picture:picture];
 		
 		[scrollView addSubview:picView];
 		
@@ -436,7 +458,7 @@
 	CGFloat width=frame.size.width;
 	CGFloat height=frame.size.height;
 	
-	for(PictureImageView * picView in picViews)
+	for(UIView * picView in picViews)
 	{
 		CGFloat x=left;
 		CGFloat y=top;
@@ -517,7 +539,7 @@
 
 - (void) loadVisiblePictures
 {
-	PictureImageView * prev=nil;
+	UIView * prev=nil;
 	BOOL prevLoaded=NO;
 	int i=0;
 	
@@ -528,7 +550,7 @@
 		unloadImages=YES;
 	}
 	
-	for(PictureImageView * picView in picViews)
+	for(UIView * picView in picViews)
 	{
 		if(CGRectIntersectsRect(picView.frame, scrollView.bounds))
 		{
@@ -556,7 +578,7 @@
 	if(unloadImages)
 	{
 		i=0;
-		for(PictureImageView * picView in picViews)
+		for(UIView * picView in picViews)
 		{
 			if(prevItemIndex>-1)
 			{

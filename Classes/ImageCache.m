@@ -1,13 +1,4 @@
-//
-//  PictureCache.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/22/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "ImageCache.h"
-
 
 @implementation ImageCache
 
@@ -26,6 +17,14 @@
 	@synchronized(cache)
 	{
 		return (UIImage*)[cache objectForKey:url];
+	}
+}
+
+- (void) clear
+{
+	@synchronized(cache)
+	{
+		[cache removeAllObjects];
 	}
 }
 

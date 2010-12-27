@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="12"/>
+			<integer value="15"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -71,7 +71,7 @@
 							<object class="IBUILabel" id="121176382">
 								<reference key="NSNextResponder" ref="981790492"/>
 								<int key="NSvFlags">290</int>
-								<string key="NSFrame">{{85, 4}, {663, 42}}</string>
+								<string key="NSFrame">{{85, 4}, {674, 48}}</string>
 								<reference key="NSSuperview" ref="981790492"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -91,9 +91,8 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
-								<int key="IBUINumberOfLines">3</int>
+								<int key="IBUINumberOfLines">4</int>
 								<int key="IBUILineBreakMode">0</int>
 							</object>
 							<object class="IBUILabel" id="418770045">
@@ -10230,7 +10229,7 @@ AAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
 							<string>UILabel</string>
-							<string>UIImageView</string>
+							<string>PictureImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIView</string>
@@ -10263,7 +10262,7 @@ AAEAAQABA</bytes>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">infoImageView</string>
-								<string key="candidateClassName">UIImageView</string>
+								<string key="candidateClassName">PictureImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">infoNameLabel</string>
