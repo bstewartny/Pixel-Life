@@ -1,6 +1,7 @@
 #import "PicturesScrollViewController.h"
 #import "Picture.h"
 #import "PictureImageView.h"
+#import "FriendPictureImageView.h"
 #import "User.h"
 #import "FacebookPhotoCommentsFeed.h"
 #import "PhotoCommentsViewController.h"
@@ -14,7 +15,7 @@
 //#import "PictureScrollView.h"
 
 @implementation PicturesScrollViewController
-@synthesize scrollView, toolbar,pictures,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
+@synthesize scrollView, toolbar,pictures,infoFirstNameLabel,infoLastNameLabel,infoNumCommentsLabel,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 { 
@@ -112,6 +113,26 @@
 		[format setDateFormat:@"MMM d, yyyy"];
 		
 		picViews=[[NSMutableArray alloc] init];
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
     return self;
 }
@@ -360,28 +381,38 @@
 }
 - (void) swipeUp:(UIGestureRecognizer*)gr
 {
-	[UIView beginAnimations:@"swipeup" context:nil];
-	self.infoView.frame=CGRectMake(0, self.infoView.frame.origin.y-50, self.infoView.frame.size.width, self.infoView.frame.size.height+50);
-	[UIView commitAnimations];
+	if(self.infoView.frame.size.height==192)
+	{
+		[UIView beginAnimations:@"swipeup" context:nil];
+		self.infoView.frame=CGRectMake(0, self.infoView.frame.origin.y-100, self.infoView.frame.size.width, self.infoView.frame.size.height+100);
+		[UIView commitAnimations];
+	}
 }
 
 - (void) swipeDown:(UIGestureRecognizer*)gr
 {
-	[self toggleNavigationBar];
-	/*
-	[UIView beginAnimations:@"swipeup" context:nil];
-	self.infoView.frame=CGRectMake(0, self.infoView.frame.origin.y-50, self.infoView.frame.size.width, self.infoView.frame.size.height);
-	[UIView commitAnimations];*/
+	if(self.infoView.frame.size.height > 192)
+	{
+		[UIView beginAnimations:@"swipeup" context:nil];
+		self.infoView.frame=CGRectMake(0, self.infoView.frame.origin.y+100, self.infoView.frame.size.width, self.infoView.frame.size.height-100);
+		[UIView commitAnimations];
+	}
+	else 
+	{
+		[self toggleNavigationBar];
+	}
 }
 
 - (void) singleTap:(UIGestureRecognizer*)gr
 {
 	[self toggleNavigationBar];
 }
+
 - (void) doubleTap:(UIGestureRecognizer*)gr
 {
 	[self toggleZoom];
 }
+
 - (void) toggleZoom
 {
 	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
@@ -612,8 +643,26 @@
 	
 	NSLog(@"updateInfoView: %@",currentPicture.name);
 	
-	infoNameLabel.text=currentPicture.name;
+	infoNameLabel.text=currentPicture.name;//[currentPicture.name stringByAppendingFormat:@"\n\n\n\n\n\n\n\n\n\n"];
 	
+	infoDateLabel.text=[format stringFromDate:currentPicture.created_date];
+	
+	if(currentPicture.commentCount>0)
+	{
+		if(currentPicture.commentCount==1)
+		{
+			infoNumCommentsLabel.text=@"1 comment";
+		}
+		else 
+		{
+			infoNumCommentsLabel.text=[NSString stringWithFormat:@"%d comments",currentPicture.commentCount];
+		}
+	}
+	else 
+	{	
+		infoNumCommentsLabel.text=@"";
+	}
+/*	
 	if(currentPicture.commentCount>0)
 	{
 		if(currentPicture.commentCount==1)
@@ -629,10 +678,14 @@
 	{		
 		infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@",currentPicture.user.name,[format stringFromDate:currentPicture.created_date]];
 	}
-
+*/
+	
+	infoImageView.user=currentPicture.user;
+	[infoImageView load];
+	/*
 	infoImageView.picture=[currentPicture.user picture];
 	[infoImageView load];
-	
+	*/
 	if (currentPicture.commentCount>0) 
 	{
 		showCommentsButton.enabled=YES;
@@ -703,6 +756,9 @@
 	[addCommentPopover release];
 	addCommentPopover=nil;
 	[infoView release];
+	[infoFirstNameLabel release];
+	[infoLastNameLabel release];
+	[infoNumCommentsLabel release];
 	
     [super dealloc];
 }

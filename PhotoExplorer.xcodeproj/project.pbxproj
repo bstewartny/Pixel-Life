@@ -85,6 +85,7 @@
 		B0A13D4B12AB168A00999009 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A13D4A12AB168A00999009 /* GridView.xib */; };
 		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
+		B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */; };
 		B0DFB84012BE8B9A0051F301 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */; };
 		B0DFB84412BE8C870051F301 /* AddCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DFB84312BE8C870051F301 /* AddCommentView.xib */; };
 		B0DFB8FD12BEA4E30051F301 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DFB8FC12BEA4E30051F301 /* MessageUI.framework */; };
@@ -269,6 +270,8 @@
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
 		B0A8188112B076890096162D /* AlbumGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewCell.m; sourceTree = "<group>"; };
 		B0B8A87B12C382ED00F1924C /* AsyncImageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageDelegate.h; sourceTree = "<group>"; };
+		B0DACFE612CA790100CBE1B7 /* FriendPictureImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPictureImageView.h; sourceTree = "<group>"; };
+		B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendPictureImageView.m; sourceTree = "<group>"; };
 		B0DFB83E12BE8B9A0051F301 /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
 		B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		B0DFB84312BE8C870051F301 /* AddCommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentView.xib; sourceTree = "<group>"; };
@@ -526,6 +529,8 @@
 				B0F30A2212C443E300773BFF /* FadeNavigationController.m */,
 				B09E917912C913B80013E885 /* PictureScrollView.h */,
 				B09E917A12C913B80013E885 /* PictureScrollView.m */,
+				B0DACFE612CA790100CBE1B7 /* FriendPictureImageView.h */,
+				B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -811,6 +816,7 @@
 				B02D840112C28AC800D34BD8 /* AsyncImage.m in Sources */,
 				B0F30A2312C443E300773BFF /* FadeNavigationController.m in Sources */,
 				B09E917B12C913B80013E885 /* PictureScrollView.m in Sources */,
+				B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
