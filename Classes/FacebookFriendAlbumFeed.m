@@ -21,7 +21,7 @@
 }
 - (NSString*) graphPath
 {
-	return [NSString stringWithFormat:@"%@/albums",friend.uid];
+	return [NSString stringWithFormat:@"%@/albums?fields=id,name,from,link,created_time,updated_time,count,comments",friend.uid];
 }
 
 - (NSArray*) getItemsFromJson:(NSDictionary*)json
@@ -65,6 +65,16 @@
 		album.updated_date=[self dateFromString:[d objectForKey:@"updated_time"]];
 		
 		album.count=[[d objectForKey:@"count"] intValue];
+		
+		NSDictionary * comments_dict=[d objectForKey:@"comments"];
+		
+		if(comments_dict)
+		{
+			//NSMutableArray * comments=[[NSMutableArray alloc] init];
+			NSArray * comments=[comments_dict objectForKey:@"data"];
+			
+			album.commentCount=[comments count];
+		}
 		
 		Picture * picture=[[Picture alloc] init];
 		

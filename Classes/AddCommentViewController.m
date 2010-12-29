@@ -1,14 +1,14 @@
 #import "AddCommentViewController.h"
-#import "Picture.h"
+//#import "Picture.h"
 
 @implementation AddCommentViewController
-@synthesize messageTextView,picture,delegate;
+@synthesize messageTextView,delegate;
 
-- (id)initWithPicture:(Picture*)picture
+- (id)init
 {
     if(self=[super initWithNibName:@"AddCommentView" bundle:nil])
 	{
-		self.picture=picture;
+		//self.picture=picture;
 	}
     return self;
 }
@@ -82,7 +82,7 @@
 - (void)dealloc {
 	delegate=nil;
 	[messageTextView release];
-	[picture release];
+	//[picture release];
     [super dealloc];
 }
 

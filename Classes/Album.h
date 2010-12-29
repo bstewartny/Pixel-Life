@@ -10,12 +10,14 @@
 	NSString * description;
 	NSString * location;
 	NSInteger count;
+	NSInteger commentCount;
 }
 @property(nonatomic,retain) Feed * pictureFeed;
 @property(nonatomic,retain) Picture * picture; 
 @property(nonatomic,retain) NSString * description;
 @property(nonatomic,retain) NSString * location;
 @property(nonatomic) NSInteger count;
+@property(nonatomic) NSInteger commentCount;
 
 
 

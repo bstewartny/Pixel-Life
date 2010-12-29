@@ -2,6 +2,7 @@
 #import "Album.h"
 #import "AlbumGridViewCell.h"
 #import "PictureFeedGridViewController.h"
+#import "AlbumGridViewController.h"
 
 @implementation AlbumsGridViewController
  
@@ -40,10 +41,12 @@
 	}
 	Album * album=(Album*)[items objectAtIndex:index];
 	// show album...
-	PictureFeedGridViewController * picturesController=[[PictureFeedGridViewController alloc] initWithFeed:album.pictureFeed title:album.name];
-	[[self navigationController] pushViewController:picturesController animated:YES];
+	//PictureFeedGridViewController * picturesController=[[PictureFeedGridViewController alloc] initWithFeed:album.pictureFeed title:album.name];
+	AlbumGridViewController * albumController=[[AlbumGridViewController alloc] initWithAlbum:album];
 	
-	[picturesController release];
+	[[self navigationController] pushViewController:albumController animated:YES];
+	
+	[albumController release];
 }
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView

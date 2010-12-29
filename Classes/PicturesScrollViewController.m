@@ -174,9 +174,7 @@
 	
 	cancelRemoveBars=YES;
 	
-	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
-
-	AddCommentViewController * controller=[[AddCommentViewController alloc] initWithPicture:picture];
+	AddCommentViewController * controller=[[AddCommentViewController alloc] init];
 	controller.delegate=self;
 	 
 	addCommentPopover=[[UIPopoverController alloc] initWithContentViewController:controller];
@@ -551,6 +549,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+	[super viewWillAppear:animated];
 	self.navigationController.navigationBar.translucent=YES;
 	[self addPicturesToScrollView];
 	[self goToCurrentItem];

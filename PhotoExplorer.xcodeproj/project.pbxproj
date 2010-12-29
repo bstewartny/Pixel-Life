@@ -83,6 +83,8 @@
 		B0A13D0F12AAFC9B00999009 /* PictureFeedGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D0E12AAFC9B00999009 /* PictureFeedGridViewController.m */; };
 		B0A13D1312AB0F4E00999009 /* PhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D1212AB0F4E00999009 /* PhotoGridViewCell.m */; };
 		B0A13D4B12AB168A00999009 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A13D4A12AB168A00999009 /* GridView.xib */; };
+		B0A6BAAF12CA9EB500AA13C2 /* AlbumGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BAAE12CA9EB500AA13C2 /* AlbumGridViewController.m */; };
+		B0A6BAE312CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BAE212CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m */; };
 		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
 		B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */; };
@@ -265,6 +267,10 @@
 		B0A13D1112AB0F4E00999009 /* PhotoGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGridViewCell.h; sourceTree = "<group>"; };
 		B0A13D1212AB0F4E00999009 /* PhotoGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGridViewCell.m; sourceTree = "<group>"; };
 		B0A13D4A12AB168A00999009 /* GridView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridView.xib; sourceTree = "<group>"; };
+		B0A6BAAD12CA9EB500AA13C2 /* AlbumGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewController.h; sourceTree = "<group>"; };
+		B0A6BAAE12CA9EB500AA13C2 /* AlbumGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewController.m; sourceTree = "<group>"; };
+		B0A6BAE112CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlbumCommentsFeed.h; sourceTree = "<group>"; };
+		B0A6BAE212CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlbumCommentsFeed.m; sourceTree = "<group>"; };
 		B0A8177612B063D00096162D /* PictureGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureGridViewCell.h; sourceTree = "<group>"; };
 		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
@@ -531,6 +537,8 @@
 				B09E917A12C913B80013E885 /* PictureScrollView.m */,
 				B0DACFE612CA790100CBE1B7 /* FriendPictureImageView.h */,
 				B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */,
+				B0A6BAAD12CA9EB500AA13C2 /* AlbumGridViewController.h */,
+				B0A6BAAE12CA9EB500AA13C2 /* AlbumGridViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -575,6 +583,8 @@
 				B02D83FF12C28AC800D34BD8 /* AsyncImage.h */,
 				B02D840012C28AC800D34BD8 /* AsyncImage.m */,
 				B0B8A87B12C382ED00F1924C /* AsyncImageDelegate.h */,
+				B0A6BAE112CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.h */,
+				B0A6BAE212CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -817,6 +827,8 @@
 				B0F30A2312C443E300773BFF /* FadeNavigationController.m in Sources */,
 				B09E917B12C913B80013E885 /* PictureScrollView.m in Sources */,
 				B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */,
+				B0A6BAAF12CA9EB500AA13C2 /* AlbumGridViewController.m in Sources */,
+				B0A6BAE312CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

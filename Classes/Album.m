@@ -7,6 +7,7 @@
 @synthesize description;
 @synthesize location;
 @synthesize count;
+@synthesize commentCount;
 
 
 - (void) dealloc

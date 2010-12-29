@@ -146,6 +146,11 @@ static NSString* kAppId = @"174754232546721";
 - (void) logout
 {
 	@try {
+		// clear existing data...
+		[self clearCache];
+		// show blank screen...
+		[self showNoFriends];
+		
 		[facebook logout:self];
 	}
 	@catch (NSException * e) {
@@ -229,7 +234,17 @@ static NSString* kAppId = @"174754232546721";
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
 }
-
+- (void) showNoFriends
+{
+	//FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebook:facebook];
+	
+	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:nil title:@"All Friends"];
+	[self addSettingsButtonToController:controller];
+	controller.navigationItem.titleView=segmentedControl;
+	segmentedControl.selectedSegmentIndex=2;
+	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	//[feed release];
+}
 - (void) showAllFriends
 {
 	if(![facebook isSessionValid])

@@ -115,7 +115,7 @@
 	
 	NSString * display;
 	
-	if(([today_components day] == [item_components day]) &&
+	/*if(([today_components day] == [item_components day]) &&
 	   ([today_components month] == [item_components month]) &&
 	   ([today_components year] == [item_components year]))
 	{
@@ -146,10 +146,10 @@
 		}
 	}
 	else 
-	{
+	{*/
 		// return just date Mmm dd
 		display = [format stringFromDate:date];
-	}
+	//}
 	
 	return display;
 }

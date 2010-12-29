@@ -1,27 +1,28 @@
-#import "FacebookPhotoCommentsFeed.h"
-#import "Picture.h"
+#import "FacebookAlbumCommentsFeed.h"
+#import "Album.h"
 #import "FBConnect.h"
 #import "JSON.h"
 #import "ASIHTTPRequest.h"
 #import "User.h"
 #import "Comment.h"
+#import "Picture.h"
 
-@implementation FacebookPhotoCommentsFeed
-@synthesize picture;
+@implementation FacebookAlbumCommentsFeed
+@synthesize album;
 
-- (id) initWithFacebook:(Facebook*)facebook picture:(Picture*)picture
+- (id) initWithFacebook:(Facebook*)facebook album:(Album*)album
 {
 	self=[super initWithFacebook:facebook];
 	if (self==nil) {
 		return nil;
 	}
-	self.picture=picture;
+	self.album=album;
 	return self;
 }
 
 - (NSString*) graphPath
 {
-	return [NSString stringWithFormat:@"%@/comments",self.picture.uid];
+	return [NSString stringWithFormat:@"%@/comments",self.album.uid];
 }
 
 - (NSArray*) getItemsFromJson:(NSDictionary*)json
