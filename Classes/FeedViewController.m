@@ -54,8 +54,10 @@
         [alert release];
         return;
     }
-	
-	[self showLoadingView];
+	if(feed)
+	{
+		[self showLoadingView];
+	}
 	[feed fetch];
 }
 
@@ -92,8 +94,10 @@
     {
         [appDelegate.downloadQueue setMaxConcurrentOperationCount:NSOperationQueueDefaultMaxConcurrentOperationCount];
     }
-    
-    [self showLoadingView];
+    if(feed)
+	{
+		[self showLoadingView];
+	}
 	[feed fetch];
 }
 
@@ -172,8 +176,11 @@
 
 - (void)showLoadingView
 {
-	[spinningWheel startAnimating];
-	[self.view bringSubviewToFront:spinningWheel];
+	if(feed)
+	{
+		[spinningWheel startAnimating];
+		[self.view bringSubviewToFront:spinningWheel];
+	}
 }
 
 - (void)hideLoadingView

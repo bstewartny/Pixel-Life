@@ -89,6 +89,12 @@
 		B0A6BB3212CB873300AA13C2 /* FacebookAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BB3112CB873300AA13C2 /* FacebookAccountsViewController.m */; };
 		B0A6BB3A12CB899B00AA13C2 /* FacebookAccountsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */; };
 		B0A6BCB012CC22AB00AA13C2 /* FacebookAccountInfoFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BCAF12CC22AB00AA13C2 /* FacebookAccountInfoFeed.m */; };
+		B0A6BCFD12CC2C4600AA13C2 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCF712CC2C4600AA13C2 /* Default-Landscape.png */; };
+		B0A6BCFE12CC2C4600AA13C2 /* Default-LandscapeLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCF812CC2C4600AA13C2 /* Default-LandscapeLeft.png */; };
+		B0A6BCFF12CC2C4600AA13C2 /* Default-LandscapeRight.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCF912CC2C4600AA13C2 /* Default-LandscapeRight.png */; };
+		B0A6BD0012CC2C4600AA13C2 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCFA12CC2C4600AA13C2 /* Default-Portrait.png */; };
+		B0A6BD0112CC2C4600AA13C2 /* Default-PortraitUpsideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCFB12CC2C4600AA13C2 /* Default-PortraitUpsideDown.png */; };
+		B0A6BD0212CC2C4600AA13C2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCFC12CC2C4600AA13C2 /* Default.png */; };
 		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
 		B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */; };
@@ -282,6 +288,12 @@
 		B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookAccountsView.xib; sourceTree = "<group>"; };
 		B0A6BCAE12CC22AB00AA13C2 /* FacebookAccountInfoFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAccountInfoFeed.h; sourceTree = "<group>"; };
 		B0A6BCAF12CC22AB00AA13C2 /* FacebookAccountInfoFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAccountInfoFeed.m; sourceTree = "<group>"; };
+		B0A6BCF712CC2C4600AA13C2 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		B0A6BCF812CC2C4600AA13C2 /* Default-LandscapeLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-LandscapeLeft.png"; sourceTree = "<group>"; };
+		B0A6BCF912CC2C4600AA13C2 /* Default-LandscapeRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-LandscapeRight.png"; sourceTree = "<group>"; };
+		B0A6BCFA12CC2C4600AA13C2 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		B0A6BCFB12CC2C4600AA13C2 /* Default-PortraitUpsideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-PortraitUpsideDown.png"; sourceTree = "<group>"; };
+		B0A6BCFC12CC2C4600AA13C2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B0A8177612B063D00096162D /* PictureGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureGridViewCell.h; sourceTree = "<group>"; };
 		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
@@ -677,6 +689,12 @@
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B0A6BCF712CC2C4600AA13C2 /* Default-Landscape.png */,
+				B0A6BCF812CC2C4600AA13C2 /* Default-LandscapeLeft.png */,
+				B0A6BCF912CC2C4600AA13C2 /* Default-LandscapeRight.png */,
+				B0A6BCFA12CC2C4600AA13C2 /* Default-Portrait.png */,
+				B0A6BCFB12CC2C4600AA13C2 /* Default-PortraitUpsideDown.png */,
+				B0A6BCFC12CC2C4600AA13C2 /* Default.png */,
 				B0F309D412C43D8D00773BFF /* icon.png */,
 				B0F95D3712C19BF900F43881 /* 05-shuffle.png */,
 				B0F9FD0512BBEE6700CF2F74 /* icon_star.png */,
@@ -760,6 +778,12 @@
 				B0F95D3812C19BF900F43881 /* 05-shuffle.png in Resources */,
 				B0F309D512C43D8D00773BFF /* icon.png in Resources */,
 				B0A6BB3A12CB899B00AA13C2 /* FacebookAccountsView.xib in Resources */,
+				B0A6BCFD12CC2C4600AA13C2 /* Default-Landscape.png in Resources */,
+				B0A6BCFE12CC2C4600AA13C2 /* Default-LandscapeLeft.png in Resources */,
+				B0A6BCFF12CC2C4600AA13C2 /* Default-LandscapeRight.png in Resources */,
+				B0A6BD0012CC2C4600AA13C2 /* Default-Portrait.png in Resources */,
+				B0A6BD0112CC2C4600AA13C2 /* Default-PortraitUpsideDown.png in Resources */,
+				B0A6BD0212CC2C4600AA13C2 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -85,8 +85,6 @@
 		
 		[accounts addObject:newAccount];
 		
-		[newAccount release];
-		
 		[infoFeed release];
 		
 		infoFeed=[[FacebookAccountInfoFeed alloc] initWithFacebookAccount:newAccount];
@@ -96,6 +94,8 @@
 		[infoFeed fetch];
 		
 		[tableView reloadData];
+		
+		[newAccount release];
 	}
 	else 
 	{

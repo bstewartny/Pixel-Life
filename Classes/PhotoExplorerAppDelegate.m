@@ -424,8 +424,8 @@
 	
 	NSLog(@"Loading archived data from: %@",filePath);
 	
-	@try {
-		
+	@try 
+	{
 		NSData * data =[[NSMutableData alloc]
 						initWithContentsOfFile:filePath];
 		if (data) 
@@ -433,20 +433,9 @@
 			NSKeyedUnarchiver * unarchiver = [[NSKeyedUnarchiver alloc]
 											  initForReadingWithData:data];
 		
-			NSLog(@"unarchive facebookAccounts...");
-			
 			facebookAccounts=[[unarchiver decodeObjectForKey:@"facebookAccounts"] retain];
 			
-			NSLog(@"unarchive currentAccount...");
-			
 			currentAccount=[[unarchiver decodeObjectForKey:@"currentAccount"] retain];
-			
-			if(facebookAccounts==nil)
-			{
-				NSLog(@"facebookAccounts==nil, creating new array...");
-				
-				facebookAccounts=[[NSMutableArray alloc] init];
-			}
 			
 			[unarchiver finishDecoding];
 			
@@ -455,12 +444,19 @@
 			[data release];
 		}
 	}
-	@catch (NSException * e) {
+	@catch (NSException * e) 
+	{
 		NSLog(@"Exception in loadArchivedData");
 		NSLog(@"Exception: %@",[e description]);
 	}
 	@finally 
 	{
+	}
+	if(facebookAccounts==nil)
+	{
+		NSLog(@"facebookAccounts==nil, creating new array...");
+		
+		facebookAccounts=[[NSMutableArray alloc] init];
 	}
 }
 
