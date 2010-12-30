@@ -85,6 +85,10 @@
 		B0A13D4B12AB168A00999009 /* GridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A13D4A12AB168A00999009 /* GridView.xib */; };
 		B0A6BAAF12CA9EB500AA13C2 /* AlbumGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BAAE12CA9EB500AA13C2 /* AlbumGridViewController.m */; };
 		B0A6BAE312CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BAE212CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m */; };
+		B0A6BB2512CB83DB00AA13C2 /* FacebookAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BB2412CB83DB00AA13C2 /* FacebookAccount.m */; };
+		B0A6BB3212CB873300AA13C2 /* FacebookAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BB3112CB873300AA13C2 /* FacebookAccountsViewController.m */; };
+		B0A6BB3A12CB899B00AA13C2 /* FacebookAccountsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */; };
+		B0A6BCB012CC22AB00AA13C2 /* FacebookAccountInfoFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BCAF12CC22AB00AA13C2 /* FacebookAccountInfoFeed.m */; };
 		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
 		B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */; };
@@ -271,6 +275,13 @@
 		B0A6BAAE12CA9EB500AA13C2 /* AlbumGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGridViewController.m; sourceTree = "<group>"; };
 		B0A6BAE112CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAlbumCommentsFeed.h; sourceTree = "<group>"; };
 		B0A6BAE212CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAlbumCommentsFeed.m; sourceTree = "<group>"; };
+		B0A6BB2312CB83DB00AA13C2 /* FacebookAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAccount.h; sourceTree = "<group>"; };
+		B0A6BB2412CB83DB00AA13C2 /* FacebookAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAccount.m; sourceTree = "<group>"; };
+		B0A6BB3012CB873300AA13C2 /* FacebookAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAccountsViewController.h; sourceTree = "<group>"; };
+		B0A6BB3112CB873300AA13C2 /* FacebookAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAccountsViewController.m; sourceTree = "<group>"; };
+		B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookAccountsView.xib; sourceTree = "<group>"; };
+		B0A6BCAE12CC22AB00AA13C2 /* FacebookAccountInfoFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAccountInfoFeed.h; sourceTree = "<group>"; };
+		B0A6BCAF12CC22AB00AA13C2 /* FacebookAccountInfoFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAccountInfoFeed.m; sourceTree = "<group>"; };
 		B0A8177612B063D00096162D /* PictureGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureGridViewCell.h; sourceTree = "<group>"; };
 		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
@@ -399,6 +410,7 @@
 				B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */,
 				B0F9FE3012BDA10E00CF2F74 /* AddCommentTableViewCell.xib */,
 				B0DFB84312BE8C870051F301 /* AddCommentView.xib */,
+				B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -539,6 +551,8 @@
 				B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */,
 				B0A6BAAD12CA9EB500AA13C2 /* AlbumGridViewController.h */,
 				B0A6BAAE12CA9EB500AA13C2 /* AlbumGridViewController.m */,
+				B0A6BB3012CB873300AA13C2 /* FacebookAccountsViewController.h */,
+				B0A6BB3112CB873300AA13C2 /* FacebookAccountsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -585,6 +599,10 @@
 				B0B8A87B12C382ED00F1924C /* AsyncImageDelegate.h */,
 				B0A6BAE112CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.h */,
 				B0A6BAE212CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m */,
+				B0A6BB2312CB83DB00AA13C2 /* FacebookAccount.h */,
+				B0A6BB2412CB83DB00AA13C2 /* FacebookAccount.m */,
+				B0A6BCAE12CC22AB00AA13C2 /* FacebookAccountInfoFeed.h */,
+				B0A6BCAF12CC22AB00AA13C2 /* FacebookAccountInfoFeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -741,6 +759,7 @@
 				B0DFB84412BE8C870051F301 /* AddCommentView.xib in Resources */,
 				B0F95D3812C19BF900F43881 /* 05-shuffle.png in Resources */,
 				B0F309D512C43D8D00773BFF /* icon.png in Resources */,
+				B0A6BB3A12CB899B00AA13C2 /* FacebookAccountsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +848,9 @@
 				B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */,
 				B0A6BAAF12CA9EB500AA13C2 /* AlbumGridViewController.m in Sources */,
 				B0A6BAE312CAA4BB00AA13C2 /* FacebookAlbumCommentsFeed.m in Sources */,
+				B0A6BB2512CB83DB00AA13C2 /* FacebookAccount.m in Sources */,
+				B0A6BB3212CB873300AA13C2 /* FacebookAccountsViewController.m in Sources */,
+				B0A6BCB012CC22AB00AA13C2 /* FacebookAccountInfoFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

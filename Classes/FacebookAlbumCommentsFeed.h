@@ -15,6 +15,6 @@
 }
 @property(nonatomic,assign) Album * album;
 
-- (id) initWithFacebook:(Facebook*)facebook album:(Album*)album;
+- (id) initWithFacebookAccount:(FacebookAccount*)account album:(Album*)album;
 
 @end

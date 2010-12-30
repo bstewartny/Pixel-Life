@@ -1,13 +1,13 @@
 #import <Foundation/Foundation.h>
 #import "Feed.h"
-@class Facebook;
+@class FacebookAccount;
 
 @interface FacebookFeed : Feed {
-	Facebook * facebook;
+	FacebookAccount * account;
 	NSDateFormatter * formatter;
 }
-@property(nonatomic,retain) Facebook * facebook;
-- (id) initWithFacebook:(Facebook*)facebook;
+@property(nonatomic,retain) FacebookAccount * account;
+- (id) initWithFacebookAccount:(FacebookAccount*)account;
 
 - (NSString*) graphPath;
 

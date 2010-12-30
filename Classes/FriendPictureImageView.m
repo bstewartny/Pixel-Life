@@ -1,11 +1,3 @@
-//
-//  FriendPictureImageView.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/28/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "FriendPictureImageView.h"
 #import "User.h"
 #import "Friend.h"

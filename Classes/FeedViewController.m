@@ -2,6 +2,7 @@
 #import "Feed.h"
 #import "PhotoExplorerAppDelegate.h"
 #import "Reachability.h"
+#import "FacebookAccount.h"
 
 @implementation FeedViewController
 @synthesize items,feed;
@@ -186,6 +187,12 @@
 	[super viewDidAppear:animated];
 	[self reloadFeed];
 	[self reloadData];
+	
+	FacebookAccount * currentAccount=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	if(![currentAccount isSessionValid])
+	{
+		[[PhotoExplorerAppDelegate sharedAppDelegate] login];
+	}
 }
 
 // Override to allow orientations other than the default portrait orientation.

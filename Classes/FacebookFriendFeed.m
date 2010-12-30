@@ -5,6 +5,7 @@
 #import "Picture.h"
 #import "FacebookFriendAlbumFeed.h"
 #import "ASIHTTPRequest.h"
+#import "FacebookAccount.h"
 
 @implementation FacebookFriendFeed
 
@@ -14,7 +15,7 @@
 	
 	NSString * escaped_query=[self escapeQueryValue:friend_query];
 	
-	NSString* escaped_token = [self escapeQueryValue:facebook.accessToken];
+	NSString* escaped_token = [self escapeQueryValue:account.accessToken];
 	
 	NSString * url=[NSString stringWithFormat:@"https://api.facebook.com/method/fql.query?format=JSON&access_token=%@&query=%@",escaped_token,escaped_query];
 
@@ -69,7 +70,7 @@
 			picture.description=friend.name;
 		}
 		
-		FacebookFriendAlbumFeed * albumFeed=[[FacebookFriendAlbumFeed alloc] initWithFacebook:facebook friend:friend];
+		FacebookFriendAlbumFeed * albumFeed=[[FacebookFriendAlbumFeed alloc] initWithFacebookAccount:account friend:friend];
 		
 		friend.albumFeed=albumFeed;
 		
@@ -122,7 +123,7 @@
 			picture.description=friend.name;
 		}
 		
-		FacebookFriendAlbumFeed * albumFeed=[[FacebookFriendAlbumFeed alloc] initWithFacebook:facebook friend:friend];
+		FacebookFriendAlbumFeed * albumFeed=[[FacebookFriendAlbumFeed alloc] initWithFacebookAccount:account friend:friend];
 		
 		friend.albumFeed=albumFeed;
 		

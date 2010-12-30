@@ -3,13 +3,14 @@
 #import "FBConnect.h"
 #import "JSON.h"
 #import "ASIHTTPRequest.h"
+#import "FacebookAccount.h"
 
 @implementation FacebookFriendListFriendFeed
 @synthesize friendList;
 
-- (id) initWithFacebook:(Facebook*)facebook friendList:(FriendList*)friendList
+- (id) initWithFacebookAccount:(FacebookAccount*)account friendList:(FriendList*)friendList
 {
-	self=[super initWithFacebook:facebook];
+	self=[super initWithFacebookAccount:account];
 	if (self==nil) {
 		return nil;
 	}
@@ -25,7 +26,7 @@
 	
 	NSString * escaped_query=[self escapeQueryValue:friend_query];
 	
-	NSString* escaped_token = [self escapeQueryValue:facebook.accessToken];
+	NSString* escaped_token = [self escapeQueryValue:account.accessToken];
 	
 	NSString * url=[NSString stringWithFormat:@"https://api.facebook.com/method/fql.query?format=JSON&access_token=%@&query=%@",escaped_token,escaped_query];
 	

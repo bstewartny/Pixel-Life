@@ -19,21 +19,17 @@
 #import "FadeNavigationController.h"
 #import "BlankToolbar.h"
 #import "Reachability.h"
-
-// Your Facebook APP Id must be set before running this example
-// See http://www.facebook.com/developers/createapp.php
-// Also, your application must bind to the fb[app_id]:// URL
-// scheme (substitue [app_id] for your real Facebook app id).
-//static NSString* kAppId = @"144746058889817";
-static NSString* kAppId = @"174754232546721";
-
+#import "FacebookAccount.h"
+#import "FacebookAccountsViewController.h"
 @implementation PhotoExplorerAppDelegate
 
 @synthesize window;
 @synthesize downloadQueue;
 @synthesize navController;
-@synthesize facebook;
+//@synthesize facebook;
 @synthesize imageCache;
+@synthesize facebookAccounts;
+@synthesize currentAccount;
 
 + (PhotoExplorerAppDelegate *)sharedAppDelegate
 {
@@ -55,11 +51,15 @@ static NSString* kAppId = @"174754232546721";
 	
 	[self loadArchivedData];
 	
-	facebook=[[Facebook alloc] init];
+	//facebook=[[Facebook alloc] init];
 	
-	NSLog(@"setting facebook accessToken to %@",accessToken);
-	facebook.accessToken=accessToken;
-	facebook.expirationDate=expirationDate;
+	//NSLog(@"setting facebook accessToken to %@",accessToken);
+	
+	//if(currentAccount)
+	//{
+		//facebook.accessToken=currentAccount.accessToken;
+		//facebook.expirationDate=currentAccount.expirationDate;
+	//}
 	
 	navController=[[FadeNavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
@@ -109,6 +109,17 @@ static NSString* kAppId = @"174754232546721";
 
 - (void)login 
 {
+	[self showAccounts];
+	/*
+	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
+	accountsView.modalPresentationStyle=UIModalPresentationFormSheet;
+	accountsView.delegate=self;
+	
+	[navController.topViewController presentModalViewController:accountsView animated:YES];
+	
+	[accountsView release];
+	*/
+	/*
 	if(![facebook isSessionValid])
 	{
 		Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
@@ -124,22 +135,23 @@ static NSString* kAppId = @"174754232546721";
 											@"read_stream",@"friends_photos", @"read_friendlists",@"user_photos",@"offline_access",nil] delegate:self];
 		}
 	}
-	else {
+	else 
+	{
 		NSLog(@"session is valid, NOT calling facebook.authorize...");
-	}
+	}*/
 }
 
-/**
- * Called when the user successfully logged in.
- */
 - (void)fbDidLogin
 {
-	if([facebook isSessionValid])
+	if([currentAccount isSessionValid])
 	{
-		accessToken=facebook.accessToken;
-		expirationDate=facebook.expirationDate;
 		[self saveData];
 		[self showAllFriends];
+	}
+	else 
+	{
+		[self saveData];
+		[self showNoFriends];
 	}
 }
 
@@ -148,10 +160,15 @@ static NSString* kAppId = @"174754232546721";
 	@try {
 		// clear existing data...
 		[self clearCache];
+		
+		self.currentAccount=nil;
+		
+		[self saveData];
 		// show blank screen...
 		[self showNoFriends];
 		
-		[facebook logout:self];
+		//self.currentAccount=nil;
+		//[facebook logout:self];
 	}
 	@catch (NSException * e) {
 	}
@@ -178,8 +195,10 @@ static NSString* kAppId = @"174754232546721";
  */
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
-	accessToken=nil;
-	expirationDate=nil;
+	self.currentAccount=nil;
+	
+	//accessToken=nil;
+	//expirationDate=nil;
 	
 	[self showAllFriends];
 }
@@ -189,8 +208,10 @@ static NSString* kAppId = @"174754232546721";
  */
 - (void)fbDidLogout
 {
-	accessToken=nil;
-	expirationDate=nil;
+	self.currentAccount=nil;
+	
+	//accessToken=nil;
+	//expirationDate=nil;
 	[self clearCache];
 	[self saveData];
 	
@@ -201,7 +222,7 @@ static NSString* kAppId = @"174754232546721";
 
 - (void) addCommentToPhoto:(Picture*)picture comment:(NSString*)comment
 {
-	if(![facebook isSessionValid])
+	if(![currentAccount isSessionValid])
 	{
 		return;
 	}
@@ -211,7 +232,7 @@ static NSString* kAppId = @"174754232546721";
 
 - (void) likePhoto:(Picture*)picture
 {
-	if(![facebook isSessionValid])
+	if(![currentAccount isSessionValid])
 	{
 		return;
 	}
@@ -220,13 +241,13 @@ static NSString* kAppId = @"174754232546721";
 
 - (void) showMyAlbums
 {
-	if(![facebook isSessionValid])
+	if(![currentAccount isSessionValid])
 	{
 		[self login];
 		return;
 	}
 	
-	FacebookMyAlbumsFeed * feed=[[FacebookMyAlbumsFeed alloc] initWithFacebook:facebook];
+	FacebookMyAlbumsFeed * feed=[[FacebookMyAlbumsFeed alloc] initWithFacebookAccount:currentAccount];
 	AlbumsGridViewController * controller=[[AlbumsGridViewController alloc] initWithFeed:feed title:@"My Albums"];
 	[self addSettingsButtonToController:controller];
 	controller.navigationItem.titleView=segmentedControl;
@@ -247,13 +268,12 @@ static NSString* kAppId = @"174754232546721";
 }
 - (void) showAllFriends
 {
-	if(![facebook isSessionValid])
-	{
-		[self login];
-		return;
-	}
+	FacebookFriendFeed * feed=nil;
 	
-	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebook:facebook];
+	if([currentAccount isSessionValid])
+	{
+		feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
+	}
 	
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"All Friends"];
 	[self addSettingsButtonToController:controller];
@@ -261,6 +281,8 @@ static NSString* kAppId = @"174754232546721";
 	segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
+	
+	
 }
 
 - (void) addSettingsButtonToController:(UIViewController*)controller
@@ -301,13 +323,13 @@ static NSString* kAppId = @"174754232546721";
 
 - (void) showAllLists
 {
-	if(![facebook isSessionValid])
+	if(![currentAccount isSessionValid])
 	{
 		[self login];
 		return;
 	}
 	
-	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebook:facebook];
+	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebookAccount:currentAccount];
 	
 	FriendListsGridViewController * controller=[[FriendListsGridViewController alloc] initWithFeed:feed title:@"My Lists"];
 	[self addSettingsButtonToController:controller];
@@ -330,10 +352,29 @@ static NSString* kAppId = @"174754232546721";
 		}
 		if(buttonIndex==1)
 		{
+			// facebook accounts
+			[self showAccounts];
+		}
+		if(buttonIndex==2)
+		{
 			// logout
 			[self logout];
 		}
 	}
+}
+
+- (void) showAccounts
+{
+	NSLog(@"showAccounts");
+	
+	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
+	accountsView.modalPresentationStyle=UIModalPresentationFormSheet;
+	accountsView.delegate=self;
+	NSLog(@"presentModalViewController...");
+	
+	[navController.topViewController presentModalViewController:accountsView animated:YES];
+	
+	[accountsView release];
 }
 
 - (void) refresh:(id)sender
@@ -344,7 +385,7 @@ static NSString* kAppId = @"174754232546721";
 
 - (void) settings:(id)sender
 {
-	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Clear cache" otherButtonTitles:@"Logout",nil];
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Clear cached images" otherButtonTitles:@"Facebook accounts",@"Logout",nil];
 	
 	actionSheet.tag=kActionSheetSettings;
 	
@@ -392,8 +433,20 @@ static NSString* kAppId = @"174754232546721";
 			NSKeyedUnarchiver * unarchiver = [[NSKeyedUnarchiver alloc]
 											  initForReadingWithData:data];
 		
-			accessToken=[unarchiver decodeObjectForKey:@"accessToken"];
-			expirationDate=[unarchiver decodeObjectForKey:@"expirationDate"];
+			NSLog(@"unarchive facebookAccounts...");
+			
+			facebookAccounts=[[unarchiver decodeObjectForKey:@"facebookAccounts"] retain];
+			
+			NSLog(@"unarchive currentAccount...");
+			
+			currentAccount=[[unarchiver decodeObjectForKey:@"currentAccount"] retain];
+			
+			if(facebookAccounts==nil)
+			{
+				NSLog(@"facebookAccounts==nil, creating new array...");
+				
+				facebookAccounts=[[NSMutableArray alloc] init];
+			}
 			
 			[unarchiver finishDecoding];
 			
@@ -423,8 +476,8 @@ static NSString* kAppId = @"174754232546721";
 		{
 			NSKeyedArchiver * archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
 			
-			[archiver encodeObject:accessToken forKey:@"accessToken"];
-			[archiver encodeObject:expirationDate forKey:@"expirationDate"];
+			[archiver encodeObject:facebookAccounts forKey:@"facebookAccounts"];
+			[archiver encodeObject:currentAccount forKey:@"currentAccount"];
 			
 			[archiver finishEncoding];
 			
@@ -470,9 +523,10 @@ static NSString* kAppId = @"174754232546721";
 	[downloadQueue release];
 	[navController release];
 	[segmentedControl release];
-	[facebook release];
 	[imageCache release];
     [window release];
+	[facebookAccounts release];
+	[currentAccount release];
     [super dealloc];
 }
 

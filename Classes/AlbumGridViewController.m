@@ -1,11 +1,3 @@
-//
-//  AlbumGridViewController.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/28/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import "AlbumGridViewController.h"
 #import "Album.h"
 #import "BlankToolbar.h"
@@ -16,7 +8,7 @@
 #import "ASIFormDataRequest.h"
 #import "PhotoExplorerAppDelegate.h"
 #import "FacebookAlbumCommentsFeed.h"
-#import "Facebook.h"
+#import "FacebookAccount.h"
 
 @implementation AlbumGridViewController
 @synthesize album;
@@ -114,7 +106,7 @@
 
 - (ASIHTTPRequest*) createLikeRequest
 {
-	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",album.uid];
 	
@@ -122,7 +114,7 @@
 	
 	request.requestMethod=@"POST";
 	
-	[request addPostValue:facebook.accessToken forKey:@"access_token"];
+	[request addPostValue:account.accessToken forKey:@"access_token"];
 	
 	return request;
 }
@@ -223,9 +215,9 @@
 		return;
 	}
 	
-	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
 	
-	FacebookAlbumCommentsFeed * feed=[[FacebookAlbumCommentsFeed alloc] initWithFacebook:facebook  album:album];
+	FacebookAlbumCommentsFeed * feed=[[FacebookAlbumCommentsFeed alloc] initWithFacebookAccount:account  album:album];
 	
 	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Album Comments"];
 	
@@ -283,7 +275,7 @@
 }
 - (ASIHTTPRequest*) createCommentRequest:(NSString*)message
 {
-	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",album.uid];
 	
@@ -291,7 +283,7 @@
 	
 	request.requestMethod=@"POST";
 	
-	[request addPostValue:facebook.accessToken forKey:@"access_token"];
+	[request addPostValue:account.accessToken forKey:@"access_token"];
 	[request addPostValue:message forKey:@"message"];
 	//request.userInfo=[NSDictionary dictionaryWithObjectsAndKeys:picture,@"picture",nil];
 	

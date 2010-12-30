@@ -7,7 +7,7 @@
 }
 @property(nonatomic,assign) Picture * picture;
 
-- (id) initWithFacebook:(Facebook*)facebook picture:(Picture*)picture;
+- (id) initWithFacebookAccount:(FacebookAccount*)account picture:(Picture*)picture;
 
 
 @end

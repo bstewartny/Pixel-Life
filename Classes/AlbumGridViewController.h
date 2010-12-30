@@ -1,11 +1,3 @@
-//
-//  AlbumGridViewController.h
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 12/28/10.
-//  Copyright 2010 Evernote. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "PictureFeedGridViewController.h"

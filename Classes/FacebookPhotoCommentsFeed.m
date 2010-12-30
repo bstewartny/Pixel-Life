@@ -9,9 +9,9 @@
 @implementation FacebookPhotoCommentsFeed
 @synthesize picture;
 
-- (id) initWithFacebook:(Facebook*)facebook picture:(Picture*)picture
+- (id) initWithFacebookAccount:(FacebookAccount*)account picture:(Picture*)picture
 {
-	self=[super initWithFacebook:facebook];
+	self=[super initWithFacebookAccount:account];
 	if (self==nil) {
 		return nil;
 	}

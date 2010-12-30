@@ -10,9 +10,9 @@
 @implementation FacebookAlbumCommentsFeed
 @synthesize album;
 
-- (id) initWithFacebook:(Facebook*)facebook album:(Album*)album
+- (id) initWithFacebookAccount:(FacebookAccount*)account album:(Album*)album
 {
-	self=[super initWithFacebook:facebook];
+	self=[super initWithFacebookAccount:account];
 	if (self==nil) {
 		return nil;
 	}

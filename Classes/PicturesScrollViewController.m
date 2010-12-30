@@ -11,7 +11,8 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "PhotoExplorerAppDelegate.h"
-#import "Facebook.h"
+#import "FacebookAccount.h"
+
 //#import "PictureScrollView.h"
 
 @implementation PicturesScrollViewController
@@ -148,9 +149,9 @@
 	
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 	
-	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
 	
-	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebook:facebook  picture:picture];
+	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebookAccount:account  picture:picture];
 	
 	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments"];
 	
@@ -206,7 +207,7 @@
 {
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 
-	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",picture.uid];
 	
@@ -214,7 +215,7 @@
 	
 	request.requestMethod=@"POST";
 	
-	[request addPostValue:facebook.accessToken forKey:@"access_token"];
+	[request addPostValue:account.accessToken forKey:@"access_token"];
 	[request addPostValue:message forKey:@"message"];
 	request.userInfo=[NSDictionary dictionaryWithObjectsAndKeys:picture,@"picture",nil];
 	
@@ -282,7 +283,7 @@
 {
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 	
-	Facebook * facebook=[PhotoExplorerAppDelegate sharedAppDelegate].facebook;
+	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",picture.uid];
 	
@@ -290,7 +291,7 @@
 	
 	request.requestMethod=@"POST";
 	
-	[request addPostValue:facebook.accessToken forKey:@"access_token"];
+	[request addPostValue:account.accessToken forKey:@"access_token"];
 	
 	return request;
 }

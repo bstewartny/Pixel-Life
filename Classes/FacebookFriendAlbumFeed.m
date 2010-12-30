@@ -10,9 +10,9 @@
 @implementation FacebookFriendAlbumFeed
 @synthesize friend;
 
-- (id) initWithFacebook:(Facebook*)facebook friend:(Friend*)friend
+- (id) initWithFacebookAccount:(FacebookAccount*)account friend:(Friend*)friend
 {
-	self=[super initWithFacebook:facebook];
+	self=[super initWithFacebookAccount:account];
 	if (self==nil) {
 		return nil;
 	}
@@ -88,7 +88,7 @@
 		
 		album.picture=picture;
 		
-		FacebookAlbumPictureFeed * pictureFeed=[[FacebookAlbumPictureFeed alloc] initWithFacebook:facebook album:album];
+		FacebookAlbumPictureFeed * pictureFeed=[[FacebookAlbumPictureFeed alloc] initWithFacebookAccount:account album:album];
 		
 		album.pictureFeed=pictureFeed;
 		

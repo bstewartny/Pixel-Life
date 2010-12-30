@@ -103,6 +103,8 @@ static NSString* kSDKVersion = @"2";
                                  kSDKVersion, @"sdk",
                                  nil];
 
+	NSLog(@"authorizeWithFBAppAuth:%@ safariAuth:%@",tryFBAppAuth?@"YES":@"NO",trySafariAuth?@"YES":@"NO");
+	
   if (_permissions != nil) {
     NSString* scope = [_permissions componentsJoinedByString:@","];
     [params setValue:scope forKey:@"scope"];
@@ -209,7 +211,7 @@ static NSString* kSDKVersion = @"2";
 
   _sessionDelegate = delegate;
 
-  [self authorizeWithFBAppAuth:YES safariAuth:NO];
+  [self authorizeWithFBAppAuth:NO safariAuth:NO];
 }
 
 /**

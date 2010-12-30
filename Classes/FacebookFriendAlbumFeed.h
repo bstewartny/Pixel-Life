@@ -7,6 +7,6 @@
 }
 @property(nonatomic,assign) Friend * friend;
 
-- (id) initWithFacebook:(Facebook*)facebook friend:(Friend*)friend;
+- (id) initWithFacebookAccount:(FacebookAccount*)account friend:(Friend*)friend;
 
 @end

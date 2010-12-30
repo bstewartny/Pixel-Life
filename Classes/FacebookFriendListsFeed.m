@@ -66,7 +66,7 @@
 			NSLog(@"Friend list has no members...");
 		}
 
-		FacebookFriendListFriendFeed * friendFeed=[[FacebookFriendListFriendFeed alloc] initWithFacebook:facebook friendList:list];
+		FacebookFriendListFriendFeed * friendFeed=[[FacebookFriendListFriendFeed alloc] initWithFacebookAccount:account friendList:list];
 		
 		list.friendFeed=friendFeed;
 		

@@ -2,15 +2,16 @@
 #import "ASIHTTPRequest.h"
 #import "FBConnect.h"
 #import "JSON.h"
+#import "FacebookAccount.h"
 
 @implementation FacebookFeed
-@synthesize facebook;
+@synthesize account;
 
-- (id) initWithFacebook:(Facebook*)facebook
+- (id) initWithFacebookAccount:(FacebookAccount*)account
 {
 	self=[super init];
 	
-	self.facebook=facebook;
+	self.account=account;
 	
 	formatter = [[NSDateFormatter alloc] init];
 	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
@@ -35,7 +36,7 @@
 {
 	NSString* escaped_token = (NSString *)CFURLCreateStringByAddingPercentEscapes(
 																				  NULL, /* allocator */
-																				  (CFStringRef)facebook.accessToken,
+																				  (CFStringRef)account.accessToken,
 																				  NULL, /* charactersToLeaveUnescaped */
 																				  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
 																				  kCFStringEncodingUTF8);
@@ -71,7 +72,7 @@
 
 - (ASIHTTPRequest*)createFetchRequest
 {
-	NSString* escaped_token = [self escapeQueryValue:facebook.accessToken];
+	NSString* escaped_token = [self escapeQueryValue:account.accessToken];
 	
 	NSString * seperator=@"?";
 	
@@ -100,7 +101,7 @@
 
 - (void) dealloc
 {
-	[facebook release];
+	[account release];
 	[formatter release];
 	[super dealloc];
 }
