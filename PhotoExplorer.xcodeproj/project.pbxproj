@@ -59,6 +59,17 @@
 		B04829D512AD7E0B00F61433 /* FacebookAlbumPictureFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04829D412AD7E0B00F61433 /* FacebookAlbumPictureFeed.m */; };
 		B04B1C6312ADC439006FA4E2 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B04B1C6212ADC439006FA4E2 /* UserSettings.m */; };
 		B04BC82C12B52FFA007217A3 /* FacebookFriendListsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */; };
+		B05C2A4712CCE14F00CE56E2 /* icon_post.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4612CCE14F00CE56E2 /* icon_post.png */; };
+		B05C2A4912CCE19000CE56E2 /* icon_circle_arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4812CCE19000CE56E2 /* icon_circle_arrow_right.png */; };
+		B05C2A4B12CCE1AB00CE56E2 /* icon_tag_add.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4A12CCE1AB00CE56E2 /* icon_tag_add.png */; };
+		B05C2A4D12CCE1DA00CE56E2 /* icon_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4C12CCE1DA00CE56E2 /* icon_tag.png */; };
+		B05C2A4F12CCE1FA00CE56E2 /* icon_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4E12CCE1FA00CE56E2 /* icon_frame.png */; };
+		B05C2AD712CCFFF000CE56E2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2AD112CCFFF000CE56E2 /* Default.png */; };
+		B05C2AD812CCFFF000CE56E2 /* Default-PortraitUpsideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2AD212CCFFF000CE56E2 /* Default-PortraitUpsideDown.png */; };
+		B05C2AD912CCFFF000CE56E2 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2AD312CCFFF000CE56E2 /* Default-Portrait.png */; };
+		B05C2ADA12CCFFF000CE56E2 /* Default-LandscapeRight.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2AD412CCFFF000CE56E2 /* Default-LandscapeRight.png */; };
+		B05C2ADB12CCFFF000CE56E2 /* Default-LandscapeLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2AD512CCFFF000CE56E2 /* Default-LandscapeLeft.png */; };
+		B05C2ADC12CCFFF000CE56E2 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2AD612CCFFF000CE56E2 /* Default-Landscape.png */; };
 		B05C4D0612AFD6D800CA0EFA /* FriendGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C4D0512AFD6D800CA0EFA /* FriendGridViewCell.m */; };
 		B05C4D5612AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C4D5512AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m */; };
 		B083802012C1454B00E999A8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B083801F12C1454B00E999A8 /* FeedViewController.m */; };
@@ -89,12 +100,6 @@
 		B0A6BB3212CB873300AA13C2 /* FacebookAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BB3112CB873300AA13C2 /* FacebookAccountsViewController.m */; };
 		B0A6BB3A12CB899B00AA13C2 /* FacebookAccountsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */; };
 		B0A6BCB012CC22AB00AA13C2 /* FacebookAccountInfoFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A6BCAF12CC22AB00AA13C2 /* FacebookAccountInfoFeed.m */; };
-		B0A6BCFD12CC2C4600AA13C2 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCF712CC2C4600AA13C2 /* Default-Landscape.png */; };
-		B0A6BCFE12CC2C4600AA13C2 /* Default-LandscapeLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCF812CC2C4600AA13C2 /* Default-LandscapeLeft.png */; };
-		B0A6BCFF12CC2C4600AA13C2 /* Default-LandscapeRight.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCF912CC2C4600AA13C2 /* Default-LandscapeRight.png */; };
-		B0A6BD0012CC2C4600AA13C2 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCFA12CC2C4600AA13C2 /* Default-Portrait.png */; };
-		B0A6BD0112CC2C4600AA13C2 /* Default-PortraitUpsideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCFB12CC2C4600AA13C2 /* Default-PortraitUpsideDown.png */; };
-		B0A6BD0212CC2C4600AA13C2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B0A6BCFC12CC2C4600AA13C2 /* Default.png */; };
 		B0A8177812B063D00096162D /* PictureGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8177712B063D00096162D /* PictureGridViewCell.m */; };
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
 		B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */; };
@@ -229,6 +234,17 @@
 		B04B1C6212ADC439006FA4E2 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		B04BC82A12B52FFA007217A3 /* FacebookFriendListsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendListsFeed.h; sourceTree = "<group>"; };
 		B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendListsFeed.m; sourceTree = "<group>"; };
+		B05C2A4612CCE14F00CE56E2 /* icon_post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_post.png; sourceTree = "<group>"; };
+		B05C2A4812CCE19000CE56E2 /* icon_circle_arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_circle_arrow_right.png; sourceTree = "<group>"; };
+		B05C2A4A12CCE1AB00CE56E2 /* icon_tag_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tag_add.png; sourceTree = "<group>"; };
+		B05C2A4C12CCE1DA00CE56E2 /* icon_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tag.png; sourceTree = "<group>"; };
+		B05C2A4E12CCE1FA00CE56E2 /* icon_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_frame.png; sourceTree = "<group>"; };
+		B05C2AD112CCFFF000CE56E2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B05C2AD212CCFFF000CE56E2 /* Default-PortraitUpsideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-PortraitUpsideDown.png"; sourceTree = "<group>"; };
+		B05C2AD312CCFFF000CE56E2 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		B05C2AD412CCFFF000CE56E2 /* Default-LandscapeRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-LandscapeRight.png"; sourceTree = "<group>"; };
+		B05C2AD512CCFFF000CE56E2 /* Default-LandscapeLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-LandscapeLeft.png"; sourceTree = "<group>"; };
+		B05C2AD612CCFFF000CE56E2 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		B05C4D0412AFD6D800CA0EFA /* FriendGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendGridViewCell.h; sourceTree = "<group>"; };
 		B05C4D0512AFD6D800CA0EFA /* FriendGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendGridViewCell.m; sourceTree = "<group>"; };
 		B05C4D5412AFDC3000CA0EFA /* FacebookMyAlbumsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookMyAlbumsFeed.h; sourceTree = "<group>"; };
@@ -288,12 +304,6 @@
 		B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacebookAccountsView.xib; sourceTree = "<group>"; };
 		B0A6BCAE12CC22AB00AA13C2 /* FacebookAccountInfoFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAccountInfoFeed.h; sourceTree = "<group>"; };
 		B0A6BCAF12CC22AB00AA13C2 /* FacebookAccountInfoFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAccountInfoFeed.m; sourceTree = "<group>"; };
-		B0A6BCF712CC2C4600AA13C2 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
-		B0A6BCF812CC2C4600AA13C2 /* Default-LandscapeLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-LandscapeLeft.png"; sourceTree = "<group>"; };
-		B0A6BCF912CC2C4600AA13C2 /* Default-LandscapeRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-LandscapeRight.png"; sourceTree = "<group>"; };
-		B0A6BCFA12CC2C4600AA13C2 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
-		B0A6BCFB12CC2C4600AA13C2 /* Default-PortraitUpsideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-PortraitUpsideDown.png"; sourceTree = "<group>"; };
-		B0A6BCFC12CC2C4600AA13C2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B0A8177612B063D00096162D /* PictureGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureGridViewCell.h; sourceTree = "<group>"; };
 		B0A8177712B063D00096162D /* PictureGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureGridViewCell.m; sourceTree = "<group>"; };
 		B0A8188012B076890096162D /* AlbumGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGridViewCell.h; sourceTree = "<group>"; };
@@ -689,12 +699,17 @@
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B0A6BCF712CC2C4600AA13C2 /* Default-Landscape.png */,
-				B0A6BCF812CC2C4600AA13C2 /* Default-LandscapeLeft.png */,
-				B0A6BCF912CC2C4600AA13C2 /* Default-LandscapeRight.png */,
-				B0A6BCFA12CC2C4600AA13C2 /* Default-Portrait.png */,
-				B0A6BCFB12CC2C4600AA13C2 /* Default-PortraitUpsideDown.png */,
-				B0A6BCFC12CC2C4600AA13C2 /* Default.png */,
+				B05C2AD112CCFFF000CE56E2 /* Default.png */,
+				B05C2AD212CCFFF000CE56E2 /* Default-PortraitUpsideDown.png */,
+				B05C2AD312CCFFF000CE56E2 /* Default-Portrait.png */,
+				B05C2AD412CCFFF000CE56E2 /* Default-LandscapeRight.png */,
+				B05C2AD512CCFFF000CE56E2 /* Default-LandscapeLeft.png */,
+				B05C2AD612CCFFF000CE56E2 /* Default-Landscape.png */,
+				B05C2A4E12CCE1FA00CE56E2 /* icon_frame.png */,
+				B05C2A4C12CCE1DA00CE56E2 /* icon_tag.png */,
+				B05C2A4A12CCE1AB00CE56E2 /* icon_tag_add.png */,
+				B05C2A4812CCE19000CE56E2 /* icon_circle_arrow_right.png */,
+				B05C2A4612CCE14F00CE56E2 /* icon_post.png */,
 				B0F309D412C43D8D00773BFF /* icon.png */,
 				B0F95D3712C19BF900F43881 /* 05-shuffle.png */,
 				B0F9FD0512BBEE6700CF2F74 /* icon_star.png */,
@@ -778,12 +793,17 @@
 				B0F95D3812C19BF900F43881 /* 05-shuffle.png in Resources */,
 				B0F309D512C43D8D00773BFF /* icon.png in Resources */,
 				B0A6BB3A12CB899B00AA13C2 /* FacebookAccountsView.xib in Resources */,
-				B0A6BCFD12CC2C4600AA13C2 /* Default-Landscape.png in Resources */,
-				B0A6BCFE12CC2C4600AA13C2 /* Default-LandscapeLeft.png in Resources */,
-				B0A6BCFF12CC2C4600AA13C2 /* Default-LandscapeRight.png in Resources */,
-				B0A6BD0012CC2C4600AA13C2 /* Default-Portrait.png in Resources */,
-				B0A6BD0112CC2C4600AA13C2 /* Default-PortraitUpsideDown.png in Resources */,
-				B0A6BD0212CC2C4600AA13C2 /* Default.png in Resources */,
+				B05C2A4712CCE14F00CE56E2 /* icon_post.png in Resources */,
+				B05C2A4912CCE19000CE56E2 /* icon_circle_arrow_right.png in Resources */,
+				B05C2A4B12CCE1AB00CE56E2 /* icon_tag_add.png in Resources */,
+				B05C2A4D12CCE1DA00CE56E2 /* icon_tag.png in Resources */,
+				B05C2A4F12CCE1FA00CE56E2 /* icon_frame.png in Resources */,
+				B05C2AD712CCFFF000CE56E2 /* Default.png in Resources */,
+				B05C2AD812CCFFF000CE56E2 /* Default-PortraitUpsideDown.png in Resources */,
+				B05C2AD912CCFFF000CE56E2 /* Default-Portrait.png in Resources */,
+				B05C2ADA12CCFFF000CE56E2 /* Default-LandscapeRight.png in Resources */,
+				B05C2ADB12CCFFF000CE56E2 /* Default-LandscapeLeft.png in Resources */,
+				B05C2ADC12CCFFF000CE56E2 /* Default-Landscape.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

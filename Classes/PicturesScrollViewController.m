@@ -44,7 +44,7 @@
 		[toolItems addObject:b];
 		[b release];
 		
-		b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_comment_ok.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showComments:)];
+		b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_post.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showComments:)];
 		[toolItems addObject:b];
 		showCommentsButton=b;
 		b.enabled=NO;
@@ -127,7 +127,7 @@
 		
 		
 		
-		
+		self.wantsFullScreenLayout=YES;
 		
 		
 		
@@ -436,10 +436,13 @@
 	
 	if(b.size.width==1024 && b.size.height==704)
 	{
-		b.size.height=748;
+		//b.size.height=748;
+		b.size.height=768;
+		
 	}
 	if (b.size.width==768 && b.size.height==960) {
-		b.size.height=1004;
+		//b.size.height=1004;
+		b.size.height=1024;
 	}
 	return b;
 }
@@ -463,9 +466,7 @@
 		
 		CGRect frame=CGRectMake(x,y,width,height);
 		
-		
 		PictureImageView * picView=[[PictureImageView alloc] initWithFrame:frame picture:picture];
-		//PictureScrollView * picView=[[PictureScrollView alloc] initWithFrame:frame picture:picture];
 		
 		[scrollView addSubview:picView];
 		
@@ -511,11 +512,20 @@
 
 - (void)toggleNavigationBar 
 {
-	CGRect rect = self.navigationController.navigationBar.frame;
+	BOOL statusBarHidden=[[UIApplication sharedApplication] isStatusBarHidden];
+	
+	if(statusBarHidden)
+	{
+		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
+		[self.navigationController setNavigationBarHidden:NO animated:NO];
+	}
+	
+	/*CGRect rect = self.navigationController.navigationBar.frame;
     rect.origin.y = rect.origin.y < 0 ?
 		rect.origin.y + rect.size.height
 		:	rect.origin.y - rect.size.height;
-	
+	*/
 	CGRect rect2=infoView.frame;
 		rect2.origin.y= rect2.origin.y>=self.view.frame.size.height ?
 			self.view.frame.size.height-rect2.size.height :
@@ -523,9 +533,20 @@
 	
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
-    self.navigationController.navigationBar.frame = rect;
-    infoView.frame=rect2;
+	
+	//self.navigationController.navigationBar.frame = rect;
+    
+	infoView.frame=rect2;
+	
 	[UIView commitAnimations];
+	
+	if(!statusBarHidden)
+	{
+		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    	[self.navigationController setNavigationBarHidden:YES animated:YES];
+	}
+	
+	[self.navigationController.view setNeedsLayout];
 }
 
 -(void)toggleNavigationBarWithTimer:(NSTimer*)theTimer { 
@@ -545,6 +566,9 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
 	self.navigationController.navigationBar.translucent=NO;
+	[self.navigationController setNavigationBarHidden:NO animated:NO];
+	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated:NO];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[super viewWillDisappear:animated];
 }
 
@@ -552,6 +576,7 @@
 {
 	[super viewWillAppear:animated];
 	self.navigationController.navigationBar.translucent=YES;
+	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent animated:NO];
 	[self addPicturesToScrollView];
 	[self goToCurrentItem];
 	[self loadVisiblePictures]; 
@@ -719,7 +744,7 @@
 	[self loadVisiblePictures];
 	self.scrollView.hidden=NO;
 	// show info view again because navigation bar will re-show if it was hidden...
-	[self showInfoView];
+	//[self showInfoView];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController

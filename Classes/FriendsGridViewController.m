@@ -102,23 +102,70 @@
 	
 	for (Friend	*f in items)
 	{
+		// see if full name starts with search text
 		NSComparisonResult result = [f.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
         if (result == NSOrderedSame)
 		{
 			[filteredItems addObject:f];
 			continue;
 		}
+		// see if first name starts with search text
 		result = [f.first_name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
 		if (result == NSOrderedSame)
 		{
 			[filteredItems addObject:f];
 			continue;
 		}
+		// see if last name starts with search text
 		result = [f.last_name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
         if (result == NSOrderedSame)
 		{
 			[filteredItems addObject:f];
 			continue;
+		}
+		
+		// split full name on white space and try each word seperately...
+		NSArray * parts=[f.name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		
+		if([parts count]>2)
+		{
+			BOOL part_matched=NO;
+			for(NSString * part in parts)
+			{
+				result = [part compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+				if (result == NSOrderedSame)
+				{
+					part_matched=YES;
+					[filteredItems addObject:f];
+					break;
+				}
+			}
+			if(part_matched)
+			{
+				continue;
+			}
+		}
+	
+		// split last name on white space and try each word seperately...
+		parts=[f.last_name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		
+		if([parts count]>1)
+		{
+			BOOL part_matched=NO;
+			for(NSString * part in parts)
+			{
+				result = [part compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+				if (result == NSOrderedSame)
+				{
+					part_matched=YES;
+					[filteredItems addObject:f];
+					break;
+				}
+			}
+			if(part_matched)
+			{
+				continue;
+			}
 		}
 	}
 }

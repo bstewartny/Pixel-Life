@@ -305,7 +305,7 @@
 	[toolItems addObject:b];
 	[b release];
 	
-	b=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_circle_arrow_right.png"] style:UIBarButtonItemStylePlain target:self action:@selector(refresh:)];
 	[toolItems addObject:b];
 	[b release];
 	

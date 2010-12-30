@@ -39,7 +39,7 @@
 	[toolItems addObject:b];
 	[b release];
 	
-	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_comment_ok.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showComments:)];
+	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_post.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showComments:)];
 	[toolItems addObject:b];
 	showCommentsButton=b;
 	b.enabled=NO;
