@@ -10,7 +10,7 @@
 	
 }
 @property(nonatomic,retain) Picture * picture;
-
+- (id) initWithFrame: (CGRect) frame picture: (Picture *) picture;
 - (void) load;
 
 @end

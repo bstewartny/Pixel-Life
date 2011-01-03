@@ -3,6 +3,8 @@
 #import "PictureFeedGridViewController.h"
 #define kAlbumLikeActionSheet 1
 #define kAlbumActionActionSheet 2
+#define kAlbumSlideshowActionSheet 3
+
 @class Album;
 @interface AlbumGridViewController : PictureFeedGridViewController<MFMailComposeViewControllerDelegate> {
 	Album * album;

@@ -21,9 +21,6 @@
 	NSOperationQueue * downloadQueue;
 	FadeNavigationController * navController;
 	UISegmentedControl * segmentedControl;
-	//Facebook * facebook;
-	//NSString * accessToken;
-	//NSDate * expirationDate;
 	ImageCache * imageCache;
 	NSMutableArray * facebookAccounts;
 	FacebookAccount * currentAccount;
@@ -32,7 +29,6 @@
 @property (nonatomic, retain) NSOperationQueue *downloadQueue;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet FadeNavigationController * navController;
-//@property (nonatomic, retain) Facebook * facebook;
 @property (nonatomic, retain) ImageCache * imageCache;
 @property (nonatomic, retain) NSMutableArray * facebookAccounts;
 @property (nonatomic, retain) FacebookAccount * currentAccount;

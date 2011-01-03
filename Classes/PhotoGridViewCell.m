@@ -14,8 +14,8 @@
     if ( self == nil )
         return nil;
     
-	gregorian=[[NSCalendar alloc]
-							initWithCalendarIdentifier:NSGregorianCalendar];
+	//gregorian=[[NSCalendar alloc]
+	//						initWithCalendarIdentifier:NSGregorianCalendar];
 	
 	format = [[NSDateFormatter alloc] init];
 	[format setDateFormat:@"MMM d, yyyy"];
@@ -107,11 +107,11 @@
 
 - (NSString*) shortDisplayDate:(NSDate*)date
 {
-	NSDate *todayDate = [NSDate date];
+	//NSDate *todayDate = [NSDate date];
 	 
-	NSDateComponents * today_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:todayDate];
+	//NSDateComponents * today_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:todayDate];
 	
-	NSDateComponents * item_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:date];
+	//NSDateComponents * item_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:date];
 	
 	NSString * display;
 	
@@ -210,7 +210,7 @@
 	[label1 release];
 	[label2 release];
 	[label3 release];
-	[gregorian release];
+	//[gregorian release];
 	[format release];
 	[super dealloc];
 }

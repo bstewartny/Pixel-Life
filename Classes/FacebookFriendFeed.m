@@ -20,8 +20,8 @@
 	NSString * url=[NSString stringWithFormat:@"https://api.facebook.com/method/fql.query?format=JSON&access_token=%@&query=%@",escaped_token,escaped_query];
 
 	ASIHTTPRequest * request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	[request setSecondsToCache:60*60*24*3]; // Cache for 3 days
+	//[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	//[request setSecondsToCache:60*60*24*3]; // Cache for 3 days
 	
 	request.requestMethod=@"GET";
 	
@@ -91,55 +91,5 @@
 	
 	return friends;
 }
-
-- (NSArray*) getItemsFromJsonOLD:(NSDictionary*)json
-{
-	NSMutableArray * friends=[[[NSMutableArray alloc] init] autorelease];
-	
-	NSArray * a=[json objectForKey:@"data"];
-	
-	for (NSDictionary * d in a) {
-		
-		Friend * friend=[[Friend alloc] init];
-		
-		friend.uid=[d objectForKey:@"id"];
-		friend.name=[d objectForKey:@"name"];
-		friend.first_name=[d objectForKey:@"first_name"];
-		friend.last_name=[d objectForKey:@"last_name"];
-		
-		Picture * picture=[[Picture alloc] init];
-		
-		picture.thumbnailURL=[d objectForKey:@"picture"];
-		
-		picture.user=friend;
-		
-		if([friend.first_name length]>0)
-		{
-			picture.name=friend.first_name;
-			picture.description=friend.last_name;
-		}
-		else 
-		{
-			picture.description=friend.name;
-		}
-		
-		FacebookFriendAlbumFeed * albumFeed=[[FacebookFriendAlbumFeed alloc] initWithFacebookAccount:account friend:friend];
-		
-		friend.albumFeed=albumFeed;
-		
-		[albumFeed release];
-		
-		friend.picture=picture;
-		
-		[picture release];
-		
-		[friends addObject:friend];
-		
-		[friend release];
-	}
-	
-	return friends;	
-}
-
 
 @end

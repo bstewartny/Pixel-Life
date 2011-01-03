@@ -6,7 +6,7 @@
 	UILabel * label2;
 	UILabel * label3;
 	BOOL showBorder;
-	NSCalendar * gregorian;
+	//NSCalendar * gregorian;
 	NSDateFormatter * format;
 	CGSize maxImageSize;
 }

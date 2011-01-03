@@ -47,27 +47,32 @@
 		seperator=@"&";
 	}
 	
-	return [NSString stringWithFormat:@"https://graph.facebook.com/%@%@access_token=%@",path,seperator,escaped_token];
+	NSString * url= [NSString stringWithFormat:@"https://graph.facebook.com/%@%@access_token=%@",path,seperator,escaped_token];
+	[escaped_token release];
+	return url;
 }
 
 - (NSString*) graphPath
 {
 	// subclass... return facebook graph path such as: "me/friends?fields=id,name"
+	return nil;
 }
 
 - (NSArray*) getItemsFromJson:(NSDictionary*)json
 {
 	// subclass
+	return nil;
 }
 
 - (NSString*) escapeQueryValue:(NSString*)value
 {
-	return (NSString *)CFURLCreateStringByAddingPercentEscapes(
+	NSString * v= (NSString *)CFURLCreateStringByAddingPercentEscapes(
 													NULL, /* allocator */
 													(CFStringRef)value,
 													NULL, /* charactersToLeaveUnescaped */
 													(CFStringRef)@"!*'();:@&=+$,/?%#[]",
 													kCFStringEncodingUTF8);
+	return [v autorelease];
 }
 
 - (ASIHTTPRequest*)createFetchRequest
@@ -86,8 +91,8 @@
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@%@access_token=%@",path,seperator,escaped_token];
 	
 	ASIHTTPRequest * request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	[request setSecondsToCache:60*60*24*3]; // Cache for 3 days
+	//[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	//[request setSecondsToCache:60*60*24*3]; // Cache for 3 days
 	
 	request.requestMethod=@"GET";
 	

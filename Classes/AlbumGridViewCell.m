@@ -10,14 +10,7 @@
     if ( self == nil )
         return nil;
     
-	gregorian=[[NSCalendar alloc]
-			   initWithCalendarIdentifier:NSGregorianCalendar];
-	
-	
-	format = [[NSDateFormatter alloc] init];
-	[format setDateFormat:@"MMM d, yyyy"];
-	
-    imageView.frame = CGRectMake(5, 5, frame.size.width-10, frame.size.height-60);
+	imageView.frame = CGRectMake(5, 5, frame.size.width-10, frame.size.height-60);
 	imageView.clipsToBounds = NO;
 	maxImageSize=CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -136,6 +129,7 @@
 	[layerView2 release];
 	layerView1=nil;
 	layerView2=nil;
+	//[gregorian release];
 	[super dealloc];
 }
 

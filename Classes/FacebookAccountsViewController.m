@@ -59,11 +59,19 @@
 
 - (void)feed:(Feed *)feed didFindItems:(NSArray *)items
 {
+	// save new account
+	[[PhotoExplorerAppDelegate sharedAppDelegate] saveData];
+	
 	[tableView reloadData];
 }
 
 - (void)feed:(Feed *)feed didFailWithError:(NSString *)errorMsg
 {
+	UIAlertView * alert=[[UIAlertView alloc] initWithTitle:@"Network Error" message:@"Failed to get account information from Facebook.  Please try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	
+	[alert show];
+	
+	[alert release];
 	[tableView reloadData];
 }
 
@@ -141,6 +149,15 @@
 
 - (void) close
 {
+	if ([accounts count]==1) 
+	{
+		if([[PhotoExplorerAppDelegate sharedAppDelegate] currentAccount]==nil)
+		{
+			[[PhotoExplorerAppDelegate sharedAppDelegate] setCurrentAccount:[accounts objectAtIndex:0]];
+			
+			[[PhotoExplorerAppDelegate sharedAppDelegate] showAllFriends];
+		}
+	}
 	
 	[[self parentViewController] dismissModalViewControllerAnimated:YES];
 }

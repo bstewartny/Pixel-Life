@@ -21,12 +21,12 @@
 #import "Reachability.h"
 #import "FacebookAccount.h"
 #import "FacebookAccountsViewController.h"
+
 @implementation PhotoExplorerAppDelegate
 
 @synthesize window;
 @synthesize downloadQueue;
 @synthesize navController;
-//@synthesize facebook;
 @synthesize imageCache;
 @synthesize facebookAccounts;
 @synthesize currentAccount;
@@ -50,16 +50,6 @@
 	downloadQueue = [[NSOperationQueue alloc] init];
 	
 	[self loadArchivedData];
-	
-	//facebook=[[Facebook alloc] init];
-	
-	//NSLog(@"setting facebook accessToken to %@",accessToken);
-	
-	//if(currentAccount)
-	//{
-		//facebook.accessToken=currentAccount.accessToken;
-		//facebook.expirationDate=currentAccount.expirationDate;
-	//}
 	
 	navController=[[FadeNavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
@@ -110,35 +100,6 @@
 - (void)login 
 {
 	[self showAccounts];
-	/*
-	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
-	accountsView.modalPresentationStyle=UIModalPresentationFormSheet;
-	accountsView.delegate=self;
-	
-	[navController.topViewController presentModalViewController:accountsView animated:YES];
-	
-	[accountsView release];
-	*/
-	/*
-	if(![facebook isSessionValid])
-	{
-		Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
-		NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
-		if (remoteHostStatus == NotReachable)
-		{
-			// dont try to authorize...
-		}
-		else
-		{
-			NSLog(@"session is NOT valid, calling facebook.authorize...");
-			[facebook authorize:kAppId permissions:[NSArray arrayWithObjects:
-											@"read_stream",@"friends_photos", @"read_friendlists",@"user_photos",@"offline_access",nil] delegate:self];
-		}
-	}
-	else 
-	{
-		NSLog(@"session is valid, NOT calling facebook.authorize...");
-	}*/
 }
 
 - (void)fbDidLogin
@@ -166,9 +127,6 @@
 		[self saveData];
 		// show blank screen...
 		[self showNoFriends];
-		
-		//self.currentAccount=nil;
-		//[facebook logout:self];
 	}
 	@catch (NSException * e) {
 	}
@@ -197,9 +155,6 @@
 {
 	self.currentAccount=nil;
 	
-	//accessToken=nil;
-	//expirationDate=nil;
-	
 	[self showAllFriends];
 }
 
@@ -210,8 +165,6 @@
 {
 	self.currentAccount=nil;
 	
-	//accessToken=nil;
-	//expirationDate=nil;
 	[self clearCache];
 	[self saveData];
 	
@@ -257,14 +210,11 @@
 }
 - (void) showNoFriends
 {
-	//FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebook:facebook];
-	
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:nil title:@"All Friends"];
 	[self addSettingsButtonToController:controller];
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-	//[feed release];
 }
 - (void) showAllFriends
 {
@@ -399,6 +349,7 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+	[imageCache clear];
 	[self saveData];
 }
 
@@ -464,6 +415,7 @@
 {
 	NSLog(@"saveData");
 	
+	 
 	@try {
 		
 		NSMutableData * data=[[NSMutableData alloc] init];
@@ -484,7 +436,6 @@
 			[data release];
 			NSLog(@"Data saved ...");
 		}
-		
 	}
 	@catch (NSException * e) 
 	{

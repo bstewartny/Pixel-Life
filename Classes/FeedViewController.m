@@ -39,7 +39,7 @@
 - (void) refresh
 {
 	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
-    PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
+    //PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
 	NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
     if (remoteHostStatus == NotReachable)
     {
@@ -208,6 +208,14 @@
     return YES;
 }
  
+- (void) didReceiveMemoryWarning
+{
+	NSLog(@"didReceiveMemoryWarning...");
+	UIAlertView * alert=[[UIAlertView alloc] initWithTitle:@"memory warning" message:@"didReceiveMemoryWarning" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
 - (void)dealloc {
 	[items release];
     [feed setDelegate:nil];

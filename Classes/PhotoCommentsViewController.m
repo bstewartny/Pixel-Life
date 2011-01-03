@@ -71,7 +71,7 @@
 	
 	if(cell==nil)
 	{
-		cell=[[CommentTableViewCell alloc] initWithStyle:UITableViewStylePlain reuseIdentifier:cellIdentifier];
+		cell=[[[CommentTableViewCell alloc] initWithStyle:UITableViewStylePlain reuseIdentifier:cellIdentifier] autorelease];
 		
 		cell.selectionStyle=UITableViewCellSelectionStyleNone;
 	}

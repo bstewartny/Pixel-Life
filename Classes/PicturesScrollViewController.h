@@ -1,9 +1,12 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "SlideshowOptionsViewController.h"
 
 #define kLikeActionSheet 1
 #define kActionActionSheet 2
+
 @class FriendPictureImageView;
+
 @interface PicturesScrollViewController : UIViewController<MFMailComposeViewControllerDelegate> {
 	IBOutlet UIScrollView * scrollView;
 	NSArray * pictures;
@@ -11,23 +14,28 @@
 	NSInteger currentItemIndex;
 	IBOutlet UIToolbar * toolbar;
 	IBOutlet FriendPictureImageView * infoImageView;
-	
 	IBOutlet UILabel * infoUserLabel;
 	IBOutlet UILabel * infoNameLabel;
 	IBOutlet UILabel * infoDateLabel;
 	IBOutlet UILabel * infoFirstNameLabel;
 	IBOutlet UILabel * infoLastNameLabel;
 	IBOutlet UILabel * infoNumCommentsLabel;
-	
 	NSDateFormatter * format;
 	IBOutlet UIView * infoView;
 	IBOutlet UILabel * commentCountLabel;
 	UIPopoverController * addCommentPopover;
 	UIPopoverController * showCommentsPopover;
+	UIPopoverController * slideshowOptionsPopover;
 	UIBarButtonItem * showCommentsButton;
 	BOOL cancelRemoveBars;
+	BOOL slideshowMode;
+	NSTimer * slideshowTimer;
 	
+	BOOL fillScreen;
+	NSInteger delaySeconds;
+	SlideshowSortOrder sortOrder;
 }
+@property(nonatomic) BOOL slideshowMode;
 @property(nonatomic,retain) NSArray * pictures;
 @property(nonatomic,retain) IBOutlet UIScrollView * scrollView;
 @property(nonatomic) NSInteger currentItemIndex;
@@ -43,4 +51,5 @@
 @property(nonatomic,retain) IBOutlet UILabel * infoNumCommentsLabel;
 
 - (IBAction) showComments:(id)sender;
+
 @end

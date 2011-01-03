@@ -9,6 +9,7 @@
 #import "PhotoExplorerAppDelegate.h"
 #import "FacebookAlbumCommentsFeed.h"
 #import "FacebookAccount.h"
+#import "PicturesScrollViewController.h"
 
 @implementation AlbumGridViewController
 @synthesize album;
@@ -26,7 +27,7 @@
 {
 	[super viewDidLoad];
 	
-	BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 250, 44.01)];
+	BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 220, 44.01)];
 	
 	tools.backgroundColor=[UIColor clearColor];
 	tools.opaque=NO;
@@ -62,6 +63,17 @@
 	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_favorities_add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addFavorite:)];
 	[toolItems addObject:b];
 	[b release];
+	/*
+	b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	b.width=10;
+	[toolItems addObject:b];
+	[b release];
+	
+	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_frame.png"] style:UIBarButtonItemStylePlain target:self action:@selector(slideshow:)];
+	[toolItems addObject:b];
+	[b release];
+	*/
+	
 	
 	/*b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 	b.width=10;
@@ -77,9 +89,18 @@
 	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:tools] autorelease];
 	
 	[tools release];
+	[toolItems release];
 	
 }
 
+- (void) slideshow:(id)sender
+{
+	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Slideshow" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Start Slideshow",nil];
+	sheet.tag=kAlbumSlideshowActionSheet;
+	[sheet showFromBarButtonItem:sender animated:YES];
+	
+	[sheet release];
+}
 - (void) action:(id)sender
 {
 	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Album Actions" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Email photos",@"Save photos",nil];
@@ -136,13 +157,37 @@
 {
 	NSError *error = [request error];
 	
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error liking photo" message:[error userInfo] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error liking photo" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }
-
+/*
+- (void) startSlideshow
+{
+	if([items count]>0)
+	{
+		PicturesScrollViewController * controller=[[PicturesScrollViewController alloc] initWithPictures:items];
+		
+		controller.currentItemIndex=0;
+		controller.slideshowMode=YES;
+		
+		[[self navigationController] pushViewController:controller animated:YES];
+		
+		//[controller startSlideshow];
+		
+		[controller release];
+	}
+}
+*/
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+	if(actionSheet.tag==kAlbumSlideshowActionSheet)
+	{
+		if (buttonIndex==0) {
+			// start slideshow...
+			[self startSlideshow];
+		}
+	}
 	if(actionSheet.tag==kAlbumLikeActionSheet)
 	{
 		if(buttonIndex==0)
@@ -303,7 +348,7 @@
 {
 	NSError *error = [request error];
 	
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error userInfo] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }

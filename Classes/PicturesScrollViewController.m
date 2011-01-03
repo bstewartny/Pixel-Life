@@ -12,11 +12,13 @@
 #import "ASIFormDataRequest.h"
 #import "PhotoExplorerAppDelegate.h"
 #import "FacebookAccount.h"
+#import "SlideshowOptionsViewController.h"
 
 //#import "PictureScrollView.h"
 
 @implementation PicturesScrollViewController
 @synthesize scrollView, toolbar,pictures,infoFirstNameLabel,infoLastNameLabel,infoNumCommentsLabel,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
+@synthesize slideshowMode;
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 { 
@@ -73,6 +75,17 @@
 		[toolItems addObject:b];
 		[b release];
 		
+		b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_frame.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showSlideshowOptions:)];
+		[toolItems addObject:b];
+		[b release];
+		
+		
+		b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+		b.width=10;
+		[toolItems addObject:b];
+		[b release];
+		
+		
 		b=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action:)];
 		[toolItems addObject:b];
 		[b release];
@@ -82,16 +95,18 @@
 		self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:tools] autorelease];
 		
 		[tools release];
+		[toolItems release];
 		
 		
 		UISwipeGestureRecognizer * swup=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUp:)];
 		swup.direction=UISwipeGestureRecognizerDirectionUp;
 		[self.infoView addGestureRecognizer:swup];
+		[swup release];
 		
 		UISwipeGestureRecognizer * swdwn=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown:)];
 		swdwn.direction=UISwipeGestureRecognizerDirectionDown;
 		[self.infoView addGestureRecognizer:swdwn];
-		
+		[swdwn release];
 		
 		
 		UITapGestureRecognizer * gr2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
@@ -136,6 +151,34 @@
 		
 	}
     return self;
+}
+
+- (void) showSlideshowOptions:(id)sender
+{
+	if(slideshowOptionsPopover)
+	{
+		NSLog(@"slideshowOptionsPopover!=nil");
+		return;
+	}
+	cancelRemoveBars=YES;
+	
+	SlideshowOptionsViewController * controller=[[SlideshowOptionsViewController alloc] init];
+	
+	controller.sortOrder=sortOrder;
+	controller.fillScreen=fillScreen;
+	controller.delaySeconds=delaySeconds;
+	
+	controller.delegate=self;
+	UINavigationController * nav=[[UINavigationController alloc] initWithRootViewController:controller];
+	
+	slideshowOptionsPopover=[[UIPopoverController alloc] initWithContentViewController:nav];
+	
+	slideshowOptionsPopover.delegate=self;
+	
+	[slideshowOptionsPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+	
+	[nav release];
+	[controller release];
 }
 
 - (IBAction) showComments:(id)sender
@@ -188,6 +231,7 @@
 - (void) sendComment:(NSString*)comment
 {
 	[addCommentPopover dismissPopoverAnimated:YES];
+	addCommentPopover=nil;
 	if([comment length]>0)
 	{
 		// push to queue
@@ -241,7 +285,7 @@
 {
 	NSError *error = [request error];
 
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error userInfo] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }
@@ -307,7 +351,7 @@
 {
 	NSError *error = [request error];
 	
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error liking photo" message:[error userInfo] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error liking photo" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }
@@ -380,6 +424,7 @@
 }
 - (void) swipeUp:(UIGestureRecognizer*)gr
 {
+	[self cancelSlideshow];
 	if(self.infoView.frame.size.height==192)
 	{
 		[UIView beginAnimations:@"swipeup" context:nil];
@@ -390,6 +435,7 @@
 
 - (void) swipeDown:(UIGestureRecognizer*)gr
 {
+	[self cancelSlideshow];
 	if(self.infoView.frame.size.height > 192)
 	{
 		[UIView beginAnimations:@"swipeup" context:nil];
@@ -404,20 +450,19 @@
 
 - (void) singleTap:(UIGestureRecognizer*)gr
 {
+	[self cancelSlideshow];
 	[self toggleNavigationBar];
 }
 
 - (void) doubleTap:(UIGestureRecognizer*)gr
 {
+	[self cancelSlideshow];
 	[self toggleZoom];
 }
 
 - (void) toggleZoom
 {
 	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
-	//[UIView beginAnimations:@"zoom" context:nil];
-	//[UIView setAnimationDuration:3.0];
-	 
 	
 	if(picView.contentMode==UIViewContentModeScaleAspectFit)
 	{
@@ -427,7 +472,6 @@
 	{
 		picView.contentMode=UIViewContentModeScaleAspectFit;
 	}
-	//[UIView commitAnimations];
 }
 
 - (CGRect) getBounds
@@ -508,6 +552,47 @@
 {
     [super viewDidLoad];
 	scrollView.backgroundColor=[UIColor blackColor];
+	
+	sortOrder=SlideshowOrderBySequential;
+	fillScreen=YES;
+	delaySeconds=3;
+}
+
+- (void)hideNavigationBarAndInfoView
+{
+	CGRect infoViewFrame=infoView.frame;
+	infoViewFrame.origin.y= self.view.frame.size.height;
+	
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
+	
+	infoView.frame=infoViewFrame;
+	
+	[UIView commitAnimations];
+	
+	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
+	
+	[self.navigationController.view setNeedsLayout];
+}
+
+- (void) showNavigationBarAndInfoView
+{
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
+	[self.navigationController setNavigationBarHidden:NO animated:NO];
+	
+	CGRect infoViewFrame=infoView.frame;
+	infoViewFrame.origin.y= self.view.frame.size.height-infoViewFrame.size.height;
+	
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
+	
+	infoView.frame=infoViewFrame;
+	
+	[UIView commitAnimations];
+	
+	[self.navigationController.view setNeedsLayout];
 }
 
 - (void)toggleNavigationBar 
@@ -516,42 +601,19 @@
 	
 	if(statusBarHidden)
 	{
-		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-    
-		[self.navigationController setNavigationBarHidden:NO animated:NO];
+		[self showNavigationBarAndInfoView];
 	}
-	
-	/*CGRect rect = self.navigationController.navigationBar.frame;
-    rect.origin.y = rect.origin.y < 0 ?
-		rect.origin.y + rect.size.height
-		:	rect.origin.y - rect.size.height;
-	*/
-	CGRect rect2=infoView.frame;
-		rect2.origin.y= rect2.origin.y>=self.view.frame.size.height ?
-			self.view.frame.size.height-rect2.size.height :
-			self.view.frame.size.height;
-	
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
-	
-	//self.navigationController.navigationBar.frame = rect;
-    
-	infoView.frame=rect2;
-	
-	[UIView commitAnimations];
-	
-	if(!statusBarHidden)
-	{
-		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    	[self.navigationController setNavigationBarHidden:YES animated:YES];
+	else {
+		[self hideNavigationBarAndInfoView];
 	}
-	
-	[self.navigationController.view setNeedsLayout];
+
+	 	
 }
 
--(void)toggleNavigationBarWithTimer:(NSTimer*)theTimer { 
+-(void)hideNavigationBarWithTimer:(NSTimer*)theTimer { 
 	if (cancelRemoveBars) return;
-	[self performSelectorOnMainThread:@selector(toggleNavigationBar) withObject:nil waitUntilDone:NO];
+	if(slideshowMode) return;
+	[self performSelectorOnMainThread:@selector(hideNavigationBarAndInfoView) withObject:nil waitUntilDone:NO];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -559,12 +621,17 @@
 	[super viewDidAppear:animated];
 	if(!cancelRemoveBars)
 	{
-		NSTimer * myTimer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(toggleNavigationBarWithTimer:) userInfo:nil repeats:NO];
+		if(!slideshowMode)
+		{
+			NSTimer * myTimer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(hideNavigationBarWithTimer:) userInfo:nil repeats:NO];
+		}
 	}
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
+	cancelRemoveBars=YES;
+	slideshowMode=NO;
 	self.navigationController.navigationBar.translucent=NO;
 	[self.navigationController setNavigationBarHidden:NO animated:NO];
 	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated:NO];
@@ -590,13 +657,14 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+	[self cancelSlideshow];
 	[self loadVisiblePictures]; 
 }
 
 - (void) loadVisiblePictures
 {
-	UIView * prev=nil;
-	BOOL prevLoaded=NO;
+	//UIView * prev=nil;
+	//BOOL prevLoaded=NO;
 	int i=0;
 	
 	BOOL unloadImages=NO;
@@ -612,6 +680,9 @@
 		{
 			NSLog(@"Found intersection rect...setting currentItemIndex=%d");
 			currentItemIndex=i;
+			
+			 
+			
 			[picView load];
 		}
 		
@@ -749,19 +820,154 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-	if(popoverController==showCommentsPopover)
+	NSLog(@"popoverControllerDidDismissPopover");
+	
+	if([popoverController isEqual:showCommentsPopover])
 	{
 		[showCommentsPopover release];
 		showCommentsPopover=nil;
 	}
 	else 
 	{
-		if(popoverController==addCommentPopover)
+		if([popoverController isEqual:addCommentPopover])
 		{
 			[addCommentPopover release];
 			addCommentPopover=nil;
 		}
+		else 
+		{
+			if([popoverController isEqual:slideshowOptionsPopover])
+			{
+				NSLog(@"releasing slideshowOptionsPopover");
+				[slideshowOptionsPopover release];
+				slideshowOptionsPopover=nil;
+			}
+		}
 	}
+}
+
+- (void) didReceiveMemoryWarning
+{
+	NSLog(@"didReceiveMemoryWarning...");
+	UIAlertView * alert=[[UIAlertView alloc] initWithTitle:@"memory warning" message:@"didReceiveMemoryWarning" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+		
+- (void) startSlideshowWithDelaySeconds:(NSInteger)optDelaySeconds andSortOrder:(SlideshowSortOrder)optSortOrder fillScreen:(BOOL)optFillScreen	
+{	
+	delaySeconds=optDelaySeconds;
+	sortOrder=optSortOrder;
+	fillScreen=optFillScreen;
+	[slideshowOptionsPopover dismissPopoverAnimated:YES];
+	slideshowOptionsPopover=nil;
+	cancelRemoveBars=YES;
+	[self cancelSlideshow];
+	slideshowMode=YES;
+	[self hideNavigationBarAndInfoView];
+	
+	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
+	
+	if(fillScreen)
+	{
+		picView.contentMode=UIViewContentModeScaleAspectFill;
+	}
+	else 
+	{
+		picView.contentMode=UIViewContentModeScaleAspectFit;
+	}
+
+	
+	CATransition *applicationLoadViewIn = [CATransition animation];
+	[applicationLoadViewIn setDuration:1];
+	[applicationLoadViewIn setType:kCATransitionFade];
+	[applicationLoadViewIn setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+	[[scrollView layer] addAnimation:applicationLoadViewIn forKey:kCATransitionFade];
+	
+	[self goToCurrentItem];
+	[self loadVisiblePictures];
+	
+	slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:(CGFloat)delaySeconds target:self selector:@selector(goToNextSlideshowItemWithTimer:) userInfo:nil repeats:YES];
+}
+
+- (void) cancelSlideshow
+{
+	slideshowMode=NO;
+	if([slideshowTimer isValid])
+	{
+		[slideshowTimer invalidate];
+		slideshowTimer=nil;
+	}
+}
+
+- (void) goToNextSlideshowItemWithTimer:(NSTimer*)timer
+{
+	if (!slideshowMode) return;
+	[self performSelectorOnMainThread:@selector(goToNextSlideshowItem) withObject:nil waitUntilDone:NO];
+}
+
+- (void) goToNextSlideshowItem
+{
+	switch(sortOrder)
+	{
+		case SlideshowOrderByDate:
+		{
+			if(currentItemIndex < [pictures count]-1)
+			{
+				currentItemIndex++;
+			}
+			else 
+			{
+				currentItemIndex=0;
+			}
+		}
+			break;
+		case SlideshowOrderByRandom:
+		{
+			if(currentItemIndex < [pictures count]-1)
+			{
+				currentItemIndex++;
+			}
+			else 
+			{
+				currentItemIndex=0;
+			}
+		}
+			break;
+		case SlideshowOrderBySequential:
+		{
+			if(currentItemIndex < [pictures count]-1)
+			{
+				currentItemIndex++;
+			}
+			else 
+			{
+				currentItemIndex=0;
+			}
+		}
+			break;
+			
+	}
+	
+	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
+	 
+	if(fillScreen)
+	{
+		picView.contentMode=UIViewContentModeScaleAspectFill;
+	}
+	else 
+	{
+		picView.contentMode=UIViewContentModeScaleAspectFit;
+	}
+	
+	CATransition *applicationLoadViewIn = [CATransition animation];
+	[applicationLoadViewIn setDuration:1];
+	[applicationLoadViewIn setType:kCATransitionFade];
+	[applicationLoadViewIn setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+	[[scrollView layer] addAnimation:applicationLoadViewIn forKey:kCATransitionFade];
+	
+	[self goToCurrentItem];
+	[self loadVisiblePictures];
 }
 
 - (void)dealloc 
@@ -780,6 +986,8 @@
 	showCommentsPopover=nil;
 	[addCommentPopover release];
 	addCommentPopover=nil;
+	[slideshowOptionsPopover release];
+	slideshowOptionsPopover=nil;
 	[infoView release];
 	[infoFirstNameLabel release];
 	[infoLastNameLabel release];

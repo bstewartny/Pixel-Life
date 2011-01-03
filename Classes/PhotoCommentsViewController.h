@@ -8,7 +8,8 @@
 @property (nonatomic, retain) IBOutlet UITableView * tableView;
 
 - (void) reloadTable;
-- (id)initWithComments:(NSArray*)comments title:(NSString*)title;
+//- (id)initWithComments:(NSArray*)comments title:(NSString*)title;
+- (id)initWithFeed:(Feed*)feed title:(NSString*)title;
 - (IBAction) close:(id)sender;
 
 @end
