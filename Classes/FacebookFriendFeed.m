@@ -32,7 +32,7 @@
 {
 	if(![json isKindOfClass:[NSArray class]])
 	{
-		NSLog(@"json object is not an array: %@",[json description]);
+		//NSLog(@"json object is not an array: %@",[json description]);
 		return nil;
 	}
 	

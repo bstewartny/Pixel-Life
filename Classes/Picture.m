@@ -84,7 +84,7 @@
 	[asyncThumbnail release];
 	delegate=nil;
 	[description release];
-	NSLog(@"Picture.dealloc completed...");
+	//NSLog(@"Picture.dealloc completed...");
 	[super dealloc];
 }
 @end

@@ -28,7 +28,7 @@
 
 - (NSDate*) dateFromString:(NSString*)date
 {
-	NSLog(@"dateFromString:%@",date);
+	//NSLog(@"dateFromString:%@",date);
 	return [formatter dateFromString:date];
 }
 

@@ -11,7 +11,8 @@
 	if ( self == nil )
 	return nil;
 
-	imageView = [[UIImageView alloc] initWithFrame:CGRectZero]; //CGRectMake(5, 5, frame.size.width-10, frame.size.height-50)];
+	imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+	
 	imageView.clipsToBounds = NO;
 	
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -23,8 +24,15 @@
 	imageView.backgroundColor = self.backgroundColor;
 
 	[self.contentView addSubview: imageView];
-
+	
+	[self setupSubviews];
+	
 	return self;
+}
+
+- (void) setupSubviews
+{
+	// subclass
 }
 
 - (void) setImage:(UIImage*)image

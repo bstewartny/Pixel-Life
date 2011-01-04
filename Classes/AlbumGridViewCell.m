@@ -4,13 +4,9 @@
 
 @implementation AlbumGridViewCell
 
-- (id) initWithFrame: (CGRect) frame reuseIdentifier: (NSString *) aReuseIdentifier
+- (void) setupSubviews
 {
-    self = [super initWithFrame: frame reuseIdentifier: aReuseIdentifier];
-    if ( self == nil )
-        return nil;
-    
-	imageView.frame = CGRectMake(5, 5, frame.size.width-10, frame.size.height-60);
+	imageView.frame = CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-60);
 	imageView.clipsToBounds = NO;
 	maxImageSize=CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -25,9 +21,9 @@
 	[self.contentView sendSubviewToBack:layerView1];
 	[self.contentView sendSubviewToBack:layerView2];
 	
-	label1=[self createLabelWithFrame:CGRectMake(5, frame.size.height-45, frame.size.width-10, 14)];
-	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-30, frame.size.width-10, 14)];
-	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-16, frame.size.width-10, 14)];
+	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-45, self.frame.size.width-10, 14)];
+	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-30, self.frame.size.width-10, 14)];
+	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-16, self.frame.size.width-10, 14)];
 	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];

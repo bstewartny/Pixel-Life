@@ -538,20 +538,23 @@ NSString * const AQGridViewSelectionDidChangeNotification = @"AQGridViewSelectio
 {
 	for ( AQGridViewCell * cell in reusableCells )
 	{
-		NSMutableSet * reuseSet = [_reusableGridCells objectForKey: cell.reuseIdentifier];
-		if ( reuseSet == nil )
-		{
-			reuseSet = [[NSMutableSet alloc] initWithCapacity: 32];
-			[_reusableGridCells setObject: reuseSet forKey: cell.reuseIdentifier];
-			[reuseSet release];
-		}
-		else if ( [reuseSet member: cell] == cell )
-		{
-			NSLog( @"Warning: tried to add duplicate gridview cell" );
-			continue;
-		}		
-		
-		[reuseSet addObject: cell];
+		//if(cell.reuseIdentifier)
+		//{
+			NSMutableSet * reuseSet = [_reusableGridCells objectForKey: cell.reuseIdentifier];
+			if ( reuseSet == nil )
+			{
+				reuseSet = [[NSMutableSet alloc] initWithCapacity: 32];
+				[_reusableGridCells setObject: reuseSet forKey: cell.reuseIdentifier];
+				[reuseSet release];
+			}
+			else if ( [reuseSet member: cell] == cell )
+			{
+				NSLog( @"Warning: tried to add duplicate gridview cell" );
+				continue;
+			}		
+			
+			[reuseSet addObject: cell];
+		//}
 	}
 }
 

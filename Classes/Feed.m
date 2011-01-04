@@ -16,7 +16,7 @@
 	ASIHTTPRequest *request = [self createFetchRequest]; //[[ASIHTTPRequest alloc] initWithURL:url];
     if(request)
 	{
-		NSLog(@"Fetching feed: %@",[request.url description]);
+		//NSLog(@"Fetching feed: %@",[request.url description]);
 		[request setDelegate:self];
 		[request setDidFinishSelector:@selector(requestDone:)];
 		[request setDidFailSelector:@selector(requestWentWrong:)];

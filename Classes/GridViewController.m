@@ -111,6 +111,7 @@
 }
 
 - (void)dealloc {
+	//NSLog(@"GridViewController dealloc");
 	[gridView release];
 	[super dealloc];
 }

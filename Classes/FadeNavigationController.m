@@ -17,6 +17,7 @@
 
 - (UIViewController *) popViewControllerAnimated:(BOOL)animated
 {
+	//NSLog(@"popViewControllerAnimated");
 	/*CATransition *transition = [CATransition animation];
 	transition.duration = 0.3;
 	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];

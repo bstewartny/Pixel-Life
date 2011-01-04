@@ -118,7 +118,7 @@
 
 - (void) showNoDataMessage
 {
-	NSLog(@"showNoDataMessage");
+	//NSLog(@"showNoDataMessage");
 	
 	UILabel * label=[[UILabel alloc] initWithFrame:self.view.frame];
 	label.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin    |
@@ -217,6 +217,7 @@
 }
 
 - (void)dealloc {
+	//NSLog(@"FeedViewController dealloc");
 	[items release];
     [feed setDelegate:nil];
     [feed release];

@@ -157,7 +157,7 @@
 {
 	if(slideshowOptionsPopover)
 	{
-		NSLog(@"slideshowOptionsPopover!=nil");
+		//NSLog(@"slideshowOptionsPopover!=nil");
 		return;
 	}
 	cancelRemoveBars=YES;
@@ -268,7 +268,7 @@
 
 - (void)sendCommentRequestDone:(ASIHTTPRequest *)request
 {
-	NSLog(@"sendCommentRequestDone");
+	//NSLog(@"sendCommentRequestDone");
 	
 	Picture * picture=[request.userInfo objectForKey:@"picture"];
 	
@@ -342,7 +342,7 @@
 
 - (void)sendLikeRequestDone:(ASIHTTPRequest *)request
 {
-	NSLog(@"sendCommentRequestDone");
+	//NSLog(@"sendCommentRequestDone");
 	
 	// refresh comments for picture...
 }
@@ -634,7 +634,7 @@
 	slideshowMode=NO;
 	self.navigationController.navigationBar.translucent=NO;
 	[self.navigationController setNavigationBarHidden:NO animated:NO];
-	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated:NO];
+	//[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated:NO];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[super viewWillDisappear:animated];
 }
@@ -643,7 +643,7 @@
 {
 	[super viewWillAppear:animated];
 	self.navigationController.navigationBar.translucent=YES;
-	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent animated:NO];
+	//[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent animated:NO];
 	[self addPicturesToScrollView];
 	[self goToCurrentItem];
 	[self loadVisiblePictures]; 
@@ -678,7 +678,7 @@
 	{
 		if(CGRectIntersectsRect(picView.frame, scrollView.bounds))
 		{
-			NSLog(@"Found intersection rect...setting currentItemIndex=%d");
+			//NSLog(@"Found intersection rect...setting currentItemIndex=%d");
 			currentItemIndex=i;
 			
 			 
@@ -733,11 +733,11 @@
 
 - (void) updateInfoView
 {
-	NSLog(@"updateInfoView: currentItemIndex=%d",currentItemIndex );
+	//NSLog(@"updateInfoView: currentItemIndex=%d",currentItemIndex );
 		  
 	Picture * currentPicture=[pictures objectAtIndex:currentItemIndex];
 	
-	NSLog(@"updateInfoView: %@",currentPicture.name);
+	//NSLog(@"updateInfoView: %@",currentPicture.name);
 	
 	infoNameLabel.text=currentPicture.name;//[currentPicture.name stringByAppendingFormat:@"\n\n\n\n\n\n\n\n\n\n"];
 	
@@ -820,7 +820,7 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-	NSLog(@"popoverControllerDidDismissPopover");
+	//NSLog(@"popoverControllerDidDismissPopover");
 	
 	if([popoverController isEqual:showCommentsPopover])
 	{
@@ -838,7 +838,7 @@
 		{
 			if([popoverController isEqual:slideshowOptionsPopover])
 			{
-				NSLog(@"releasing slideshowOptionsPopover");
+				//NSLog(@"releasing slideshowOptionsPopover");
 				[slideshowOptionsPopover release];
 				slideshowOptionsPopover=nil;
 			}
@@ -848,7 +848,7 @@
 
 - (void) didReceiveMemoryWarning
 {
-	NSLog(@"didReceiveMemoryWarning...");
+	//NSLog(@"didReceiveMemoryWarning...");
 	UIAlertView * alert=[[UIAlertView alloc] initWithTitle:@"memory warning" message:@"didReceiveMemoryWarning" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
 	[alert show];
 	[alert release];

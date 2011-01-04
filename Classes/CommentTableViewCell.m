@@ -145,7 +145,7 @@
 - (void) load
 {
 	if(dealloc_called) return;
-	NSLog(@"load called on comment cell...");
+	//NSLog(@"load called on comment cell...");
 	// The getter in the Picture class is overloaded...!
     // If the image is not yet downloaded, it returns nil and 
     // begins the asynchronous downloading of the image.

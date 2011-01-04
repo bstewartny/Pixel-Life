@@ -36,6 +36,7 @@
 
 - (void) dealloc
 {
+	//NSLog(@"GridViewCell dealloc");
 	[scrollingWheel release];
     
 	[super dealloc];

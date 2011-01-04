@@ -7,37 +7,6 @@
 
 @implementation AlbumsGridViewController
  
-/*
-- (void) viewDidLoad
-{
-	[super viewDidLoad];
-	
-	BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 100, 44.01)];
-	
-	tools.backgroundColor=[UIColor clearColor];
-	tools.opaque=NO;
-	
-	NSMutableArray * toolItems=[[NSMutableArray alloc] init];
-	
-	UIBarButtonItem * b;
-	
-	b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	[toolItems addObject:b];
-	[b release];
-	
-	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_frame.png"] style:UIBarButtonItemStylePlain target:self action:@selector(slideshow:)];
-	[toolItems addObject:b];
-	[b release];
-	
-	[tools setItems:toolItems animated:NO];
-	
-	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:tools] autorelease];
-	
-	[tools release];
-	[toolItems release];
-	
-}
-*/
 - (void) slideshow:(id)sender
 {
 	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Slideshow" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Start Slideshow",nil];
@@ -67,7 +36,7 @@
 {
     static NSString * cellIdentifier = @"CellIdentifier";
 	
-    AlbumGridViewCell * photoCell = nil; //(AlbumGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
+    AlbumGridViewCell * photoCell = (AlbumGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
 		photoCell = [[[AlbumGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 224.0, 244.0)
@@ -92,7 +61,6 @@
 	}
 	Album * album=(Album*)[items objectAtIndex:index];
 	// show album...
-	//PictureFeedGridViewController * picturesController=[[PictureFeedGridViewController alloc] initWithFeed:album.pictureFeed title:album.name];
 	AlbumGridViewController * albumController=[[AlbumGridViewController alloc] initWithAlbum:album];
 	
 	[[self navigationController] pushViewController:albumController animated:YES];

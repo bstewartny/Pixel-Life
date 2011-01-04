@@ -18,7 +18,7 @@
 {
 	if(![json isKindOfClass:[NSDictionary class]])
 	{
-		NSLog(@"json object is not a dictionary: %@",[json description]);
+		//NSLog(@"json object is not a dictionary: %@",[json description]);
 		return nil;
 	}
 	
@@ -63,7 +63,7 @@
 		else 
 		{
 			// Hmm... no picture to use for list then...
-			NSLog(@"Friend list has no members...");
+			//NSLog(@"Friend list has no members...");
 		}
 
 		FacebookFriendListFriendFeed * friendFeed=[[FacebookFriendListFriendFeed alloc] initWithFacebookAccount:account friendList:list];

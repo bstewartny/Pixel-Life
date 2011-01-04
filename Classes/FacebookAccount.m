@@ -5,7 +5,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-	NSLog(@"encodeWithCoder...");
+	//NSLog(@"encodeWithCoder...");
 	[aCoder encodeObject:name forKey:@"name"];
 	[aCoder encodeObject:accessToken forKey:@"accessToken"];
 	[aCoder encodeObject:expirationDate forKey:@"expirationDate"];
@@ -13,7 +13,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-	NSLog(@"initWithCoder...");
+	//NSLog(@"initWithCoder...");
 	[super init];
 	name=[[aDecoder decodeObjectForKey:@"name"] retain];
 	accessToken=[[aDecoder decodeObjectForKey:@"accessToken"] retain];

@@ -96,7 +96,7 @@
 
 - (void)filterContentForSearchText:(NSString*)searchText
 {
-	NSLog(@"filterContentForSearchText: %@",searchText);
+	//NSLog(@"filterContentForSearchText: %@",searchText);
 	
 	[filteredItems removeAllObjects]; 
 	
@@ -172,7 +172,7 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-	NSLog(@"searchDisplayController:shouldReloadTableForSearchString %@",searchString);
+	//NSLog(@"searchDisplayController:shouldReloadTableForSearchString %@",searchString);
 	
     [self filterContentForSearchText:searchString];
     
@@ -182,7 +182,7 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
-	NSLog(@"searchDisplayController:shouldReloadTableForSearchScope ");
+	//NSLog(@"searchDisplayController:shouldReloadTableForSearchScope ");
 	
     [self filterContentForSearchText:[self.searchDisplayController.searchBar text]];
     
@@ -192,13 +192,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	NSLog(@"numberOfRowsInSection");
+	//NSLog(@"numberOfRowsInSection");
 	return [filteredItems count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"didSelectRowAtIndexPath");
+	//NSLog(@"didSelectRowAtIndexPath");
 	Friend * friend=[filteredItems objectAtIndex:indexPath.row];
 	// need to dismiss search results popover now...
 	[searchController setActive:NO animated:YES];
@@ -207,7 +207,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"cellForRowAtIndexPath");
+	//NSLog(@"cellForRowAtIndexPath");
 	static NSString *kCellID = @"cellID";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID];

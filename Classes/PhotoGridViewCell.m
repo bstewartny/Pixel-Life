@@ -14,28 +14,27 @@
     if ( self == nil )
         return nil;
     
-	//gregorian=[[NSCalendar alloc]
-	//						initWithCalendarIdentifier:NSGregorianCalendar];
-	
 	format = [[NSDateFormatter alloc] init];
 	[format setDateFormat:@"MMM d, yyyy"];
 	
-    imageView.frame = CGRectMake(5, 5, frame.size.width-10, frame.size.height-50);
+    return self;
+}
+
+- (void) setupSubviews
+{
+	imageView.frame = CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-50);
 	imageView.clipsToBounds = NO;
 	maxImageSize=CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-	label1=[self createLabelWithFrame:CGRectMake(5, frame.size.height-42, frame.size.width-10, 14)];
-	label2=[self createLabelWithFrame:CGRectMake(5, frame.size.height-28, frame.size.width-10, 14)];
-	label3=[self createLabelWithFrame:CGRectMake(5, frame.size.height-14, frame.size.width-10, 14)];
+	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-42, self.frame.size.width-10, 14)];
+	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-28, self.frame.size.width-10, 14)];
+	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-14, self.frame.size.width-10, 14)];
 	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];
 	[self.contentView addSubview:label3];
-		
-    return self;
 }
-
 
 - (UILabel*)createLabelWithFrame:(CGRect)frame
 {
@@ -207,10 +206,10 @@
 
 - (void) dealloc
 {
+	//NSLog(@"PhotoGridViewCell dealloc");
 	[label1 release];
 	[label2 release];
 	[label3 release];
-	//[gregorian release];
 	[format release];
 	[super dealloc];
 }

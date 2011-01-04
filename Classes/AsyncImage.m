@@ -62,7 +62,7 @@
 		{
 			[self releaseRequest:request];
 			
-			NSLog(@"calling dealloc from imageRequestDone...");
+			//NSLog(@"calling dealloc from imageRequestDone...");
 		
 			[self dealloc];
 		}
@@ -90,12 +90,12 @@
 
 - (void)releaseRequest:(ASIHTTPRequest*)request
 {
-	NSLog(@"releaseRequest: %@",[request description]);
+	//NSLog(@"releaseRequest: %@",[request description]);
 	@try 
 	{
 		if(request==imageRequest)
 		{
-			NSLog(@"releasing imageRequest...");
+			//NSLog(@"releasing imageRequest...");
 			[imageRequest release];
 			imageRequest=nil;
 		}
@@ -115,7 +115,7 @@
 		
 		if(dealloc_called)
 		{
-			NSLog(@"calling dealloc from requestWentWrong...");
+			//NSLog(@"calling dealloc from requestWentWrong...");
 			[self dealloc];
 		}
 		else 
@@ -135,7 +135,7 @@
 		UIImage * cachedImage=[self getImageFromCacheWithUrl:self.url];
 		if(cachedImage)
 		{
-			NSLog(@"got image from app cache...");
+			//NSLog(@"got image from app cache...");
 			self.image = cachedImage;
 			if ([delegate respondsToSelector:@selector(picture:didLoadImage:)])
 			{
@@ -182,7 +182,7 @@
 	dealloc_called=YES;
 	if(imageRequest)
 	{
-		NSLog(@"Picture.dealloc: imageRequest still exists, cancelling request...");
+		//NSLog(@"Picture.dealloc: imageRequest still exists, cancelling request...");
 		[self cancelRequest:imageRequest];
 	}
 	else 
@@ -190,7 +190,7 @@
 		delegate=nil;
 		[image release];
 		[url release];
-		NSLog(@"AsyncImage.dealloc completed...");
+		//NSLog(@"AsyncImage.dealloc completed...");
 		[super dealloc];
 	}
 }  

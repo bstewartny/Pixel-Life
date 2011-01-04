@@ -292,7 +292,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	NSLog(@"actionSheet:clickedButtonAtIndex:%d",buttonIndex);
+	//NSLog(@"actionSheet:clickedButtonAtIndex:%d",buttonIndex);
 	if(actionSheet.tag==kActionSheetSettings)
 	{
 		if(buttonIndex==0)
@@ -315,12 +315,12 @@
 
 - (void) showAccounts
 {
-	NSLog(@"showAccounts");
+	//NSLog(@"showAccounts");
 	
 	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
 	accountsView.modalPresentationStyle=UIModalPresentationFormSheet;
 	accountsView.delegate=self;
-	NSLog(@"presentModalViewController...");
+	//NSLog(@"presentModalViewController...");
 	
 	[navController.topViewController presentModalViewController:accountsView animated:YES];
 	
@@ -369,7 +369,7 @@
 
 - (void) loadArchivedData
 {
-	NSLog(@"loadArchivedData");
+	//NSLog(@"loadArchivedData");
 	
 	NSString * filePath=[self dataFilePath];
 	
@@ -405,7 +405,7 @@
 	}
 	if(facebookAccounts==nil)
 	{
-		NSLog(@"facebookAccounts==nil, creating new array...");
+		//NSLog(@"facebookAccounts==nil, creating new array...");
 		
 		facebookAccounts=[[NSMutableArray alloc] init];
 	}
@@ -434,7 +434,7 @@
 			[archiver release];
 		
 			[data release];
-			NSLog(@"Data saved ...");
+			//NSLog(@"Data saved ...");
 		}
 	}
 	@catch (NSException * e) 

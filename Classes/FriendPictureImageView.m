@@ -7,7 +7,7 @@
 
 - (id) initWithFrame: (CGRect) frame
 {
-	NSLog(@"FriendPictureImageView.initWithFrame");
+	//NSLog(@"FriendPictureImageView.initWithFrame");
     self = [super initWithFrame: frame];
     if ( self == nil )
         return nil;

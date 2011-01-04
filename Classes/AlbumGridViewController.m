@@ -148,7 +148,7 @@
 
 - (void)sendLikeRequestDone:(ASIHTTPRequest *)request
 {
-	NSLog(@"sendCommentRequestDone");
+	//NSLog(@"sendCommentRequestDone");
 	
 	// refresh comments for picture...
 }
@@ -337,7 +337,7 @@
 
 - (void)sendCommentRequestDone:(ASIHTTPRequest *)request
 {
-	NSLog(@"sendCommentRequestDone");
+	//NSLog(@"sendCommentRequestDone");
 	
 	album.commentCount++;
 	
@@ -382,6 +382,7 @@
 
 - (void) dealloc
 {
+	//NSLog(@"AlbumGridViewController dealloc");
 	[album release];
 	[showCommentsPopover release];
 	showCommentsPopover=nil;

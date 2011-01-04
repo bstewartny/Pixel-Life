@@ -4,15 +4,11 @@
 
 @implementation FriendGridViewCell
  
-- (id) initWithFrame: (CGRect) frame reuseIdentifier: (NSString *) aReuseIdentifier
+- (void) setupSubviews
 {
-	self = [super initWithFrame: frame reuseIdentifier: aReuseIdentifier];
-	if ( self == nil )
-		return nil;
+	//NSLog(@"FriendGridViewCell frame: %@",NSStringFromCGRect(self.frame));
 	
-	NSLog(@"FriendGridViewCell frame: %@",NSStringFromCGRect(frame));
-	
-	CGRect rect=frame; 
+	CGRect rect=self.frame; 
 	
 	imageView.frame =CGRectMake(5,5, rect.size.width-10, rect.size.height-10);
 	imageView.clipsToBounds = YES;
@@ -22,7 +18,6 @@
 	imageView.layer.shadowPath=[UIBezierPath bezierPathWithRect:imageView.bounds].CGPath;
 	imageView.layer.shadowOpacity=0.5;
 	imageView.layer.shadowColor=[UIColor blackColor].CGColor;
-	
 	
 	nameView=[[UIView alloc] initWithFrame:CGRectMake(0,rect.size.height-55,rect.size.width,55)];
 	nameView.backgroundColor=[UIColor blackColor];

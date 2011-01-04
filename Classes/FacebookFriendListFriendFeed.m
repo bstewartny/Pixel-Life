@@ -20,7 +20,7 @@
 
 - (ASIHTTPRequest*)createFetchRequest
 {
-	NSLog(@"createFetchRequest");
+	//NSLog(@"createFetchRequest");
 	
 	NSString * friend_query=[NSString stringWithFormat:@"SELECT uid,first_name,last_name,middle_name,name,pic_big,pic_small,pic,birthday_date FROM user WHERE uid in (SELECT uid FROM friendlist_member WHERE flid = %@)",friendList.uid];
 	

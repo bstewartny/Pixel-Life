@@ -59,7 +59,7 @@
 
 - (void)toggleZoom:(UIGestureRecognizer *)gestureRecognizer
 {
-	NSLog(@"toggleZoom");
+	//NSLog(@"toggleZoom");
 	//[UIView beginAnimations:nil context:NULL]; {
 	//	[UIView setAnimationTransition:UIViewAnimationCurveLinear forView:imageView cache:YES];
 	//	[UIView setAnimationDuration:1.0];

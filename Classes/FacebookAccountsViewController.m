@@ -81,7 +81,7 @@
 	NSLog(@"fbDidLogin");
 	if([facebook isSessionValid])
 	{
-		NSLog(@"session is valid, adding new account...");
+		//NSLog(@"session is valid, adding new account...");
 		// get account info...
 		// do graph request for "me"
 		
@@ -113,12 +113,12 @@
 
 - (void)fbDidLogout
 {
-	NSLog(@"fbDidLogout");
+	//NSLog(@"fbDidLogout");
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
-	NSLog(@"fbDidNotLogin");
+	//NSLog(@"fbDidNotLogin");
 }
 
 - (IBAction) editAccounts:(id)sender
