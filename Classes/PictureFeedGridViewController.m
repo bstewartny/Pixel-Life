@@ -34,7 +34,7 @@
 		// some bug in grid view allows bogus selections sometimes...
 		return;
 	}
-	PicturesScrollViewController * controller=[[PicturesScrollViewController alloc] initWithPictures:items];
+	PicturesScrollViewController * controller=[[PicturesScrollViewController alloc] initWithPictures:items phoneMode:NO];
 	
 	controller.currentItemIndex=index;
 	

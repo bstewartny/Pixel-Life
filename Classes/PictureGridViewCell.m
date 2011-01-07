@@ -32,7 +32,11 @@
 
 - (void) setupSubviews
 {
-	// subclass
+	NSLog(@"set image frame to: %@",NSStringFromCGRect(self.frame));
+	imageView.frame = self.frame; //CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-50);
+	imageView.clipsToBounds = YES;
+	maxImageSize=CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
+	imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 - (void) setImage:(UIImage*)image

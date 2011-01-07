@@ -10,7 +10,7 @@
 #import "AddCommentViewController.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 #import "FacebookAccount.h"
 #import "SlideshowOptionsViewController.h"
 
@@ -25,14 +25,25 @@
 	[self dismissModalViewControllerAnimated:YES];
 }
 
-- (id)initWithPictures:(NSArray*)pictures
+- (id)initWithPictures:(NSArray*)pictures phoneMode:(BOOL)mode
 {
+	
     if(self=[super initWithNibName:@"PicturesScrollView" bundle:nil])
 	{
+		phoneMode=mode;
 		self.pictures=pictures;
 		 
 		self.view.backgroundColor=[UIColor blackColor];
 		
+		if(phoneMode)
+		{
+			[infoView removeFromSuperview];
+			[infoView release];
+			infoView=nil;
+		}
+		
+		if(!phoneMode)
+		{
 		BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 250, 44.01)];
 		
 		tools.backgroundColor=[UIColor clearColor];
@@ -107,7 +118,7 @@
 		swdwn.direction=UISwipeGestureRecognizerDirectionDown;
 		[self.infoView addGestureRecognizer:swdwn];
 		[swdwn release];
-		
+		}
 		
 		UITapGestureRecognizer * gr2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
 		
@@ -192,7 +203,7 @@
 	
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 	
-	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 	
 	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebookAccount:account  picture:picture];
 	
@@ -241,7 +252,7 @@
 			[request setDelegate:self];
 			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
 			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
-			NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+			NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
 			[queue addOperation:request];
 			[request release];
 		}
@@ -251,7 +262,7 @@
 {
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 
-	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",picture.uid];
 	
@@ -317,7 +328,7 @@
 		[request setDelegate:self];
 		[request setDidFinishSelector:@selector(sendLikeRequestDone:)];
 		[request setDidFailSelector:@selector(sendLikeRequestWentWrong:)];
-		NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+		NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
 		[queue addOperation:request];
 		[request release];
 	}	
@@ -327,7 +338,7 @@
 {
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 	
-	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",picture.uid];
 	
@@ -478,16 +489,48 @@
 {
 	CGRect b= scrollView.bounds;
 	
-	if(b.size.width==1024 && b.size.height==704)
-	{
-		//b.size.height=748;
-		b.size.height=768;
+	CGRect s=[[UIScreen mainScreen] bounds];
+	
+	NSLog(@"bounds = %@",NSStringFromCGRect(b));
+	NSLog(@"screeb = %@",NSStringFromCGRect(s));
+	
+	//if(!phoneMode)
+	//{
+		if(b.size.width==s.size.height)
+		{
+			if(b.size.height < s.size.width)
+			{
+				b.size.height=s.size.width;
+			}
+		}
+		if(b.size.width==s.size.width)
+		{
+			if(b.size.height<s.size.height)
+			{
+				b.size.height=s.size.height;
+			}
+		}
 		
-	}
-	if (b.size.width==768 && b.size.height==960) {
-		//b.size.height=1004;
-		b.size.height=1024;
-	}
+		
+		/*if(b.size.width==s.size.width && b.size.height < b.size.height)
+		{
+			b.size.height=s.size.height;
+		}
+		 
+		if(b.size.width==1024 && b.size.height==704)
+		{
+			//b.size.height=748;
+			b.size.height=768;
+			
+		}
+		if (b.size.width==768 && b.size.height==960) {
+			//b.size.height=1004;
+			b.size.height=1024;
+		}*/
+	//}
+	
+	
+	
 	return b;
 }
 
@@ -511,6 +554,15 @@
 		CGRect frame=CGRectMake(x,y,width,height);
 		
 		PictureImageView * picView=[[PictureImageView alloc] initWithFrame:frame picture:picture];
+		
+		if(phoneMode)
+		{
+			picView.contentMode=UIViewContentModeScaleAspectFill;
+		}
+		else 
+		{
+			picView.contentMode=UIViewContentModeScaleAspectFit;
+		}
 		
 		[scrollView addSubview:picView];
 		
@@ -565,9 +617,10 @@
 	
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
-	
-	infoView.frame=infoViewFrame;
-	
+	if(!phoneMode)
+	{
+		infoView.frame=infoViewFrame;
+	}
 	[UIView commitAnimations];
 	
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -587,9 +640,10 @@
 	
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
-	
-	infoView.frame=infoViewFrame;
-	
+	if(!phoneMode)
+	{
+		infoView.frame=infoViewFrame;
+	}
 	[UIView commitAnimations];
 	
 	[self.navigationController.view setNeedsLayout];
@@ -733,6 +787,7 @@
 
 - (void) updateInfoView
 {
+	if(phoneMode) return;
 	//NSLog(@"updateInfoView: currentItemIndex=%d",currentItemIndex );
 		  
 	Picture * currentPicture=[pictures objectAtIndex:currentItemIndex];
@@ -794,9 +849,12 @@
 
 - (void) showInfoView
 {
+	if(!phoneMode)
+	{
 	CGRect rect2=infoView.frame;
 	rect2.origin.y= self.view.frame.size.height-rect2.size.height;	
 	self.infoView.frame=rect2;
+	}
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

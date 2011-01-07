@@ -34,7 +34,11 @@
 	BOOL fillScreen;
 	NSInteger delaySeconds;
 	SlideshowSortOrder sortOrder;
+	
+	BOOL phoneMode;
 }
+ 
+
 @property(nonatomic) BOOL slideshowMode;
 @property(nonatomic,retain) NSArray * pictures;
 @property(nonatomic,retain) IBOutlet UIScrollView * scrollView;

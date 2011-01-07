@@ -1,5 +1,5 @@
 #import "GridViewController.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 #import "Reachability.h"
 #import "Feed.h"
 #import "GridViewCell.h"
@@ -17,7 +17,9 @@
 		self.gridView.dataSource = self;
 		
 		self.gridView.separatorStyle = AQGridViewCellSeparatorStyleEmptySpace;
-		self.gridView.resizesCellWidthToFit = YES;
+		//self.gridView.separatorStyle=AQGridViewCellSeparatorStyleSingleLine;
+		
+		//self.gridView.resizesCellWidthToFit = YES;
 		self.gridView.separatorColor = [UIColor blackColor];
 		self.gridView.backgroundColor=[UIColor blackColor];
     }

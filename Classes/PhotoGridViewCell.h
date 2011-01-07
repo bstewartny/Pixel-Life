@@ -7,7 +7,7 @@
 	UILabel * label3;
 	BOOL showBorder;
 	NSDateFormatter * format;
-	CGSize maxImageSize;
+ 
 }
 @property(nonatomic) BOOL showBorder;
 

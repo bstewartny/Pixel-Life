@@ -1,4 +1,4 @@
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate_iPad.h"
 #import "AlbumsGridViewController.h"
 #import "FriendsGridViewController.h"
 #import "FacebookMyAlbumsFeed.h"
@@ -16,42 +16,16 @@
 #import "FriendListsGridViewController.h"
 #import "FacebookFriendListsFeed.h"
 #import "ImageCache.h"
-#import "FadeNavigationController.h"
 #import "BlankToolbar.h"
 #import "Reachability.h"
 #import "FacebookAccount.h"
 #import "FacebookAccountsViewController.h"
 
-@implementation PhotoExplorerAppDelegate
+@implementation PixelLifeAppDelegate_iPad
 
-@synthesize window;
-@synthesize downloadQueue;
-@synthesize navController;
-@synthesize imageCache;
-@synthesize facebookAccounts;
-@synthesize currentAccount;
-
-+ (PhotoExplorerAppDelegate *)sharedAppDelegate
-{
-    return (PhotoExplorerAppDelegate *)[UIApplication sharedApplication].delegate;
-}
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-	ASIDownloadCache * cache=[ASIDownloadCache sharedCache];
-	cache.shouldRespectCacheControlHeaders=YES;
-	
-	[cache setDefaultCachePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy|ASIFallbackToCacheIfLoadFailsCachePolicy];
-	 
-	[ASIHTTPRequest setDefaultCache:cache];
-	
-	imageCache=[[ImageCache alloc] init];
-	
-	downloadQueue = [[NSOperationQueue alloc] init];
-	
-	[self loadArchivedData];
-	
-	navController=[[FadeNavigationController alloc] init] ;
+- (void)setupWindow
+{	
+	navController=[[UINavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
 	segmentedControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Photo Albums",@"My Friend Lists",@"All My Friends",nil]];
@@ -69,15 +43,6 @@
     [self.window makeKeyAndVisible];
 
 	[self showAllFriends];
-	
-	return YES;
-}
-
-- (NSString *)dataFilePath
-{
-	NSArray * paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString * documentsDirectory = [paths objectAtIndex:0];
-	return [documentsDirectory stringByAppendingPathComponent:@"archive"];
 }
 
 - (void) segmentedControlValueChanged:(id)sender
@@ -134,20 +99,6 @@
 	}
 }
 
-- (void) clearCache
-{
-	@try {
-		[imageCache clear];
-		ASIDownloadCache * cache=[ASIDownloadCache sharedCache];
-		[cache clearCachedResponsesForStoragePolicy:ASICacheForSessionDurationCacheStoragePolicy];
-		[cache clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	}
-	@catch (NSException * e) {
-	}
-	@finally {
-	}
-}
-
 /**
  * Called when the user dismissed the dialog without logging in.
  */
@@ -172,26 +123,6 @@
 	[self showAllFriends];
 }
 
-
-- (void) addCommentToPhoto:(Picture*)picture comment:(NSString*)comment
-{
-	if(![currentAccount isSessionValid])
-	{
-		return;
-	}
-	// TODO
-	
-}
-
-- (void) likePhoto:(Picture*)picture
-{
-	if(![currentAccount isSessionValid])
-	{
-		return;
-	}
-	// TODO
-}
-
 - (void) showMyAlbums
 {
 	if(![currentAccount isSessionValid])
@@ -207,6 +138,7 @@
 	segmentedControl.selectedSegmentIndex=0;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
+	[controller release];
 }
 - (void) showNoFriends
 {
@@ -215,15 +147,18 @@
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[controller release];
 }
 - (void) showAllFriends
 {
-	FacebookFriendFeed * feed=nil;
 	
-	if([currentAccount isSessionValid])
+	if(![currentAccount isSessionValid])
 	{
-		feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
+		[self login];
+		return;
 	}
+	
+	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
 	
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"All Friends"];
 	[self addSettingsButtonToController:controller];
@@ -231,8 +166,7 @@
 	segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
-	
-	
+	[controller release];
 }
 
 - (void) addSettingsButtonToController:(UIViewController*)controller
@@ -288,11 +222,11 @@
 	segmentedControl.selectedSegmentIndex=1;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
+	[controller release];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	//NSLog(@"actionSheet:clickedButtonAtIndex:%d",buttonIndex);
 	if(actionSheet.tag==kActionSheetSettings)
 	{
 		if(buttonIndex==0)
@@ -315,23 +249,16 @@
 
 - (void) showAccounts
 {
-	//NSLog(@"showAccounts");
-	
 	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
 	accountsView.modalPresentationStyle=UIModalPresentationFormSheet;
 	accountsView.delegate=self;
-	//NSLog(@"presentModalViewController...");
 	
 	[navController.topViewController presentModalViewController:accountsView animated:YES];
 	
 	[accountsView release];
 }
 
-- (void) refresh:(id)sender
-{
-	FeedViewController * feedController=self.navController.topViewController;
-	[feedController refresh];
-}
+
 
 - (void) settings:(id)sender
 {
@@ -344,136 +271,8 @@
 	[actionSheet release];
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
-	[imageCache clear];
-	[self saveData];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    /*
-     Called when the application is about to terminate.
-     See also applicationDidEnterBackground:.
-     */
-	[self saveData];
-}
-
-- (void) loadArchivedData
-{
-	//NSLog(@"loadArchivedData");
-	
-	NSString * filePath=[self dataFilePath];
-	
-	NSLog(@"Loading archived data from: %@",filePath);
-	
-	@try 
-	{
-		NSData * data =[[NSMutableData alloc]
-						initWithContentsOfFile:filePath];
-		if (data) 
-		{
-			NSKeyedUnarchiver * unarchiver = [[NSKeyedUnarchiver alloc]
-											  initForReadingWithData:data];
-		
-			facebookAccounts=[[unarchiver decodeObjectForKey:@"facebookAccounts"] retain];
-			
-			currentAccount=[[unarchiver decodeObjectForKey:@"currentAccount"] retain];
-			
-			[unarchiver finishDecoding];
-			
-			[unarchiver	release];
-			
-			[data release];
-		}
-	}
-	@catch (NSException * e) 
-	{
-		NSLog(@"Exception in loadArchivedData");
-		NSLog(@"Exception: %@",[e description]);
-	}
-	@finally 
-	{
-	}
-	if(facebookAccounts==nil)
-	{
-		//NSLog(@"facebookAccounts==nil, creating new array...");
-		
-		facebookAccounts=[[NSMutableArray alloc] init];
-	}
-}
-
-- (void) saveData
-{
-	NSLog(@"saveData");
-	
-	 
-	@try {
-		
-		NSMutableData * data=[[NSMutableData alloc] init];
-		
-		if(data)
-		{
-			NSKeyedArchiver * archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-			
-			[archiver encodeObject:facebookAccounts forKey:@"facebookAccounts"];
-			[archiver encodeObject:currentAccount forKey:@"currentAccount"];
-			
-			[archiver finishEncoding];
-			
-			[data writeToFile:[self dataFilePath] atomically:YES];
-			
-			[archiver release];
-		
-			[data release];
-			//NSLog(@"Data saved ...");
-		}
-	}
-	@catch (NSException * e) 
-	{
-		NSLog(@"Exception in saveData");
-		NSLog(@"Exception: %@",[e description]);
-	}
-	@finally 
-	{
-		
-	}
-}
-
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
-     */
-	@try 
-	{
-		NSLog(@"applicationDidReceiveMemoryWarning: clearing image cache...");
-		[self clearCache];
-	}
-	@catch (NSException * e) 
-	{
-		
-	}
-	@finally 
-	{
-	}
-}
-
 - (void)dealloc {
-	[downloadQueue release];
-	[navController release];
 	[segmentedControl release];
-	[imageCache release];
-    [window release];
-	[facebookAccounts release];
-	[currentAccount release];
     [super dealloc];
 }
 

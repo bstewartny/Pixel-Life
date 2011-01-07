@@ -1,6 +1,6 @@
 #import "AsyncImage.h"
 #import "ASIHTTPRequest.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 
 @implementation AsyncImage
 @synthesize image,url,delegate;
@@ -17,12 +17,12 @@
 
 - (UIImage*) getImageFromCacheWithUrl:(NSString*)withUrl
 {
-	return [[[PhotoExplorerAppDelegate sharedAppDelegate] imageCache] imageForUrl:withUrl];
+	return [[[PixelLifeAppDelegate sharedAppDelegate] imageCache] imageForUrl:withUrl];
 }
 
 - (void) addImageToCache:(UIImage*)image withUrl:(NSString*)withUrl
 {
-	[[[PhotoExplorerAppDelegate sharedAppDelegate] imageCache] setImage:image forUrl:withUrl];
+	[[[PixelLifeAppDelegate sharedAppDelegate] imageCache] setImage:image forUrl:withUrl];
 }
 
 - (BOOL) hasLoadedImage
@@ -160,7 +160,7 @@
 	[request setDelegate:self];
     [request setDidFinishSelector:@selector(imageRequestDone:)];
     [request setDidFailSelector:@selector(requestWentWrong:)];
-    NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+    NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
     [queue addOperation:request];
 	return  request;
 }

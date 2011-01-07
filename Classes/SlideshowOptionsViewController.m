@@ -1,11 +1,3 @@
-    //
-//  SlideshowOptionsViewController.m
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 1/3/11.
-//  Copyright 2011 Evernote. All rights reserved.
-//
-
 #import "SlideshowOptionsViewController.h"
 #import "BlankToolbar.h"
 

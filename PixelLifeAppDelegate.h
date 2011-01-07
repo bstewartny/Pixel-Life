@@ -1,11 +1,7 @@
 #import <UIKit/UIKit.h>
-#define kActionSheetSettings 3434
 
-//@class Facebook;
-@class PhotoExplorerViewController;
 @class Picture;
 @class ImageCache;
-@class FadeNavigationController;
 @class FacebookAccount;
 
 // Your Facebook APP Id must be set before running this example
@@ -15,28 +11,24 @@
 //static NSString* kAppId = @"144746058889817";
 #define kAppId  @"174754232546721"
 
-@interface PhotoExplorerAppDelegate : NSObject <UIApplicationDelegate> 
+@interface PixelLifeAppDelegate : NSObject <UIApplicationDelegate> 
 {
+	UINavigationController * navController;
     UIWindow *window;
 	NSOperationQueue * downloadQueue;
-	FadeNavigationController * navController;
-	UISegmentedControl * segmentedControl;
 	ImageCache * imageCache;
 	NSMutableArray * facebookAccounts;
 	FacebookAccount * currentAccount;
 }
 
++ (PixelLifeAppDelegate*) sharedAppDelegate;
+
+@property (nonatomic, retain) IBOutlet UINavigationController * navController;
 @property (nonatomic, retain) NSOperationQueue *downloadQueue;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet FadeNavigationController * navController;
 @property (nonatomic, retain) ImageCache * imageCache;
 @property (nonatomic, retain) NSMutableArray * facebookAccounts;
 @property (nonatomic, retain) FacebookAccount * currentAccount;
-
-+ (PhotoExplorerAppDelegate*) sharedAppDelegate;
-
-- (void) addCommentToPhoto:(Picture*)picture comment:(NSString*)comment;
-- (void) likePhoto:(Picture*)picture;
 
 @end
 

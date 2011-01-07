@@ -6,7 +6,7 @@
 #import "AddCommentViewController.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 #import "FacebookAlbumCommentsFeed.h"
 #import "FacebookAccount.h"
 #import "PicturesScrollViewController.h"
@@ -101,6 +101,7 @@
 	
 	[sheet release];
 }
+
 - (void) action:(id)sender
 {
 	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Album Actions" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Email photos",@"Save photos",nil];
@@ -119,7 +120,7 @@
 		[request setDelegate:self];
 		[request setDidFinishSelector:@selector(sendLikeRequestDone:)];
 		[request setDidFailSelector:@selector(sendLikeRequestWentWrong:)];
-		NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+		NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
 		[queue addOperation:request];
 		[request release];
 	}	
@@ -127,7 +128,7 @@
 
 - (ASIHTTPRequest*) createLikeRequest
 {
-	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",album.uid];
 	
@@ -260,7 +261,7 @@
 		return;
 	}
 	
-	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 	
 	FacebookAlbumCommentsFeed * feed=[[FacebookAlbumCommentsFeed alloc] initWithFacebookAccount:account  album:album];
 	
@@ -312,7 +313,7 @@
 			[request setDelegate:self];
 			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
 			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
-			NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+			NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
 			[queue addOperation:request];
 			[request release];
 		}
@@ -320,7 +321,7 @@
 }
 - (ASIHTTPRequest*) createCommentRequest:(NSString*)message
 {
-	FacebookAccount * account=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 	
 	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",album.uid];
 	

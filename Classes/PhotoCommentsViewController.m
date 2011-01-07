@@ -1,5 +1,5 @@
 #import "PhotoCommentsViewController.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 #import "Reachability.h"
 #import "Feed.h"
 #import "CommentTableViewCell.h"

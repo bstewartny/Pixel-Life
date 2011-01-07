@@ -1,6 +1,6 @@
 #import "FeedViewController.h"
 #import "Feed.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 #import "Reachability.h"
 #import "FacebookAccount.h"
 
@@ -39,7 +39,7 @@
 - (void) refresh
 {
 	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
-    //PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
+    //PixelLifeAppDelegate *appDelegate = [PixelLifeAppDelegate sharedAppDelegate];
 	NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
     if (remoteHostStatus == NotReachable)
     {
@@ -71,7 +71,7 @@
 	
 	// Check if the remote server is available
     Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
-    PhotoExplorerAppDelegate *appDelegate = [PhotoExplorerAppDelegate sharedAppDelegate];
+    PixelLifeAppDelegate *appDelegate = [PixelLifeAppDelegate sharedAppDelegate];
 	NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
     if (remoteHostStatus == NotReachable)
     {
@@ -195,10 +195,10 @@
 	[self reloadFeed];
 	[self reloadData];
 	
-	FacebookAccount * currentAccount=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+	FacebookAccount * currentAccount=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 	if(![currentAccount isSessionValid])
 	{
-		[[PhotoExplorerAppDelegate sharedAppDelegate] login];
+		[[PixelLifeAppDelegate sharedAppDelegate] login];
 	}
 }
 

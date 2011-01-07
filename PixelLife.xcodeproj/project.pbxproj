@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* PhotoExplorerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* PhotoExplorerAppDelegate.m */; };
+		1D3623260D0F684500981E51 /* PixelLifeAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* PixelLifeAppDelegate_iPad.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* PhotoExplorerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow-iPad.xib */; };
 		B02CD21012B9515000D4407C /* PictureCaptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B02CD20F12B9515000D4407C /* PictureCaptionViewController.m */; };
 		B02CD22712B9559A00D4407C /* PictureCaptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02CD22612B9559A00D4407C /* PictureCaptionView.xib */; };
 		B02D83AD12C27BE500D34BD8 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B02D83AC12C27BE500D34BD8 /* ImageCache.m */; };
@@ -90,6 +90,14 @@
 		B087DA5312AAE792008259E9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5112AAE792008259E9 /* UIImage+Resize.m */; };
 		B087DA5F12AAE86D008259E9 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5B12AAE86D008259E9 /* UIImage+Alpha.m */; };
 		B087DA6012AAE86D008259E9 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5D12AAE86D008259E9 /* UIImage+RoundedCorner.m */; };
+		B099D4D312D79316007D4AD2 /* MainWindow-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B099D4D212D79316007D4AD2 /* MainWindow-iPhone.xib */; };
+		B099D4D612D79370007D4AD2 /* PixelLifeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D4D512D79370007D4AD2 /* PixelLifeAppDelegate.m */; };
+		B099D4DA12D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D4D912D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.m */; };
+		B099D50B12D7A06F007D4AD2 /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D50A12D7A06F007D4AD2 /* FriendsTableViewController.m */; };
+		B099D51112D7A194007D4AD2 /* FriendsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B099D51012D7A194007D4AD2 /* FriendsTableView.xib */; };
+		B099D51712D7A3CE007D4AD2 /* AlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D51612D7A3CE007D4AD2 /* AlbumsTableViewController.m */; };
+		B099D56112D7A83C007D4AD2 /* PictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D56012D7A83C007D4AD2 /* PictureTableViewCell.m */; };
+		B099D60B12D7B9BE007D4AD2 /* PhoneAlbumGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D60A12D7B9BE007D4AD2 /* PhoneAlbumGridViewController.m */; };
 		B09E917B12C913B80013E885 /* PictureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B09E917A12C913B80013E885 /* PictureScrollView.m */; };
 		B0A13D0F12AAFC9B00999009 /* PictureFeedGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D0E12AAFC9B00999009 /* PictureFeedGridViewController.m */; };
 		B0A13D1312AB0F4E00999009 /* PhotoGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A13D1212AB0F4E00999009 /* PhotoGridViewCell.m */; };
@@ -119,7 +127,6 @@
 		B0E97AA612BAA5B900721B33 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */; };
 		B0E97AA912BAA7A300721B33 /* PhotoCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */; };
 		B0F309D512C43D8D00773BFF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F309D412C43D8D00773BFF /* icon.png */; };
-		B0F30A2312C443E300773BFF /* FadeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F30A2212C443E300773BFF /* FadeNavigationController.m */; };
 		B0F95D3812C19BF900F43881 /* 05-shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F95D3712C19BF900F43881 /* 05-shuffle.png */; };
 		B0F9FCFB12BBEDCA00CF2F74 /* icon_comment_add.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */; };
 		B0F9FCFC12BBEDCA00CF2F74 /* icon_comment_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */; };
@@ -135,16 +142,16 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* PhotoExplorerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoExplorerAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* PhotoExplorerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoExplorerAppDelegate.m; sourceTree = "<group>"; };
+		1D3623240D0F684500981E51 /* PixelLifeAppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PixelLifeAppDelegate_iPad.h; path = Classes/PixelLifeAppDelegate_iPad.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* PixelLifeAppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PixelLifeAppDelegate_iPad.m; path = Classes/PixelLifeAppDelegate_iPad.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* PixelLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoExplorerViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* PhotoExplorer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoExplorer_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* PhotoExplorer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoExplorer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* PixelLife_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelLife_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* PixelLife-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PixelLife-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B02CD20E12B9515000D4407C /* PictureCaptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureCaptionViewController.h; sourceTree = "<group>"; };
 		B02CD20F12B9515000D4407C /* PictureCaptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCaptionViewController.m; sourceTree = "<group>"; };
 		B02CD22612B9559A00D4407C /* PictureCaptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureCaptionView.xib; sourceTree = "<group>"; };
@@ -288,6 +295,20 @@
 		B087DA5C12AAE86D008259E9 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		B087DA5D12AAE86D008259E9 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		B087DA5E12AAE86D008259E9 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		B099D4D212D79316007D4AD2 /* MainWindow-iPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPhone.xib"; sourceTree = "<group>"; };
+		B099D4D412D79370007D4AD2 /* PixelLifeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelLifeAppDelegate.h; sourceTree = "<group>"; };
+		B099D4D512D79370007D4AD2 /* PixelLifeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixelLifeAppDelegate.m; sourceTree = "<group>"; };
+		B099D4D812D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelLifeAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		B099D4D912D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixelLifeAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		B099D50912D7A06F007D4AD2 /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
+		B099D50A12D7A06F007D4AD2 /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
+		B099D51012D7A194007D4AD2 /* FriendsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableView.xib; sourceTree = "<group>"; };
+		B099D51512D7A3CE007D4AD2 /* AlbumsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsTableViewController.h; sourceTree = "<group>"; };
+		B099D51612D7A3CE007D4AD2 /* AlbumsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumsTableViewController.m; sourceTree = "<group>"; };
+		B099D55F12D7A83C007D4AD2 /* PictureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureTableViewCell.h; sourceTree = "<group>"; };
+		B099D56012D7A83C007D4AD2 /* PictureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureTableViewCell.m; sourceTree = "<group>"; };
+		B099D60912D7B9BE007D4AD2 /* PhoneAlbumGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAlbumGridViewController.h; sourceTree = "<group>"; };
+		B099D60A12D7B9BE007D4AD2 /* PhoneAlbumGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAlbumGridViewController.m; sourceTree = "<group>"; };
 		B09E917912C913B80013E885 /* PictureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureScrollView.h; sourceTree = "<group>"; };
 		B09E917A12C913B80013E885 /* PictureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureScrollView.m; sourceTree = "<group>"; };
 		B0A13D0D12AAFC9B00999009 /* PictureFeedGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureFeedGridViewController.h; sourceTree = "<group>"; };
@@ -339,8 +360,6 @@
 		B0E97AA512BAA5B900721B33 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotoCommentsView.xib; path = Classes/PhotoCommentsView.xib; sourceTree = "<group>"; };
 		B0F309D412C43D8D00773BFF /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		B0F30A2112C443E300773BFF /* FadeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeNavigationController.h; sourceTree = "<group>"; };
-		B0F30A2212C443E300773BFF /* FadeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FadeNavigationController.m; sourceTree = "<group>"; };
 		B0F95D3712C19BF900F43881 /* 05-shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-shuffle.png"; sourceTree = "<group>"; };
 		B0F9FCF912BBEDCA00CF2F74 /* icon_comment_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_comment_add.png; sourceTree = "<group>"; };
 		B0F9FCFA12BBEDCA00CF2F74 /* icon_comment_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_comment_ok.png; sourceTree = "<group>"; };
@@ -398,6 +417,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B099D4D712D793D9007D4AD2 /* AppDelegate-Shared */,
+				B099D4D112D792C9007D4AD2 /* AppDelegate-iPhone */,
+				B099D4D012D792B9007D4AD2 /* AppDelegate-iPad */,
 				B087D84412AA8B5A008259E9 /* Externals */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -416,7 +438,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* PhotoExplorer_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* PixelLife_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -428,8 +450,7 @@
 				B0E978E912B989C500721B33 /* Images */,
 				B0E97AA812BAA7A300721B33 /* PhotoCommentsView.xib */,
 				2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* PhotoExplorer-Info.plist */,
+				8D1107310486CEB800E47090 /* PixelLife-Info.plist */,
 				B0A13D4A12AB168A00999009 /* GridView.xib */,
 				B048271B12AD3B2A00F61433 /* PictureView.xib */,
 				B048289712AD5EA800F61433 /* PicturesScrollView.xib */,
@@ -439,6 +460,7 @@
 				B0DFB84312BE8C870051F301 /* AddCommentView.xib */,
 				B0A6BB3912CB899B00AA13C2 /* FacebookAccountsView.xib */,
 				B0B3FD3B12D26B9B00FD625D /* SlideshowOptionsView.xib */,
+				B099D51012D7A194007D4AD2 /* FriendsTableView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -524,8 +546,6 @@
 		B087D83E12AA8B2F008259E9 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* PhotoExplorerAppDelegate.h */,
-				1D3623250D0F684500981E51 /* PhotoExplorerAppDelegate.m */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -533,6 +553,7 @@
 		B087D84112AA8B35008259E9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B099D60812D7B9AD007D4AD2 /* New Group */,
 				B0A13D0D12AAFC9B00999009 /* PictureFeedGridViewController.h */,
 				B0A13D0E12AAFC9B00999009 /* PictureFeedGridViewController.m */,
 				B0A13D1112AB0F4E00999009 /* PhotoGridViewCell.h */,
@@ -571,8 +592,6 @@
 				B0DFB83F12BE8B9A0051F301 /* AddCommentViewController.m */,
 				B083801E12C1454B00E999A8 /* FeedViewController.h */,
 				B083801F12C1454B00E999A8 /* FeedViewController.m */,
-				B0F30A2112C443E300773BFF /* FadeNavigationController.h */,
-				B0F30A2212C443E300773BFF /* FadeNavigationController.m */,
 				B09E917912C913B80013E885 /* PictureScrollView.h */,
 				B09E917A12C913B80013E885 /* PictureScrollView.m */,
 				B0DACFE612CA790100CBE1B7 /* FriendPictureImageView.h */,
@@ -583,6 +602,14 @@
 				B0A6BB3112CB873300AA13C2 /* FacebookAccountsViewController.m */,
 				B0B3FD3612D2660E00FD625D /* SlideshowOptionsViewController.h */,
 				B0B3FD3712D2660E00FD625D /* SlideshowOptionsViewController.m */,
+				B099D50912D7A06F007D4AD2 /* FriendsTableViewController.h */,
+				B099D50A12D7A06F007D4AD2 /* FriendsTableViewController.m */,
+				B099D51512D7A3CE007D4AD2 /* AlbumsTableViewController.h */,
+				B099D51612D7A3CE007D4AD2 /* AlbumsTableViewController.m */,
+				B099D55F12D7A83C007D4AD2 /* PictureTableViewCell.h */,
+				B099D56012D7A83C007D4AD2 /* PictureTableViewCell.m */,
+				B099D60912D7B9BE007D4AD2 /* PhoneAlbumGridViewController.h */,
+				B099D60A12D7B9BE007D4AD2 /* PhoneAlbumGridViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -704,6 +731,42 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		B099D4D012D792B9007D4AD2 /* AppDelegate-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* PixelLifeAppDelegate_iPad.h */,
+				1D3623250D0F684500981E51 /* PixelLifeAppDelegate_iPad.m */,
+				28AD733E0D9D9553002E5188 /* MainWindow-iPad.xib */,
+			);
+			name = "AppDelegate-iPad";
+			sourceTree = "<group>";
+		};
+		B099D4D112D792C9007D4AD2 /* AppDelegate-iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				B099D4D812D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.h */,
+				B099D4D912D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.m */,
+				B099D4D212D79316007D4AD2 /* MainWindow-iPhone.xib */,
+			);
+			name = "AppDelegate-iPhone";
+			sourceTree = "<group>";
+		};
+		B099D4D712D793D9007D4AD2 /* AppDelegate-Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B099D4D412D79370007D4AD2 /* PixelLifeAppDelegate.h */,
+				B099D4D512D79370007D4AD2 /* PixelLifeAppDelegate.m */,
+			);
+			name = "AppDelegate-Shared";
+			sourceTree = "<group>";
+		};
+		B099D60812D7B9AD007D4AD2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,7 +819,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PhotoExplorer" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PixelLife" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -780,7 +843,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				28AD733F0D9D9553002E5188 /* MainWindow-iPad.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* PhotoExplorerViewController.xib in Resources */,
 				B0A13D4B12AB168A00999009 /* GridView.xib in Resources */,
 				B048271C12AD3B2A00F61433 /* PictureView.xib in Resources */,
@@ -813,6 +876,8 @@
 				B05C2ADB12CCFFF000CE56E2 /* Default-LandscapeLeft.png in Resources */,
 				B05C2ADC12CCFFF000CE56E2 /* Default-Landscape.png in Resources */,
 				B0B3FD3C12D26B9B00FD625D /* SlideshowOptionsView.xib in Resources */,
+				B099D4D312D79316007D4AD2 /* MainWindow-iPhone.xib in Resources */,
+				B099D51112D7A194007D4AD2 /* FriendsTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,7 +889,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* PhotoExplorerAppDelegate.m in Sources */,
+				1D3623260D0F684500981E51 /* PixelLifeAppDelegate_iPad.m in Sources */,
 				B087D86512AA8CE3008259E9 /* ASINetworkQueue.m in Sources */,
 				B087D86612AA8CE3008259E9 /* ASIInputStream.m in Sources */,
 				B087D86712AA8CE3008259E9 /* ASIHTTPRequest.m in Sources */,
@@ -896,7 +961,6 @@
 				B083802012C1454B00E999A8 /* FeedViewController.m in Sources */,
 				B02D83AD12C27BE500D34BD8 /* ImageCache.m in Sources */,
 				B02D840112C28AC800D34BD8 /* AsyncImage.m in Sources */,
-				B0F30A2312C443E300773BFF /* FadeNavigationController.m in Sources */,
 				B09E917B12C913B80013E885 /* PictureScrollView.m in Sources */,
 				B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */,
 				B0A6BAAF12CA9EB500AA13C2 /* AlbumGridViewController.m in Sources */,
@@ -905,6 +969,12 @@
 				B0A6BB3212CB873300AA13C2 /* FacebookAccountsViewController.m in Sources */,
 				B0A6BCB012CC22AB00AA13C2 /* FacebookAccountInfoFeed.m in Sources */,
 				B0B3FD3812D2660E00FD625D /* SlideshowOptionsViewController.m in Sources */,
+				B099D4D612D79370007D4AD2 /* PixelLifeAppDelegate.m in Sources */,
+				B099D4DA12D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.m in Sources */,
+				B099D50B12D7A06F007D4AD2 /* FriendsTableViewController.m in Sources */,
+				B099D51712D7A3CE007D4AD2 /* AlbumsTableViewController.m in Sources */,
+				B099D56112D7A83C007D4AD2 /* PictureTableViewCell.m in Sources */,
+				B099D60B12D7B9BE007D4AD2 /* PhoneAlbumGridViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,8 +989,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PhotoExplorer_Prefix.pch;
-				INFOPLIST_FILE = "PhotoExplorer-Info.plist";
+				GCC_PREFIX_HEADER = PixelLife_Prefix.pch;
+				INFOPLIST_FILE = "PixelLife-Info.plist";
 				PRODUCT_NAME = PixelLife;
 			};
 			name = Debug;
@@ -931,8 +1001,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PhotoExplorer_Prefix.pch;
-				INFOPLIST_FILE = "PhotoExplorer-Info.plist";
+				GCC_PREFIX_HEADER = PixelLife_Prefix.pch;
+				INFOPLIST_FILE = "PixelLife-Info.plist";
 				PRODUCT_NAME = PixelLife;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -941,31 +1011,31 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: robert stewart (48WE8248AA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D959819-1D4C-4761-9A85-B4E6A21DC4ED";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "66B212CA-CC53-4B84-A000-2FD506E34B2E";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: robert stewart (48WE8248AA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D959819-1D4C-4761-9A85-B4E6A21DC4ED";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "66B212CA-CC53-4B84-A000-2FD506E34B2E";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -981,7 +1051,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PhotoExplorer" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PixelLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

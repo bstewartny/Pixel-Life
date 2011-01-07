@@ -1,6 +1,6 @@
 #import "Feed.h"
 #import "ASIHTTPRequest.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 
 @implementation Feed
 @synthesize delegate;
@@ -20,7 +20,7 @@
 		[request setDelegate:self];
 		[request setDidFinishSelector:@selector(requestDone:)];
 		[request setDidFailSelector:@selector(requestWentWrong:)];
-		NSOperationQueue *queue = [PhotoExplorerAppDelegate sharedAppDelegate].downloadQueue;
+		NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
 		[queue addOperation:request];
 		[request release];
 	}

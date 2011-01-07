@@ -1,7 +1,7 @@
 #import "FacebookAccountsViewController.h"
 #import "FacebookAccount.h"
 #import "Facebook.h"
-#import "PhotoExplorerAppDelegate.h"
+#import "PixelLifeAppDelegate.h"
 #import "Reachability.h"
 #import "FacebookAccountInfoFeed.h"
 
@@ -60,7 +60,7 @@
 - (void)feed:(Feed *)feed didFindItems:(NSArray *)items
 {
 	// save new account
-	[[PhotoExplorerAppDelegate sharedAppDelegate] saveData];
+	[[PixelLifeAppDelegate sharedAppDelegate] saveData];
 	
 	[tableView reloadData];
 }
@@ -151,11 +151,11 @@
 {
 	if ([accounts count]==1) 
 	{
-		if([[PhotoExplorerAppDelegate sharedAppDelegate] currentAccount]==nil)
+		if([[PixelLifeAppDelegate sharedAppDelegate] currentAccount]==nil)
 		{
-			[[PhotoExplorerAppDelegate sharedAppDelegate] setCurrentAccount:[accounts objectAtIndex:0]];
+			[[PixelLifeAppDelegate sharedAppDelegate] setCurrentAccount:[accounts objectAtIndex:0]];
 			
-			[[PhotoExplorerAppDelegate sharedAppDelegate] showAllFriends];
+			[[PixelLifeAppDelegate sharedAppDelegate] showAllFriends];
 		}
 	}
 	
@@ -169,9 +169,9 @@
 		// switch to selected user and close
 		FacebookAccount * account=[accounts objectAtIndex:indexPath.row];
 	
-		[[PhotoExplorerAppDelegate sharedAppDelegate] setCurrentAccount:account];
+		[[PixelLifeAppDelegate sharedAppDelegate] setCurrentAccount:account];
 		
-		[[PhotoExplorerAppDelegate sharedAppDelegate] showAllFriends];
+		[[PixelLifeAppDelegate sharedAppDelegate] showAllFriends];
 		
 		[self close];
 	}
@@ -210,7 +210,7 @@
 	{	
 		FacebookAccount * account=[accounts objectAtIndex:indexPath.row];
 	
-		FacebookAccount * currentAccount=[[PhotoExplorerAppDelegate sharedAppDelegate] currentAccount];
+		FacebookAccount * currentAccount=[[PixelLifeAppDelegate sharedAppDelegate] currentAccount];
 		
 		if([account.name isEqualToString:[currentAccount name]])
 		{
@@ -260,11 +260,11 @@
 			// delete your data item here
 			FacebookAccount * account=[accounts objectAtIndex:indexPath.row];
 			
-			FacebookAccount * currentAccount=[PhotoExplorerAppDelegate sharedAppDelegate].currentAccount;
+			FacebookAccount * currentAccount=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
 			
 			if([account.name isEqualToString:[currentAccount name]])
 			{
-				[[PhotoExplorerAppDelegate sharedAppDelegate] setCurrentAccount:nil];
+				[[PixelLifeAppDelegate sharedAppDelegate] setCurrentAccount:nil];
 			}
 			
 			[accounts removeObjectAtIndex:indexPath.row];

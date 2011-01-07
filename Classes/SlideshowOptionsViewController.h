@@ -1,11 +1,3 @@
-//
-//  SlideshowOptionsViewController.h
-//  PhotoExplorer
-//
-//  Created by Robert Stewart on 1/3/11.
-//  Copyright 2011 Evernote. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 typedef enum
