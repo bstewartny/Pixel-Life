@@ -4,17 +4,43 @@
 #import "FriendsTableViewController.h"
 
 @implementation PixelLifeAppDelegate_iPhone
+//@synthesize tabBar;
 
 - (void)setupWindow
 {
 	navController=[[UINavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
+	/*CGRect r=[[UIScreen mainScreen] bounds];
+	
+	tabBar=[[UITabBar alloc] initWithFrame:CGRectMake(0, r.size.height-65, r.size.width	, 65)];
+	
+	UITabBarItem * i;
+	
+	NSMutableArray * items=[[[NSMutableArray alloc] init] autorelease];
+	
+	i=[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
+	[items addObject:i];
+	[i release];
+	
+	i=[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:2];
+	[items addObject:i];
+	[i release];
+	
+	i=[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:3];
+	[items addObject:i];
+	[i release];
+	
+	[tabBar setItems:items animated:NO];
+	*/
 	self.window.backgroundColor=[UIColor blackColor];
 	
 	// Override point for customization after app launch. 
-    [self.window addSubview:navController.view];
-    [self.window makeKeyAndVisible];
+    
+	[self.window addSubview:navController.view];
+    //[self.window addSubview:tabBar];
+	
+	[self.window makeKeyAndVisible];
 	
 	[self showAllFriends];
 }
@@ -118,5 +144,9 @@
 	[controller release];
 	[feed release];
 }
-
+- (void) dealloc
+{
+	//[tabBar release];
+	[super dealloc];
+}
 @end

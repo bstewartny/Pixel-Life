@@ -24,6 +24,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
+	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+	
 	ASIDownloadCache * cache=[ASIDownloadCache sharedCache];
 	cache.shouldRespectCacheControlHeaders=YES;
 	
