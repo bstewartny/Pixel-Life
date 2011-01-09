@@ -11,5 +11,5 @@
 @property(nonatomic,assign) id delegate;
 
 - (IBAction) send:(id)sender;
-
+- (IBAction) cancel:(id)sender;
 @end

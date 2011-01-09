@@ -26,7 +26,7 @@
 	UIPopoverController * addCommentPopover;
 	UIPopoverController * showCommentsPopover;
 	UIPopoverController * slideshowOptionsPopover;
-	UIBarButtonItem * showCommentsButton;
+	IBOutlet UIBarButtonItem * showCommentsButton;
 	BOOL cancelRemoveBars;
 	BOOL slideshowMode;
 	NSTimer * slideshowTimer;
@@ -41,6 +41,7 @@
 
 @property(nonatomic) BOOL slideshowMode;
 @property(nonatomic,retain) NSArray * pictures;
+@property(nonatomic,retain) IBOutlet UIBarButtonItem * showCommentsButton;
 @property(nonatomic,retain) IBOutlet UIScrollView * scrollView;
 @property(nonatomic) NSInteger currentItemIndex;
 @property(nonatomic,retain) IBOutlet UIToolbar * toolbar;
@@ -55,5 +56,7 @@
 @property(nonatomic,retain) IBOutlet UILabel * infoNumCommentsLabel;
 
 - (IBAction) showComments:(id)sender;
+- (IBAction) addFavorite:(id)sender;
+- (IBAction) addComment:(id)sender;
 
 @end

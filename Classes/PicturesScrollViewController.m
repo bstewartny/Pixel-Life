@@ -17,7 +17,7 @@
 //#import "PictureScrollView.h"
 
 @implementation PicturesScrollViewController
-@synthesize scrollView, toolbar,pictures,infoFirstNameLabel,infoLastNameLabel,infoNumCommentsLabel,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
+@synthesize showCommentsButton,scrollView, toolbar,pictures,infoFirstNameLabel,infoLastNameLabel,infoNumCommentsLabel,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
 @synthesize slideshowMode;
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
@@ -27,12 +27,21 @@
 
 - (id)initWithPictures:(NSArray*)pictures phoneMode:(BOOL)mode
 {
+	phoneMode=mode;
+	self.pictures=pictures;
 	
-    if(self=[super initWithNibName:@"PicturesScrollView" bundle:nil])
+	
+	if(phoneMode)
 	{
-		phoneMode=mode;
-		self.pictures=pictures;
-		 
+		self=[super initWithNibName:@"PhonePicturesScrollView" bundle:nil];
+	}
+	else 
+	{
+		self=[super initWithNibName:@"PicturesScrollView" bundle:nil];
+	}
+
+    if(self)
+	{
 		self.view.backgroundColor=[UIColor blackColor];
 		
 		if(phoneMode)
@@ -44,81 +53,99 @@
 		
 		if(!phoneMode)
 		{
-		BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 250, 44.01)];
-		
-		tools.backgroundColor=[UIColor clearColor];
-		tools.opaque=NO;
-		
-		NSMutableArray * toolItems=[[NSMutableArray alloc] init];
-		
-		UIBarButtonItem * b;
-		
-		b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-		[toolItems addObject:b];
-		[b release];
-		
-		b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_post.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showComments:)];
-		[toolItems addObject:b];
-		showCommentsButton=b;
-		b.enabled=NO;
-		[b release];
-		
-		b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-		b.width=10;
-		[toolItems addObject:b];
-		[b release];
-		
-		b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_comment_add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addComment:)];
-		[toolItems addObject:b];
-		[b release];
-		
-		b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-		b.width=10;
-		[toolItems addObject:b];
-		[b release];
-		
-		b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_favorities_add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addFavorite:)];
-		[toolItems addObject:b];
-		[b release];
-		
-		b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-		b.width=10;
-		[toolItems addObject:b];
-		[b release];
-		
-		b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_frame.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showSlideshowOptions:)];
-		[toolItems addObject:b];
-		[b release];
-		
-		
-		b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-		b.width=10;
-		[toolItems addObject:b];
-		[b release];
-		
-		
-		b=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action:)];
-		[toolItems addObject:b];
-		[b release];
-		
-		[tools setItems:toolItems animated:NO];
-		
-		self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:tools] autorelease];
-		
-		[tools release];
-		[toolItems release];
-		
-		
-		UISwipeGestureRecognizer * swup=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUp:)];
-		swup.direction=UISwipeGestureRecognizerDirectionUp;
-		[self.infoView addGestureRecognizer:swup];
-		[swup release];
-		
-		UISwipeGestureRecognizer * swdwn=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown:)];
-		swdwn.direction=UISwipeGestureRecognizerDirectionDown;
-		[self.infoView addGestureRecognizer:swdwn];
-		[swdwn release];
+			BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 250, 44.01)];
+			
+			tools.backgroundColor=[UIColor clearColor];
+			tools.opaque=NO;
+			
+			NSMutableArray * toolItems=[[NSMutableArray alloc] init];
+			
+			UIBarButtonItem * b;
+			
+			b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+			[toolItems addObject:b];
+			[b release];
+			
+			b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_post.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showComments:)];
+			[toolItems addObject:b];
+			self.showCommentsButton=b;
+			b.enabled=NO;
+			[b release];
+			
+			b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+			b.width=10;
+			[toolItems addObject:b];
+			[b release];
+			
+			b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_comment_add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addComment:)];
+			[toolItems addObject:b];
+			[b release];
+			
+			b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+			b.width=10;
+			[toolItems addObject:b];
+			[b release];
+			
+			b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_favorities_add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addFavorite:)];
+			[toolItems addObject:b];
+			[b release];
+			
+			b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+			b.width=10;
+			[toolItems addObject:b];
+			[b release];
+			
+			b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_frame.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showSlideshowOptions:)];
+			[toolItems addObject:b];
+			[b release];
+			
+			
+			b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+			b.width=10;
+			[toolItems addObject:b];
+			[b release];
+			
+			
+			b=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action:)];
+			[toolItems addObject:b];
+			[b release];
+			
+			[tools setItems:toolItems animated:NO];
+			
+			self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:tools] autorelease];
+			
+			[tools release];
+			[toolItems release];
+			
+			
+			UISwipeGestureRecognizer * swup=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUp:)];
+			swup.direction=UISwipeGestureRecognizerDirectionUp;
+			[self.infoView addGestureRecognizer:swup];
+			[swup release];
+			
+			UISwipeGestureRecognizer * swdwn=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown:)];
+			swdwn.direction=UISwipeGestureRecognizerDirectionDown;
+			[self.infoView addGestureRecognizer:swdwn];
+			[swdwn release];
 		}
+		else 
+		{
+			/*CGRect s=[[UIScreen mainScreen] bounds];
+			
+			toolbar=[[UIToolbar alloc] initWithFrame:CGRectMake(0, s.size.height-44, s.size.width, 44)];
+			
+			//toolbar.autoresizingMask=UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+					 
+			toolbar.barStyle=UIBarStyleBlack;
+			toolbar.opaque=NO;
+			//toolbar.alpha=0.8;
+			toolbar.translucent=YES;
+			
+			[self.view addSubview:toolbar];
+			[self.view bringSubviewToFront:toolbar];
+			*/
+		}
+
 		
 		UITapGestureRecognizer * gr2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
 		
@@ -141,24 +168,7 @@
 		
 		picViews=[[NSMutableArray alloc] init];
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		self.wantsFullScreenLayout=YES;
-		
-		
-		
-		
-		
 		
 	}
     return self;
@@ -194,6 +204,38 @@
 
 - (IBAction) showComments:(id)sender
 {
+	if(phoneMode)
+	{
+		[self showCommentsPhone:sender];
+	}
+	else 
+	{
+		[self showCommentsPad:sender];
+	}
+}
+
+- (void) showCommentsPhone:(id)sender
+{
+	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
+	
+	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
+	
+	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebookAccount:account  picture:picture];
+	
+	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments"];
+	
+	//controller.modalPresentationStyle=UIModalPresentationFullScreen;
+	[feed release];
+	
+	[self.navigationController pushViewController:controller animated:YES];
+	
+	//[self presentModalViewController:controller animated:YES];
+	
+	[controller release];
+}
+
+- (void) showCommentsPad:(id)sender
+{
 	if(showCommentsPopover)
 	{
 		return;
@@ -222,6 +264,31 @@
 
 - (IBAction) addComment:(id)sender
 {
+	if(phoneMode)
+	{
+		[self addCommentPhone:sender];
+	}
+	else 
+	{
+		[self addCommentPad:sender];
+	}
+}
+
+- (void) addCommentPhone:(id)sender
+{
+	cancelRemoveBars=YES;
+	
+	AddCommentViewController * controller=[[AddCommentViewController alloc] init];
+	controller.delegate=self;
+	controller.modalPresentationStyle=UIModalPresentationFullScreen;
+	
+	[self presentModalViewController:controller animated:YES];
+	
+	[controller release];
+}
+	
+- (void) addCommentPad:(id)sender
+{
 	if(addCommentPopover)
 	{
 		return;
@@ -241,8 +308,16 @@
 }
 - (void) sendComment:(NSString*)comment
 {
-	[addCommentPopover dismissPopoverAnimated:YES];
-	addCommentPopover=nil;
+	if(!phoneMode)
+	{
+		[addCommentPopover dismissPopoverAnimated:YES];
+		addCommentPopover=nil;
+	}
+	else 
+	{
+		[self dismissModalViewControllerAnimated:YES];
+	}
+
 	if([comment length]>0)
 	{
 		// push to queue
@@ -279,8 +354,6 @@
 
 - (void)sendCommentRequestDone:(ASIHTTPRequest *)request
 {
-	//NSLog(@"sendCommentRequestDone");
-	
 	Picture * picture=[request.userInfo objectForKey:@"picture"];
 	
 	if(picture)
@@ -302,6 +375,23 @@
 }
 
 - (IBAction) addFavorite:(id)sender
+{
+	if(phoneMode)
+	{
+		[self addFavoritePhone:sender];
+	}
+	else
+	{
+		[self addFavoritePad:sender];
+	}
+}
+
+- (void) addFavoritePhone:(id)sender
+{
+	
+}
+	
+- (void) addFavoritePad:(id)sender
 {
 	// add photo to users favorite items list
 	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"I like this photo..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Like on Facebook",nil];
@@ -353,9 +443,7 @@
 
 - (void)sendLikeRequestDone:(ASIHTTPRequest *)request
 {
-	//NSLog(@"sendCommentRequestDone");
-	
-	// refresh comments for picture...
+
 }
 
 - (void)sendLikeRequestWentWrong:(ASIHTTPRequest *)request
@@ -376,10 +464,6 @@
 			// like on facebook
 			[self likePhoto];
 		}
-		/*if(buttonIndex==1)
-		{
-			// add to local favorites
-		}*/
 	}
 	if(actionSheet.tag==kActionActionSheet)
 	{
@@ -491,46 +575,21 @@
 	
 	CGRect s=[[UIScreen mainScreen] bounds];
 	
-	NSLog(@"bounds = %@",NSStringFromCGRect(b));
-	NSLog(@"screeb = %@",NSStringFromCGRect(s));
-	
-	//if(!phoneMode)
-	//{
-		if(b.size.width==s.size.height)
+	if(b.size.width==s.size.height)
+	{
+		if(b.size.height < s.size.width)
 		{
-			if(b.size.height < s.size.width)
-			{
-				b.size.height=s.size.width;
-			}
+			b.size.height=s.size.width;
 		}
-		if(b.size.width==s.size.width)
-		{
-			if(b.size.height<s.size.height)
-			{
-				b.size.height=s.size.height;
-			}
-		}
-		
-		
-		/*if(b.size.width==s.size.width && b.size.height < b.size.height)
+	}
+	if(b.size.width==s.size.width)
+	{
+		if(b.size.height<s.size.height)
 		{
 			b.size.height=s.size.height;
 		}
-		 
-		if(b.size.width==1024 && b.size.height==704)
-		{
-			//b.size.height=748;
-			b.size.height=768;
-			
-		}
-		if (b.size.width==768 && b.size.height==960) {
-			//b.size.height=1004;
-			b.size.height=1024;
-		}*/
-	//}
-	
-	
-	
+	}
+		
 	return b;
 }
 
@@ -615,12 +674,21 @@
 	CGRect infoViewFrame=infoView.frame;
 	infoViewFrame.origin.y= self.view.frame.size.height;
 	
+	CGRect toolbarFrame=toolbar.frame;
+	toolbarFrame.origin.y=self.view.frame.size.height;
+	
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
+	
 	if(!phoneMode)
 	{
 		infoView.frame=infoViewFrame;
 	}
+	else 
+	{
+		toolbar.frame=toolbarFrame;
+	}
+
 	[UIView commitAnimations];
 	
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -638,12 +706,20 @@
 	CGRect infoViewFrame=infoView.frame;
 	infoViewFrame.origin.y= self.view.frame.size.height-infoViewFrame.size.height;
 	
+	CGRect toolbarFrame=toolbar.frame;
+	toolbarFrame.origin.y=self.view.frame.size.height-toolbarFrame.size.height;
+	
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
 	if(!phoneMode)
 	{
 		infoView.frame=infoViewFrame;
 	}
+	else 
+	{
+		toolbar.frame=toolbarFrame;
+	}
+
 	[UIView commitAnimations];
 	
 	[self.navigationController.view setNeedsLayout];
@@ -657,11 +733,10 @@
 	{
 		[self showNavigationBarAndInfoView];
 	}
-	else {
+	else 
+	{
 		[self hideNavigationBarAndInfoView];
 	}
-
-	 	
 }
 
 -(void)hideNavigationBarWithTimer:(NSTimer*)theTimer { 
@@ -688,7 +763,6 @@
 	slideshowMode=NO;
 	self.navigationController.navigationBar.translucent=NO;
 	[self.navigationController setNavigationBarHidden:NO animated:NO];
-	//[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated:NO];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[super viewWillDisappear:animated];
 }
@@ -697,7 +771,6 @@
 {
 	[super viewWillAppear:animated];
 	self.navigationController.navigationBar.translucent=YES;
-	//[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent animated:NO];
 	[self addPicturesToScrollView];
 	[self goToCurrentItem];
 	[self loadVisiblePictures]; 
@@ -717,8 +790,6 @@
 
 - (void) loadVisiblePictures
 {
-	//UIView * prev=nil;
-	//BOOL prevLoaded=NO;
 	int i=0;
 	
 	BOOL unloadImages=NO;
@@ -732,11 +803,7 @@
 	{
 		if(CGRectIntersectsRect(picView.frame, scrollView.bounds))
 		{
-			//NSLog(@"Found intersection rect...setting currentItemIndex=%d");
 			currentItemIndex=i;
-			
-			 
-			
 			[picView load];
 		}
 		
@@ -787,56 +854,8 @@
 
 - (void) updateInfoView
 {
-	if(phoneMode) return;
-	//NSLog(@"updateInfoView: currentItemIndex=%d",currentItemIndex );
-		  
 	Picture * currentPicture=[pictures objectAtIndex:currentItemIndex];
 	
-	//NSLog(@"updateInfoView: %@",currentPicture.name);
-	
-	infoNameLabel.text=currentPicture.name;//[currentPicture.name stringByAppendingFormat:@"\n\n\n\n\n\n\n\n\n\n"];
-	
-	infoDateLabel.text=[format stringFromDate:currentPicture.created_date];
-	
-	if(currentPicture.commentCount>0)
-	{
-		if(currentPicture.commentCount==1)
-		{
-			infoNumCommentsLabel.text=@"1 comment";
-		}
-		else 
-		{
-			infoNumCommentsLabel.text=[NSString stringWithFormat:@"%d comments",currentPicture.commentCount];
-		}
-	}
-	else 
-	{	
-		infoNumCommentsLabel.text=@"";
-	}
-/*	
-	if(currentPicture.commentCount>0)
-	{
-		if(currentPicture.commentCount==1)
-		{
-			infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@ - 1 comment",currentPicture.user.name,[format stringFromDate:currentPicture.created_date]];
-		}
-		else 
-		{
-			infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@ - %d comments",currentPicture.user.name,[format stringFromDate:currentPicture.created_date],currentPicture.commentCount];
-		}
-	}
-	else 
-	{		
-		infoUserLabel.text=[NSString stringWithFormat:@"by %@ on %@",currentPicture.user.name,[format stringFromDate:currentPicture.created_date]];
-	}
-*/
-	
-	infoImageView.user=currentPicture.user;
-	[infoImageView load];
-	/*
-	infoImageView.picture=[currentPicture.user picture];
-	[infoImageView load];
-	*/
 	if (currentPicture.commentCount>0) 
 	{
 		showCommentsButton.enabled=YES;
@@ -845,15 +864,47 @@
 	{
 		showCommentsButton.enabled=NO;
 	}
+	
+	if(!phoneMode)
+	{
+		infoNameLabel.text=currentPicture.name;//[currentPicture.name stringByAppendingFormat:@"\n\n\n\n\n\n\n\n\n\n"];
+		
+		infoDateLabel.text=[format stringFromDate:currentPicture.created_date];
+		
+		if(currentPicture.commentCount>0)
+		{
+			if(currentPicture.commentCount==1)
+			{
+				infoNumCommentsLabel.text=@"1 comment";
+			}
+			else 
+			{
+				infoNumCommentsLabel.text=[NSString stringWithFormat:@"%d comments",currentPicture.commentCount];
+			}
+		}
+		else 
+		{	
+			infoNumCommentsLabel.text=@"";
+		}
+		
+		infoImageView.user=currentPicture.user;
+		[infoImageView load];
+	}
 }
 
 - (void) showInfoView
 {
 	if(!phoneMode)
 	{
-	CGRect rect2=infoView.frame;
-	rect2.origin.y= self.view.frame.size.height-rect2.size.height;	
-	self.infoView.frame=rect2;
+		CGRect rect2=infoView.frame;
+		rect2.origin.y= self.view.frame.size.height-rect2.size.height;	
+		self.infoView.frame=rect2;
+	}
+	else 
+	{
+		CGRect rect2=toolbar.frame;
+		rect2.origin.y= self.view.frame.size.height-rect2.size.height;	
+		self.toolbar.frame=rect2;
 	}
 }
 
@@ -872,14 +923,10 @@
 	[self goToCurrentItem];
 	[self loadVisiblePictures];
 	self.scrollView.hidden=NO;
-	// show info view again because navigation bar will re-show if it was hidden...
-	//[self showInfoView];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-	//NSLog(@"popoverControllerDidDismissPopover");
-	
 	if([popoverController isEqual:showCommentsPopover])
 	{
 		[showCommentsPopover release];
@@ -896,7 +943,6 @@
 		{
 			if([popoverController isEqual:slideshowOptionsPopover])
 			{
-				//NSLog(@"releasing slideshowOptionsPopover");
 				[slideshowOptionsPopover release];
 				slideshowOptionsPopover=nil;
 			}
@@ -906,7 +952,6 @@
 
 - (void) didReceiveMemoryWarning
 {
-	//NSLog(@"didReceiveMemoryWarning...");
 	UIAlertView * alert=[[UIAlertView alloc] initWithTitle:@"memory warning" message:@"didReceiveMemoryWarning" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
@@ -935,7 +980,6 @@
 		picView.contentMode=UIViewContentModeScaleAspectFit;
 	}
 
-	
 	CATransition *applicationLoadViewIn = [CATransition animation];
 	[applicationLoadViewIn setDuration:1];
 	[applicationLoadViewIn setType:kCATransitionFade];
@@ -1030,6 +1074,7 @@
 
 - (void)dealloc 
 {
+	[showCommentsButton release];
 	[pictures release];
 	[toolbar release];
 	[scrollView release];
@@ -1050,7 +1095,6 @@
 	[infoFirstNameLabel release];
 	[infoLastNameLabel release];
 	[infoNumCommentsLabel release];
-	
     [super dealloc];
 }
 

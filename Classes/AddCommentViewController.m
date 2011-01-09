@@ -1,5 +1,4 @@
 #import "AddCommentViewController.h"
-//#import "Picture.h"
 
 @implementation AddCommentViewController
 @synthesize messageTextView,delegate;
@@ -8,11 +7,18 @@
 {
     if(self=[super initWithNibName:@"AddCommentView" bundle:nil])
 	{
-		//self.picture=picture;
 	}
     return self;
 }
 
+- (IBAction) cancel:(id)sender
+{
+	[messageTextView resignFirstResponder];
+	// send it...
+	// TODO: submit to processing queue (check internet connection first)
+	// close popover...
+	[delegate sendComment:nil];
+}
 
 - (IBAction) send:(id)sender
 {
@@ -22,29 +28,7 @@
 	// close popover...
 	[delegate sendComment:messageTextView.text];
 }
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
 - (void) viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
@@ -56,8 +40,6 @@
     // Return YES for supported orientations.
     return YES;
 }
-
-
 
 - (CGSize) contentSizeForViewInPopover
 {
@@ -77,7 +59,6 @@
     // e.g. self.myOutlet = nil;
 	delegate=nil;
 }
-
 
 - (void)dealloc {
 	delegate=nil;
