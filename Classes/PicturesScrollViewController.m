@@ -13,6 +13,7 @@
 #import "PixelLifeAppDelegate.h"
 #import "FacebookAccount.h"
 #import "SlideshowOptionsViewController.h"
+#import "PhoneAddCommentViewController.h"
 
 //#import "PictureScrollView.h"
 
@@ -222,16 +223,30 @@
 	
 	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebookAccount:account  picture:picture];
 	
-	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments"];
+	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments" phoneMode:phoneMode];
+	controller.picture=picture;
 	
-	//controller.modalPresentationStyle=UIModalPresentationFullScreen;
 	[feed release];
+	controller.modalPresentationStyle=UIModalPresentationFullScreen;
 	
-	[self.navigationController pushViewController:controller animated:YES];
+	[self presentModalViewController:controller animated:YES];
 	
-	//[self presentModalViewController:controller animated:YES];
+	/*CATransition *transition = [CATransition animation];
+	transition.duration = 0.3;
+	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	transition.type=kCATransitionMoveIn;
+	transition.subtype = kCATransitionFromTop;//kCATransitionMoveIn
+	
+	[self.navigationController.view.layer addAnimation:transition forKey:nil];
+	[self.navigationController pushViewController:controller animated:NO];
+	*/
 	
 	[controller release];
+	
+	
+	
+	
+	
 }
 
 - (void) showCommentsPad:(id)sender
@@ -249,7 +264,7 @@
 	
 	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebookAccount:account  picture:picture];
 	
-	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments"];
+	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments"  phoneMode:phoneMode];
 	
 	[feed release];
 	
@@ -278,7 +293,7 @@
 {
 	cancelRemoveBars=YES;
 	
-	AddCommentViewController * controller=[[AddCommentViewController alloc] init];
+	PhoneAddCommentViewController * controller=[[PhoneAddCommentViewController alloc] init];
 	controller.delegate=self;
 	controller.modalPresentationStyle=UIModalPresentationFullScreen;
 	
@@ -761,11 +776,21 @@
 {
 	cancelRemoveBars=YES;
 	slideshowMode=NO;
+	//self.navigationController.navigationBar.translucent=NO;
+	//[self.navigationController setNavigationBarHidden:NO animated:NO];
+	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+	[super viewWillDisappear:animated];
+}
+/*
+- (void) viewDidUnload
+{
+	cancelRemoveBars=YES;
+	slideshowMode=NO;
 	self.navigationController.navigationBar.translucent=NO;
 	[self.navigationController setNavigationBarHidden:NO animated:NO];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-	[super viewWillDisappear:animated];
-}
+	[super viewDidUnload];
+}*/
 
 - (void) viewWillAppear:(BOOL)animated
 {

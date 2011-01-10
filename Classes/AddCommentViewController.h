@@ -1,15 +1,14 @@
 #import <UIKit/UIKit.h>
 
 @class Picture;
-@interface AddCommentViewController : UIViewController {
+@interface AddCommentViewController : UIViewController<UITextViewDelegate> {
 	IBOutlet UITextView * messageTextView;
-	//Picture * picture;
 	id delegate;
 }
 @property(nonatomic,retain) IBOutlet UITextView * messageTextView;
-//@property(nonatomic,retain) Picture * picture;
 @property(nonatomic,assign) id delegate;
 
 - (IBAction) send:(id)sender;
 - (IBAction) cancel:(id)sender;
+
 @end

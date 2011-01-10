@@ -189,6 +189,17 @@
 	[self.view sendSubviewToBack:spinningWheel];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+	self.navigationController.navigationBar.translucent=NO;
+	[self.navigationController setNavigationBarHidden:NO animated:NO];
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+	spinningWheel.center=self.view.center;
+	
+	[super viewWillAppear:animated];
+}
+
+
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];

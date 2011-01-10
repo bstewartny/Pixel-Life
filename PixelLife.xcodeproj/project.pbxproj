@@ -91,6 +91,8 @@
 		B087DA5312AAE792008259E9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5112AAE792008259E9 /* UIImage+Resize.m */; };
 		B087DA5F12AAE86D008259E9 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5B12AAE86D008259E9 /* UIImage+Alpha.m */; };
 		B087DA6012AAE86D008259E9 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B087DA5D12AAE86D008259E9 /* UIImage+RoundedCorner.m */; };
+		B08C5D5812DB6A4B004B21FD /* PhonePhotoCommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08C5D5712DB6A4B004B21FD /* PhonePhotoCommentsView.xib */; };
+		B08C5E0812DB83D8004B21FD /* PhoneAddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C5E0712DB83D8004B21FD /* PhoneAddCommentViewController.m */; };
 		B099D4D312D79316007D4AD2 /* MainWindow-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B099D4D212D79316007D4AD2 /* MainWindow-iPhone.xib */; };
 		B099D4D612D79370007D4AD2 /* PixelLifeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D4D512D79370007D4AD2 /* PixelLifeAppDelegate.m */; };
 		B099D4DA12D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = B099D4D912D79666007D4AD2 /* PixelLifeAppDelegate_iPhone.m */; };
@@ -297,6 +299,9 @@
 		B087DA5C12AAE86D008259E9 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		B087DA5D12AAE86D008259E9 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		B087DA5E12AAE86D008259E9 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		B08C5D5712DB6A4B004B21FD /* PhonePhotoCommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhonePhotoCommentsView.xib; sourceTree = "<group>"; };
+		B08C5E0612DB83D8004B21FD /* PhoneAddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAddCommentViewController.h; sourceTree = "<group>"; };
+		B08C5E0712DB83D8004B21FD /* PhoneAddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAddCommentViewController.m; sourceTree = "<group>"; };
 		B099D4D212D79316007D4AD2 /* MainWindow-iPhone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPhone.xib"; sourceTree = "<group>"; };
 		B099D4D412D79370007D4AD2 /* PixelLifeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelLifeAppDelegate.h; sourceTree = "<group>"; };
 		B099D4D512D79370007D4AD2 /* PixelLifeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PixelLifeAppDelegate.m; sourceTree = "<group>"; };
@@ -464,6 +469,7 @@
 				B0B3FD3B12D26B9B00FD625D /* SlideshowOptionsView.xib */,
 				B099D51012D7A194007D4AD2 /* FriendsTableView.xib */,
 				B01B6D4E12DA31C80018F42E /* PhonePicturesScrollView.xib */,
+				B08C5D5712DB6A4B004B21FD /* PhonePhotoCommentsView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -613,6 +619,8 @@
 				B099D56012D7A83C007D4AD2 /* PictureTableViewCell.m */,
 				B099D60912D7B9BE007D4AD2 /* PhoneAlbumGridViewController.h */,
 				B099D60A12D7B9BE007D4AD2 /* PhoneAlbumGridViewController.m */,
+				B08C5E0612DB83D8004B21FD /* PhoneAddCommentViewController.h */,
+				B08C5E0712DB83D8004B21FD /* PhoneAddCommentViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -882,6 +890,7 @@
 				B099D4D312D79316007D4AD2 /* MainWindow-iPhone.xib in Resources */,
 				B099D51112D7A194007D4AD2 /* FriendsTableView.xib in Resources */,
 				B01B6D4F12DA31C80018F42E /* PhonePicturesScrollView.xib in Resources */,
+				B08C5D5812DB6A4B004B21FD /* PhonePhotoCommentsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,6 +988,7 @@
 				B099D51712D7A3CE007D4AD2 /* AlbumsTableViewController.m in Sources */,
 				B099D56112D7A83C007D4AD2 /* PictureTableViewCell.m in Sources */,
 				B099D60B12D7B9BE007D4AD2 /* PhoneAlbumGridViewController.m in Sources */,
+				B08C5E0812DB83D8004B21FD /* PhoneAddCommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
