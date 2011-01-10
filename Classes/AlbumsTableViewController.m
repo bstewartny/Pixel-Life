@@ -10,29 +10,34 @@
 
 @implementation AlbumsTableViewController
 
+- (id)initWithFeed:(Feed*)feed title:(NSString*)title
+{
+    if(self=[super initWithFeed:feed title:title withNibName:@"AlbumsTableView"])
+    {
+	
+    }
+    return self;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *kCellID = @"cellID";
+	PictureTableViewCell * cell = [[[PictureTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
 	
-	PictureTableViewCell *cell = nil;// [tableView dequeueReusableCellWithIdentifier:kCellID];
-	if (cell == nil)
-	{
-		cell = [[[PictureTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.selectionStyle=UITableViewCellSelectionStyleNone;
-		cell.textLabel.textColor=[UIColor whiteColor];
-		cell.detailTextLabel.textColor=[UIColor lightGrayColor];
-	}
+	cell.selectionStyle=UITableViewCellSelectionStyleNone;
+	cell.textLabel.textColor=[UIColor whiteColor];
+	cell.detailTextLabel.textColor=[UIColor lightGrayColor];
 	
 	Album *album = [items objectAtIndex:indexPath.row];
     
 	cell.textLabel.text = album.name;
 	cell.detailTextLabel.text=[NSString stringWithFormat:@"%d photos",album.count];
 	cell.picture=album.picture;
+	
 	if([album.picture hasLoadedThumbnail])
 	{
 		cell.imageView.image=album.picture.thumbnail;
 	}
+	
 	return cell;
 }
 

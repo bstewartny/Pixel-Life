@@ -142,7 +142,7 @@
 }
 - (void) showNoFriends
 {
-	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:nil title:@"All Friends"];
+	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:nil title:@"My Friends"];
 	[self addSettingsButtonToController:controller];
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=2;
@@ -160,7 +160,7 @@
 	
 	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
 	
-	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"All Friends"];
+	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"My Friends"];
 	[self addSettingsButtonToController:controller];
 	controller.navigationItem.titleView=segmentedControl;
 	segmentedControl.selectedSegmentIndex=2;

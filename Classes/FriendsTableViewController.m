@@ -8,13 +8,13 @@
 #import "Picture.h"
 
 @implementation FriendsTableViewController
-@synthesize tableView,tabBar,searchBar;
+@synthesize searchBar;
 
 - (id)initWithFeed:(Feed*)feed title:(NSString*)title
 {
     if(self=[super initWithFeed:feed title:title withNibName:@"FriendsTableView"])
     {
-         self.searchDisplayController.searchBar.barStyle=UIBarStyleBlack;
+		self.searchDisplayController.searchBar.barStyle=UIBarStyleBlack;
 		self.searchDisplayController.searchResultsTableView.backgroundColor=[UIColor blackColor];
 		self.searchDisplayController.searchResultsTableView.separatorColor=[UIColor blackColor];
 		self.searchDisplayController.searchResultsTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
@@ -23,17 +23,6 @@
     return self;
 }
 
-- (void) reloadData
-{
-	[tableView reloadData];
-	
-	[self loadVisibleCells];
-}
-
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-	NSLog(@"didSelectItem: %@",[item description]);
-}
 	
 - (void)filterContentForSearchText:(NSString*)searchText
 {
@@ -110,10 +99,7 @@
 		}
 	}
 }
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	[cell load];
-}
+
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
@@ -162,27 +148,6 @@
 	searching=NO;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView; 
-{
-    // Method is called when the decelerating comes to a stop.
-    // Pass visible cells to the cell loading function. If possible change 
-    // scrollView to a pointer to your table cell to avoid compiler warnings
-    [self loadVisibleCells]; 
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
-{
-    if (!decelerate) 
-    {
-        [self loadVisibleCells]; 
-    }
-}
-
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-	[self loadVisibleCells]; 
-}
-
 - (void) loadVisibleCells
 {
 	if(searching)
@@ -194,10 +159,7 @@
 	}
 	else 
 	{
-		for(PictureTableViewCell * cell in [tableView visibleCells])
-		{
-			[cell load];
-		}
+		[super loadVisibleCells];
 	}
 }
 
@@ -212,23 +174,12 @@
 	}
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 60.0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *kCellID = @"cellID";
+	PictureTableViewCell * cell = [[[PictureTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 	
-	PictureTableViewCell *cell = nil;// [tableView dequeueReusableCellWithIdentifier:kCellID];
-	if (cell == nil)
-	{
-		cell = [[[PictureTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
-		//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.selectionStyle=UITableViewCellSelectionStyleNone;
-		cell.textLabel.textColor=[UIColor whiteColor];
-	}
+	cell.selectionStyle=UITableViewCellSelectionStyleNone;
+	cell.textLabel.textColor=[UIColor whiteColor];
 	
 	Friend *friend;
 	
@@ -240,12 +191,15 @@
 	{
 		friend= [items objectAtIndex:indexPath.row];
 	}
+	
 	cell.textLabel.text = friend.name;
 	cell.picture=friend.picture;
+	
 	if([friend.picture hasLoadedThumbnail])
 	{
 		cell.imageView.image=friend.picture.thumbnail;
 	}
+	
 	return cell;
 }
 
@@ -284,8 +238,6 @@
 - (void)dealloc 
 {
 	[filteredItems release];
-	[tableView release];
-	[tabBar release]; 
 	[searchBar release];
     [super dealloc];
 }

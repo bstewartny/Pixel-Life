@@ -2,37 +2,51 @@
 #import "FacebookAccountsViewController.h"
 #import "FacebookFriendFeed.h"
 #import "FriendsTableViewController.h"
+#import "FacebookMyAlbumsFeed.h"
+#import "AlbumsTableViewController.h"
+#import "FriendListsTableViewController.h"
+#import "FacebookFriendListsFeed.h"
 
 @implementation PixelLifeAppDelegate_iPhone
-//@synthesize tabBar;
+@synthesize tabBar;
 
 - (void)setupWindow
 {
 	navController=[[UINavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
-	/*CGRect r=[[UIScreen mainScreen] bounds];
+	CGRect r=[[UIScreen mainScreen] bounds];
 	
-	tabBar=[[UITabBar alloc] initWithFrame:CGRectMake(0, r.size.height-65, r.size.width	, 65)];
+	tabBar=[[UITabBar alloc] init]; //WithFrame:CGRectMake(0, r.size.height-65, r.size.width	, 65)];
+	tabBar.delegate=self;
+	
+	[tabBar sizeToFit];
+	
+	tabBar.autoresizingMask=UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
 	
 	UITabBarItem * i;
 	
 	NSMutableArray * items=[[[NSMutableArray alloc] init] autorelease];
-	
-	i=[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
+
+	i=[[UITabBarItem alloc] initWithTitle:@"Settings" image:[UIImage imageNamed:@"icon_settings.png"] tag:kTabBarSettingsTag];
 	[items addObject:i];
 	[i release];
 	
-	i=[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:2];
+	i=[[UITabBarItem alloc] initWithTitle:@"My Friends" image:[UIImage imageNamed:@"icon_users.png"] tag:kTabBarFriendsTag];
 	[items addObject:i];
 	[i release];
 	
-	i=[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemTopRated tag:3];
+	i=[[UITabBarItem alloc] initWithTitle:@"My Lists" image:[UIImage imageNamed:@"icon_list_bullets.png"] tag:kTabBarListsTag];
 	[items addObject:i];
 	[i release];
+	
+	i=[[UITabBarItem alloc] initWithTitle:@"My Albums" image:[UIImage imageNamed:@"icon_user.png"] tag:kTabBarAlbumsTag];
+	[items addObject:i];
+	[i release];
+	
 	
 	[tabBar setItems:items animated:NO];
-	*/
+	
 	self.window.backgroundColor=[UIColor blackColor];
 	
 	// Override point for customization after app launch. 
@@ -44,6 +58,73 @@
 	
 	[self showAllFriends];
 }
+
+- (void) showSettings
+{
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear cached images" otherButtonTitles:@"Facebook accounts",@"Logout",nil];
+	
+	[actionSheet showFromTabBar:tabBar];
+	
+	[actionSheet release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	 
+		if(buttonIndex==0)
+		{
+			// clear cache
+			[self clearCache];
+		}
+		if(buttonIndex==1)
+		{
+			// facebook accounts
+			[self showAccounts];
+		}
+		if(buttonIndex==2)
+		{
+			// logout
+			[self logout];
+		}
+	 
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+	switch (item.tag) 
+	{
+		
+		case kTabBarAlbumsTag:
+			// my albums
+			[self showMyAlbums];
+			break;
+		
+		case kTabBarFriendsTag:
+			// my friends
+			[self showAllFriends];
+			break;
+		
+		case kTabBarListsTag:
+			// friend lists
+			[self showAllLists];
+			break;
+		
+		case kTabBarSettingsTag:
+			// settings
+			[self showSettings];
+			break;
+	}
+}
+
 
 - (void)login 
 {
@@ -117,13 +198,21 @@
 
 - (void) showNoFriends
 {
-	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:nil title:@"All Friends"];
+	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:nil title:@"My Friends"];
+	
+	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarFriendsTag];
+	
+	[controller setTabBar:tabBar];
+	
+	
+	
 	//[self addSettingsButtonToController:controller];
 	//controller.navigationItem.titleView=segmentedControl;
 	//segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[controller release];
 }
+	   
 - (void) showAllFriends
 {
 	if(![currentAccount isSessionValid])
@@ -136,7 +225,11 @@
 	
 	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
 	
-	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:feed title:@"All Friends"];
+	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:feed title:@"My Friends"];
+	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarFriendsTag];
+	
+	[controller setTabBar:tabBar];
+	
 	//[self addSettingsButtonToController:controller];
 	//controller.navigationItem.titleView=segmentedControl;
 	//segmentedControl.selectedSegmentIndex=2;
@@ -144,9 +237,51 @@
 	[controller release];
 	[feed release];
 }
+
+- (void) showMyAlbums
+{
+	if(![currentAccount isSessionValid])
+	{
+		[self login];
+		return;
+	}
+	
+	FacebookMyAlbumsFeed * feed=[[FacebookMyAlbumsFeed alloc] initWithFacebookAccount:currentAccount];
+	AlbumsTableViewController * controller=[[AlbumsTableViewController alloc] initWithFeed:feed title:@"My Albums"];
+	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarAlbumsTag];
+	
+	[controller setTabBar:tabBar];
+	
+	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[feed release];
+	[controller release];
+}	   
+	   
+	   
+- (void) showAllLists
+{
+	if(![currentAccount isSessionValid])
+	{
+		[self login];
+		return;
+	}
+	
+	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebookAccount:currentAccount];
+	
+	FriendListsTableViewController * controller=[[FriendListsTableViewController alloc] initWithFeed:feed title:@"My Lists"];
+	
+	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarListsTag];
+	
+	[controller setTabBar:tabBar];
+
+	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[feed release];
+	[controller release];
+}
+	   
 - (void) dealloc
 {
-	//[tabBar release];
+	[tabBar release];
 	[super dealloc];
 }
 @end

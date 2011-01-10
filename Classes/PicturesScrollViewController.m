@@ -224,29 +224,14 @@
 	FacebookPhotoCommentsFeed * feed=[[FacebookPhotoCommentsFeed alloc] initWithFacebookAccount:account  picture:picture];
 	
 	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments" phoneMode:phoneMode];
-	controller.picture=picture;
+	controller.delegate=self;
 	
 	[feed release];
 	controller.modalPresentationStyle=UIModalPresentationFullScreen;
 	
 	[self presentModalViewController:controller animated:YES];
-	
-	/*CATransition *transition = [CATransition animation];
-	transition.duration = 0.3;
-	transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-	transition.type=kCATransitionMoveIn;
-	transition.subtype = kCATransitionFromTop;//kCATransitionMoveIn
-	
-	[self.navigationController.view.layer addAnimation:transition forKey:nil];
-	[self.navigationController pushViewController:controller animated:NO];
-	*/
-	
+
 	[controller release];
-	
-	
-	
-	
-	
 }
 
 - (void) showCommentsPad:(id)sender
@@ -348,6 +333,7 @@
 		}
 	}
 }
+
 - (ASIHTTPRequest*) createCommentRequest:(NSString*)message
 {
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
@@ -362,19 +348,22 @@
 	
 	[request addPostValue:account.accessToken forKey:@"access_token"];
 	[request addPostValue:message forKey:@"message"];
-	request.userInfo=[NSDictionary dictionaryWithObjectsAndKeys:picture,@"picture",nil];
+	
+	picture.commentCount++;
+	
+	//request.userInfo=[NSDictionary dictionaryWithObjectsAndKeys:picture,@"picture",nil];
 	
 	return request;
 }
 
 - (void)sendCommentRequestDone:(ASIHTTPRequest *)request
 {
-	Picture * picture=[request.userInfo objectForKey:@"picture"];
+	//Picture * picture=[request.userInfo objectForKey:@"picture"];
 	
-	if(picture)
-	{
-		picture.commentCount++;
-	}
+	//if(picture)
+	//{
+	//	picture.commentCount++;
+	//}
 	
 	// refresh comments for picture...
 	[self updateInfoView];

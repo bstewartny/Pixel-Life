@@ -63,27 +63,7 @@
 	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_favorities_add.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addFavorite:)];
 	[toolItems addObject:b];
 	[b release];
-	/*
-	b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	b.width=10;
-	[toolItems addObject:b];
-	[b release];
 	
-	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_frame.png"] style:UIBarButtonItemStylePlain target:self action:@selector(slideshow:)];
-	[toolItems addObject:b];
-	[b release];
-	*/
-	
-	
-	/*b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	b.width=10;
-	[toolItems addObject:b];
-	[b release];
-	
-	b=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action:)];
-	[toolItems addObject:b];
-	[b release];
-	*/
 	[tools setItems:toolItems animated:NO];
 	
 	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:tools] autorelease];
@@ -149,9 +129,7 @@
 
 - (void)sendLikeRequestDone:(ASIHTTPRequest *)request
 {
-	//NSLog(@"sendCommentRequestDone");
 	
-	// refresh comments for picture...
 }
 
 - (void)sendLikeRequestWentWrong:(ASIHTTPRequest *)request
@@ -162,94 +140,15 @@
 	[alertView show];
 	[alertView release];
 }
-/*
-- (void) startSlideshow
-{
-	if([items count]>0)
-	{
-		PicturesScrollViewController * controller=[[PicturesScrollViewController alloc] initWithPictures:items];
-		
-		controller.currentItemIndex=0;
-		controller.slideshowMode=YES;
-		
-		[[self navigationController] pushViewController:controller animated:YES];
-		
-		//[controller startSlideshow];
-		
-		[controller release];
-	}
-}
-*/
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if(actionSheet.tag==kAlbumSlideshowActionSheet)
-	{
-		if (buttonIndex==0) {
-			// start slideshow...
-			[self startSlideshow];
-		}
-	}
 	if(actionSheet.tag==kAlbumLikeActionSheet)
 	{
 		if(buttonIndex==0)
 		{
 			// like on facebook
 			[self likePhoto];
-		}
-		/*if(buttonIndex==1)
-		 {
-		 // add to local favorites
-		 }*/
-	}
-	if(actionSheet.tag==kAlbumActionActionSheet)
-	{
-		if(buttonIndex==0)
-		{
-			// email photo
-			/*if ([MFMailComposeViewController canSendMail]) 
-			{
-				Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
-				
-				if([picture hasLoadedImage])
-				{
-					UIImage * image=picture.image;
-					if(image!=nil)
-					{
-						// create mail composer object
-						MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-						
-						// make this view the delegate
-						mailer.mailComposeDelegate = self;
-						
-						NSData *myData = UIImageJPEGRepresentation(image, 1.0);
-						
-						[mailer addAttachmentData:myData mimeType:@"image/png" fileName:@"image.png"];
-						
-						
-						[mailer setMessageBody:@"" isHTML:YES];
-						
-						// present user with composer screen
-						[self presentModalViewController:mailer animated:YES];
-						
-						// release composer object
-						[mailer release];
-					}
-				}
-			} */
-		}
-		if(buttonIndex==1)
-		{
-			// add to local library
-			/*Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
-			
-			if([picture hasLoadedImage])
-			{
-				UIImage * image=picture.image;
-				if(image!=nil)
-				{
-					UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
-				}
-			}*/
 		}
 	}
 }
@@ -285,10 +184,6 @@
 	{
 		return;
 	}
-	
-	//cancelRemoveBars=YES;
-	
-	//Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 	
 	AddCommentViewController * controller=[[AddCommentViewController alloc] init] ;//]WithPicture:picture];
 	controller.delegate=self;
@@ -331,15 +226,12 @@
 	
 	[request addPostValue:account.accessToken forKey:@"access_token"];
 	[request addPostValue:message forKey:@"message"];
-	//request.userInfo=[NSDictionary dictionaryWithObjectsAndKeys:picture,@"picture",nil];
 	
 	return request;
 }
 
 - (void)sendCommentRequestDone:(ASIHTTPRequest *)request
 {
-	//NSLog(@"sendCommentRequestDone");
-	
 	album.commentCount++;
 	
 	showCommentsButton.enabled=YES;
@@ -383,7 +275,6 @@
 
 - (void) dealloc
 {
-	//NSLog(@"AlbumGridViewController dealloc");
 	[album release];
 	[showCommentsPopover release];
 	showCommentsPopover=nil;

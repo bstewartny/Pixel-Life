@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
-#import "FriendsTableViewController.h"
+#import "PictureTableViewController.h"
 
-@interface AlbumsTableViewController : FriendsTableViewController {
+@interface AlbumsTableViewController : PictureTableViewController {
 	
 }
 

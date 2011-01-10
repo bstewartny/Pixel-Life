@@ -1,14 +1,16 @@
 #import <UIKit/UIKit.h>
 #import "FeedViewController.h"
-@class Picture;
+//@class Picture;
 @interface PhotoCommentsViewController : FeedViewController {
 	IBOutlet UITableView * tableView;
 	NSArray * comments;
-	Picture * picture;
+	//Picture * picture;
+	id delegate;
 	BOOL phoneMode;
 }
 @property (nonatomic, retain) IBOutlet UITableView * tableView;
-@property(nonatomic,retain) Picture * picture;
+//@property(nonatomic,retain) Picture * picture;
+@property(nonatomic,assign) id delegate;
 
 - (void) reloadTable;
 //- (id)initWithComments:(NSArray*)comments title:(NSString*)title;
