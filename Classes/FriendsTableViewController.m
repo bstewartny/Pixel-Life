@@ -19,10 +19,17 @@
 		self.searchDisplayController.searchResultsTableView.separatorColor=[UIColor blackColor];
 		self.searchDisplayController.searchResultsTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
 		filteredItems=[[NSMutableArray alloc] init];
+		
+		
+		self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)] autorelease];
     }
     return self;
 }
 
+- (void) search:(id)sender
+{
+	[self.searchDisplayController.searchBar becomeFirstResponder];
+}
 	
 - (void)filterContentForSearchText:(NSString*)searchText
 {

@@ -306,6 +306,8 @@
 	
 	[controller release];
 }
+
+
 - (void) sendComment:(NSString*)comment
 {
 	if(!phoneMode)
@@ -317,146 +319,38 @@
 	{
 		[self dismissModalViewControllerAnimated:YES];
 	}
-
+	
 	if([comment length]>0)
 	{
-		// push to queue
-		ASIHTTPRequest *request = [self createCommentRequest:comment];  
-		if(request)
-		{
-			[request setDelegate:self];
-			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
-			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
-			NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
-			[queue addOperation:request];
-			[request release];
-		}
+		Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
+		[[PixelLifeAppDelegate sharedAppDelegate] sendComment:comment uid:picture.uid];
+		picture.commentCount++;
+		showCommentsButton.enabled=(picture.commentCount>0);
 	}
-}
-
-- (ASIHTTPRequest*) createCommentRequest:(NSString*)message
-{
-	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
-
-	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
-	
-	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",picture.uid];
-	
-	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	request.requestMethod=@"POST";
-	
-	[request addPostValue:account.accessToken forKey:@"access_token"];
-	[request addPostValue:message forKey:@"message"];
-	
-	picture.commentCount++;
-	
-	//request.userInfo=[NSDictionary dictionaryWithObjectsAndKeys:picture,@"picture",nil];
-	
-	return request;
-}
-
-- (void)sendCommentRequestDone:(ASIHTTPRequest *)request
-{
-	//Picture * picture=[request.userInfo objectForKey:@"picture"];
-	
-	//if(picture)
-	//{
-	//	picture.commentCount++;
-	//}
-	
-	// refresh comments for picture...
-	[self updateInfoView];
-}
-
-- (void)sendCommentRequestWentWrong:(ASIHTTPRequest *)request
-{
-	NSError *error = [request error];
-
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
 }
 
 - (IBAction) addFavorite:(id)sender
 {
-	if(phoneMode)
-	{
-		[self addFavoritePhone:sender];
-	}
-	else
-	{
-		[self addFavoritePad:sender];
-	}
-}
-
-- (void) addFavoritePhone:(id)sender
-{
-	
-}
-	
-- (void) addFavoritePad:(id)sender
-{
-	// add photo to users favorite items list
-	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"I like this photo..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Like on Facebook",nil];
+	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"I like this photo..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Like on Facebook",nil];
 	sheet.tag=kLikeActionSheet;
 	[sheet showFromBarButtonItem:sender animated:YES];
-	
 	[sheet release];
 }
 
 - (IBAction) action:(id)sender
 {
-	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Photo Actions" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Email photo",@"Save photo",nil];
+	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Photo Actions" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email photo",@"Save photo",nil];
 	sheet.tag=kActionActionSheet;
 	[sheet showFromBarButtonItem:sender animated:YES];
 	
 	[sheet release];
 }
-- (void) likePhoto
-{
-	// push to queue
-	ASIHTTPRequest *request = [self createLikeRequest];  
-	if(request)
-	{
-		[request setDelegate:self];
-		[request setDidFinishSelector:@selector(sendLikeRequestDone:)];
-		[request setDidFailSelector:@selector(sendLikeRequestWentWrong:)];
-		NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
-		[queue addOperation:request];
-		[request release];
-	}	
-}
 
-- (ASIHTTPRequest*) createLikeRequest
+- (void) likePhoto
 {
 	Picture * picture=[self.pictures objectAtIndex:currentItemIndex];
 	
-	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
-	
-	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",picture.uid];
-	
-	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	request.requestMethod=@"POST";
-	
-	[request addPostValue:account.accessToken forKey:@"access_token"];
-	
-	return request;
-}
-
-- (void)sendLikeRequestDone:(ASIHTTPRequest *)request
-{
-
-}
-
-- (void)sendLikeRequestWentWrong:(ASIHTTPRequest *)request
-{
-	NSError *error = [request error];
-	
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error liking photo" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
+	[[PixelLifeAppDelegate sharedAppDelegate] likeGraphObject:picture.uid];	
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

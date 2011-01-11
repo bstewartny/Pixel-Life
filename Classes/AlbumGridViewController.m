@@ -84,61 +84,22 @@
 
 - (void) action:(id)sender
 {
-	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Album Actions" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Email photos",@"Save photos",nil];
+	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Album Actions" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email photos",@"Save photos",nil];
 	sheet.tag=kAlbumActionActionSheet;
 	[sheet showFromBarButtonItem:sender animated:YES];
 	
 	[sheet release];
 }
 
-- (void) likePhoto
+- (void) likeAlbum
 {
-	// push to queue
-	ASIHTTPRequest *request = [self createLikeRequest];  
-	if(request)
-	{
-		[request setDelegate:self];
-		[request setDidFinishSelector:@selector(sendLikeRequestDone:)];
-		[request setDidFailSelector:@selector(sendLikeRequestWentWrong:)];
-		NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
-		[queue addOperation:request];
-		[request release];
-	}	
-}
-
-- (ASIHTTPRequest*) createLikeRequest
-{
-	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
-	
-	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",album.uid];
-	
-	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	request.requestMethod=@"POST";
-	
-	[request addPostValue:account.accessToken forKey:@"access_token"];
-	
-	return request;
+	[[PixelLifeAppDelegate sharedAppDelegate] likeGraphObject:album.uid];	
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	showCommentsButton.enabled=(album.commentCount>0);
-}
-
-- (void)sendLikeRequestDone:(ASIHTTPRequest *)request
-{
-	
-}
-
-- (void)sendLikeRequestWentWrong:(ASIHTTPRequest *)request
-{
-	NSError *error = [request error];
-	
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error liking photo" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -148,7 +109,7 @@
 		if(buttonIndex==0)
 		{
 			// like on facebook
-			[self likePhoto];
+			[self likeAlbum];
 		}
 	}
 }
@@ -199,57 +160,19 @@
 - (void) sendComment:(NSString*)comment
 {
 	[addCommentPopover dismissPopoverAnimated:YES];
+	
 	if([comment length]>0)
 	{
-		// push to queue
-		ASIHTTPRequest *request = [self createCommentRequest:comment];  
-		if(request)
-		{
-			[request setDelegate:self];
-			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
-			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
-			NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
-			[queue addOperation:request];
-			[request release];
-		}
+		[[PixelLifeAppDelegate sharedAppDelegate] sendComment:comment uid:album.uid];
+		album.commentCount++;
+		showCommentsButton.enabled=(album.commentCount>0);
 	}
-}
-- (ASIHTTPRequest*) createCommentRequest:(NSString*)message
-{
-	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
-	
-	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",album.uid];
-	
-	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	request.requestMethod=@"POST";
-	
-	[request addPostValue:account.accessToken forKey:@"access_token"];
-	[request addPostValue:message forKey:@"message"];
-	
-	return request;
-}
-
-- (void)sendCommentRequestDone:(ASIHTTPRequest *)request
-{
-	album.commentCount++;
-	
-	showCommentsButton.enabled=YES;
-}
-
-- (void)sendCommentRequestWentWrong:(ASIHTTPRequest *)request
-{
-	NSError *error = [request error];
-	
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
 }
 
 - (void) addFavorite:(id)sender
 {
 	// add photo to users favorite items list
-	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"I like this album..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Like on Facebook",nil];
+	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"I like this album..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Like on Facebook",nil];
 	sheet.tag=kAlbumLikeActionSheet;
 	[sheet showFromBarButtonItem:sender animated:YES];
 	

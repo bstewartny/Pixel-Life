@@ -52,6 +52,29 @@
     return ( CGSizeMake(76.0, 80.0) );
 }
 
+- (void) addFavorite:(id)sender
+{
+	// add photo to users favorite items list
+	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"I like this album..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Like on Facebook",nil];
+	[sheet showFromBarButtonItem:sender animated:YES];
+	
+	[sheet release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if(buttonIndex==0)
+	{
+		// like on facebook
+		[self likeAlbum];
+	}
+ }
+
+- (void) likeAlbum
+{
+	[[PixelLifeAppDelegate sharedAppDelegate] likeGraphObject:album.uid];	
+}
+
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
     static NSString * cellIdentifier = @"CellIdentifier";
@@ -110,50 +133,12 @@
 	
 	if([comment length]>0)
 	{
-		// push to queue
-		ASIHTTPRequest *request = [self createCommentRequest:comment];  
-		if(request)
-		{
-			[request setDelegate:self];
-			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
-			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
-			NSOperationQueue *queue = [PixelLifeAppDelegate sharedAppDelegate].downloadQueue;
-			[queue addOperation:request];
-			[request release];
-		}
+		[[PixelLifeAppDelegate sharedAppDelegate] sendComment:comment uid:album.uid];
+		album.commentCount++;
+		showCommentsButton.enabled=(album.commentCount>0);
 	}
 }
 
-- (ASIHTTPRequest*) createCommentRequest:(NSString*)message
-{
-	FacebookAccount * account=[PixelLifeAppDelegate sharedAppDelegate].currentAccount;
-	
-	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",album.uid];
-	
-	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	request.requestMethod=@"POST";
-	
-	[request addPostValue:account.accessToken forKey:@"access_token"];
-	[request addPostValue:message forKey:@"message"];
-	
-	return request;
-}
-
-- (void)sendCommentRequestDone:(ASIHTTPRequest *)request
-{
-	album.commentCount++;
-	showCommentsButton.enabled=(album.commentCount>0);
-}
-
-- (void)sendCommentRequestWentWrong:(ASIHTTPRequest *)request
-{
-	NSError *error = [request error];
-	
-	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Error sending comment" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[alertView show];
-	[alertView release];
-}
 - (void) dealloc
 {
 	[showCommentsButton release];

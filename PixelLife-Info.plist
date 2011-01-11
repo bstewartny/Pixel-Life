@@ -22,8 +22,6 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow-iPad</string>
 	<key>NSMainNibFile~iphone</key>
@@ -43,5 +41,9 @@
 	<false/>
 	<key>UILaunchImageFile~iphone</key>
 	<string>iPhoneDefault.png</string>
+	<key>UIApplicationExitsOnSuspend</key>
+	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
 </dict>
 </plist>

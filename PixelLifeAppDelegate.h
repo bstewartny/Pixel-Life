@@ -30,5 +30,9 @@
 @property (nonatomic, retain) NSMutableArray * facebookAccounts;
 @property (nonatomic, retain) FacebookAccount * currentAccount;
 
+
+- (void) sendComment:(NSString*)comment uid:(NSString*)uid;
+- (void) likeGraphObject:(NSString*)uid;
+
 @end
 

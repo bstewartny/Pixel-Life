@@ -1,6 +1,7 @@
 #import "PixelLifeAppDelegate.h"
 #import "FBConnect.h"
 #import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 #import "ASIDownloadCache.h"
 #import "ImageCache.h"
 #import "Reachability.h"
@@ -203,6 +204,96 @@
 {
 	FeedViewController * feedController=self.navController.topViewController;
 	[feedController refresh];
+}
+
+
+- (void) sendComment:(NSString*)comment uid:(NSString*)uid
+{
+	if([comment length]>0)
+	{
+		// push to queue
+		ASIHTTPRequest *request = [self createCommentRequest:comment uid:uid];  
+		if(request)
+		{
+			[request setDelegate:self];
+			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
+			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
+			[downloadQueue addOperation:request];
+			[request release];
+		}
+	}
+}
+
+- (ASIHTTPRequest*) createCommentRequest:(NSString*)message uid:(NSString*)uid
+{
+	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",uid];
+	
+	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	
+	request.requestMethod=@"POST";
+	
+	[request addPostValue:currentAccount.accessToken forKey:@"access_token"];
+	[request addPostValue:message forKey:@"message"];
+	
+	return request;
+}
+
+- (void)sendCommentRequestDone:(ASIHTTPRequest *)request
+{
+	// done
+}
+
+- (void)sendCommentRequestWentWrong:(ASIHTTPRequest *)request
+{
+	NSError *error = [request error];
+	
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Sending comment failed" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+}
+
+- (void) likeGraphObject:(NSString*)uid
+{
+	// push to queue
+	ASIHTTPRequest *request = [self createLikeRequest:uid];  
+	if(request)
+	{
+		[request setDelegate:self];
+		[request setDidFinishSelector:@selector(sendLikeRequestDone:)];
+		[request setDidFailSelector:@selector(sendLikeRequestWentWrong:)];
+		[downloadQueue addOperation:request];
+		[request release];
+	}	
+}
+
+- (ASIHTTPRequest*) createLikeRequest:(NSString*)uid
+{
+	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",uid];
+	
+	NSLog(@"like request: %@",url);
+	
+	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	
+	request.requestMethod=@"POST";
+	
+	[request addPostValue:currentAccount.accessToken forKey:@"access_token"];
+	
+	return request;
+}
+
+- (void)sendLikeRequestDone:(ASIHTTPRequest *)request
+{
+	// done
+	NSLog(@"sendLikeRequestDone");
+}
+
+- (void)sendLikeRequestWentWrong:(ASIHTTPRequest *)request
+{
+	NSError *error = [request error];
+	
+	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Like failed" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
