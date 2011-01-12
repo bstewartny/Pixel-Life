@@ -2,6 +2,7 @@
 #import "Comment.h"
 #import "Picture.h"
 #import "User.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define kCellPadding 5
 #define kImageSize 50
@@ -39,6 +40,10 @@
 		dateLabel.textColor=[UIColor lightGrayColor];
 		
 		userImageView=[[UIImageView alloc] initWithFrame:CGRectZero];
+		userImageView.contentMode=UIViewContentModeScaleAspectFill;
+		userImageView.clipsToBounds=YES;
+		userImageView.layer.cornerRadius=6.0;
+		
 		scrollingWheel=[[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
 		scrollingWheel.hidesWhenStopped=YES;
 		scrollingWheel.activityIndicatorViewStyle=UIActivityIndicatorViewStyleGray;

@@ -125,7 +125,7 @@
 	
 	FacebookAlbumCommentsFeed * feed=[[FacebookAlbumCommentsFeed alloc] initWithFacebookAccount:account  album:album];
 	
-	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Album Comments"];
+	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Album Comments" phoneMode:NO];
 	
 	[feed release];
 	

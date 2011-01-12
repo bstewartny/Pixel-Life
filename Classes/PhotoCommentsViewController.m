@@ -11,14 +11,14 @@
 #import "AddCommentViewController.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
-//#import "Picture.h"
 #import "FacebookAccount.h"
 #import "PhoneAddCommentViewController.h"
+ 
 
 @implementation PhotoCommentsViewController
 @synthesize tableView;
 @synthesize delegate;
-
+@synthesize pictureComment;
 
 - (id)initWithFeed:(Feed*)feed title:(NSString*)title  phoneMode:(BOOL)mode
 {
@@ -98,18 +98,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	Comment * comment=[items objectAtIndex:indexPath.row];
+	Comment * comment;
 	
-	static NSString * cellIdentifier = @"CommentTableViewCellIdentifier";
-	
-	CommentTableViewCell * cell=nil;//(CommentTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-	
-	if(cell==nil)
+	if(pictureComment)
 	{
-		cell=[[[CommentTableViewCell alloc] initWithStyle:UITableViewStylePlain reuseIdentifier:cellIdentifier] autorelease];
-		
-		cell.selectionStyle=UITableViewCellSelectionStyleNone;
+		if(indexPath.row==0)
+		{
+			comment=pictureComment;
+		}
+		else 
+		{
+			comment=[items objectAtIndex:indexPath.row-1];
+		}
 	}
+	else 
+	{
+		comment=[items objectAtIndex:indexPath.row];
+	}
+	
+	CommentTableViewCell * cell=[[[CommentTableViewCell alloc] initWithStyle:UITableViewStylePlain reuseIdentifier:nil] autorelease];
+		
+	cell.selectionStyle=UITableViewCellSelectionStyleNone;
 	
 	cell.comment=comment;
 	[cell load];
@@ -118,7 +127,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [items count];
+	if(pictureComment)
+	{
+		return [items count] +1;
+	}
+	else {
+		return [items count];
+	}
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -128,9 +143,31 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	Comment * comment=[items objectAtIndex:indexPath.row];
+	Comment * comment;
 	
-	return [CommentTableViewCell cellHeightForComment:comment withCellWidth:self.contentSizeForViewInPopover.width];
+	if(pictureComment)
+	{
+		if(indexPath.row==0)
+		{
+			comment=pictureComment;
+		}
+		else 
+		{
+			comment=[items objectAtIndex:indexPath.row-1];
+		}
+	}
+	else 
+	{
+		comment=[items objectAtIndex:indexPath.row];
+	}
+	if(phoneMode)
+	{
+		return [CommentTableViewCell cellHeightForComment:comment withCellWidth:320.0];
+	}
+	else 
+	{
+		return [CommentTableViewCell cellHeightForComment:comment withCellWidth:self.contentSizeForViewInPopover.width];
+	}
 }
 
 - (CGSize) contentSizeForViewInPopover
@@ -140,7 +177,7 @@
 
 - (void)dealloc {
 	[tableView release];
-	//[picture release];
+	[pictureComment release];
 	[super dealloc];
 }
 

@@ -14,6 +14,8 @@
 #import "FacebookAccount.h"
 #import "SlideshowOptionsViewController.h"
 #import "PhoneAddCommentViewController.h"
+#import "Comment.h"
+#import "Friend.h"
 
 //#import "PictureScrollView.h"
 
@@ -225,6 +227,19 @@
 	
 	PhotoCommentsViewController * controller=[[PhotoCommentsViewController alloc] initWithFeed:feed  title:@"Comments" phoneMode:phoneMode];
 	controller.delegate=self;
+	
+	if([picture.name length]>0)
+	{
+		Comment * pictureComment=[[Comment alloc] init];
+		pictureComment.message=picture.name;
+		pictureComment.picture=[[picture user] picture];
+		pictureComment.user=[picture user];
+		pictureComment.created_date=[picture created_date];
+		pictureComment.updated_date=[picture updated_date];
+		controller.pictureComment=pictureComment;
+		
+		[pictureComment release];
+	}
 	
 	[feed release];
 	controller.modalPresentationStyle=UIModalPresentationFullScreen;
