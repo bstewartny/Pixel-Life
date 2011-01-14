@@ -11,6 +11,29 @@
 //static NSString* kAppId = @"144746058889817";
 #define kAppId  @"174754232546721"
 
+
+/*
+	TODO: 
+		fix ipad start screen showing on 3GS with 4.1 OS
+		dont pop up memory warning alerts
+		fix memory leaks
+		analyze code
+		fix warnings
+		make archive
+		verify archived code
+		simple help/intro screen to show what icons do...
+		dont default to zoomed in images...
+		make borders btween images in scroll view
+		remove sort option in slideshow options
+ 
+ 
+ 
+ 
+*/
+
+
+
+
 @interface PixelLifeAppDelegate : NSObject <UIApplicationDelegate> 
 {
 	UINavigationController * navController;

@@ -187,6 +187,7 @@
 
 - (void) showAccounts
 {
+	NSLog(@"showAccounts");
 	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
 	accountsView.modalPresentationStyle=UIModalPresentationFullScreen;
 	accountsView.delegate=self;
@@ -198,6 +199,7 @@
 
 - (void) showNoFriends
 {
+	NSLog(@"showNoFriends");
 	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:nil title:@"My Friends"];
 	
 	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarFriendsTag];
@@ -215,11 +217,12 @@
 	   
 - (void) showAllFriends
 {
+	NSLog(@"showAllFriends");
 	if(![currentAccount isSessionValid])
 	{
 		NSLog(@"session is not valid, need to login...");
 		[self showNoFriends];
-		[self login];
+		//[self login];
 		return;
 	}
 	

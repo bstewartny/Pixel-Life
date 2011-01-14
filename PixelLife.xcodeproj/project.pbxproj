@@ -60,6 +60,8 @@
 		B04829D512AD7E0B00F61433 /* FacebookAlbumPictureFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04829D412AD7E0B00F61433 /* FacebookAlbumPictureFeed.m */; };
 		B04B1C6312ADC439006FA4E2 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B04B1C6212ADC439006FA4E2 /* UserSettings.m */; };
 		B04BC82C12B52FFA007217A3 /* FacebookFriendListsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */; };
+		B052EF5612DF7D5600826891 /* iPhoneDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = B052EF5512DF7D5600826891 /* iPhoneDefault.png */; };
+		B052EFA112DF8DFE00826891 /* PictureImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B052EFA012DF8DFE00826891 /* PictureImageScrollView.m */; };
 		B05C2A4712CCE14F00CE56E2 /* icon_post.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4612CCE14F00CE56E2 /* icon_post.png */; };
 		B05C2A4912CCE19000CE56E2 /* icon_circle_arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4812CCE19000CE56E2 /* icon_circle_arrow_right.png */; };
 		B05C2A4B12CCE1AB00CE56E2 /* icon_tag_add.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4A12CCE1AB00CE56E2 /* icon_tag_add.png */; };
@@ -255,6 +257,9 @@
 		B04B1C6212ADC439006FA4E2 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		B04BC82A12B52FFA007217A3 /* FacebookFriendListsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendListsFeed.h; sourceTree = "<group>"; };
 		B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendListsFeed.m; sourceTree = "<group>"; };
+		B052EF5512DF7D5600826891 /* iPhoneDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneDefault.png; sourceTree = "<group>"; };
+		B052EF9F12DF8DFE00826891 /* PictureImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureImageScrollView.h; sourceTree = "<group>"; };
+		B052EFA012DF8DFE00826891 /* PictureImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureImageScrollView.m; sourceTree = "<group>"; };
 		B05C2A4612CCE14F00CE56E2 /* icon_post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_post.png; sourceTree = "<group>"; };
 		B05C2A4812CCE19000CE56E2 /* icon_circle_arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_circle_arrow_right.png; sourceTree = "<group>"; };
 		B05C2A4A12CCE1AB00CE56E2 /* icon_tag_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tag_add.png; sourceTree = "<group>"; };
@@ -597,6 +602,8 @@
 				B048268312AD306100F61433 /* FriendsGridViewController.m */,
 				B048286C12AD579100F61433 /* PicturesScrollViewController.h */,
 				B048286D12AD579100F61433 /* PicturesScrollViewController.m */,
+				B052EF9F12DF8DFE00826891 /* PictureImageScrollView.h */,
+				B052EFA012DF8DFE00826891 /* PictureImageScrollView.m */,
 				B048286F12AD5A0B00F61433 /* PictureImageView.h */,
 				B048287012AD5A0B00F61433 /* PictureImageView.m */,
 				B05C4D0412AFD6D800CA0EFA /* FriendGridViewCell.h */,
@@ -798,6 +805,7 @@
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B052EF5512DF7D5600826891 /* iPhoneDefault.png */,
 				B0DDD28212DBA3E300BBD28B /* icon_list_bullets.png */,
 				B0DDD27E12DBA34B00BBD28B /* icon_user.png */,
 				B0DDD27F12DBA34B00BBD28B /* icon_users.png */,
@@ -917,6 +925,7 @@
 				B0DDD28112DBA34B00BBD28B /* icon_users.png in Resources */,
 				B0DDD28312DBA3E300BBD28B /* icon_list_bullets.png in Resources */,
 				B0DDD2EF12DBABF900BBD28B /* PhoneAlbumGridView.xib in Resources */,
+				B052EF5612DF7D5600826891 /* iPhoneDefault.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1026,7 @@
 				B08C5E0812DB83D8004B21FD /* PhoneAddCommentViewController.m in Sources */,
 				B0DDD22412DB939A00BBD28B /* PictureTableViewController.m in Sources */,
 				B0DDD23712DB973F00BBD28B /* FriendListsTableViewController.m in Sources */,
+				B052EFA112DF8DFE00826891 /* PictureImageScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1068,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "127245F5-F3FF-4367-8423-852BD5C685E9";
 				SDKROOT = iphoneos;
@@ -1073,6 +1084,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "127245F5-F3FF-4367-8423-852BD5C685E9";

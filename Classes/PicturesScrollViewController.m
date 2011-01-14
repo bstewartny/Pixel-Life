@@ -1,6 +1,7 @@
 #import "PicturesScrollViewController.h"
 #import "Picture.h"
 #import "PictureImageView.h"
+#import "PictureImageScrollView.h"
 #import "FriendPictureImageView.h"
 #import "User.h"
 #import "FacebookPhotoCommentsFeed.h"
@@ -16,8 +17,7 @@
 #import "PhoneAddCommentViewController.h"
 #import "Comment.h"
 #import "Friend.h"
-
-//#import "PictureScrollView.h"
+#define PADDING  10
 
 @implementation PicturesScrollViewController
 @synthesize showCommentsButton,scrollView, toolbar,pictures,infoFirstNameLabel,infoLastNameLabel,infoNumCommentsLabel,commentCountLabel,infoView,currentItemIndex,infoImageView,infoUserLabel,infoNameLabel,infoDateLabel;
@@ -46,6 +46,13 @@
     if(self)
 	{
 		self.view.backgroundColor=[UIColor blackColor];
+		
+		CGRect f=self.scrollView.frame;
+		
+		f.origin.x-=PADDING;
+		f.size.width+=(2*PADDING);
+		
+		self.scrollView.frame=f;
 		
 		if(phoneMode)
 		{
@@ -120,7 +127,6 @@
 			[tools release];
 			[toolItems release];
 			
-			
 			UISwipeGestureRecognizer * swup=[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUp:)];
 			swup.direction=UISwipeGestureRecognizerDirectionUp;
 			[self.infoView addGestureRecognizer:swup];
@@ -131,30 +137,13 @@
 			[self.infoView addGestureRecognizer:swdwn];
 			[swdwn release];
 		}
-		else 
-		{
-			/*CGRect s=[[UIScreen mainScreen] bounds];
-			
-			toolbar=[[UIToolbar alloc] initWithFrame:CGRectMake(0, s.size.height-44, s.size.width, 44)];
-			
-			//toolbar.autoresizingMask=UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-					 
-			toolbar.barStyle=UIBarStyleBlack;
-			toolbar.opaque=NO;
-			//toolbar.alpha=0.8;
-			toolbar.translucent=YES;
-			
-			[self.view addSubview:toolbar];
-			[self.view bringSubviewToFront:toolbar];
-			*/
-		}
-
 		
 		UITapGestureRecognizer * gr2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
 		
 		gr2.numberOfTapsRequired=2;
 		
 		[self.scrollView addGestureRecognizer:gr2];
+		
 		
 		UITapGestureRecognizer * gr=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
 		gr.numberOfTapsRequired=1;
@@ -164,15 +153,12 @@
 		[gr release];
 		[gr2 release];
 		
-		
-		
 		format = [[NSDateFormatter alloc] init];
 		[format setDateFormat:@"MMM d, yyyy"];
 		
 		picViews=[[NSMutableArray alloc] init];
 		
 		self.wantsFullScreenLayout=YES;
-		
 	}
     return self;
 }
@@ -181,9 +167,9 @@
 {
 	if(slideshowOptionsPopover)
 	{
-		//NSLog(@"slideshowOptionsPopover!=nil");
 		return;
 	}
+	
 	cancelRemoveBars=YES;
 	
 	SlideshowOptionsViewController * controller=[[SlideshowOptionsViewController alloc] init];
@@ -357,7 +343,6 @@
 	UIActionSheet * sheet=[[UIActionSheet alloc] initWithTitle:@"Photo Actions" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email photo",@"Save photo",nil];
 	sheet.tag=kActionActionSheet;
 	[sheet showFromBarButtonItem:sender animated:YES];
-	
 	[sheet release];
 }
 
@@ -430,6 +415,7 @@
 		}
 	}
 }
+
 - (void) swipeUp:(UIGestureRecognizer*)gr
 {
 	[self cancelSlideshow];
@@ -465,51 +451,41 @@
 - (void) doubleTap:(UIGestureRecognizer*)gr
 {
 	[self cancelSlideshow];
-	[self toggleZoom];
+	[self toggleZoomAtTouchPoint:[gr locationInView:scrollView]];
 }
 
-- (void) toggleZoom
+- (void) toggleZoomAtTouchPoint:(CGPoint)point
 {
-	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
+	CGPoint adj=point;
+	adj.x-=scrollView.contentOffset.x;
+	adj.y-=scrollView.contentOffset.y;
 	
-	if(picView.contentMode==UIViewContentModeScaleAspectFit)
-	{
-		picView.contentMode=UIViewContentModeScaleAspectFill;
-	}
-	else 
-	{
-		picView.contentMode=UIViewContentModeScaleAspectFit;
-	}
+	PictureImageScrollView * picView=[picViews objectAtIndex:currentItemIndex];
+	[picView toggleZoomAtTouchPoint:adj];
 }
 
 - (CGRect) getBounds
 {
-	CGRect b= scrollView.bounds;
-	
-	CGRect s=[[UIScreen mainScreen] bounds];
-	
-	if(b.size.width==s.size.height)
+	if([[UIApplication sharedApplication]    statusBarOrientation]==UIInterfaceOrientationPortrait ||
+	   [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
 	{
-		if(b.size.height < s.size.width)
-		{
-			b.size.height=s.size.width;
-		}
+		return [[UIScreen mainScreen] bounds];
 	}
-	if(b.size.width==s.size.width)
+	else 
 	{
-		if(b.size.height<s.size.height)
-		{
-			b.size.height=s.size.height;
-		}
+		CGRect b=[[UIScreen mainScreen] bounds];
+		CGFloat w=b.size.width;
+		b.size.width=b.size.height;
+		b.size.height=w;
+		return b;
 	}
-		
-	return b;
 }
 
 -(void) addPicturesToScrollView
 {
 	CGFloat left=0;
 	CGFloat top=0;
+	NSInteger index=0;
 	
 	CGRect frame=[self getBounds];
 	
@@ -520,21 +496,11 @@
 	
 	for(Picture * picture in pictures)
 	{
-		CGFloat x=left;
+		CGFloat x= (((2*PADDING) + width) * index) + PADDING;
 		CGFloat y=top;
 		
 		CGRect frame=CGRectMake(x,y,width,height);
-		
-		PictureImageView * picView=[[PictureImageView alloc] initWithFrame:frame picture:picture];
-		
-		if(phoneMode)
-		{
-			picView.contentMode=UIViewContentModeScaleAspectFill;
-		}
-		else 
-		{
-			picView.contentMode=UIViewContentModeScaleAspectFit;
-		}
+		PictureImageScrollView * picView=[[PictureImageScrollView alloc] initWithFrame:frame picture:picture];
 		
 		[scrollView addSubview:picView];
 		
@@ -543,15 +509,16 @@
 		[picView release];
 		
 		left+=width;
+		index++;
 	}
-	[scrollView setContentSize:CGSizeMake([pictures count]*width, height)];
+	[scrollView setContentSize:CGSizeMake([pictures count]*(width+ (2*PADDING)), height)];
 }
 
 - (void) setPictureFrames
 {
 	CGFloat left=0;
 	CGFloat top=0;
-	
+	NSInteger index=0;
 	CGRect frame=[self getBounds];
 	
 	CGFloat width=frame.size.width;
@@ -559,16 +526,20 @@
 	
 	for(UIView * picView in picViews)
 	{
-		CGFloat x=left;
+		CGFloat x= (((2*PADDING) + width) * index) + PADDING;
 		CGFloat y=top;
 		
 		CGRect frame=CGRectMake(x,y,width,height);
-		picView.frame=frame;
+		
+		[picView updateFrame:frame];
+		
+		[picView setNeedsLayout];
 		[picView setNeedsDisplay];
 		
 		left+=width;
+		index++;
 	}
-	[scrollView setContentSize:CGSizeMake([pictures count]*width, height)];
+	[scrollView setContentSize:CGSizeMake([pictures count]*(width+ (2*PADDING)), height)];
 	[scrollView setNeedsDisplay];
 }
  
@@ -674,21 +645,8 @@
 {
 	cancelRemoveBars=YES;
 	slideshowMode=NO;
-	//self.navigationController.navigationBar.translucent=NO;
-	//[self.navigationController setNavigationBarHidden:NO animated:NO];
-	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[super viewWillDisappear:animated];
 }
-/*
-- (void) viewDidUnload
-{
-	cancelRemoveBars=YES;
-	slideshowMode=NO;
-	self.navigationController.navigationBar.translucent=NO;
-	[self.navigationController setNavigationBarHidden:NO animated:NO];
-	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-	[super viewDidUnload];
-}*/
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -715,12 +673,7 @@
 {
 	int i=0;
 	
-	BOOL unloadImages=NO;
-	
-	if([scrollView.subviews count] > 20)
-	{
-		unloadImages=YES;
-	}
+	BOOL unloadImages=YES;
 	
 	for(UIView * picView in picViews)
 	{
@@ -790,7 +743,7 @@
 	
 	if(!phoneMode)
 	{
-		infoNameLabel.text=currentPicture.name;//[currentPicture.name stringByAppendingFormat:@"\n\n\n\n\n\n\n\n\n\n"];
+		infoNameLabel.text=currentPicture.name;
 		
 		infoDateLabel.text=[format stringFromDate:currentPicture.created_date];
 		
@@ -892,15 +845,15 @@
 	slideshowMode=YES;
 	[self hideNavigationBarAndInfoView];
 	
-	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
+	PictureImageScrollView * picView=[picViews objectAtIndex:currentItemIndex];
 	
 	if(fillScreen)
 	{
-		picView.contentMode=UIViewContentModeScaleAspectFill;
+		[picView setImageContentMode:UIViewContentModeScaleAspectFill];
 	}
 	else 
 	{
-		picView.contentMode=UIViewContentModeScaleAspectFit;
+		[picView setImageContentMode:UIViewContentModeScaleAspectFit];
 	}
 
 	CATransition *applicationLoadViewIn = [CATransition animation];
@@ -974,15 +927,15 @@
 			
 	}
 	
-	PictureImageView * picView=[picViews objectAtIndex:currentItemIndex];
+	PictureImageScrollView * picView=[picViews objectAtIndex:currentItemIndex];
 	 
 	if(fillScreen)
 	{
-		picView.contentMode=UIViewContentModeScaleAspectFill;
+		[picView setImageContentMode:UIViewContentModeScaleAspectFill];
 	}
 	else 
 	{
-		picView.contentMode=UIViewContentModeScaleAspectFit;
+		[picView setImageContentMode:UIViewContentModeScaleAspectFit];
 	}
 	
 	CATransition *applicationLoadViewIn = [CATransition animation];
