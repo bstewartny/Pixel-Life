@@ -18,6 +18,20 @@
     }
     return self;
 }
+- (NSString*) noDataMessage
+{
+	
+	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
+    NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
+    if (remoteHostStatus == NotReachable)
+    {
+		return @"Facebook is unreachable.";
+	}
+	else 
+	{
+		return @"No shared albums found for user.";
+	}
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

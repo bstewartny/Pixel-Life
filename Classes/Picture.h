@@ -1,9 +1,11 @@
 #import <Foundation/Foundation.h>
 #import "PictureDelegate.h"
 #import "Item.h"
-@class AsyncImage;
+#import "AsyncImage.h"
 
-@interface Picture : Item {
+//@class AsyncImage;
+
+@interface Picture : Item<AsyncImageDelegate> {
 	AsyncImage * asyncImage;
 	AsyncImage * asyncThumbnail;
 	NSString * description;

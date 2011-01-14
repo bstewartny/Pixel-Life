@@ -7,11 +7,11 @@
 @implementation FeedViewController
 @synthesize items,feed;
 
-- (id)initWithFeed:(Feed*)feed title:(NSString*)title withNibName:(NSString*)nibName
+- (id)initWithFeed:(Feed*)theFeed title:(NSString*)title withNibName:(NSString*)nibName
 {
     if(self=[super initWithNibName:nibName bundle:nil])
 	{
-		self.feed=feed;
+		self.feed=theFeed;
 		self.feed.delegate=self;
 		self.navigationItem.title=title;
 		self.title=title;
@@ -45,7 +45,7 @@
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         NSString *msg = @"This app requires internet connectivity.";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook unreachable!" 
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook is unreachable!" 
                                                         message:msg 
                                                        delegate:nil 
                                               cancelButtonTitle:@"OK" 
@@ -77,14 +77,13 @@
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         NSString *msg = @"This app requires internet connectivity.";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook unreachable!" 
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook is unreachable!" 
                                                         message:msg 
                                                        delegate:nil 
                                               cancelButtonTitle:@"OK" 
                                               otherButtonTitles:nil];
         [alert show];
         [alert release];
-        //return;
     }
     else if (remoteHostStatus == ReachableViaWiFi)
     {
@@ -118,8 +117,6 @@
 
 - (void) showNoDataMessage
 {
-	//NSLog(@"showNoDataMessage");
-	
 	UILabel * label=[[UILabel alloc] initWithFrame:self.view.frame];
 	label.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin    |
 	UIViewAutoresizingFlexibleWidth         |
@@ -158,9 +155,10 @@
     {
 		return @"Facebook is unreachable.";
 	}
-	
-	
-	return @"No data found for request.";
+	else 
+	{
+		return @"Facebook returned no results.";
+	}
 }
 
 - (void) reloadData
@@ -227,7 +225,6 @@
 }
 
 - (void)dealloc {
-	//NSLog(@"FeedViewController dealloc");
 	[items release];
     [feed setDelegate:nil];
     [feed release];

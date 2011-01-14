@@ -29,7 +29,7 @@
 	[self.contentView addSubview:label2];
 	[self.contentView addSubview:label3];
 	
-    return self;
+     
 }
 
 - (void) setImage:(UIImage*)image

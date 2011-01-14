@@ -22,7 +22,6 @@
 	return (PixelLifeAppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
 	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
@@ -45,9 +44,54 @@
 	return YES;
 }
 
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if(actionSheet.tag==kActionSheetSettings)
+	{
+		if(buttonIndex==0)
+		{
+			// clear cache
+			[self clearCache];
+		}
+		if(buttonIndex==1)
+		{
+			// facebook accounts
+			[self showAccounts];
+		}
+		if(buttonIndex==2)
+		{
+			// logout
+			[self logout];
+		}
+	}
+}
+
 - (void) setupWindow
 {
 	// subclass
+}
+
+- (void) showAllFriends
+{
+}
+- (void) showAllLists
+{
+}
+- (void) showNoFriends
+{
+}
+- (void) showMyAlbums
+{
+}
+
+- (void) showAccounts
+{
+}
+- (void)login 
+{
+	[self showAccounts];
 }
 
 - (NSString *)dataFilePath
@@ -95,7 +139,37 @@
 	[self showAllFriends];
 }
 
+- (void)fbDidLogin
+{
+	if([currentAccount isSessionValid])
+	{
+		[self saveData];
+		[self showAllFriends];
+	}
+	else 
+	{
+		[self saveData];
+		[self showNoFriends];
+	}
+}
 
+- (void) logout
+{
+	@try {
+		// clear existing data...
+		[self clearCache];
+		
+		self.currentAccount=nil;
+		
+		[self saveData];
+		// show blank screen...
+		[self showNoFriends];
+	}
+	@catch (NSException * e) {
+	}
+	@finally {
+	}
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -121,8 +195,6 @@
 
 - (void) loadArchivedData
 {
-	//NSLog(@"loadArchivedData");
-	
 	NSString * filePath=[self dataFilePath];
 	
 	NSLog(@"Loading archived data from: %@",filePath);
@@ -157,8 +229,6 @@
 	}
 	if(facebookAccounts==nil)
 	{
-		//NSLog(@"facebookAccounts==nil, creating new array...");
-		
 		facebookAccounts=[[NSMutableArray alloc] init];
 	}
 }
@@ -166,7 +236,6 @@
 - (void) saveData
 {
 	NSLog(@"saveData");
-	
 	
 	@try {
 		
@@ -186,7 +255,6 @@
 			[archiver release];
 			
 			[data release];
-			//NSLog(@"Data saved ...");
 		}
 	}
 	@catch (NSException * e) 
@@ -202,11 +270,26 @@
 
 - (void) refresh:(id)sender
 {
-	FeedViewController * feedController=self.navController.topViewController;
+	FeedViewController * feedController=(FeedViewController*)self.navController.topViewController;
 	[feedController refresh];
 }
 
 
+
+
+- (ASIHTTPRequest*) createCommentRequest:(NSString*)message uid:(NSString*)uid
+{
+	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",uid];
+	
+	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	
+	request.requestMethod=@"POST";
+	
+	[request addPostValue:currentAccount.accessToken forKey:@"access_token"];
+	[request addPostValue:message forKey:@"message"];
+	
+	return request;
+}
 - (void) sendComment:(NSString*)comment uid:(NSString*)uid
 {
 	if([comment length]>0)
@@ -223,21 +306,6 @@
 		}
 	}
 }
-
-- (ASIHTTPRequest*) createCommentRequest:(NSString*)message uid:(NSString*)uid
-{
-	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/comments",uid];
-	
-	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	request.requestMethod=@"POST";
-	
-	[request addPostValue:currentAccount.accessToken forKey:@"access_token"];
-	[request addPostValue:message forKey:@"message"];
-	
-	return request;
-}
-
 - (void)sendCommentRequestDone:(ASIHTTPRequest *)request
 {
 	// done
@@ -252,6 +320,20 @@
 	[alertView release];
 }
 
+
+
+- (ASIHTTPRequest*) createLikeRequest:(NSString*)uid
+{
+	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",uid];
+	
+	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	
+	request.requestMethod=@"POST";
+	
+	[request addPostValue:currentAccount.accessToken forKey:@"access_token"];
+	
+	return request;
+}
 - (void) likeGraphObject:(NSString*)uid
 {
 	// push to queue
@@ -265,22 +347,6 @@
 		[request release];
 	}	
 }
-
-- (ASIHTTPRequest*) createLikeRequest:(NSString*)uid
-{
-	NSString * url=[NSString stringWithFormat:@"https://graph.facebook.com/%@/likes",uid];
-	
-	NSLog(@"like request: %@",url);
-	
-	ASIFormDataRequest * request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	
-	request.requestMethod=@"POST";
-	
-	[request addPostValue:currentAccount.accessToken forKey:@"access_token"];
-	
-	return request;
-}
-
 - (void)sendLikeRequestDone:(ASIHTTPRequest *)request
 {
 	// done

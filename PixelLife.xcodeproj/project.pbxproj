@@ -431,7 +431,6 @@
 				B087D84312AA8B44008259E9 /* Helpers */,
 				B087D84212AA8B3B008259E9 /* Models */,
 				B087D84112AA8B35008259E9 /* Controllers */,
-				B087D83E12AA8B2F008259E9 /* AppDelegate */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -576,13 +575,6 @@
 				B04828F912AD657600F61433 /* FBRequest.m */,
 			);
 			path = FBConnect;
-			sourceTree = "<group>";
-		};
-		B087D83E12AA8B2F008259E9 /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 		B087D84112AA8B35008259E9 /* Controllers */ = {
@@ -1068,7 +1060,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "127245F5-F3FF-4367-8423-852BD5C685E9";
 				SDKROOT = iphoneos;
@@ -1084,7 +1076,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "127245F5-F3FF-4367-8423-852BD5C685E9";

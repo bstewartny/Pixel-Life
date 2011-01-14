@@ -6,7 +6,7 @@
 #define kTabBarListsTag 2
 #define kTabBarAlbumsTag 3
 
-@interface PixelLifeAppDelegate_iPhone : PixelLifeAppDelegate {
+@interface PixelLifeAppDelegate_iPhone : PixelLifeAppDelegate <UITabBarDelegate> {
 	UITabBar * tabBar;
 }
 @property (nonatomic, retain) UITabBar * tabBar;

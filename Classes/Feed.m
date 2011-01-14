@@ -29,11 +29,13 @@
 - (ASIHTTPRequest*)createFetchRequest
 {
 	// handle in subclass
+	return nil;
 }
 
 - (NSArray*)getItemsFromResponseData:(NSData*)data
 {
 	// handle in subclass
+	return nil;
 }
 
 - (void)requestDone:(ASIHTTPRequest *)request

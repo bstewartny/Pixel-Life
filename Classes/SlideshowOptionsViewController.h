@@ -25,5 +25,5 @@ typedef enum
 @property(nonatomic) SlideshowSortOrder sortOrder;
 
 - (IBAction) startSlideshow:(id)sender;
-
+- (void) startSlideshowWithDelaySeconds:(NSInteger)optDelaySeconds andSortOrder:(SlideshowSortOrder)optSortOrder fillScreen:(BOOL)optFillScreen;
 @end

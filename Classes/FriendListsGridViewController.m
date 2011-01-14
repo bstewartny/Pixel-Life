@@ -8,7 +8,7 @@
 
 - (NSString*) noDataMessage
 {
-	return @"No friend lists found on Facebook for the current user.";
+	return @"No friend lists. You can create lists on Facebook.";
 }
 
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
@@ -50,3 +50,5 @@
 	
 	[controller release];
 }
+
+@end

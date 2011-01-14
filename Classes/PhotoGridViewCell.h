@@ -10,5 +10,6 @@
  
 }
 @property(nonatomic) BOOL showBorder;
+- (UILabel*)createLabelWithFrame:(CGRect)frame;
 
 @end

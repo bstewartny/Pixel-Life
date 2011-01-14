@@ -8,5 +8,7 @@
 @property (nonatomic, retain) IBOutlet AQGridView * gridView;
 
 - (id)initWithFeed:(Feed*)feed title:(NSString*)title;
+- (void) loadVisibleCells;
+
 
 @end

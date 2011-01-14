@@ -11,7 +11,7 @@
 
 - (NSString*) noDataMessage
 {
-	return @"No friends found on Facebook for the current user.";
+	return @"No friends found on Facebook.";
 }
 
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
@@ -70,7 +70,6 @@
 	searchBar.backgroundColor=[UIColor clearColor];
 	searchBar.opaque=NO;
 	searchBar.barStyle=UIBarStyleBlack;
-	searchBar.autoresizingMask=0;
 	
 	searchController=[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
 	searchController.delegate=self;
@@ -80,24 +79,18 @@
 	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:searchBar] autorelease];
 }
 
-
-/*- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-	[searchController setActive:NO animated:NO];
-	[searchController setActive:YES animated:NO];
-}*/
-
-- (void) viewWillAppear:(BOOL)animated
-{
+//- (void) viewWillAppear:(BOOL)animated
+//{
+	
 	// yet another cocoa hack in order to work around some sdk bug... need to reset frame after device was rotated in
 	// another view, otherwise UISearchDisplayController makes the search box too big...
-	searchBar.frame=CGRectMake(0,5,150,30);
-}
+	//searchBar.frame=CGRectMake(0,5,150,30);
+	
+	//[super viewWillAppear:animated];
+//}
 
 - (void)filterContentForSearchText:(NSString*)searchText
 {
-	//NSLog(@"filterContentForSearchText: %@",searchText);
-	
 	[filteredItems removeAllObjects]; 
 	
 	for (Friend	*f in items)
@@ -172,9 +165,7 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-	//NSLog(@"searchDisplayController:shouldReloadTableForSearchString %@",searchString);
-	
-    [self filterContentForSearchText:searchString];
+	[self filterContentForSearchText:searchString];
     
     // Return YES to cause the search result table view to be reloaded.
     return YES;
@@ -182,9 +173,7 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
-	//NSLog(@"searchDisplayController:shouldReloadTableForSearchScope ");
-	
-    [self filterContentForSearchText:[self.searchDisplayController.searchBar text]];
+	[self filterContentForSearchText:[self.searchDisplayController.searchBar text]];
     
     // Return YES to cause the search result table view to be reloaded.
     return YES;
@@ -192,13 +181,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	//NSLog(@"numberOfRowsInSection");
 	return [filteredItems count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//NSLog(@"didSelectRowAtIndexPath");
 	Friend * friend=[filteredItems objectAtIndex:indexPath.row];
 	// need to dismiss search results popover now...
 	[searchController setActive:NO animated:YES];
@@ -207,7 +194,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//NSLog(@"cellForRowAtIndexPath");
 	static NSString *kCellID = @"cellID";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellID];

@@ -2,7 +2,7 @@
 #import "GridViewController.h"
 #define kAlbumsSlideshowActionSheet 1
 
-@interface AlbumsGridViewController : GridViewController{
+@interface AlbumsGridViewController : GridViewController<UIActionSheetDelegate>{
 	 
 }
  

@@ -9,6 +9,6 @@
 
 @optional
 - (void)image:(AsyncImage *)item didLoadImage:(UIImage *)image;
-@end
+ 
+@end;
 
-@end

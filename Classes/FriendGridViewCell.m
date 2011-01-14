@@ -43,8 +43,7 @@
 	
 	[nameView addSubview:lastNameLabel];
 	[nameView bringSubviewToFront:lastNameLabel];
-	
-	return self;
+
 }
 
 - (void)setPictureLabels:(Picture *)newPicture

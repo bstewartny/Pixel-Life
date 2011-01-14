@@ -10,7 +10,7 @@
 // scheme (substitue [app_id] for your real Facebook app id).
 //static NSString* kAppId = @"144746058889817";
 #define kAppId  @"174754232546721"
-
+#define kActionSheetSettings 3434
 
 /*
 	TODO: 
@@ -34,7 +34,7 @@
 
 
 
-@interface PixelLifeAppDelegate : NSObject <UIApplicationDelegate> 
+@interface PixelLifeAppDelegate : NSObject <UIApplicationDelegate,UIActionSheetDelegate> 
 {
 	UINavigationController * navController;
     UIWindow *window;
@@ -56,6 +56,21 @@
 
 - (void) sendComment:(NSString*)comment uid:(NSString*)uid;
 - (void) likeGraphObject:(NSString*)uid;
+
+- (void) setupWindow;
+- (void) loadArchivedData;
+- (void) showAllFriends;
+- (void) showAllLists;
+- (void) showNoFriends;
+- (void) showMyAlbums;
+
+- (void) clearCache;
+- (void) showAccounts;
+- (void) login;
+- (void) logout;
+- (void) saveData;
+ 
+
 
 @end
 

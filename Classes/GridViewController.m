@@ -7,19 +7,15 @@
 @implementation GridViewController
 @synthesize gridView;
 
-- (id)initWithFeed:(Feed*)feed title:(NSString*)title
+- (id)initWithFeed:(Feed*)theFeed title:(NSString*)title
 {
-    if(self=[super initWithFeed:feed title:title withNibName:@"GridView"])
+    if(self=[super initWithFeed:theFeed title:title withNibName:@"GridView"])
 	{
 		self.gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 		self.gridView.autoresizesSubviews = YES;
 		self.gridView.delegate = self;
 		self.gridView.dataSource = self;
-		
 		self.gridView.separatorStyle = AQGridViewCellSeparatorStyleEmptySpace;
-		//self.gridView.separatorStyle=AQGridViewCellSeparatorStyleSingleLine;
-		
-		//self.gridView.resizesCellWidthToFit = YES;
 		self.gridView.separatorColor = [UIColor blackColor];
 		self.gridView.backgroundColor=[UIColor blackColor];
     }
@@ -33,14 +29,11 @@
 	[self loadVisibleCells];
 }
 
-
-
-
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
 	[self loadVisibleCells]; 
 }
-
+/*
 - (IBAction) shuffle
 {
     NSMutableArray * sourceArray = [items mutableCopy];
@@ -71,7 +64,7 @@
 	
 	[self loadVisibleCells];
 }
-
+*/
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
 	// subclass
@@ -113,7 +106,6 @@
 }
 
 - (void)dealloc {
-	//NSLog(@"GridViewController dealloc");
 	[gridView release];
 	[super dealloc];
 }

@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
 
-
+#import "FeedDelegate.h"
 
 @class Feed;
 
-@interface FeedViewController : UIViewController {
+@interface FeedViewController : UIViewController<FeedDelegate> {
 	UIView *loadingView;
 	NSArray * items;
 	Feed * feed;

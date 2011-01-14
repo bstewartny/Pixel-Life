@@ -15,9 +15,7 @@
 	navController=[[UINavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
-	CGRect r=[[UIScreen mainScreen] bounds];
-	
-	tabBar=[[UITabBar alloc] init]; //WithFrame:CGRectMake(0, r.size.height-65, r.size.width	, 65)];
+	tabBar=[[UITabBar alloc] init];
 	tabBar.delegate=self;
 	
 	[tabBar sizeToFit];
@@ -44,65 +42,29 @@
 	[items addObject:i];
 	[i release];
 	
-	
 	[tabBar setItems:items animated:NO];
 	
 	self.window.backgroundColor=[UIColor blackColor];
 	
-	// Override point for customization after app launch. 
-    
 	[self.window addSubview:navController.view];
-    //[self.window addSubview:tabBar];
-	
+    
 	[self.window makeKeyAndVisible];
 	
 	[self showAllFriends];
 }
 
-- (void) showSettings
+- (void) showSettingsActionSheet
 {
 	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear cached images" otherButtonTitles:@"Facebook accounts",@"Logout",nil];
-	
+	actionSheet.tag=kActionSheetSettings;
 	[actionSheet showFromTabBar:tabBar];
-	
 	[actionSheet release];
 }
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	 
-		if(buttonIndex==0)
-		{
-			// clear cache
-			[self clearCache];
-		}
-		if(buttonIndex==1)
-		{
-			// facebook accounts
-			[self showAccounts];
-		}
-		if(buttonIndex==2)
-		{
-			// logout
-			[self logout];
-		}
-	 
-	
-	
-	
-	
-	
-	
-	
-}
-
-
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
 	switch (item.tag) 
 	{
-		
 		case kTabBarAlbumsTag:
 			// my albums
 			[self showMyAlbums];
@@ -120,68 +82,8 @@
 		
 		case kTabBarSettingsTag:
 			// settings
-			[self showSettings];
+			[self showSettingsActionSheet];
 			break;
-	}
-}
-
-
-- (void)login 
-{
-	[self showAccounts];
-}
-
-- (void)fbDidLogin
-{
-	if([currentAccount isSessionValid])
-	{
-		[self saveData];
-		[self showAllFriends];
-	}
-	else 
-	{
-		[self saveData];
-		[self showNoFriends];
-	}
-}
-/**
- * Called when the user dismissed the dialog without logging in.
- */
-- (void)fbDidNotLogin:(BOOL)cancelled
-{
-	self.currentAccount=nil;
-	
-	[self showAllFriends];
-}
-
-/**
- * Called when the user logged out.
- */
-- (void)fbDidLogout
-{
-	self.currentAccount=nil;
-	
-	[self clearCache];
-	[self saveData];
-	
-	// redisplay UI...
-	[self showAllFriends];
-}
-- (void) logout
-{
-	@try {
-		// clear existing data...
-		[self clearCache];
-		
-		self.currentAccount=nil;
-		
-		[self saveData];
-		// show blank screen...
-		[self showNoFriends];
-	}
-	@catch (NSException * e) {
-	}
-	@finally {
 	}
 }
 
@@ -201,16 +103,8 @@
 {
 	NSLog(@"showNoFriends");
 	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:nil title:@"My Friends"];
-	
 	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarFriendsTag];
-	
 	[controller setTabBar:tabBar];
-	
-	
-	
-	//[self addSettingsButtonToController:controller];
-	//controller.navigationItem.titleView=segmentedControl;
-	//segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[controller release];
 }
@@ -222,20 +116,13 @@
 	{
 		NSLog(@"session is not valid, need to login...");
 		[self showNoFriends];
-		//[self login];
 		return;
 	}
 	
 	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
-	
 	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:feed title:@"My Friends"];
 	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarFriendsTag];
-	
 	[controller setTabBar:tabBar];
-	
-	//[self addSettingsButtonToController:controller];
-	//controller.navigationItem.titleView=segmentedControl;
-	//segmentedControl.selectedSegmentIndex=2;
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[controller release];
 	[feed release];
@@ -260,7 +147,6 @@
 	[controller release];
 }	   
 	   
-	   
 - (void) showAllLists
 {
 	if(![currentAccount isSessionValid])
@@ -270,13 +156,9 @@
 	}
 	
 	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebookAccount:currentAccount];
-	
 	FriendListsTableViewController * controller=[[FriendListsTableViewController alloc] initWithFeed:feed title:@"My Lists"];
-	
 	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarListsTag];
-	
 	[controller setTabBar:tabBar];
-
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 	[feed release];
 	[controller release];

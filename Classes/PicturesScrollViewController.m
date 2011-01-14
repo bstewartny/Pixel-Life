@@ -28,10 +28,10 @@
 	[self dismissModalViewControllerAnimated:YES];
 }
 
-- (id)initWithPictures:(NSArray*)pictures phoneMode:(BOOL)mode
+- (id)initWithPictures:(NSArray*)thePictures phoneMode:(BOOL)mode
 {
 	phoneMode=mode;
-	self.pictures=pictures;
+	self.pictures=thePictures;
 	
 	
 	if(phoneMode)
@@ -191,17 +191,7 @@
 	[controller release];
 }
 
-- (IBAction) showComments:(id)sender
-{
-	if(phoneMode)
-	{
-		[self showCommentsPhone:sender];
-	}
-	else 
-	{
-		[self showCommentsPad:sender];
-	}
-}
+
 
 - (void) showCommentsPhone:(id)sender
 {
@@ -262,18 +252,18 @@
 	
 	[controller release];
 }
-
-- (IBAction) addComment:(id)sender
+- (IBAction) showComments:(id)sender
 {
 	if(phoneMode)
 	{
-		[self addCommentPhone:sender];
+		[self showCommentsPhone:sender];
 	}
 	else 
 	{
-		[self addCommentPad:sender];
+		[self showCommentsPad:sender];
 	}
 }
+
 
 - (void) addCommentPhone:(id)sender
 {
@@ -308,7 +298,17 @@
 	[controller release];
 }
 
-
+- (IBAction) addComment:(id)sender
+{
+	if(phoneMode)
+	{
+		[self addCommentPhone:sender];
+	}
+	else 
+	{
+		[self addCommentPad:sender];
+	}
+}
 - (void) sendComment:(NSString*)comment
 {
 	if(!phoneMode)
@@ -875,6 +875,12 @@
 	{
 		[slideshowTimer invalidate];
 		slideshowTimer=nil;
+		
+		// set all content modes back to aspect fit...
+		for (PictureImageScrollView * picView in picViews)
+		{
+			[picView setImageContentMode:UIViewContentModeScaleAspectFit];
+		}
 	}
 }
 

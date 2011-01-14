@@ -7,7 +7,7 @@
 
 @class FriendPictureImageView;
 
-@interface PicturesScrollViewController : UIViewController<MFMailComposeViewControllerDelegate> {
+@interface PicturesScrollViewController : UIViewController<UIPopoverControllerDelegate,   MFMailComposeViewControllerDelegate> {
 	IBOutlet UIScrollView * scrollView;
 	NSArray * pictures;
 	NSMutableArray * picViews;
@@ -54,6 +54,8 @@
 @property(nonatomic,retain) IBOutlet UILabel * infoFirstNameLabel;
 @property(nonatomic,retain) IBOutlet UILabel * infoLastNameLabel;
 @property(nonatomic,retain) IBOutlet UILabel * infoNumCommentsLabel;
+
+- (id)initWithPictures:(NSArray*)pictures phoneMode:(BOOL)mode;
 
 - (IBAction) showComments:(id)sender;
 - (IBAction) addFavorite:(id)sender;

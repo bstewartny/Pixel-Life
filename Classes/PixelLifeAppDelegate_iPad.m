@@ -20,6 +20,9 @@
 #import "Reachability.h"
 #import "FacebookAccount.h"
 #import "FacebookAccountsViewController.h"
+#define kMyAlbumsIndex 0
+#define kMyListsIndex 1
+#define kMyFriendsIndex 2
 
 @implementation PixelLifeAppDelegate_iPad
 
@@ -27,14 +30,6 @@
 {	
 	navController=[[UINavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
-	
-	segmentedControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Albums",@"My Lists",@"My Friends",nil]];
-	
-	segmentedControl.segmentedControlStyle=UISegmentedControlStyleBar;
-	
-	[segmentedControl addTarget:self
-						 action:@selector(segmentedControlValueChanged:)
-			   forControlEvents:UIControlEventValueChanged];
 	
 	self.window.backgroundColor=[UIColor blackColor];
 		
@@ -48,79 +43,18 @@
 - (void) segmentedControlValueChanged:(id)sender
 {
 	switch ([sender selectedSegmentIndex]) {
-		case 0:
+		case kMyAlbumsIndex:
 			[self showMyAlbums];
 			break;
-		case 1:
+		case kMyListsIndex:
 			[self showAllLists];
 			break;
-		case 2:
+		case kMyFriendsIndex:
 			[self showAllFriends];
 			break;
 		default:
 			break;
 	}
-}
-
-- (void)login 
-{
-	[self showAccounts];
-}
-
-- (void)fbDidLogin
-{
-	if([currentAccount isSessionValid])
-	{
-		[self saveData];
-		[self showAllFriends];
-	}
-	else 
-	{
-		[self saveData];
-		[self showNoFriends];
-	}
-}
-
-- (void) logout
-{
-	@try {
-		// clear existing data...
-		[self clearCache];
-		
-		self.currentAccount=nil;
-		
-		[self saveData];
-		// show blank screen...
-		[self showNoFriends];
-	}
-	@catch (NSException * e) {
-	}
-	@finally {
-	}
-}
-
-/**
- * Called when the user dismissed the dialog without logging in.
- */
-- (void)fbDidNotLogin:(BOOL)cancelled
-{
-	self.currentAccount=nil;
-	
-	[self showAllFriends];
-}
-
-/**
- * Called when the user logged out.
- */
-- (void)fbDidLogout
-{
-	self.currentAccount=nil;
-	
-	[self clearCache];
-	[self saveData];
-	
-	// redisplay UI...
-	[self showAllFriends];
 }
 
 - (void) showMyAlbums
@@ -134,24 +68,24 @@
 	FacebookMyAlbumsFeed * feed=[[FacebookMyAlbumsFeed alloc] initWithFacebookAccount:currentAccount];
 	AlbumsGridViewController * controller=[[AlbumsGridViewController alloc] initWithFeed:feed title:@"My Albums"];
 	[self addSettingsButtonToController:controller];
-	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=0;
-	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[self addSegmentedControlTitleView:controller withSelectedIndex:kMyAlbumsIndex];
+	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];
 	[feed release];
 	[controller release];
 }
+
 - (void) showNoFriends
 {
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:nil title:@"My Friends"];
 	[self addSettingsButtonToController:controller];
-	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=2;
-	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[self addSegmentedControlTitleView:controller withSelectedIndex:kMyFriendsIndex];
+	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];
 	[controller release];
 }
+
 - (void) showAllFriends
 {
-	
+	NSLog(@"showAllFriends");
 	if(![currentAccount isSessionValid])
 	{
 		[self login];
@@ -159,14 +93,42 @@
 	}
 	
 	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
-	
 	FriendsGridViewController * controller=[[FriendsGridViewController alloc] initWithFeed:feed title:@"My Friends"];
 	[self addSettingsButtonToController:controller];
-	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=2;
-	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[self addSegmentedControlTitleView:controller withSelectedIndex:kMyFriendsIndex];
+	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];
 	[feed release];
 	[controller release];
+}
+
+- (void) showAllLists
+{
+	if(![currentAccount isSessionValid])
+	{
+		[self login];
+		return;
+	}
+	
+	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebookAccount:currentAccount];
+	FriendListsGridViewController * controller=[[FriendListsGridViewController alloc] initWithFeed:feed title:@"My Lists"];
+	[self addSettingsButtonToController:controller];
+	[self addSegmentedControlTitleView:controller withSelectedIndex:kMyListsIndex];
+	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];
+	[feed release];
+	[controller release];
+}
+
+- (void) addSegmentedControlTitleView:(UIViewController*)controller withSelectedIndex:(NSInteger)index
+{
+	UISegmentedControl * sc=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Albums",@"My Lists",@"My Friends",nil]];\
+	sc.segmentedControlStyle=UISegmentedControlStyleBar;
+	[sc sizeToFit];
+	sc.selectedSegmentIndex=index;
+	[sc addTarget:self
+		action:@selector(segmentedControlValueChanged:)
+		forControlEvents:UIControlEventValueChanged];
+	controller.navigationItem.titleView=sc;
+	[sc release];
 }
 
 - (void) addSettingsButtonToController:(UIViewController*)controller
@@ -180,18 +142,18 @@
 	
 	UIBarButtonItem * b;
 	
-	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(settings:)];
+	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettingsActionSheet:)];
 	[toolItems addObject:b];
 	[b release];
 	
-	b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	/*b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 	b.width=10;
 	[toolItems addObject:b];
 	[b release];
 	
 	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_circle_arrow_right.png"] style:UIBarButtonItemStylePlain target:self action:@selector(refresh:)];
 	[toolItems addObject:b];
-	[b release];
+	[b release];*/
 	
 	b=[[UIBarButtonItem	alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	[toolItems addObject:b];
@@ -205,48 +167,6 @@
 	[toolItems release];
 }
 
-- (void) showAllLists
-{
-	if(![currentAccount isSessionValid])
-	{
-		[self login];
-		return;
-	}
-	
-	FacebookFriendListsFeed * feed=[[FacebookFriendListsFeed alloc] initWithFacebookAccount:currentAccount];
-	
-	FriendListsGridViewController * controller=[[FriendListsGridViewController alloc] initWithFeed:feed title:@"My Lists"];
-	[self addSettingsButtonToController:controller];
-	
-	controller.navigationItem.titleView=segmentedControl;
-	segmentedControl.selectedSegmentIndex=1;
-	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-	[feed release];
-	[controller release];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	if(actionSheet.tag==kActionSheetSettings)
-	{
-		if(buttonIndex==0)
-		{
-			// clear cache
-			[self clearCache];
-		}
-		if(buttonIndex==1)
-		{
-			// facebook accounts
-			[self showAccounts];
-		}
-		if(buttonIndex==2)
-		{
-			// logout
-			[self logout];
-		}
-	}
-}
-
 - (void) showAccounts
 {
 	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
@@ -258,21 +178,16 @@
 	[accountsView release];
 }
 
-
-
-- (void) settings:(id)sender
+- (void) showSettingsActionSheet:(id)sender
 {
 	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear cached images" otherButtonTitles:@"Facebook accounts",@"Logout",nil];
-	
 	actionSheet.tag=kActionSheetSettings;
-	
 	[actionSheet showFromBarButtonItem:sender animated:YES];
-	
 	[actionSheet release];
 }
 
-- (void)dealloc {
-	[segmentedControl release];
+- (void)dealloc 
+{
     [super dealloc];
 }
 

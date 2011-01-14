@@ -39,8 +39,8 @@
 			return @"Expand Photos to fill screen";
 		case 1:
 			return @"Time Delay Between Photos";
-		case 2:
-			return @"Display Order";
+		//case 2:
+		//	return @"Display Order";
 		default:
 			return nil;
 	}
@@ -53,7 +53,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 4;
+	return 3;
+	//return 4;
 }
 
 - (void) fillScreenSwitch:(UISwitch*)sw
@@ -63,7 +64,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewStylePlain reuseIdentifier:nil];
+	UITableViewCell * cell=[[[UITableViewCell alloc] initWithStyle:UITableViewStylePlain reuseIdentifier:nil] autorelease];
 	cell.selectionStyle=UITableViewCellSelectionStyleBlue;
 
 	switch (indexPath.section) {
@@ -113,7 +114,7 @@
 			
 			break;
 			
-		case 2:
+		/*case 2:
 			switch(indexPath.row)
 		{
 			case 0:
@@ -142,8 +143,9 @@
 				break;
 		}
 			
-			break;
-		case 3:
+			break;*/
+		//case 3:
+		case 2:
 		{
 			cell.backgroundColor=[UIColor blueColor];
 			cell.textLabel.textColor=[UIColor whiteColor];
@@ -167,14 +169,14 @@
 			return 1;
 		case 1:
 			return 3;
-		case 2:
-			return 3;
+		//case 2:
+		//	return 3;
 		default:
 			return 1;
 	}
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	switch (indexPath.section) {
 		 
@@ -195,7 +197,7 @@
 		}
 			break;
 		
-		case 2:
+		/*case 2:
 		{
 			switch(indexPath.row)
 			{
@@ -211,13 +213,14 @@
 			}
 		}
 			
-			break;
-		case 3:
+			break;*/
+		//case 3:
+		case 2:
 			[self startSlideshow:nil];
 			break;
 		 
 	}
-	[tableView reloadData];
+	[theTableView reloadData];
 }
 
 

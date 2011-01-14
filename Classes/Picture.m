@@ -32,14 +32,14 @@
 	}
 }
 
-- (void) setImageURL:(NSString *)url
+- (void) setImageURL:(NSString *)theUrl
 {
-	asyncImage.url=url;
+	asyncImage.url=theUrl;
 }
 
-- (void) setThumbnailURL:(NSString *)url
+- (void) setThumbnailURL:(NSString *)theUrl
 {
-	asyncThumbnail.url=url;
+	asyncThumbnail.url=theUrl;
 }
 
 - (NSString*) thumbnailURL

@@ -42,8 +42,10 @@
 	<key>UILaunchImageFile~iphone</key>
 	<string>iPhoneDefault.png</string>
 	<key>UIApplicationExitsOnSuspend</key>
-	<true/>
+	<false/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 </dict>
 </plist>
