@@ -23,12 +23,13 @@
 #define kMyAlbumsIndex 0
 #define kMyListsIndex 1
 #define kMyFriendsIndex 2
+#import "PLNavigationController.h"
 
 @implementation PixelLifeAppDelegate_iPad
 
 - (void)setupWindow
 {	
-	navController=[[UINavigationController alloc] init] ;
+	navController=[[PLNavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
 	self.window.backgroundColor=[UIColor blackColor];
@@ -88,6 +89,7 @@
 	NSLog(@"showAllFriends");
 	if(![currentAccount isSessionValid])
 	{
+		[self showNoFriends];
 		[self login];
 		return;
 	}
@@ -142,7 +144,7 @@
 	
 	UIBarButtonItem * b;
 	
-	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettingsActionSheet:)];
+	b=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_users.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showSettingsActionSheet:)];
 	[toolItems addObject:b];
 	[b release];
 	
@@ -172,18 +174,24 @@
 	FacebookAccountsViewController * accountsView=[[FacebookAccountsViewController alloc] initWithAccounts:facebookAccounts];
 	accountsView.modalPresentationStyle=UIModalPresentationFormSheet;
 	accountsView.delegate=self;
+	[navController presentModalViewController:accountsView animated:YES];
 	
-	[navController.topViewController presentModalViewController:accountsView animated:YES];
+	//[navController.topViewController presentModalViewController:accountsView animated:YES];
 	
 	[accountsView release];
 }
 
 - (void) showSettingsActionSheet:(id)sender
 {
-	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear cached images" otherButtonTitles:@"Facebook accounts",@"Logout",nil];
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:@"Manage Accounts" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook accounts",nil];
 	actionSheet.tag=kActionSheetSettings;
 	[actionSheet showFromBarButtonItem:sender animated:YES];
 	[actionSheet release];
+}
+
+- (void) isPhone
+{
+	return NO;
 }
 
 - (void)dealloc 

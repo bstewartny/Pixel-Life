@@ -6,13 +6,14 @@
 #import "AlbumsTableViewController.h"
 #import "FriendListsTableViewController.h"
 #import "FacebookFriendListsFeed.h"
+#import "PLNavigationController.h"
 
 @implementation PixelLifeAppDelegate_iPhone
 @synthesize tabBar;
 
 - (void)setupWindow
 {
-	navController=[[UINavigationController alloc] init] ;
+	navController=[[PLNavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
 	
 	tabBar=[[UITabBar alloc] init];
@@ -53,9 +54,14 @@
 	[self showAllFriends];
 }
 
+- (void) isPhone
+{
+	return YES;
+}
+
 - (void) showSettingsActionSheet
 {
-	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear cached images" otherButtonTitles:@"Facebook accounts",@"Logout",nil];
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:@"Manage Accounts" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook accounts",nil];
 	actionSheet.tag=kActionSheetSettings;
 	[actionSheet showFromTabBar:tabBar];
 	[actionSheet release];

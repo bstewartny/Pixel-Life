@@ -13,11 +13,11 @@
 	imageView.frame =CGRectMake(5,5, rect.size.width-10, rect.size.height-10);
 	imageView.clipsToBounds = YES;
 	imageView.contentMode = UIViewContentModeScaleAspectFill;
-	imageView.layer.borderColor=[UIColor whiteColor].CGColor;
+	imageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
 	imageView.layer.borderWidth=4;
-	imageView.layer.shadowPath=[UIBezierPath bezierPathWithRect:imageView.bounds].CGPath;
-	imageView.layer.shadowOpacity=0.5;
-	imageView.layer.shadowColor=[UIColor blackColor].CGColor;
+	//imageView.layer.shadowPath=[UIBezierPath bezierPathWithRect:imageView.bounds].CGPath;
+	//imageView.layer.shadowOpacity=0.5;
+	//imageView.layer.shadowColor=[UIColor grayColor].CGColor;
 	
 	nameView=[[UIView alloc] initWithFrame:CGRectMake(0,rect.size.height-55,rect.size.width,55)];
 	nameView.backgroundColor=[UIColor blackColor];

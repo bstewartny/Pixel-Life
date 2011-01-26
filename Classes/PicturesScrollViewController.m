@@ -60,6 +60,15 @@
 			[infoView release];
 			infoView=nil;
 		}
+		else 
+		{
+			//infoView.layer.borderColor=[UIColor lightGrayColor].CGColor;
+			//infoView.layer.borderWidth=1;
+			
+			infoImageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
+			infoImageView.layer.borderWidth=4;
+		}
+
 		
 		if(!phoneMode)
 		{
@@ -743,7 +752,28 @@
 	
 	if(!phoneMode)
 	{
-		infoNameLabel.text=currentPicture.name;
+		if([currentPicture.name length]>0)
+		{
+			CGSize size1=[currentPicture.name sizeWithFont:infoNameLabel.font];
+			
+			CGFloat line_height=size1.height;
+			
+			CGSize size=[currentPicture.name sizeWithFont:infoNameLabel.font constrainedToSize:CGSizeMake(infoNameLabel.frame.size.width,20000.0)];
+			
+			infoNameLabel.numberOfLines= ceil(size.height / line_height);
+			
+			CGRect f=infoNameLabel.frame;
+			
+			f.size.height=size.height+2;
+			
+			infoNameLabel.frame=f;
+		
+			infoNameLabel.text=currentPicture.name;
+		}
+		else 
+		{
+			infoNameLabel.text=nil;
+		}
 		
 		infoDateLabel.text=[format stringFromDate:currentPicture.created_date];
 		

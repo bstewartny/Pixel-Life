@@ -7,6 +7,7 @@
 #import "Reachability.h"
 #import "FacebookAccount.h"
 #import "FeedViewController.h"
+#import "PLNavigationController.h"
 
 @implementation PixelLifeAppDelegate
 
@@ -52,6 +53,11 @@
 	{
 		if(buttonIndex==0)
 		{
+			// facebook accounts
+			[self showAccounts];
+		}
+		/*if(buttonIndex==0)
+		{
 			// clear cache
 			[self clearCache];
 		}
@@ -64,8 +70,14 @@
 		{
 			// logout
 			[self logout];
-		}
+		}*/
 	}
+}
+
+
+- (void) isPhone
+{
+	return NO;
 }
 
 - (void) setupWindow

@@ -151,6 +151,7 @@
 		B0F9FD3512BBF10000CF2F74 /* BlankToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F9FD3412BBF10000CF2F74 /* BlankToolbar.m */; };
 		B0F9FE2F12BDA07100CF2F74 /* AddCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F9FE2E12BDA07100CF2F74 /* AddCommentTableViewCell.m */; };
 		B0F9FE3112BDA10E00CF2F74 /* AddCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F9FE3012BDA10E00CF2F74 /* AddCommentTableViewCell.xib */; };
+		B0FAB72112EFCB26001B984C /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FAB72012EFCB26001B984C /* PLNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -403,6 +404,8 @@
 		B0F9FE2D12BDA07100CF2F74 /* AddCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentTableViewCell.h; sourceTree = "<group>"; };
 		B0F9FE2E12BDA07100CF2F74 /* AddCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentTableViewCell.m; sourceTree = "<group>"; };
 		B0F9FE3012BDA10E00CF2F74 /* AddCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentTableViewCell.xib; sourceTree = "<group>"; };
+		B0FAB71F12EFCB26001B984C /* PLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLNavigationController.h; sourceTree = "<group>"; };
+		B0FAB72012EFCB26001B984C /* PLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -644,6 +647,8 @@
 				B0DDD22312DB939A00BBD28B /* PictureTableViewController.m */,
 				B0DDD23512DB973F00BBD28B /* FriendListsTableViewController.h */,
 				B0DDD23612DB973F00BBD28B /* FriendListsTableViewController.m */,
+				B0FAB71F12EFCB26001B984C /* PLNavigationController.h */,
+				B0FAB72012EFCB26001B984C /* PLNavigationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				B0DDD22412DB939A00BBD28B /* PictureTableViewController.m in Sources */,
 				B0DDD23712DB973F00BBD28B /* FriendListsTableViewController.m in Sources */,
 				B052EFA112DF8DFE00826891 /* PictureImageScrollView.m in Sources */,
+				B0FAB72112EFCB26001B984C /* PLNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,7 +1068,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "127245F5-F3FF-4367-8423-852BD5C685E9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A4B26EEA-4E1B-45F4-BD18-ABC9193F243C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

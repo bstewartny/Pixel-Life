@@ -33,10 +33,12 @@
 
 
 
-
+@class PLNavigationController;
 @interface PixelLifeAppDelegate : NSObject <UIApplicationDelegate,UIActionSheetDelegate> 
 {
-	UINavigationController * navController;
+	PLNavigationController * navController;
+	
+	//UINavigationController * navController;
     UIWindow *window;
 	NSOperationQueue * downloadQueue;
 	ImageCache * imageCache;
@@ -46,14 +48,14 @@
 
 + (PixelLifeAppDelegate*) sharedAppDelegate;
 
-@property (nonatomic, retain) IBOutlet UINavigationController * navController;
+@property (nonatomic, retain) IBOutlet PLNavigationController * navController;
 @property (nonatomic, retain) NSOperationQueue *downloadQueue;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) ImageCache * imageCache;
 @property (nonatomic, retain) NSMutableArray * facebookAccounts;
 @property (nonatomic, retain) FacebookAccount * currentAccount;
 
-
+- (BOOL) isPhone;
 - (void) sendComment:(NSString*)comment uid:(NSString*)uid;
 - (void) likeGraphObject:(NSString*)uid;
 
