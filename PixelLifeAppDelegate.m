@@ -75,7 +75,7 @@
 }
 
 
-- (void) isPhone
+- (BOOL) isPhone
 {
 	return NO;
 }

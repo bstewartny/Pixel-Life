@@ -189,8 +189,9 @@
 	[actionSheet release];
 }
 
-- (void) isPhone
+- (BOOL) isPhone
 {
+	NSLog(@"ipad isphone - return NO");
 	return NO;
 }
 

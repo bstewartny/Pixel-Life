@@ -3,7 +3,7 @@
 #import "FriendList.h"
 #import "PictureTableViewCell.h"
 #import "Picture.h"
-
+#import "Reachability.h"
 @implementation FriendListsTableViewController
 
 - (id)initWithFeed:(Feed*)feed title:(NSString*)title
@@ -14,7 +14,20 @@
     }
     return self;
 }
-
+- (NSString*) noDataMessage
+{
+	
+	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
+    NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
+    if (remoteHostStatus == NotReachable)
+    {
+		return @"Facebook is unreachable.";
+	}
+	else 
+	{
+		return @"Create lists on Facebook.";
+	}
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	PictureTableViewCell * cell = [[[PictureTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];

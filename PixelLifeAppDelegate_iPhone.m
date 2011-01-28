@@ -54,7 +54,7 @@
 	[self showAllFriends];
 }
 
-- (void) isPhone
+- (BOOL) isPhone
 {
 	return YES;
 }
