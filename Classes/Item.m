@@ -9,6 +9,19 @@
 @synthesize created_date;
 @synthesize updated_date;
 
+
+- (NSComparisonResult)compare:(Item *)p
+{
+	if(p.updated_date==nil || self.updated_date==nil)
+	{
+		return [[p created_date] compare:[self created_date]];
+	}
+	else 
+	{
+		return [[p updated_date] compare:[self updated_date]];
+	}
+}
+
 - (void) dealloc
 {
 	[uid release];

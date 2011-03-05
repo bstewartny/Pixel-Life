@@ -4,6 +4,7 @@
 #import "PixelLifeAppDelegate.h"
 #import "Reachability.h"
 #import "FacebookAccountInfoFeed.h"
+#import "Instagram.h"
 
 @implementation FacebookAccountsViewController
 @synthesize accounts;
@@ -46,6 +47,14 @@
 	for (NSHTTPCookie* cookie in facebookCookies) {
 		[cookies deleteCookie:cookie];
 	}
+	
+	
+	/*Instagram * instagram=[[Instagram alloc] init];
+	
+	[instagram login];
+	*/
+	
+	
 	
 	// pop up facebook login screen
 	facebook.accessToken=nil;

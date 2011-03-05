@@ -124,6 +124,10 @@
 		[picture release];
 	}
 	
+	[pictures sortUsingSelector:@selector(compare:)];
+	
+	
+	
 	return pictures;	
 }
 

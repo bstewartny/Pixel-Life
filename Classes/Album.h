@@ -19,6 +19,5 @@
 @property(nonatomic) NSInteger count;
 @property(nonatomic) NSInteger commentCount;
 
-
-
+ 
 @end

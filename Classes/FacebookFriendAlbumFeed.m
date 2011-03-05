@@ -100,6 +100,9 @@
 		[album release];
 	}
 	
+	// sort by date in desc order...
+	[albums sortUsingSelector:@selector(compare:)];
+	
 	return albums;	
 }
 

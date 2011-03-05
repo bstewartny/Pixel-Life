@@ -9,7 +9,6 @@
 @synthesize count;
 @synthesize commentCount;
 
-
 - (void) dealloc
 {
 	[picture release];

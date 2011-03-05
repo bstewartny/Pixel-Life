@@ -17,5 +17,6 @@
 @property(nonatomic,retain) NSDate * created_date;
 @property(nonatomic,retain) NSDate * updated_date;
 
+- (NSComparisonResult)compare:(Item *)p;
 
 @end

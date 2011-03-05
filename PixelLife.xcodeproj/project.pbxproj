@@ -117,6 +117,11 @@
 		B0A8188212B076890096162D /* AlbumGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8188112B076890096162D /* AlbumGridViewCell.m */; };
 		B0B3FD3812D2660E00FD625D /* SlideshowOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B3FD3712D2660E00FD625D /* SlideshowOptionsViewController.m */; };
 		B0B3FD3C12D26B9B00FD625D /* SlideshowOptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0B3FD3B12D26B9B00FD625D /* SlideshowOptionsView.xib */; };
+		B0B4675B1321C68200FAE325 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B4675A1321C68200FAE325 /* Instagram.m */; };
+		B0B4675E1321C8D200FAE325 /* IGLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B4675D1321C8D200FAE325 /* IGLoginDialog.m */; };
+		B0B4677C1322C35400FAE325 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B467791322C35400FAE325 /* Icon-iPad.png */; };
+		B0B4677D1322C35400FAE325 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4677A1322C35400FAE325 /* iTunesArtwork.png */; };
+		B0B4677E1322C35400FAE325 /* Icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4677B1322C35400FAE325 /* Icon4.png */; };
 		B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */; };
 		B0DDD22412DB939A00BBD28B /* PictureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DDD22312DB939A00BBD28B /* PictureTableViewController.m */; };
 		B0DDD22912DB95BE00BBD28B /* AlbumsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DDD22812DB95BE00BBD28B /* AlbumsTableView.xib */; };
@@ -158,7 +163,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* PixelLifeAppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PixelLifeAppDelegate_iPad.h; path = Classes/PixelLifeAppDelegate_iPad.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* PixelLifeAppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PixelLifeAppDelegate_iPad.m; path = Classes/PixelLifeAppDelegate_iPad.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* PixelLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Pixel Life.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pixel Life.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoExplorerViewController.xib; sourceTree = "<group>"; };
@@ -355,6 +360,13 @@
 		B0B3FD3612D2660E00FD625D /* SlideshowOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideshowOptionsViewController.h; sourceTree = "<group>"; };
 		B0B3FD3712D2660E00FD625D /* SlideshowOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideshowOptionsViewController.m; sourceTree = "<group>"; };
 		B0B3FD3B12D26B9B00FD625D /* SlideshowOptionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideshowOptionsView.xib; sourceTree = "<group>"; };
+		B0B467591321C68200FAE325 /* Instagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instagram.h; sourceTree = "<group>"; };
+		B0B4675A1321C68200FAE325 /* Instagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instagram.m; sourceTree = "<group>"; };
+		B0B4675C1321C8D200FAE325 /* IGLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGLoginDialog.h; sourceTree = "<group>"; };
+		B0B4675D1321C8D200FAE325 /* IGLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGLoginDialog.m; sourceTree = "<group>"; };
+		B0B467791322C35400FAE325 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
+		B0B4677A1322C35400FAE325 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		B0B4677B1322C35400FAE325 /* Icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon4.png; sourceTree = "<group>"; };
 		B0B8A87B12C382ED00F1924C /* AsyncImageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageDelegate.h; sourceTree = "<group>"; };
 		B0DACFE612CA790100CBE1B7 /* FriendPictureImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPictureImageView.h; sourceTree = "<group>"; };
 		B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendPictureImageView.m; sourceTree = "<group>"; };
@@ -441,7 +453,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* PixelLife.app */,
+				1D6058910D05DD3D006BFB54 /* Pixel Life.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -725,6 +737,7 @@
 		B087D84412AA8B5A008259E9 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				B0B467581321C65200FAE325 /* Instagram */,
 				B04828D812AD654900F61433 /* FBConnect */,
 				B04828D712AD653100F61433 /* JSON */,
 				B03C72C412AAF1000055AD00 /* AQGridView */,
@@ -799,9 +812,23 @@
 			name = "AppDelegate-Shared";
 			sourceTree = "<group>";
 		};
+		B0B467581321C65200FAE325 /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				B0B467591321C68200FAE325 /* Instagram.h */,
+				B0B4675A1321C68200FAE325 /* Instagram.m */,
+				B0B4675C1321C8D200FAE325 /* IGLoginDialog.h */,
+				B0B4675D1321C8D200FAE325 /* IGLoginDialog.m */,
+			);
+			path = Instagram;
+			sourceTree = "<group>";
+		};
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B0B467791322C35400FAE325 /* Icon-iPad.png */,
+				B0B4677A1322C35400FAE325 /* iTunesArtwork.png */,
+				B0B4677B1322C35400FAE325 /* Icon4.png */,
 				B052EF5512DF7D5600826891 /* iPhoneDefault.png */,
 				B0DDD28212DBA3E300BBD28B /* icon_list_bullets.png */,
 				B0DDD27E12DBA34B00BBD28B /* icon_user.png */,
@@ -833,9 +860,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* PixelLife */ = {
+		1D6058900D05DD3D006BFB54 /* Pixel Life */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PixelLife" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Pixel Life" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -845,9 +872,9 @@
 			);
 			dependencies = (
 			);
-			name = PixelLife;
+			name = "Pixel Life";
 			productName = PhotoExplorer;
-			productReference = 1D6058910D05DD3D006BFB54 /* PixelLife.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Pixel Life.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -869,7 +896,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* PixelLife */,
+				1D6058900D05DD3D006BFB54 /* Pixel Life */,
 			);
 		};
 /* End PBXProject section */
@@ -923,6 +950,9 @@
 				B0DDD28312DBA3E300BBD28B /* icon_list_bullets.png in Resources */,
 				B0DDD2EF12DBABF900BBD28B /* PhoneAlbumGridView.xib in Resources */,
 				B052EF5612DF7D5600826891 /* iPhoneDefault.png in Resources */,
+				B0B4677C1322C35400FAE325 /* Icon-iPad.png in Resources */,
+				B0B4677D1322C35400FAE325 /* iTunesArtwork.png in Resources */,
+				B0B4677E1322C35400FAE325 /* Icon4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,6 +1055,8 @@
 				B0DDD23712DB973F00BBD28B /* FriendListsTableViewController.m in Sources */,
 				B052EFA112DF8DFE00826891 /* PictureImageScrollView.m in Sources */,
 				B0FAB72112EFCB26001B984C /* PLNavigationController.m in Sources */,
+				B0B4675B1321C68200FAE325 /* Instagram.m in Sources */,
+				B0B4675E1321C8D200FAE325 /* IGLoginDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,7 +1073,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PixelLife_Prefix.pch;
 				INFOPLIST_FILE = "PixelLife-Info.plist";
-				PRODUCT_NAME = PixelLife;
+				PRODUCT_NAME = "Pixel Life";
 			};
 			name = Debug;
 		};
@@ -1053,7 +1085,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PixelLife_Prefix.pch;
 				INFOPLIST_FILE = "PixelLife-Info.plist";
-				PRODUCT_NAME = PixelLife;
+				PRODUCT_NAME = "Pixel Life";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1094,7 +1126,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PixelLife" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Pixel Life" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
