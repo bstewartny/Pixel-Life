@@ -7,10 +7,12 @@
 #import "FriendListsTableViewController.h"
 #import "FacebookFriendListsFeed.h"
 #import "PLNavigationController.h"
+#import "AboutViewController.h"
 
 @implementation PixelLifeAppDelegate_iPhone
 @synthesize tabBar;
 
+ 
 - (void)setupWindow
 {
 	navController=[[PLNavigationController alloc] init] ;
@@ -61,7 +63,7 @@
 
 - (void) showSettingsActionSheet
 {
-	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:@"Manage Accounts" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook accounts",nil];
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:@"Pixel Life" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Accounts",@"About",nil];
 	actionSheet.tag=kActionSheetSettings;
 	[actionSheet showFromTabBar:tabBar];
 	[actionSheet release];
@@ -104,7 +106,22 @@
 	
 	[accountsView release];
 }
-
+- (void) showAbout
+{
+	NSLog(@"showAbout");
+	
+	
+	
+	AboutViewController * aboutView=[[AboutViewController alloc] init];
+	aboutView.modalPresentationStyle=UIModalPresentationFullScreen;
+	
+	 
+	[navController.topViewController presentModalViewController:aboutView animated:YES];
+	
+	 
+	[aboutView release];
+	
+}
 - (void) showNoFriends
 {
 	NSLog(@"showNoFriends");

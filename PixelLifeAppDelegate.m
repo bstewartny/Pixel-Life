@@ -8,6 +8,7 @@
 #import "FacebookAccount.h"
 #import "FeedViewController.h"
 #import "PLNavigationController.h"
+#import "Appirater.h"
 
 @implementation PixelLifeAppDelegate
 
@@ -42,9 +43,22 @@
 	
 	[self setupWindow];
 	
+	
+	/*
+	@try {
+		[Appirater appLaunched];
+		
+	}
+	@catch (NSException * e) {
+		
+	}
+	@finally {
+		
+	}
+	*/
 	return YES;
 }
-
+ 
 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -55,6 +69,10 @@
 		{
 			// facebook accounts
 			[self showAccounts];
+		}
+		if(buttonIndex==1)
+		{
+			[self showAbout];
 		}
 		/*if(buttonIndex==0)
 		{
@@ -97,7 +115,9 @@
 - (void) showMyAlbums
 {
 }
-
+- (void) showAbout
+{
+}
 - (void) showAccounts
 {
 }
@@ -195,6 +215,16 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+	@try {
+		[Appirater appEnteredForeground:YES];
+		
+	}
+	@catch (NSException * e) {
+		
+	}
+	@finally {
+		
+	}
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

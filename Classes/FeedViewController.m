@@ -19,7 +19,7 @@
 		
 		CGRect bounds=[[UIScreen mainScreen] bounds];
 		
-		spinningWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(bounds.size.width/2-10, bounds.size.height/2-10, 20.0, 20.0)];
+		spinningWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(bounds.size.width/2-12, (bounds.size.height-20)/2-12, 25.0, 25.0)];
 		spinningWheel.contentMode=UIViewContentModeCenter;
 		spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 		spinningWheel.autoresizingMask=
@@ -176,6 +176,7 @@
 {
 	if(feed)
 	{
+		spinningWheel.center=self.view.center;
 		[spinningWheel startAnimating];
 		[self.view bringSubviewToFront:spinningWheel];
 	}
@@ -215,14 +216,14 @@
 {
     return YES;
 }
- 
+ /*
 - (void) didReceiveMemoryWarning
 {
 	NSLog(@"didReceiveMemoryWarning...");
 	UIAlertView * alert=[[UIAlertView alloc] initWithTitle:@"memory warning" message:@"didReceiveMemoryWarning" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
-}
+}*/
 
 - (void)dealloc {
 	[items release];

@@ -24,6 +24,7 @@
 #define kMyListsIndex 1
 #define kMyFriendsIndex 2
 #import "PLNavigationController.h"
+#import "AboutViewController.h"
 
 @implementation PixelLifeAppDelegate_iPad
 
@@ -31,6 +32,7 @@
 {	
 	navController=[[PLNavigationController alloc] init] ;
 	navController.navigationBar.barStyle=UIBarStyleBlack;
+	navController.delegate=navController;
 	
 	self.window.backgroundColor=[UIColor blackColor];
 		
@@ -122,20 +124,32 @@
 
 - (void) addSegmentedControlTitleView:(UIViewController*)controller withSelectedIndex:(NSInteger)index
 {
-	UISegmentedControl * sc=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Albums",@"My Lists",@"My Friends",nil]];\
+	UISegmentedControl * sc=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Albums",@"My Lists",@"My Friends",nil]];
 	sc.segmentedControlStyle=UISegmentedControlStyleBar;
 	[sc sizeToFit];
+	
+	//UIView * wrapper=[[UIView alloc] initWithFrame:CGRectMake(0, 0, sc.frame.size.width, sc.frame.size.height)];
+	//[wrapper addSubview:sc];
+	//wrapper.autoresizingMask=UIViewAutoresizingNone;
+	
+	
 	sc.selectedSegmentIndex=index;
+	//sc.autoresizingMask=UIViewAutoresizingNone;
+	
 	[sc addTarget:self
 		action:@selector(segmentedControlValueChanged:)
 		forControlEvents:UIControlEventValueChanged];
+	
 	controller.navigationItem.titleView=sc;
+	
+	//[wrapper release];
 	[sc release];
 }
 
 - (void) addSettingsButtonToController:(UIViewController*)controller
 {
 	BlankToolbar * tools=[[BlankToolbar alloc] initWithFrame:CGRectMake(0, 0, 150, 44.01)];
+	tools.autoresizingMask=UIViewAutoresizingNone;
 	
 	tools.backgroundColor=[UIColor clearColor];
 	tools.opaque=NO;
@@ -180,10 +194,21 @@
 	
 	[accountsView release];
 }
+- (void) showAbout
+{
+	NSLog(@"showAbout");
 
+	AboutViewController * aboutView=[[AboutViewController alloc] init];
+	aboutView.modalPresentationStyle=UIModalPresentationFormSheet;
+
+	[navController presentModalViewController:aboutView animated:YES];
+	
+	[aboutView release];
+	
+}
 - (void) showSettingsActionSheet:(id)sender
 {
-	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:@"Manage Accounts" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook accounts",nil];
+	UIActionSheet * actionSheet=[[UIActionSheet alloc] initWithTitle:@"Pixel Life" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Accounts",@"About",nil];
 	actionSheet.tag=kActionSheetSettings;
 	[actionSheet showFromBarButtonItem:sender animated:YES];
 	[actionSheet release];

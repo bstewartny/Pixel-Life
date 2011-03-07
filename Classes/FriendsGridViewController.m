@@ -70,6 +70,7 @@
 	searchBar.backgroundColor=[UIColor clearColor];
 	searchBar.opaque=NO;
 	searchBar.barStyle=UIBarStyleBlack;
+	//searchBar.autoresizingMask=UIViewAutoresizingNone;
 	
 	searchController=[[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
 	searchController.delegate=self;
@@ -79,15 +80,35 @@
 	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:searchBar] autorelease];
 }
 
-//- (void) viewWillAppear:(BOOL)animated
-//{
+- (void) viewWillAppear:(BOOL)animated
+{
 	
 	// yet another cocoa hack in order to work around some sdk bug... need to reset frame after device was rotated in
 	// another view, otherwise UISearchDisplayController makes the search box too big...
+	CGRect f=searchBar.frame;
+	if(f.size.width>150)
+	{
+		f.size.width=150;
+		searchBar.frame=f;
+	}
 	//searchBar.frame=CGRectMake(0,5,150,30);
 	
-	//[super viewWillAppear:animated];
-//}
+	if([self.navigationItem.titleView isKindOfClass:[UISegmentedControl class]])
+	{
+		UISegmentedControl * sc=[(UISegmentedControl*)self.navigationItem.titleView retain];
+		[sc sizeToFit];
+		self.navigationItem.titleView=nil;
+		self.navigationItem.titleView=sc;
+		[sc release];
+		
+		/*CGRect frame=self.navigationItem.titleView.frame;
+		 frame.size.width=300;
+		 self.navigationItem.titleView.frame=frame;*/
+		
+	}
+	
+	[super viewWillAppear:animated];
+}
 
 - (void)filterContentForSearchText:(NSString*)searchText
 {

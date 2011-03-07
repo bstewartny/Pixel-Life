@@ -4,7 +4,7 @@
 #import "Feed.h"
 #import "Friend.h"
 #import "Album.h"
-#import "PictureTableViewCell.h"
+#import "AlbumTableViewCell.h"
 #import "Picture.h"
 #import "PhoneAlbumGridViewController.h"
 
@@ -35,7 +35,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	PictureTableViewCell * cell = [[[PictureTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
+	AlbumTableViewCell * cell = [[[AlbumTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
 	
 	cell.selectionStyle=UITableViewCellSelectionStyleNone;
 	cell.textLabel.textColor=[UIColor whiteColor];

@@ -212,7 +212,7 @@
 	{
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
 		//cell.accessoryType = UITableViewCellAccessoryCheckmark;
-		cell.selectionStyle=UITableViewCellSelectionStyleNone;
+		
 	}
 	
 	if(indexPath.row < [accounts count])
@@ -233,12 +233,15 @@
 		//cell.editingStyle=UITableViewCellEditingStyleDelete;
 		cell.textLabel.textColor=[UIColor blackColor];
 		cell.textLabel.text=account.name;
+		cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+		//cell.imageView.image=account.picture;
 	}
 	else 
 	{
 		//cell.editingStyle=UITableViewCellEditingStyleNone;
 		cell.textLabel.textColor=[UIColor grayColor];
 		cell.textLabel.text=@"Tap here to add an account...";
+		cell.selectionStyle=UITableViewCellSelectionStyleNone;
 	}
 
 	return cell;

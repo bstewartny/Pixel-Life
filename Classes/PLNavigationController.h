@@ -3,7 +3,9 @@
 
 
 @interface PLNavigationController : UINavigationController {
-
+	id leftItem;
+	id titleItem;
+	id rightItem;
 }
 
 @end

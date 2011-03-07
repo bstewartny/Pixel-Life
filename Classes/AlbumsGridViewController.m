@@ -31,7 +31,26 @@
 	return @"No shared albums found on Facebook for this user.";
 }
 
-
+- (void) viewWillAppear:(BOOL)animated
+{
+	
+	
+	if([self.navigationItem.titleView isKindOfClass:[UISegmentedControl class]])
+	{
+		UISegmentedControl * sc=[(UISegmentedControl*)self.navigationItem.titleView retain];
+		[sc sizeToFit];
+		self.navigationItem.titleView=nil;
+		self.navigationItem.titleView=sc;
+		[sc release];
+		
+		/*CGRect frame=self.navigationItem.titleView.frame;
+		frame.size.width=300;
+		self.navigationItem.titleView.frame=frame;*/
+	
+	}
+	
+	[super viewWillAppear:animated];
+}
 - (AQGridViewCell *) gridView: (AQGridView *) aGridView cellForItemAtIndex: (NSUInteger) index
 {
     static NSString * cellIdentifier = @"CellIdentifier";

@@ -35,6 +35,26 @@
 	return ( CGSizeMake(170.0, 170.0) );
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+	
+	
+ if([self.navigationItem.titleView isKindOfClass:[UISegmentedControl class]])
+ {
+ UISegmentedControl * sc=[(UISegmentedControl*)self.navigationItem.titleView retain];
+ [sc sizeToFit];
+ self.navigationItem.titleView=nil;
+ self.navigationItem.titleView=sc;
+ [sc release];
+ 
+ /*CGRect frame=self.navigationItem.titleView.frame;
+ frame.size.width=300;
+ self.navigationItem.titleView.frame=frame;*/
+
+}
+	
+	[super viewWillAppear:animated];
+}
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
 {
 	if(index<0 || index>([items count]-1))

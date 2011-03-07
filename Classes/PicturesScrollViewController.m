@@ -855,14 +855,14 @@
 		}
 	}
 }
-
+/*
 - (void) didReceiveMemoryWarning
 {
 	UIAlertView * alert=[[UIAlertView alloc] initWithTitle:@"memory warning" message:@"didReceiveMemoryWarning" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
-		
+*/		
 - (void) startSlideshowWithDelaySeconds:(NSInteger)optDelaySeconds andSortOrder:(SlideshowSortOrder)optSortOrder fillScreen:(BOOL)optFillScreen	
 {	
 	delaySeconds=optDelaySeconds;

@@ -4,7 +4,7 @@
 
 - (NSString*) graphPath
 {
-	return @"me?fields=id,name,first_name,last_name,picture";
+	return @"me?fields=id,name";
 }
 
 - (NSArray*) getItemsFromJson:(NSDictionary*)json
@@ -15,6 +15,7 @@
 		return nil;
 	}
 	
+	account.uid=[json objectForKey:@"id"];
 	account.name=[json objectForKey:@"name"];
 	
 	return [NSMutableArray arrayWithObject:account];
