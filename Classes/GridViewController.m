@@ -73,6 +73,8 @@
  
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView; 
 {
+	NSLog(@"scrollViewDidEndDecelerating");
+	NSLog(@"calling loadvisiblecells");
     // Method is called when the decelerating comes to a stop.
     // Pass visible cells to the cell loading function. If possible change 
     // scrollView to a pointer to your table cell to avoid compiler warnings
@@ -81,12 +83,17 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 {
-    if (!decelerate) 
-    {
+    //if (!decelerate) 
+    //{
+	//NSLog(@"scrollViewDidEndDragging");
+	//NSLog(@"calling loadvisiblecells");
         [self loadVisibleCells]; 
-    }
+    //}
 }
-
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+	//[self loadVisibleCells];
+///}
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
     return ( CGSizeMake(168.0, 168.0) );

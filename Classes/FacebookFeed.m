@@ -22,14 +22,37 @@
 	[enUS release];
 	
 	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];//2010-11-30T21:05:41+0000
+		
+	toStringFormatter=[[NSDateFormatter alloc] init];
+	[toStringFormatter setDateFormat:@"MMM d, yyyy"];
 	
+
 	return self;
 }
 
 - (NSDate*) dateFromString:(NSString*)date
 {
-	//NSLog(@"dateFromString:%@",date);
-	return [formatter dateFromString:date];
+	if(date)
+	{
+		return [formatter dateFromString:date];
+	}
+	else 
+	{
+		return nil;
+	}
+
+}
+
+- (NSString*) stringFromDate:(NSDate*)date
+{
+	if(date)
+	{
+		return [toStringFormatter stringFromDate:date];
+	}
+	else 
+	{
+		return nil;
+	}
 }
 
 - (NSString*) createGraphUrl:(NSString*)path
@@ -108,6 +131,7 @@
 {
 	[account release];
 	[formatter release];
+	[toStringFormatter release];
 	[super dealloc];
 }
 

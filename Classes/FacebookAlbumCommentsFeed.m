@@ -45,7 +45,7 @@
 		comment.name=[d objectForKey:@"message"];
 		comment.message=[d objectForKey:@"message"];
 		comment.created_date=[self dateFromString:[d objectForKey:@"created_time"]];
-		comment.updated_date=comment.created_date;
+		comment.short_created_date=[self stringFromDate:comment.created_date];
 		
 		User * user=[[User alloc] init];
 		

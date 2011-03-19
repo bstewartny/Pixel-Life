@@ -61,8 +61,17 @@
 		album.uid=[d objectForKey:@"id"];
 		album.name=[d objectForKey:@"name"];
 		album.url=[d objectForKey:@"link"];
-		album.created_date=[self dateFromString:[d objectForKey:@"created_time"]];
-		album.updated_date=[self dateFromString:[d objectForKey:@"updated_time"]];
+		
+		NSDate * updated_date=[self dateFromString:[d objectForKey:@"updated_time"]];
+		if(updated_date)
+		{
+			album.created_date=updated_date;
+		}
+		else {
+			album.created_date=[self dateFromString:[d objectForKey:@"created_time"]];
+		}
+		
+		album.short_created_date=[self stringFromDate:album.created_date];
 		
 		album.count=[[d objectForKey:@"count"] intValue];
 		
@@ -82,10 +91,9 @@
 		picture.name=album.name;
 		
 		picture.description=[NSString stringWithFormat:@"%d photos",album.count];
-		//picture.user=album.user;
 		picture.created_date=album.created_date;
-		picture.updated_date=album.updated_date;
-		
+		picture.short_created_date=album.short_created_date;
+									
 		album.picture=picture;
 		
 		FacebookAlbumPictureFeed * pictureFeed=[[FacebookAlbumPictureFeed alloc] initWithFacebookAccount:account album:album];

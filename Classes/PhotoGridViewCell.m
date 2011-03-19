@@ -14,9 +14,6 @@
     if ( self == nil )
         return nil;
     
-	format = [[NSDateFormatter alloc] init];
-	[format setDateFormat:@"MMM d, yyyy"];
-	
     return self;
 }
 
@@ -103,72 +100,6 @@
 	imageView.image = image;
 	[self setNeedsLayout];
 }
-
-- (NSString*) shortDisplayDate:(NSDate*)date
-{
-	//NSDate *todayDate = [NSDate date];
-	 
-	//NSDateComponents * today_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:todayDate];
-	
-	//NSDateComponents * item_components=[gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  |NSHourCalendarUnit  |NSMinuteCalendarUnit) fromDate:date];
-	
-	NSString * display;
-	
-	/*if(([today_components day] == [item_components day]) &&
-	   ([today_components month] == [item_components month]) &&
-	   ([today_components year] == [item_components year]))
-	{
-		if([today_components hour]==[item_components hour])
-		{
-			int minutes=([today_components minute] - [item_components minute]);
-			
-			if(minutes<2)
-			{
-				display=@"1 minute ago";
-			}
-			else 
-			{
-				display=[NSString stringWithFormat:@"%d minutes ago"];
-			}
-		}
-		else 
-		{
-			int hours=([today_components hour] - [item_components hour]);
-			if(hours<2)
-			{
-				display=@"1 hour ago";
-			}
-			else 
-			{
-				display=[NSString stringWithFormat:@"%d hours ago"];
-			}
-		}
-	}
-	else 
-	{*/
-		// return just date Mmm dd
-		display = [format stringFromDate:date];
-	//}
-	
-	return display;
-}
-
-- (NSString*) shortDisplayDateWithPicture:(Picture*)pic
-{
-	if(pic.updated_date!=nil)
-	{
-		return [self shortDisplayDate:pic.updated_date];
-	}
-	else 
-	{
-		if(pic.created_date!=nil)
-		{
-			return [self shortDisplayDate:pic.created_date];
-		}
-	}
-	return nil;
-}
-
 - (void)setPictureLabels:(Picture *)newPicture
 {
 	// set any display labels,e tc.
@@ -183,11 +114,11 @@
 		if([newPicture.description length]>0)
 		{
 			label2.text=newPicture.description;
-			label3.text=[self shortDisplayDateWithPicture:newPicture];
+			label3.text=newPicture.short_created_date;
 		}
 		else 
 		{
-			label2.text=[self shortDisplayDateWithPicture:newPicture];
+			label2.text=newPicture.short_created_date;
 		}
 	}
 	else 
@@ -195,22 +126,21 @@
 		if([newPicture.description length]>0)
 		{
 			label1.text=newPicture.description;
-			label2.text=[self shortDisplayDateWithPicture:newPicture];
+			label2.text=newPicture.short_created_date;
 		}
 		else 
 		{
-			label1.text=[self shortDisplayDateWithPicture:newPicture];
+			label1.text=newPicture.short_created_date;
 		}
 	}
 }
 
 - (void) dealloc
 {
-	//NSLog(@"PhotoGridViewCell dealloc");
 	[label1 release];
 	[label2 release];
 	[label3 release];
-	[format release];
+	//[format release];
 	[super dealloc];
 }
 

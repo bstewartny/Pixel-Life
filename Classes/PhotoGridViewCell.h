@@ -6,7 +6,6 @@
 	UILabel * label2;
 	UILabel * label3;
 	BOOL showBorder;
-	NSDateFormatter * format;
  
 }
 @property(nonatomic) BOOL showBorder;

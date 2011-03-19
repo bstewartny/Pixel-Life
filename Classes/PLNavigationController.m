@@ -43,7 +43,7 @@
 	{
 		 
 		NSArray * vc=self.viewControllers;
-		NSLog(@"nav has %d view controllers",[vc count]);
+		//NSLog(@"nav has %d view controllers",[vc count]);
 		
 		UIViewController * prev=nil;
 		for (UIViewController * c in vc)

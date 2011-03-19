@@ -162,9 +162,6 @@
 		[gr release];
 		[gr2 release];
 		
-		format = [[NSDateFormatter alloc] init];
-		[format setDateFormat:@"MMM d, yyyy"];
-		
 		picViews=[[NSMutableArray alloc] init];
 		
 		self.wantsFullScreenLayout=YES;
@@ -220,7 +217,8 @@
 		pictureComment.picture=[[picture user] picture];
 		pictureComment.user=[picture user];
 		pictureComment.created_date=[picture created_date];
-		pictureComment.updated_date=[picture updated_date];
+		pictureComment.short_created_date=[picture short_created_date];
+		//pictureComment.updated_date=[picture updated_date];
 		controller.pictureComment=pictureComment;
 		
 		[pictureComment release];
@@ -775,7 +773,8 @@
 			infoNameLabel.text=nil;
 		}
 		
-		infoDateLabel.text=[format stringFromDate:currentPicture.created_date];
+		//infoDateLabel.text=[format stringFromDate:currentPicture.created_date];
+		infoDateLabel.text=currentPicture.short_created_date;
 		
 		if(currentPicture.commentCount>0)
 		{
@@ -995,7 +994,6 @@
 	[infoNameLabel release];
 	[infoDateLabel release];
 	[picViews release];
-	[format release];
 	[commentCountLabel release];
 	[showCommentsPopover release];
 	showCommentsPopover=nil;

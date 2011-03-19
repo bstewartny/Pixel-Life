@@ -5,6 +5,7 @@
 @interface FacebookFeed : Feed {
 	FacebookAccount * account;
 	NSDateFormatter * formatter;
+	NSDateFormatter * toStringFormatter;
 }
 @property(nonatomic,retain) FacebookAccount * account;
 - (id) initWithFacebookAccount:(FacebookAccount*)account;

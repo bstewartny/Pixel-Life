@@ -54,8 +54,18 @@
 		
 		picture.name=[d objectForKey:@"name"];
 		picture.url=[d objectForKey:@"link"];
-		picture.created_date=[self dateFromString:[d objectForKey:@"created_time"]];
-		picture.updated_date=[self dateFromString:[d objectForKey:@"updated_time"]];
+		
+		NSDate * updated_date=[self dateFromString:[d objectForKey:@"updated_time"]];
+		if(updated_date)
+		{
+			picture.created_date=updated_date;
+		}
+		else 
+		{
+			picture.created_date=[self dateFromString:[d objectForKey:@"created_time"]];
+		}
+
+		picture.short_created_date=[self stringFromDate:picture.created_date];
 		
 		NSDictionary * comments_dict=[d objectForKey:@"comments"];
 		

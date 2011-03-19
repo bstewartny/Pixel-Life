@@ -20,7 +20,7 @@
 	IBOutlet UILabel * infoFirstNameLabel;
 	IBOutlet UILabel * infoLastNameLabel;
 	IBOutlet UILabel * infoNumCommentsLabel;
-	NSDateFormatter * format;
+	
 	IBOutlet UIView * infoView;
 	IBOutlet UILabel * commentCountLabel;
 	UIPopoverController * addCommentPopover;

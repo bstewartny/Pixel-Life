@@ -216,7 +216,7 @@
 
 - (BOOL) isPhone
 {
-	NSLog(@"ipad isphone - return NO");
+	//NSLog(@"ipad isphone - return NO");
 	return NO;
 }
 

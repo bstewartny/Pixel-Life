@@ -55,7 +55,7 @@
 	{
 		if([request didUseCachedResponse])
 		{
-			NSLog(@"Got image from cache...");
+			//NSLog(@"Got image from cache...");
 		}
 		
 		if(dealloc_called)

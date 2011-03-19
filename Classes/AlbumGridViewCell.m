@@ -125,7 +125,6 @@
 	[layerView2 release];
 	layerView1=nil;
 	layerView2=nil;
-	//[gregorian release];
 	[super dealloc];
 }
 

@@ -67,11 +67,9 @@
         comment = [newComment retain];
         [comment.picture setDelegate:self];
         
-		NSDateFormatter * format = [[[NSDateFormatter alloc] init] autorelease];
-		[format setDateFormat:@"MMM d, yyyy"];
 		userLabel.text=comment.user.name;
 		messageLabel.text=comment.message;
-		dateLabel.text=[NSString stringWithFormat:@"on %@",[format stringFromDate:comment.created_date]];
+		dateLabel.text=[NSString stringWithFormat:@"on %@",comment.short_created_date];
 		
         if (comment.picture != nil)
         {
