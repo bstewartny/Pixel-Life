@@ -78,7 +78,7 @@
     // Return the number of rows in the section.
     return 1;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+/*- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 	if(section==0)
 	{
@@ -100,7 +100,7 @@
 		return 22;//[super tableView:tableView heightForHeaderInSection:section];
 	}
 	
-}
+}*/
 // Section header & footer information. Views are preferred over title should you decide to provide both
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -127,7 +127,7 @@
 	
 	return [v autorelease];
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+/*- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 	if(section!=0) return nil;
 	
@@ -173,7 +173,7 @@
 	return [v autorelease];
 	
 	
-}
+}*/
 /*
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
@@ -227,13 +227,13 @@
 			cell.textLabel.text=@"feedback@omegamuse.com";
 			cell.detailTextLabel.text=nil;
 			cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-			cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+			cell.selectionStyle=UITableViewCellSelectionStyleNone;
 			break;
 		case 2:
 			cell.textLabel.text=@"http://www.omegamuse.com";
 			cell.detailTextLabel.text=nil;
 			cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-			cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+			cell.selectionStyle=UITableViewCellSelectionStyleNone;
 			break;
 		default:
 			break;

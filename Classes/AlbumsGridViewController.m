@@ -28,7 +28,7 @@
 
 - (NSString*) noDataMessage
 {
-	return @"No shared albums found on Facebook for this user.";
+	return @"No shared albums found.";
 }
 
 - (void) viewWillAppear:(BOOL)animated

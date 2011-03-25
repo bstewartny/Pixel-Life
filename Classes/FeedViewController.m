@@ -60,7 +60,11 @@
 	}
 	[feed fetch];
 }
-
+- (CGPoint) spinningWheelCenter
+{
+	// subclass if view has a sub-view, etc.
+	return self.view.center;
+}
 - (void)reloadFeed
 {
 	if([items count]>0)
@@ -176,7 +180,7 @@
 {
 	if(feed)
 	{
-		spinningWheel.center=self.view.center;
+		spinningWheel.center=[self spinningWheelCenter]; //.view.center;
 		[spinningWheel startAnimating];
 		[self.view bringSubviewToFront:spinningWheel];
 	}
@@ -193,7 +197,7 @@
 	self.navigationController.navigationBar.translucent=NO;
 	[self.navigationController setNavigationBarHidden:NO animated:NO];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-	spinningWheel.center=self.view.center;
+	spinningWheel.center=[self spinningWheelCenter];;
 	
 	[super viewWillAppear:animated];
 }
@@ -201,6 +205,8 @@
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
+	spinningWheel.center=[self spinningWheelCenter];;
+	
 	[self reloadFeed];
 	[self reloadData];
 	

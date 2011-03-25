@@ -38,6 +38,7 @@
 #import "AQGridViewCell+AQGridViewCellPrivate.h"
 #import "UIColor+AQGridView.h"
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
 
 #ifdef BUILTIN_IMAGES
 #import "AQGridViewCell_png.h"
@@ -202,10 +203,9 @@
 
 - (void) makeSubviewsOfView: (UIView *) aView nonOpaqueWithBackgroundColor: (UIColor *) color
 {
-	
 	for ( UIView * view in aView.subviews )
 	{
-		/*if ( view.opaque )
+		if ( view.opaque )
 		{
 			NSMutableDictionary * info = (NSMutableDictionary *) CFDictionaryGetValue( _selectionColorInfo, view );
 			if ( info == nil )
@@ -218,10 +218,10 @@
 			if ( value == nil )
 				value = [NSNull null];
 			[info setObject: value forKey: @"backgroundColor"];
-			NSLog(@"setting subview opaque=no");
+			
 			view.opaque = NO;
 			view.backgroundColor = color;
-		}*/
+		}
 		
 		[self makeSubviewsOfView: view nonOpaqueWithBackgroundColor: color];
 	}
@@ -240,7 +240,7 @@
 			
 			if ( value == [NSNull null] )
 				value = nil;
-			NSLog(@"setting subview opaque=yes");
+			
 			view.opaque = YES;
 			view.backgroundColor = value;
 		}
@@ -311,23 +311,19 @@
 				break;
 				
 			case AQGridViewCellSelectionStyleGray:
-				pngBytes = AQGridSelectionGray_png;
-				pngLength = AQGridSelectionGray_png_len;
+				imageName = @"AQGridSelectionGray.png";
 				break;
 				
 			case AQGridViewCellSelectionStyleBlueGray:
-				pngBytes = AQGridSelectionGrayBlue_png;
-				pngLength = AQGridSelectionGrayBlue_png_len;
+				imageName = @"AQGridSelectionGrayBlue.png";
 				break;
 				
 			case AQGridViewCellSelectionStyleGreen:
-				pngBytes = AQGridSelectionGreen_png;
-				pngLength = AQGridSelectionGreen_png_len;
+				imageName = @"AQGridSelectionGreen.png";
 				break;
 				
 			case AQGridViewCellSelectionStyleRed:
-				pngBytes = AQGridSelectionRed_png;
-				pngLength = AQGridSelectionRed_png_len;
+				imageName = @"AQGridSelectionRed.png";
 				break;
 		}
 		
@@ -643,6 +639,21 @@
 - (void) prepareForReuse
 {
     _cellFlags.setShadowPath = 0;
+}
+
+- (BOOL) isEditing
+{
+	return ( _cellFlags.editing == 1 );
+}
+
+- (void) setEditing: (BOOL) value
+{
+	[self setEditing:value animated:NO];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+	_cellFlags.editing = (editing ? 1 : 0);
 }
 
 @end

@@ -15,6 +15,11 @@
 	return nil;
 }
 
+- (CGPoint) spinningWheelCenter
+{
+	return self.tableView.center;
+}
+
 - (void) setTabBar:(UITabBar*)t
 {
 	if(![t isEqual:tabBar])

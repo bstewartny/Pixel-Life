@@ -7,6 +7,11 @@
 @implementation GridViewController
 @synthesize gridView;
 
+- (CGPoint) spinningWheelCenter
+{
+	return self.gridView.center;
+}
+
 - (id)initWithFeed:(Feed*)theFeed title:(NSString*)title
 {
     if(self=[super initWithFeed:theFeed title:title withNibName:@"GridView"])

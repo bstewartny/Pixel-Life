@@ -29,7 +29,7 @@
 	}
 	else 
 	{
-		return @"No shared albums found for user.";
+		return @"No shared albums found.";
 	}
 }
 

@@ -32,7 +32,7 @@
 */
 
 
-
+@class MBProgressHUD;
 @class PLNavigationController;
 @interface PixelLifeAppDelegate : NSObject <UIApplicationDelegate,UIActionSheetDelegate> 
 {
@@ -44,6 +44,7 @@
 	ImageCache * imageCache;
 	NSMutableArray * facebookAccounts;
 	FacebookAccount * currentAccount;
+	MBProgressHUD * HUD;
 }
 
 + (PixelLifeAppDelegate*) sharedAppDelegate;

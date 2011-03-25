@@ -9,7 +9,8 @@
 #import "FeedViewController.h"
 #import "PLNavigationController.h"
 #import "Appirater.h"
-
+#import "MBProgressHUD.h"
+#import <unistd.h>
 @implementation PixelLifeAppDelegate
 
 @synthesize window;
@@ -343,18 +344,46 @@
 			[request setDelegate:self];
 			[request setDidFinishSelector:@selector(sendCommentRequestDone:)];
 			[request setDidFailSelector:@selector(sendCommentRequestWentWrong:)];
+			
+			HUD=[[MBProgressHUD alloc ]initWithView:self.window];
+			
+			HUD.labelText=@"Sending...";
+			
+			[self.window addSubview:HUD];
+			
+			[HUD show:YES];
+			
 			[downloadQueue addOperation:request];
 			[request release];
 		}
 	}
 }
+
 - (void)sendCommentRequestDone:(ASIHTTPRequest *)request
 {
 	// done
+	
+	HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
+	HUD.mode = MBProgressHUDModeCustomView;
+	HUD.labelText = @"Saved!";
+	
+	[self performSelector:@selector(hideHud) withObject:nil afterDelay:0.5];
+}
+
+- (void) hideHud
+{
+	[HUD hide:YES];
+	
+	[HUD release];
+	
+	HUD=nil;
 }
 
 - (void)sendCommentRequestWentWrong:(ASIHTTPRequest *)request
 {
+	[self hideHud];
+	
+	//[MBProgressHUD hideHUDForView:self.window animated:YES];
 	NSError *error = [request error];
 	
 	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Sending comment failed" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -385,6 +414,17 @@
 		[request setDelegate:self];
 		[request setDidFinishSelector:@selector(sendLikeRequestDone:)];
 		[request setDidFailSelector:@selector(sendLikeRequestWentWrong:)];
+		
+		HUD=[[MBProgressHUD alloc ]initWithView:self.window];
+		
+		HUD.labelText=@"Liking...";
+		
+		[self.window addSubview:HUD];
+		
+		[HUD show:YES];
+		
+		
+		
 		[downloadQueue addOperation:request];
 		[request release];
 	}	
@@ -393,10 +433,18 @@
 {
 	// done
 	NSLog(@"sendLikeRequestDone");
+	
+	HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
+	HUD.mode = MBProgressHUDModeCustomView;
+	HUD.labelText = @"Done.";
+	
+	[self performSelector:@selector(hideHud) withObject:nil afterDelay:0.3];
 }
 
 - (void)sendLikeRequestWentWrong:(ASIHTTPRequest *)request
 {
+	[self hideHud];
+	
 	NSError *error = [request error];
 	
 	UIAlertView * alertView=[[UIAlertView alloc] initWithTitle:@"Like failed" message:[error description] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];

@@ -14,6 +14,8 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* PhotoExplorerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* PhotoExplorerViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow-iPad.xib */; };
+		B011D077133CC962007AE622 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B011D076133CC962007AE622 /* MBProgressHUD.m */; };
+		B011D0C5133CDE29007AE622 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = B011D0C4133CDE29007AE622 /* 37x-Checkmark.png */; };
 		B01B6D4F12DA31C80018F42E /* PhonePicturesScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B01B6D4E12DA31C80018F42E /* PhonePicturesScrollView.xib */; };
 		B02CD21012B9515000D4407C /* PictureCaptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B02CD20F12B9515000D4407C /* PictureCaptionViewController.m */; };
 		B02CD22712B9559A00D4407C /* PictureCaptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02CD22612B9559A00D4407C /* PictureCaptionView.xib */; };
@@ -181,6 +183,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PixelLife_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelLife_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PixelLife-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PixelLife-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B011D075133CC962007AE622 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		B011D076133CC962007AE622 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B011D0C4133CDE29007AE622 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		B01B6D4E12DA31C80018F42E /* PhonePicturesScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhonePicturesScrollView.xib; sourceTree = "<group>"; };
 		B02CD20E12B9515000D4407C /* PictureCaptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureCaptionViewController.h; sourceTree = "<group>"; };
 		B02CD20F12B9515000D4407C /* PictureCaptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCaptionViewController.m; sourceTree = "<group>"; };
@@ -553,6 +558,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B011D072133CC930007AE622 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B011D075133CC962007AE622 /* MBProgressHUD.h */,
+				B011D076133CC962007AE622 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		B03C72C412AAF1000055AD00 /* AQGridView */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +785,7 @@
 		B087D84412AA8B5A008259E9 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				B011D072133CC930007AE622 /* MBProgressHUD */,
 				B0B4695A132517FF00FAE325 /* Appirater */,
 				B0B467581321C65200FAE325 /* Instagram */,
 				B04828D812AD654900F61433 /* FBConnect */,
@@ -870,6 +885,7 @@
 		B0E978E912B989C500721B33 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B011D0C4133CDE29007AE622 /* 37x-Checkmark.png */,
 				B0B46994132525A100FAE325 /* profileplaceholder.png */,
 				B0B469921325259500FAE325 /* person_icon.gif */,
 				B0B469901325256D00FAE325 /* 32-facebook.png */,
@@ -1007,6 +1023,7 @@
 				B0B469931325259500FAE325 /* person_icon.gif in Resources */,
 				B0B46995132525A100FAE325 /* profileplaceholder.png in Resources */,
 				B0B46A42132530DA00FAE325 /* AboutView.xib in Resources */,
+				B011D0C5133CDE29007AE622 /* 37x-Checkmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,6 +1132,7 @@
 				B0B468ED13250D5A00FAE325 /* CustomCellBackgroundView.m in Sources */,
 				B0B469651325182C00FAE325 /* Appirater.m in Sources */,
 				B0B469BD13252A9800FAE325 /* AlbumTableViewCell.m in Sources */,
+				B011D077133CC962007AE622 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
