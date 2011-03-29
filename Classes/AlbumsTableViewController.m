@@ -44,7 +44,7 @@
 	Album *album = [items objectAtIndex:indexPath.row];
     
 	cell.textLabel.text = album.name;
-	cell.detailTextLabel.text=[NSString stringWithFormat:@"%d photos",album.count];
+	cell.detailTextLabel.text=album.picture.description; //[NSString stringWithFormat:@"%d photos",album.count];
 	cell.picture=album.picture;
 	
 	if([album.picture hasLoadedThumbnail])

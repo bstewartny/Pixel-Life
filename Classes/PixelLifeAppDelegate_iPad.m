@@ -23,8 +23,12 @@
 #define kMyAlbumsIndex 0
 #define kMyListsIndex 1
 #define kMyFriendsIndex 2
+#define kRecentIndex 3
 #import "PLNavigationController.h"
 #import "AboutViewController.h"
+#import "FacebookRecentPictureFeed.h"
+#import "FacebookRecentAlbumFeed.h"
+
 
 @implementation PixelLifeAppDelegate_iPad
 
@@ -54,6 +58,9 @@
 			break;
 		case kMyFriendsIndex:
 			[self showAllFriends];
+			break;
+		case kRecentIndex:
+			[self showRecent];
 			break;
 		default:
 			break;
@@ -104,6 +111,43 @@
 	[feed release];
 	[controller release];
 }
+- (void) showRecent
+{
+	NSLog(@"showRecent");
+	if(![currentAccount isSessionValid])
+	{
+		[self showNoFriends];
+		[self login];
+		return;
+	}
+	
+	FacebookRecentAlbumFeed * feed=[[FacebookRecentAlbumFeed alloc] initWithFacebookAccount:currentAccount];
+	AlbumsGridViewController * controller=[[AlbumsGridViewController alloc] initWithFeed:feed title:@"Recently Modified Albums"];
+	[self addSettingsButtonToController:controller];
+	[self addSegmentedControlTitleView:controller withSelectedIndex:kRecentIndex];
+	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];
+	[feed release];
+	[controller release];
+}
+/*
+- (void) showRecent
+{
+	NSLog(@"showRecent");
+	if(![currentAccount isSessionValid])
+	{
+		[self showNoFriends];
+		[self login];
+		return;
+	}
+	
+	FacebookRecentPictureFeed * feed=[[FacebookRecentPictureFeed alloc] initWithFacebookAccount:currentAccount];
+	PictureFeedGridViewController * controller=[[PictureFeedGridViewController alloc] initWithFeed:feed title:@"Recent Photos"];
+	[self addSettingsButtonToController:controller];
+	[self addSegmentedControlTitleView:controller withSelectedIndex:kRecentIndex];
+	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];
+	[feed release];
+	[controller release];
+}*/
 
 - (void) showAllLists
 {
@@ -124,7 +168,7 @@
 
 - (void) addSegmentedControlTitleView:(UIViewController*)controller withSelectedIndex:(NSInteger)index
 {
-	UISegmentedControl * sc=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Albums",@"My Lists",@"My Friends",nil]];
+	UISegmentedControl * sc=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"My Albums",@"My Lists",@"My Friends",@"Recent",nil]];
 	sc.segmentedControlStyle=UISegmentedControlStyleBar;
 	[sc sizeToFit];
 	

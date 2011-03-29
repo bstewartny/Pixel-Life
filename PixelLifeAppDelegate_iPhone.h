@@ -5,6 +5,7 @@
 #define kTabBarFriendsTag 1
 #define kTabBarListsTag 2
 #define kTabBarAlbumsTag 3
+#define kTabBarRecentTag 4
 
 @interface PixelLifeAppDelegate_iPhone : PixelLifeAppDelegate <UITabBarDelegate> {
 	UITabBar * tabBar;

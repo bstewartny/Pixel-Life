@@ -116,6 +116,9 @@
 - (void) showMyAlbums
 {
 }
+- (void) showRecent
+{
+}
 - (void) showAbout
 {
 }

@@ -8,6 +8,7 @@
 #import "FacebookFriendListsFeed.h"
 #import "PLNavigationController.h"
 #import "AboutViewController.h"
+#import "FacebookRecentAlbumFeed.h"
 
 @implementation PixelLifeAppDelegate_iPhone
 @synthesize tabBar;
@@ -42,6 +43,10 @@
 	[i release];
 	
 	i=[[UITabBarItem alloc] initWithTitle:@"My Albums" image:[UIImage imageNamed:@"icon_user.png"] tag:kTabBarAlbumsTag];
+	[items addObject:i];
+	[i release];
+	
+	i=[[UITabBarItem alloc] initWithTitle:@"Recent" image:[UIImage imageNamed:@"11-clock.png"] tag:kTabBarRecentTag];
 	[items addObject:i];
 	[i release];
 	
@@ -92,7 +97,15 @@
 			// settings
 			[self showSettingsActionSheet];
 			break;
+	
+		case kTabBarRecentTag:
+			// recent albums
+			[self showRecent];
+			break;
+	
 	}
+	
+	
 }
 
 - (void) showAccounts
@@ -169,6 +182,23 @@
 	[feed release];
 	[controller release];
 }	   
+
+- (void) showRecent
+{
+	if(![currentAccount isSessionValid])
+	{
+		[self login];
+		return;
+	}
+	
+	FacebookRecentAlbumFeed * feed=[[FacebookRecentAlbumFeed alloc] initWithFacebookAccount:currentAccount];
+	AlbumsTableViewController * controller=[[AlbumsTableViewController alloc] initWithFeed:feed title:@"Recent Updates"];
+	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarRecentTag];
+	[controller setTabBar:tabBar];
+	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];
+	[feed release];
+	[controller release];
+}
 	   
 - (void) showAllLists
 {

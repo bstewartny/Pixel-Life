@@ -79,6 +79,7 @@
 		return;
 	}
 	Album * album=(Album*)[items objectAtIndex:index];
+	
 	// show album...
 	AlbumGridViewController * albumController=[[AlbumGridViewController alloc] initWithAlbum:album];
 	
