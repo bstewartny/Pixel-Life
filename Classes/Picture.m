@@ -71,6 +71,7 @@
 {
 	return asyncImage.image;
 }
+
 - (void) unloadImage
 {
 	[asyncImage setImage:nil];

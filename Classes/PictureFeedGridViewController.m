@@ -13,7 +13,7 @@
     PhotoGridViewCell * photoCell = (PhotoGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 168.0, 168.0)
+		photoCell = [[[PhotoGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 224.0, 254.0)
 												 reuseIdentifier: cellIdentifier] autorelease];
 		photoCell.showBorder=YES; // not for profile pics...
 		
@@ -26,7 +26,10 @@
 	
 	return photoCell;
 }
-
+- (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
+{
+    return ( CGSizeMake(224.0, 254.0) );
+}
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
 {
 	if(index<0 || index>([items count]-1))

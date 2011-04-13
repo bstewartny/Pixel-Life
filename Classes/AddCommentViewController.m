@@ -7,6 +7,7 @@
 {
     if(self=[super initWithNibName:@"AddCommentView" bundle:nil])
 	{
+		messageTextView.font=[UIFont fontWithName:@"Verdana" size:20];
 	}
     return self;
 }

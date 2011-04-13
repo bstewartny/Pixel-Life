@@ -132,8 +132,9 @@
 	label.numberOfLines=20;
 	label.backgroundColor=[UIColor clearColor];
 	label.textColor=[UIColor lightGrayColor];
-	label.font=[UIFont boldSystemFontOfSize:20];
+	//label.font=[UIFont boldSystemFontOfSize:20];
 	
+	label.font=[UIFont fontWithName:@"Verdana" size:20];
 	Reachability *reachManager = [Reachability reachabilityWithHostName:@"www.facebook.com"];
     NetworkStatus remoteHostStatus = [reachManager currentReachabilityStatus];
     if (remoteHostStatus == NotReachable)

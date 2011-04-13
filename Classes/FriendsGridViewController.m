@@ -6,6 +6,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BlankToolbar.h"
 #import "Picture.h"
+#import "FriendSearchResultTableViewCell.h"
 
 @implementation FriendsGridViewController
 
@@ -21,10 +22,12 @@
 	FriendGridViewCell * photoCell = (FriendGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[FriendGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 170.0, 170.0)
+		photoCell = [[[FriendGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 192.0, 192.0)
 											  reuseIdentifier: cellIdentifier] autorelease];
 		
-		photoCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
+		//photoCell.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
+		photoCell.selectionStyle=AQGridViewCellSelectionStyleNone;
+		
 	}
 	
 	Friend  * friend=(Friend*)[items objectAtIndex:index];
@@ -35,7 +38,8 @@
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-	return ( CGSizeMake(170.0, 170.0) );
+	return CGSizeMake(192.0, 192.0);
+	//return ( CGSizeMake(170.0, 170.0) );
 }
 
 - (void) gridView: (AQGridView *) gridView didSelectItemAtIndex: (NSUInteger) index
@@ -64,6 +68,36 @@
 {
 	[super viewDidLoad];
 	
+	
+	
+	
+	
+	[self setupSearchController];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	
+	
+	[self layoutSubviews];
+	[super viewWillAppear:animated];
+}
+
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
+{
+	searchController.searchResultsTableView.backgroundColor=[UIColor blackColor];
+	searchController.searchResultsTableView.separatorColor=[UIColor blackColor];
+	searchController.searchResultsTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+}
+
+- (void) setupSearchController
+{
+	
+	self.gridView.resizesCellWidthToFit=YES;
+	self.gridView.separatorStyle=AQGridViewCellSeparatorStyleNone;
+	
+	
 	filteredItems=[[NSMutableArray alloc] init];
 
 	searchBar=[[UISearchBar alloc] initWithFrame:CGRectMake(0,5,150,30)];
@@ -76,13 +110,16 @@
 	searchController.delegate=self;
 	searchController.searchResultsDelegate=self;
 	searchController.searchResultsDataSource=self;
+	searchController.searchResultsTableView.backgroundColor=[UIColor blackColor];
+	searchController.searchResultsTableView.separatorColor=[UIColor blackColor];
+	searchController.searchResultsTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
 	
 	self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:searchBar] autorelease];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+
+- (void) layoutSubviews
 {
-	
 	// yet another cocoa hack in order to work around some sdk bug... need to reset frame after device was rotated in
 	// another view, otherwise UISearchDisplayController makes the search box too big...
 	CGRect f=searchBar.frame;
@@ -106,9 +143,8 @@
 		 self.navigationItem.titleView.frame=frame;*/
 		
 	}
-	
-	[super viewWillAppear:animated];
 }
+
 
 - (void)filterContentForSearchText:(NSString*)searchText
 {
@@ -212,7 +248,7 @@
 	[searchController setActive:NO animated:YES];
 	[self showFriendAlbums:friend];
 }
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *kCellID = @"cellID";
@@ -230,7 +266,45 @@
 	cell.textLabel.text = friend.name;
 	
 	return cell;
+}*/
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[cell load];
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	FriendSearchResultTableViewCell * cell = [[[FriendSearchResultTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+	
+	cell.selectionStyle=UITableViewCellSelectionStyleNone;
+	cell.textLabel.textColor=[UIColor whiteColor];
+	
+	Friend *friend= [filteredItems objectAtIndex:indexPath.row];
+	 
+	cell.nameLabel.text=friend.name;
+	
+	//cell.textLabel.text = friend.name;
+	cell.picture=friend.picture;
+	
+	if([friend.picture hasLoadedThumbnail])
+	{
+		cell.imageView.image=friend.picture.thumbnail;
+	}
+	
+	return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 84.0;
+}
+
+
+
+
+
+
+
 
 - (void) dealloc
 {

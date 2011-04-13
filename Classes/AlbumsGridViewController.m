@@ -58,7 +58,7 @@
     AlbumGridViewCell * photoCell = (AlbumGridViewCell *)[aGridView dequeueReusableCellWithIdentifier: cellIdentifier];
 	if ( photoCell == nil )
 	{
-		photoCell = [[[AlbumGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 224.0, 244.0)
+		photoCell = [[[AlbumGridViewCell alloc] initWithFrame: CGRectMake(0.0, 0.0, 224.0, 254.0)
 											  reuseIdentifier: cellIdentifier] autorelease];
 		photoCell.showBorder=YES; // not for profile pics...
 		
@@ -90,7 +90,7 @@
 
 - (CGSize) portraitGridCellSizeForGridView: (AQGridView *) aGridView
 {
-    return ( CGSizeMake(224.0, 244.0) );
+    return ( CGSizeMake(224.0, 254.0) );
 }
  
 @end

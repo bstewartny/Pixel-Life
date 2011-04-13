@@ -33,6 +33,11 @@
 	}
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 120.0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	AlbumTableViewCell * cell = [[[AlbumTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil] autorelease];
@@ -43,8 +48,14 @@
 	
 	Album *album = [items objectAtIndex:indexPath.row];
     
-	cell.textLabel.text = album.name;
-	cell.detailTextLabel.text=album.picture.description; //[NSString stringWithFormat:@"%d photos",album.count];
+	cell.nameLabel.text=album.name;
+	cell.summaryLabel2.text=album.picture.description;
+	
+	cell.summaryLabel1.text=album.short_created_date;
+	
+	
+	//cell.textLabel.text = album.name;
+	//cell.detailTextLabel.text=album.picture.description; //[NSString stringWithFormat:@"%d photos",album.count];
 	cell.picture=album.picture;
 	
 	if([album.picture hasLoadedThumbnail])

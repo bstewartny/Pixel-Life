@@ -19,14 +19,14 @@
 
 - (void) setupSubviews
 {
-	imageView.frame = CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-50);
+	imageView.frame = CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-60);
 	imageView.clipsToBounds = NO;
 	maxImageSize=CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-42, self.frame.size.width-10, 14)];
-	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-28, self.frame.size.width-10, 14)];
-	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-14, self.frame.size.width-10, 14)];
+	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-60, self.frame.size.width-10, 18)];
+	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-40, self.frame.size.width-10, 18)];
+	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-20, self.frame.size.width-10, 18)];
 	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];
@@ -37,7 +37,9 @@
 {
 	UILabel * label=[[UILabel alloc] initWithFrame:frame];
 	label.textAlignment=UITextAlignmentCenter;
-	label.font=[UIFont boldSystemFontOfSize:12];
+	//label.font=[UIFont boldSystemFontOfSize:12];
+	label.font=[UIFont fontWithName:@"Verdana" size:16];
+	
 	label.textColor=[UIColor whiteColor];
 	label.backgroundColor=[UIColor blackColor];
 	return label;
@@ -106,7 +108,7 @@
 	
 	label1.text=nil;
 	label2.text=nil;
-	label3.text=nil;
+	//label3.text=nil;
 	
 	if([newPicture.name length]>0)
 	{

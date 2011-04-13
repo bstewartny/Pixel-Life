@@ -21,9 +21,9 @@
 	[self.contentView sendSubviewToBack:layerView1];
 	[self.contentView sendSubviewToBack:layerView2];
 	
-	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-45, self.frame.size.width-10, 14)];
-	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-30, self.frame.size.width-10, 14)];
-	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-16, self.frame.size.width-10, 14)];
+	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-60, self.frame.size.width-10, 18)];
+	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-40, self.frame.size.width-10, 18)];
+	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-20, self.frame.size.width-10, 18)];
 	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];

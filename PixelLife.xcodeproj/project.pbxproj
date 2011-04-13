@@ -68,6 +68,7 @@
 		B04BC82C12B52FFA007217A3 /* FacebookFriendListsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B04BC82B12B52FFA007217A3 /* FacebookFriendListsFeed.m */; };
 		B052EF5612DF7D5600826891 /* iPhoneDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = B052EF5512DF7D5600826891 /* iPhoneDefault.png */; };
 		B052EFA112DF8DFE00826891 /* PictureImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B052EFA012DF8DFE00826891 /* PictureImageScrollView.m */; };
+		B053C49E1355EC8300D56B57 /* PhoneFriendsGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B053C49D1355EC8300D56B57 /* PhoneFriendsGridViewController.m */; };
 		B05C2A4712CCE14F00CE56E2 /* icon_post.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4612CCE14F00CE56E2 /* icon_post.png */; };
 		B05C2A4912CCE19000CE56E2 /* icon_circle_arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4812CCE19000CE56E2 /* icon_circle_arrow_right.png */; };
 		B05C2A4B12CCE1AB00CE56E2 /* icon_tag_add.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2A4A12CCE1AB00CE56E2 /* icon_tag_add.png */; };
@@ -81,6 +82,8 @@
 		B05C2ADC12CCFFF000CE56E2 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = B05C2AD612CCFFF000CE56E2 /* Default-Landscape.png */; };
 		B05C4D0612AFD6D800CA0EFA /* FriendGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C4D0512AFD6D800CA0EFA /* FriendGridViewCell.m */; };
 		B05C4D5612AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C4D5512AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m */; };
+		B0737A431356079600B6830C /* PhoneGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0737A421356079600B6830C /* PhoneGridView.xib */; };
+		B0737A81135614E300B6830C /* FriendSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0737A80135614E300B6830C /* FriendSearchResultTableViewCell.m */; };
 		B083802012C1454B00E999A8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B083801F12C1454B00E999A8 /* FeedViewController.m */; };
 		B087D86512AA8CE3008259E9 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B087D85212AA8CE3008259E9 /* ASINetworkQueue.m */; };
 		B087D86612AA8CE3008259E9 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B087D85412AA8CE3008259E9 /* ASIInputStream.m */; };
@@ -138,6 +141,7 @@
 		B0B46995132525A100FAE325 /* profileplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B46994132525A100FAE325 /* profileplaceholder.png */; };
 		B0B469BD13252A9800FAE325 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B469BC13252A9800FAE325 /* AlbumTableViewCell.m */; };
 		B0B46A42132530DA00FAE325 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0B46A41132530DA00FAE325 /* AboutView.xib */; };
+		B0B7D96E13538F720099FE28 /* MostRecentAlbumPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B7D96D13538F720099FE28 /* MostRecentAlbumPicture.m */; };
 		B0DACFE812CA790100CBE1B7 /* FriendPictureImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DACFE712CA790100CBE1B7 /* FriendPictureImageView.m */; };
 		B0DDD22412DB939A00BBD28B /* PictureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DDD22312DB939A00BBD28B /* PictureTableViewController.m */; };
 		B0DDD22912DB95BE00BBD28B /* AlbumsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DDD22812DB95BE00BBD28B /* AlbumsTableView.xib */; };
@@ -292,6 +296,8 @@
 		B052EF5512DF7D5600826891 /* iPhoneDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneDefault.png; sourceTree = "<group>"; };
 		B052EF9F12DF8DFE00826891 /* PictureImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureImageScrollView.h; sourceTree = "<group>"; };
 		B052EFA012DF8DFE00826891 /* PictureImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureImageScrollView.m; sourceTree = "<group>"; };
+		B053C49C1355EC8300D56B57 /* PhoneFriendsGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneFriendsGridViewController.h; sourceTree = "<group>"; };
+		B053C49D1355EC8300D56B57 /* PhoneFriendsGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneFriendsGridViewController.m; sourceTree = "<group>"; };
 		B05C2A4612CCE14F00CE56E2 /* icon_post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_post.png; sourceTree = "<group>"; };
 		B05C2A4812CCE19000CE56E2 /* icon_circle_arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_circle_arrow_right.png; sourceTree = "<group>"; };
 		B05C2A4A12CCE1AB00CE56E2 /* icon_tag_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tag_add.png; sourceTree = "<group>"; };
@@ -307,6 +313,9 @@
 		B05C4D0512AFD6D800CA0EFA /* FriendGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendGridViewCell.m; sourceTree = "<group>"; };
 		B05C4D5412AFDC3000CA0EFA /* FacebookMyAlbumsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookMyAlbumsFeed.h; sourceTree = "<group>"; };
 		B05C4D5512AFDC3000CA0EFA /* FacebookMyAlbumsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookMyAlbumsFeed.m; sourceTree = "<group>"; };
+		B0737A421356079600B6830C /* PhoneGridView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneGridView.xib; sourceTree = "<group>"; };
+		B0737A7F135614E300B6830C /* FriendSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendSearchResultTableViewCell.h; sourceTree = "<group>"; };
+		B0737A80135614E300B6830C /* FriendSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendSearchResultTableViewCell.m; sourceTree = "<group>"; };
 		B083801E12C1454B00E999A8 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		B083801F12C1454B00E999A8 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		B087D85112AA8CE3008259E9 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
@@ -407,6 +416,8 @@
 		B0B469BB13252A9800FAE325 /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
 		B0B469BC13252A9800FAE325 /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
 		B0B46A41132530DA00FAE325 /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		B0B7D96C13538F720099FE28 /* MostRecentAlbumPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MostRecentAlbumPicture.h; sourceTree = "<group>"; };
+		B0B7D96D13538F720099FE28 /* MostRecentAlbumPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MostRecentAlbumPicture.m; sourceTree = "<group>"; };
 		B0B8A87B12C382ED00F1924C /* AsyncImageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageDelegate.h; sourceTree = "<group>"; };
 		B0BC132113257CED00F51236 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B0DACFE612CA790100CBE1B7 /* FriendPictureImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendPictureImageView.h; sourceTree = "<group>"; };
@@ -554,6 +565,7 @@
 				B0DDD2EE12DBABF900BBD28B /* PhoneAlbumGridView.xib */,
 				B0B468AD13244C9200FAE325 /* PhoneAboutView.xib */,
 				B0B46A41132530DA00FAE325 /* AboutView.xib */,
+				B0737A421356079600B6830C /* PhoneGridView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -718,6 +730,10 @@
 				B0B467BE1324194D00FAE325 /* AboutViewController.m */,
 				B0B469BB13252A9800FAE325 /* AlbumTableViewCell.h */,
 				B0B469BC13252A9800FAE325 /* AlbumTableViewCell.m */,
+				B053C49C1355EC8300D56B57 /* PhoneFriendsGridViewController.h */,
+				B053C49D1355EC8300D56B57 /* PhoneFriendsGridViewController.m */,
+				B0737A7F135614E300B6830C /* FriendSearchResultTableViewCell.h */,
+				B0737A80135614E300B6830C /* FriendSearchResultTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -772,6 +788,8 @@
 				B0333101134145CF00F70079 /* FacebookRecentPictureFeed.m */,
 				B033319C1341789B00F70079 /* FacebookRecentAlbumFeed.h */,
 				B033319D1341789B00F70079 /* FacebookRecentAlbumFeed.m */,
+				B0B7D96C13538F720099FE28 /* MostRecentAlbumPicture.h */,
+				B0B7D96D13538F720099FE28 /* MostRecentAlbumPicture.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1043,6 +1061,7 @@
 				B0B46A42132530DA00FAE325 /* AboutView.xib in Resources */,
 				B011D0C5133CDE29007AE622 /* 37x-Checkmark.png in Resources */,
 				B000707913420C7300054097 /* 11-clock.png in Resources */,
+				B0737A431356079600B6830C /* PhoneGridView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1155,6 +1174,9 @@
 				B0333102134145CF00F70079 /* FacebookRecentPictureFeed.m in Sources */,
 				B033314513415E5900F70079 /* MutableInt.m in Sources */,
 				B033319E1341789B00F70079 /* FacebookRecentAlbumFeed.m in Sources */,
+				B0B7D96E13538F720099FE28 /* MostRecentAlbumPicture.m in Sources */,
+				B053C49E1355EC8300D56B57 /* PhoneFriendsGridViewController.m in Sources */,
+				B0737A81135614E300B6830C /* FriendSearchResultTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1231,7 +1253,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A4B26EEA-4E1B-45F4-BD18-ABC9193F243C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5F93F209-4BC9-43FF-9CB2-37A54F647EFF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

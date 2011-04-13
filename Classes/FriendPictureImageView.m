@@ -26,7 +26,7 @@
 	[self bringSubviewToFront:nameView];
 	
 	firstNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(5,5,rect.size.width-10,15)];
-	firstNameLabel.font=[UIFont boldSystemFontOfSize:14];
+	firstNameLabel.font=[UIFont fontWithName:@"Verdana" size:14];
 	firstNameLabel.textColor=[UIColor whiteColor];
 	firstNameLabel.backgroundColor=[UIColor clearColor];
 	
@@ -34,7 +34,7 @@
 	[nameView bringSubviewToFront:firstNameLabel];
 	
 	lastNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(5,22,rect.size.width-10,15)];
-	lastNameLabel.font=[UIFont boldSystemFontOfSize:14];
+	lastNameLabel.font=[UIFont fontWithName:@"Verdana" size:14];
 	lastNameLabel.textColor=[UIColor whiteColor];
 	lastNameLabel.backgroundColor=[UIColor clearColor];
 	

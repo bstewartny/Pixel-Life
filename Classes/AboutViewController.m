@@ -116,7 +116,8 @@
 	 	
 	UILabel *l=[[UILabel alloc] initWithFrame:CGRectMake(0, 4, 320, 22)];
 	l.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-	l.font=[UIFont systemFontOfSize:16];
+	//l.font=[UIFont systemFontOfSize:16];
+	l.font=[UIFont fontWithName:@"Verdana" size:16];
 	l.textColor=[UIColor lightGrayColor];
 	l.backgroundColor=[UIColor clearColor];
 	l.text=@"OmegaMuse, LLC";

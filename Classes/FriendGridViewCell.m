@@ -10,11 +10,13 @@
 	
 	CGRect rect=self.frame; 
 	
-	imageView.frame =CGRectMake(5,5, rect.size.width-10, rect.size.height-10);
+	imageView.frame =  CGRectMake(0,0,rect.size.width,rect.size.height); //CGRectMake(5,5, rect.size.width-10, rect.size.height-10);
 	imageView.clipsToBounds = YES;
 	imageView.contentMode = UIViewContentModeScaleAspectFill;
-	imageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
-	imageView.layer.borderWidth=4;
+	imageView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+	 
+	imageView.layer.borderColor=[UIColor blackColor].CGColor;
+	imageView.layer.borderWidth=1;
 	//imageView.layer.shadowPath=[UIBezierPath bezierPathWithRect:imageView.bounds].CGPath;
 	//imageView.layer.shadowOpacity=0.5;
 	//imageView.layer.shadowColor=[UIColor grayColor].CGColor;
@@ -22,27 +24,30 @@
 	nameView=[[UIView alloc] initWithFrame:CGRectMake(0,rect.size.height-55,rect.size.width,55)];
 	nameView.backgroundColor=[UIColor blackColor];
 	nameView.alpha=0.5;
+	nameView.autoresizingMask=UIViewAutoresizingFlexibleWidth;
 	
 	[imageView addSubview:nameView];
 	[imageView bringSubviewToFront:nameView];
 	
 	[nameView release];
 	
-	firstNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(10,5,rect.size.width-20,15)];
-	firstNameLabel.font=[UIFont boldSystemFontOfSize:14];
+	firstNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(10,(rect.size.height-55)+4,rect.size.width-20,22)];
+	//firstNameLabel.font=[UIFont boldSystemFontOfSize:14];
+	firstNameLabel.font=[UIFont fontWithName:@"Verdana" size:20];
+	firstNameLabel.autoresizingMask=UIViewAutoresizingFlexibleWidth;
 	firstNameLabel.textColor=[UIColor whiteColor];
 	firstNameLabel.backgroundColor=[UIColor clearColor];
 	
-	[nameView addSubview:firstNameLabel];
-	[nameView bringSubviewToFront:firstNameLabel];
+	[imageView addSubview:firstNameLabel];
+	[imageView bringSubviewToFront:firstNameLabel];
 	
-	lastNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(10,22,rect.size.width-20,15)];
-	lastNameLabel.font=[UIFont boldSystemFontOfSize:14];
+	lastNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(10,(rect.size.height-55)+28,rect.size.width-20,22)];
+	lastNameLabel.font=[UIFont fontWithName:@"Verdana" size:20];
 	lastNameLabel.textColor=[UIColor whiteColor];
 	lastNameLabel.backgroundColor=[UIColor clearColor];
-	
-	[nameView addSubview:lastNameLabel];
-	[nameView bringSubviewToFront:lastNameLabel];
+	lastNameLabel.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+	[imageView addSubview:lastNameLabel];
+	[imageView bringSubviewToFront:lastNameLabel];
 
 }
 

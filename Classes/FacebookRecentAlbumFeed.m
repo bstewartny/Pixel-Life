@@ -10,6 +10,7 @@
 #import "MutableInt.h"
 #import "FacebookAlbumPictureFeed.h"
 #import "User.h"
+#import "MostRecentAlbumPicture.h"
 
 @implementation FacebookRecentAlbumFeed
 
@@ -17,10 +18,11 @@
 {
 	NSMutableDictionary * queries=[[NSMutableDictionary alloc] init];
 	
-	//[queries setObject:@"SELECT pid,created,src_small,src_big,object_id,owner,caption FROM photo WHERE aid IN ( SELECT aid FROM album WHERE owner in (select uid1 from friend where uid2=me()) order by modified_major desc ) ORDER BY created DESC LIMIT 100" forKey:@"photos"];
-	[queries setObject:@"SELECT aid,owner,cover_pid,name,created,modified,modified_major,size,object_id,description FROM album WHERE owner in (select uid1 from friend where uid2=me()) order by modified_major desc LIMIT 100" forKey:@"albums"];
-	
-	[queries setObject:@"SELECT post_fbid, fromid, object_id, text, time from comment where object_id in (select object_id from #albums)" forKey:@"comments"];
+	//[queries setObject:@"SELECT pid,created,src_small,src_big,object_id,owner,caption FROM photo WHERE aid IN ( SELECT aid FROM album WHERE owner in (select uid1 from friend where uid2=me()) order by modified_major desc ) ORDER BY created DESC LIMIT 50" forKey:@"photos"];
+	[queries setObject:@"SELECT aid,owner,cover_pid,name,created,modified,size,object_id,description FROM album WHERE owner in (select uid1 from friend where uid2=me()) order by modified desc LIMIT 100" forKey:@"albums"];
+	 
+	//[queries setObject:@"select pid,aid,src_small from photo where aid in (select aid from #albums) order by created desc limit 100,100" forKey:@"photos"];
+	//[queries setObject:@"SELECT post_fbid, fromid, object_id, text, time from comment where object_id in (select object_id from #albums)" forKey:@"comments"];
 	[queries setObject:@"select uid,first_name,last_name,name,pic,pic_big from user where uid in (select owner from #albums)" forKey:@"users"];
 	
 	NSString * escaped_queries=[self escapeQueryValue:[queries JSONFragment]];
@@ -32,8 +34,8 @@
 	NSString * url=[NSString stringWithFormat:@"https://api.facebook.com/method/fql.multiquery?queries=%@&access_token=%@&format=JSON",escaped_queries,escaped_token];
 	
 	ASIHTTPRequest * request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	//[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	//[request setSecondsToCache:60*60*24*3]; // Cache for 3 days
+	[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	[request setSecondsToCache:60*3]; // Cache for 3 minutes
 	
 	request.requestMethod=@"GET";
 	
@@ -44,13 +46,14 @@
 {
 	if(![json isKindOfClass:[NSArray class]])
 	{
-		//NSLog(@"json object is not a dictionary: %@",[json description]);
+		NSLog(@"json object is not a dictionary: %@",[json description]);
 		return nil;
 	}
 	
 	NSArray * albums_results;
 	NSArray * users_results;
-	NSArray * comments_results;
+	//NSArray * comments_results;
+	//NSArray * photos_results;
 	
 	for (NSDictionary * result in json)
 	{
@@ -65,10 +68,14 @@
 		{
 			users_results=results;
 		}
-		if ([name isEqualToString:@"comments"]) 
-		{
-			comments_results=results;
-		}
+		//if ([name isEqualToString:@"comments"]) 
+		//{
+		//	comments_results=results;
+		//}
+		//if ([name isEqualToString:@"photos"]) 
+		//{
+		//	photos_results=results;
+		//}
 	}
 	
 	// create map of owner to user...
@@ -81,7 +88,7 @@
 	
 	// create map of photo id to comments
 	
-	NSMutableDictionary * comment_map=[[NSMutableDictionary alloc] init];
+	/*NSMutableDictionary * comment_map=[[NSMutableDictionary alloc] init];
 	
 	for(NSDictionary * comment in comments_results)
 	{
@@ -102,15 +109,34 @@
 			
 			[commentCount release];
 		}
-	}
+	}*/
+	
+	// create map of album id to photo
+	/*NSMutableDictionary * photo_map=[[NSMutableDictionary alloc] init];
+	
+	NSLog(@"Got %d photos in photo results",[photos_results count]);
+	
+	for(NSDictionary * photo in photos_results)
+	{
+		NSString * album_id=[photo objectForKey:@"aid"];
+		if([photo_map objectForKey:album_id]==nil)
+		{
+			NSLog(@"got photo for album: %@",album_id);
+			[photo_map setObject:photo forKey:album_id];
+		}
+		else 
+		{
+			NSLog(@"got more than one photo for album: %@",album_id);
+		}
+	}*/
 	
 	NSMutableArray * albums=[[[NSMutableArray alloc] init] autorelease];
 	
-	for(NSDictionary * photo in albums_results)
+	for(NSDictionary * album_result in albums_results)
 	{
 		Friend * friend=[[Friend alloc] init];
 		
-		friend.uid=[[photo objectForKey:@"owner"] stringValue];
+		friend.uid=[[album_result objectForKey:@"owner"] stringValue];
 		
 		NSDictionary * user=[user_map objectForKey:friend.uid];
 		if(user)
@@ -153,29 +179,45 @@
 		album.user=friend;
 	
 		album.name=album.user.name;
-		album.description=[photo objectForKey:@"name"];
+		album.description=[album_result objectForKey:@"name"];
 		
 		//album.name=[photo objectForKey:@"name"];
 		//album.description=[photo objectForKey:@"description"];
 		
-		album.created_date=[NSDate dateWithTimeIntervalSince1970:[[photo objectForKey:@"modified_major"] longValue]];
+		album.created_date=[NSDate dateWithTimeIntervalSince1970:[[album_result objectForKey:@"modified"] longValue]];
 		album.short_created_date=[self stringFromDate:album.created_date];
 		
 		[friend release];
 		
-		album.uid=[[photo objectForKey:@"object_id"] stringValue];
+		album.uid=[[album_result objectForKey:@"object_id"] stringValue];
 		 
-		Picture   * picture=[[Picture alloc] init];
+		MostRecentAlbumPicture   * picture=[[MostRecentAlbumPicture alloc] init];
 		
 		// TODO: how to get the most recent photo in the album?
 		
-		picture.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture",album.uid]];
+		NSString * aid=[album_result objectForKey:@"aid"];
+		
+		picture.albumId=aid;
+		picture.accessToken=account.accessToken;
+		
+		/*NSDictionary * photo=[photo_map objectForKey:aid];
+		
+		if(photo==nil)
+		{
+			NSLog(@"Failed to find photo for album: %@",aid);
+			picture.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture",album.uid]];
+		}
+		else 
+		{
+			picture.thumbnailURL=[photo objectForKey:@"src_small"];
+		}*/
+
 		//picture.thumbnailURL=[[album.user picture] thumbnailURL];
 		//picture.imageURL=[[album.user picture] imageURL];
 		
 		picture.name=album.name;
 		
-		album.count=[[photo objectForKey:@"size"] intValue];
+		album.count=[[album_result objectForKey:@"size"] intValue];
 		
 		
 		 
@@ -193,12 +235,13 @@
 		
 		[pictureFeed release];
 		
-		MutableInt * commentCount=[comment_map objectForKey:album.uid];
+		/*MutableInt * commentCount=[comment_map objectForKey:album.uid];
 		
 		if(commentCount)
 		{
 			album.commentCount=[commentCount intValue];
 		}
+		*/
 		
 		[albums addObject:album];
 		
@@ -209,7 +252,8 @@
 	[albums sortUsingSelector:@selector(compare:)];
 	
 	[user_map release];
-	[comment_map release];
+	//[comment_map release];
+	//[photo_map release];
 	
 	return albums;
 	

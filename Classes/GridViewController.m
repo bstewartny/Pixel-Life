@@ -14,7 +14,17 @@
 
 - (id)initWithFeed:(Feed*)theFeed title:(NSString*)title
 {
-    if(self=[super initWithFeed:theFeed title:title withNibName:@"GridView"])
+	if([[[UIApplication sharedApplication] delegate] isPhone])
+	{
+		self=[super initWithFeed:theFeed title:title withNibName:@"PhoneGridView"];
+	}
+	else 
+	{
+		self=[super initWithFeed:theFeed title:title withNibName:@"GridView"];
+	}
+
+	
+    if(self)
 	{
 		self.gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 		self.gridView.autoresizesSubviews = YES;

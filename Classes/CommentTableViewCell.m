@@ -8,47 +8,49 @@
 #define kImageSize 50
 #define kUserLabelHeight 20
 #define kDateLabelHeight 20
-#define kUserLabelFontSize 17.0
+#define kUserLabelFontSize 16.0
 #define kDateLabelFontSize 14.0
-#define kMessageLabelFontSize 17.0
+#define kMessageLabelFontSize 16.0
 
 @implementation CommentTableViewCell
-@synthesize comment,userLabel,messageLabel,userImageView,scrollingWheel,dateLabel;
+@synthesize comment,messageLabel,userImageView,scrollingWheel,dateLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
 	{
-		self.backgroundColor=[UIColor viewFlipsideBackgroundColor];
-		self.contentView.backgroundColor=[UIColor viewFlipsideBackgroundColor];
+		//self.backgroundColor=[UIColor viewFlipsideBackgroundColor];
+		//self.contentView.backgroundColor=[UIColor viewFlipsideBackgroundColor];
 		
-		userLabel=[[UILabel alloc] initWithFrame:CGRectZero];
-		userLabel.backgroundColor=[UIColor clearColor];
-		userLabel.font=[UIFont boldSystemFontOfSize:kUserLabelFontSize];
-		userLabel.textColor=[UIColor whiteColor];
+		//userLabel=[[UILabel alloc] initWithFrame:CGRectZero];
+		//userLabel.backgroundColor=[UIColor clearColor];
+		//userLabel.font=[UIFont boldSystemFontOfSize:kUserLabelFontSize];
+		//userLabel.font=[UIFont fontWithName:@"Verdana Bold" size:kUserLabelFontSize];
+	
+		//userLabel.textColor=[UIColor whiteColor];
 		
 		messageLabel=[[UILabel alloc] initWithFrame:CGRectZero];
 		messageLabel.backgroundColor=[UIColor clearColor];
-		messageLabel.font=[UIFont systemFontOfSize:kMessageLabelFontSize];
+		messageLabel.font=[UIFont fontWithName:@"Verdana" size:kMessageLabelFontSize];
 		messageLabel.numberOfLines=20.0;
 		messageLabel.lineBreakMode=UILineBreakModeWordWrap;
 		messageLabel.textColor=[UIColor whiteColor];
 		
 		dateLabel=[[UILabel alloc] initWithFrame:CGRectZero];
 		dateLabel.backgroundColor=[UIColor clearColor];
-		dateLabel.font=[UIFont systemFontOfSize:kDateLabelFontSize];
+		dateLabel.font=[UIFont fontWithName:@"Verdana" size:kDateLabelFontSize];
 		dateLabel.textColor=[UIColor lightGrayColor];
 		
 		userImageView=[[UIImageView alloc] initWithFrame:CGRectZero];
 		userImageView.contentMode=UIViewContentModeScaleAspectFill;
 		userImageView.clipsToBounds=YES;
-		userImageView.layer.cornerRadius=6.0;
+		userImageView.layer.cornerRadius=4.0;
 		
 		scrollingWheel=[[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
 		scrollingWheel.hidesWhenStopped=YES;
 		scrollingWheel.activityIndicatorViewStyle=UIActivityIndicatorViewStyleGray;
 		
-		[self.contentView addSubview:userLabel];
+		//[self.contentView addSubview:userLabel];
 		[self.contentView addSubview:messageLabel];
 		[self.contentView addSubview:dateLabel];
 		[self.contentView addSubview:userImageView];
@@ -67,9 +69,9 @@
         comment = [newComment retain];
         [comment.picture setDelegate:self];
         
-		userLabel.text=comment.user.name;
+		//userLabel.text=comment.user.name;
 		messageLabel.text=comment.message;
-		dateLabel.text=[NSString stringWithFormat:@"on %@",comment.short_created_date];
+		dateLabel.text=[NSString stringWithFormat:@"%@ on %@",comment.user.name,comment.short_created_date];
 		
         if (comment.picture != nil)
         {
@@ -101,18 +103,18 @@
 	CGFloat labelsWidth=cellWidth - (labelsLeft + (2*kCellPadding));
 	CGFloat message_height=[CommentTableViewCell heightForMessage:self.comment.message withWidth:labelsWidth];
 
-	self.userLabel.frame=CGRectMake(labelsLeft, kCellPadding, labelsWidth, kUserLabelHeight );
+	//self.userLabel.frame=CGRectMake(labelsLeft, kCellPadding, labelsWidth, kUserLabelHeight );
 	
-	self.messageLabel.frame=CGRectMake(labelsLeft, kCellPadding+kUserLabelHeight+kCellPadding, labelsWidth, message_height);
+	self.messageLabel.frame=CGRectMake(labelsLeft, kCellPadding, labelsWidth, message_height);
 
-	self.dateLabel.frame=CGRectMake(labelsLeft,kCellPadding+kUserLabelHeight+kCellPadding+message_height+kCellPadding,labelsWidth,kDateLabelHeight);
+	self.dateLabel.frame=CGRectMake(labelsLeft,kCellPadding+message_height+kCellPadding,labelsWidth,kDateLabelHeight);
 }
 	
 + (CGFloat) heightForMessage:(NSString*)message withWidth:(CGFloat)width
 {
 	CGSize constraint=CGSizeMake(width, 20000.0);
 	
-	CGSize size=[message sizeWithFont:[UIFont systemFontOfSize:kMessageLabelFontSize] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+	CGSize size=[message sizeWithFont:[UIFont fontWithName:@"Verdana" size:kMessageLabelFontSize] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
 				 
 	return size.height;
 }
@@ -124,7 +126,7 @@
 	CGFloat message_height=[CommentTableViewCell heightForMessage:comment.message withWidth:labelsWidth];
 	
 	// height of other labels and padding above and below message label
-	CGFloat height=kCellPadding + kUserLabelHeight + kCellPadding + message_height + kCellPadding + kDateLabelHeight + kCellPadding;	
+	CGFloat height=kCellPadding + message_height + kCellPadding + kDateLabelHeight + kCellPadding;	
 	if(height>65.0)
 	{
 		return height;
@@ -198,7 +200,7 @@
 	scrollingWheel=nil;
 	[comment.picture setDelegate:nil];
 	[comment release];
-	[userLabel release];
+	//[userLabel release];
 	[userImageView release];
 	[dateLabel release];
 	[messageLabel release];

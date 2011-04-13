@@ -65,6 +65,10 @@
 			//infoView.layer.borderColor=[UIColor lightGrayColor].CGColor;
 			//infoView.layer.borderWidth=1;
 			
+			infoDateLabel.font=[UIFont fontWithName:@"Verdana" size:16];
+			infoNameLabel.font=[UIFont fontWithName:@"Verdana" size:20];
+			infoNumCommentsLabel.font=[UIFont fontWithName:@"Verdana" size:16];
+			
 			infoImageView.layer.borderColor=[UIColor lightGrayColor].CGColor;
 			infoImageView.layer.borderWidth=4;
 		}

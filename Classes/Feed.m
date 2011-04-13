@@ -59,6 +59,8 @@
 {
 	NSError *error = [request error];
 	
+	NSLog(@"requestWentWrong: %@",[error description]);
+	
     if([delegate respondsToSelector:@selector(feed:didFailWithError:)])
     {
         [delegate feed:self didFailWithError:[error description]];

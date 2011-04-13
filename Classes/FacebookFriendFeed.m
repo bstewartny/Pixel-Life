@@ -11,7 +11,7 @@
 
 - (ASIHTTPRequest*)createFetchRequest
 {
-	NSString * friend_query=@"SELECT uid,first_name,last_name,middle_name,name,pic_big,pic_small,pic,birthday_date FROM user WHERE uid in (select uid2 from friend where uid1=me())";
+	NSString * friend_query=@"SELECT uid,first_name,last_name,middle_name,name,pic_big,pic FROM user WHERE uid in (select uid2 from friend where uid1=me())";
 	
 	NSString * escaped_query=[self escapeQueryValue:friend_query];
 	
@@ -20,8 +20,8 @@
 	NSString * url=[NSString stringWithFormat:@"https://api.facebook.com/method/fql.query?format=JSON&access_token=%@&query=%@",escaped_token,escaped_query];
 
 	ASIHTTPRequest * request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	//[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	//[request setSecondsToCache:60*60*24*3]; // Cache for 3 days
+	[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	[request setSecondsToCache:30]; // Cache for 30 secs
 	
 	request.requestMethod=@"GET";
 	
@@ -35,6 +35,9 @@
 		//NSLog(@"json object is not an array: %@",[json description]);
 		return nil;
 	}
+	
+	//NSLog(@"Friends=%@",[json description]);
+	
 	
 	NSMutableArray * friends=[[[NSMutableArray alloc] init] autorelease];
 	

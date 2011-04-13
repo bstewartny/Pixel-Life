@@ -9,6 +9,7 @@
 #import "PLNavigationController.h"
 #import "AboutViewController.h"
 #import "FacebookRecentAlbumFeed.h"
+#import "PhoneFriendsGridViewController.h"
 
 @implementation PixelLifeAppDelegate_iPhone
 @synthesize tabBar;
@@ -145,7 +146,7 @@
 	[controller release];
 }
 	   
-- (void) showAllFriends
+- (void) showAllFriends_old
 {
 	NSLog(@"showAllFriends");
 	if(![currentAccount isSessionValid])
@@ -157,6 +158,28 @@
 	
 	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
 	FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:feed title:@"My Friends"];
+	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarFriendsTag];
+	[controller setTabBar:tabBar];
+	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+	[controller release];
+	[feed release];
+}
+
+- (void) showAllFriends
+{
+	NSLog(@"showAllFriends");
+	if(![currentAccount isSessionValid])
+	{
+		NSLog(@"session is not valid, need to login...");
+		[self showNoFriends];
+		return;
+	}
+	
+	FacebookFriendFeed * feed=[[FacebookFriendFeed alloc] initWithFacebookAccount:currentAccount];
+	//FriendsTableViewController * controller=[[FriendsTableViewController alloc] initWithFeed:feed title:@"My Friends"];
+	PhoneFriendsGridViewController * controller=[[PhoneFriendsGridViewController alloc] initWithFeed:feed title:@"My Friends"];
+	
+	
 	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarFriendsTag];
 	[controller setTabBar:tabBar];
 	[navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
