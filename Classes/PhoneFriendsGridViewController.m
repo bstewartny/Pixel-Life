@@ -80,6 +80,20 @@
 	searchController.searchResultsTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	Friend * friend=[filteredItems objectAtIndex:indexPath.row];
+	// need to dismiss search results popover now...
+	[searchController setActive:NO animated:NO];
+	//[self showFriendAlbums:friend];
+	
+	AlbumsTableViewController * controller=[[AlbumsTableViewController alloc] initWithFeed:friend.albumFeed title:[NSString stringWithFormat:@"%@'s Albums",friend.name]];
+	
+	[[self navigationController] pushViewController:controller animated:NO];
+	
+	[controller release];
+}
+
 - (void) search:(id)sender
 {
 	[UIView beginAnimations:nil context:NULL];

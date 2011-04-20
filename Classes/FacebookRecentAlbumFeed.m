@@ -18,11 +18,8 @@
 {
 	NSMutableDictionary * queries=[[NSMutableDictionary alloc] init];
 	
-	//[queries setObject:@"SELECT pid,created,src_small,src_big,object_id,owner,caption FROM photo WHERE aid IN ( SELECT aid FROM album WHERE owner in (select uid1 from friend where uid2=me()) order by modified_major desc ) ORDER BY created DESC LIMIT 50" forKey:@"photos"];
-	[queries setObject:@"SELECT aid,owner,cover_pid,name,created,modified,size,object_id,description FROM album WHERE owner in (select uid1 from friend where uid2=me()) order by modified desc LIMIT 100" forKey:@"albums"];
+	[queries setObject:@"SELECT aid,owner,cover_pid,name,created,modified,size,object_id,description FROM album WHERE owner in (select uid1 from friend where uid2=me()) order by created desc LIMIT 40" forKey:@"albums"];
 	 
-	//[queries setObject:@"select pid,aid,src_small from photo where aid in (select aid from #albums) order by created desc limit 100,100" forKey:@"photos"];
-	//[queries setObject:@"SELECT post_fbid, fromid, object_id, text, time from comment where object_id in (select object_id from #albums)" forKey:@"comments"];
 	[queries setObject:@"select uid,first_name,last_name,name,pic,pic_big from user where uid in (select owner from #albums)" forKey:@"users"];
 	
 	NSString * escaped_queries=[self escapeQueryValue:[queries JSONFragment]];
@@ -52,8 +49,6 @@
 	
 	NSArray * albums_results;
 	NSArray * users_results;
-	//NSArray * comments_results;
-	//NSArray * photos_results;
 	
 	for (NSDictionary * result in json)
 	{
@@ -68,14 +63,6 @@
 		{
 			users_results=results;
 		}
-		//if ([name isEqualToString:@"comments"]) 
-		//{
-		//	comments_results=results;
-		//}
-		//if ([name isEqualToString:@"photos"]) 
-		//{
-		//	photos_results=results;
-		//}
 	}
 	
 	// create map of owner to user...
@@ -85,50 +72,6 @@
 	{
 		[user_map setObject:user forKey:[[user objectForKey:@"uid"] stringValue]];
 	}
-	
-	// create map of photo id to comments
-	
-	/*NSMutableDictionary * comment_map=[[NSMutableDictionary alloc] init];
-	
-	for(NSDictionary * comment in comments_results)
-	{
-		NSString * object_id=[[comment objectForKey:@"object_id"] stringValue];
-		
-		MutableInt * commentCount=[comment_map objectForKey:object_id];
-		
-		if(commentCount)
-		{
-			[commentCount incValue];
-			
-		}
-		else 
-		{
-			commentCount=[[MutableInt alloc] init];
-			
-			[comment_map setObject:commentCount forKey:object_id];
-			
-			[commentCount release];
-		}
-	}*/
-	
-	// create map of album id to photo
-	/*NSMutableDictionary * photo_map=[[NSMutableDictionary alloc] init];
-	
-	NSLog(@"Got %d photos in photo results",[photos_results count]);
-	
-	for(NSDictionary * photo in photos_results)
-	{
-		NSString * album_id=[photo objectForKey:@"aid"];
-		if([photo_map objectForKey:album_id]==nil)
-		{
-			NSLog(@"got photo for album: %@",album_id);
-			[photo_map setObject:photo forKey:album_id];
-		}
-		else 
-		{
-			NSLog(@"got more than one photo for album: %@",album_id);
-		}
-	}*/
 	
 	NSMutableArray * albums=[[[NSMutableArray alloc] init] autorelease];
 	
@@ -181,9 +124,6 @@
 		album.name=album.user.name;
 		album.description=[album_result objectForKey:@"name"];
 		
-		//album.name=[photo objectForKey:@"name"];
-		//album.description=[photo objectForKey:@"description"];
-		
 		album.created_date=[NSDate dateWithTimeIntervalSince1970:[[album_result objectForKey:@"modified"] longValue]];
 		album.short_created_date=[self stringFromDate:album.created_date];
 		
@@ -200,27 +140,10 @@
 		picture.albumId=aid;
 		picture.accessToken=account.accessToken;
 		
-		/*NSDictionary * photo=[photo_map objectForKey:aid];
-		
-		if(photo==nil)
-		{
-			NSLog(@"Failed to find photo for album: %@",aid);
-			picture.thumbnailURL=[self createGraphUrl:[NSString stringWithFormat:@"%@/picture",album.uid]];
-		}
-		else 
-		{
-			picture.thumbnailURL=[photo objectForKey:@"src_small"];
-		}*/
-
-		//picture.thumbnailURL=[[album.user picture] thumbnailURL];
-		//picture.imageURL=[[album.user picture] imageURL];
-		
 		picture.name=album.name;
 		
 		album.count=[[album_result objectForKey:@"size"] intValue];
 		
-		
-		 
 		picture.description=album.description; //[NSString stringWithFormat:@"%d photos",album.count];
 		picture.created_date=album.created_date;
 		picture.short_created_date=[NSString stringWithFormat:@"Updated: %@",album.short_created_date];
@@ -235,14 +158,6 @@
 		
 		[pictureFeed release];
 		
-		/*MutableInt * commentCount=[comment_map objectForKey:album.uid];
-		
-		if(commentCount)
-		{
-			album.commentCount=[commentCount intValue];
-		}
-		*/
-		
 		[albums addObject:album];
 		
 		[album release];
@@ -252,8 +167,6 @@
 	[albums sortUsingSelector:@selector(compare:)];
 	
 	[user_map release];
-	//[comment_map release];
-	//[photo_map release];
 	
 	return albums;
 	

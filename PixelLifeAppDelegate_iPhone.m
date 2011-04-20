@@ -215,7 +215,7 @@
 	}
 	
 	FacebookRecentAlbumFeed * feed=[[FacebookRecentAlbumFeed alloc] initWithFacebookAccount:currentAccount];
-	AlbumsTableViewController * controller=[[AlbumsTableViewController alloc] initWithFeed:feed title:@"Recent Updates"];
+	AlbumsTableViewController * controller=[[AlbumsTableViewController alloc] initWithFeed:feed title:@"Recent Albums"];
 	tabBar.selectedItem=[tabBar.items objectAtIndex:kTabBarRecentTag];
 	[controller setTabBar:tabBar];
 	[navController setViewControllers:[NSArray arrayWithObjects:controller,nil] animated:NO];

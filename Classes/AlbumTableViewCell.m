@@ -16,9 +16,6 @@
 {
 	if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
 	{
-		//self.backgroundColor=[UIColor viewFlipsideBackgroundColor];
-		//self.contentView.backgroundColor=[UIColor viewFlipsideBackgroundColor];
-	
 		nameLabel=[[UILabel alloc] initWithFrame:CGRectMake(120, 0, 196, 24)];
 		nameLabel.backgroundColor=[UIColor clearColor];
 		nameLabel.font=[UIFont fontWithName:@"Verdana" size:20];
@@ -34,16 +31,19 @@
 		summaryLabel1.font=[UIFont fontWithName:@"Verdana" size:16];
 		summaryLabel1.textColor=[UIColor lightGrayColor];
 		summaryLabel1.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+		
 		summaryLabel2=[[UILabel alloc] initWithFrame:CGRectMake(120, 50, 196, 18)];
 		summaryLabel2.backgroundColor=[UIColor clearColor];
 		summaryLabel2.font=[UIFont fontWithName:@"Verdana" size:16];
 		summaryLabel2.textColor=[UIColor lightGrayColor];
 		summaryLabel2.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+		
 		summaryLabel3=[[UILabel alloc] initWithFrame:CGRectMake(120, 70, 196, 18)];
 		summaryLabel3.backgroundColor=[UIColor clearColor];
 		summaryLabel3.font=[UIFont fontWithName:@"Verdana" size:16];
 		summaryLabel3.textColor=[UIColor lightGrayColor];
 		summaryLabel3.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+		
 		[self.contentView addSubview:nameLabel];
 		[self.contentView addSubview:summaryLabel1];
 		[self.contentView addSubview:summaryLabel2];
@@ -54,24 +54,20 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    //self.imageView.bounds = CGRectMake(,5,50,50);
     self.imageView.frame = CGRectMake(4,4,112,112);
 	self.imageView.clipsToBounds=YES;
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.imageView.layer.cornerRadius=0;
 	self.imageView.layer.borderWidth=0;
-	//self.imageView.layer.borderColor=[UIColor whiteColor].CGColor;
 	
+	CGRect f=self.bounds;
+	CGFloat labelLeft=120;
+	CGFloat labelWidth=f.size.width-labelLeft;
 	
-	
-	/*
-    CGRect tmpFrame = self.textLabel.frame;
-    tmpFrame.origin.x = 120;
-    self.textLabel.frame = tmpFrame;
-	
-    tmpFrame = self.detailTextLabel.frame;
-    tmpFrame.origin.x = 120;
-    self.detailTextLabel.frame = tmpFrame;*/
+	self.nameLabel.frame=CGRectMake(labelLeft, 0, labelWidth, 24);
+	self.summaryLabel1.frame=CGRectMake(labelLeft, 28, labelWidth, 18);
+	self.summaryLabel2.frame=CGRectMake(labelLeft, 50, labelWidth, 18);
+	self.summaryLabel3.frame=CGRectMake(labelLeft, 70, labelWidth, 18);
 }
 
 - (void) dealloc
