@@ -27,13 +27,25 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<false/>
+	<key>NSMainNibFile</key>
+	<string>MainWindow-iPhone</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow-iPad</string>
 	<key>NSMainNibFile~iphone</key>
 	<string>MainWindow-iPhone</string>
-	<key>NSMainNibFile</key>
-	<string>MainWindow-iPhone</string>
+	<key>UIApplicationExitsOnSuspend</key>
+	<false/>
+	<key>UILaunchImageFile~iphone</key>
+	<string>iPhoneDefault.png</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>UIRequiresPersistentWiFi</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -45,17 +57,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UIRequiresPersistentWiFi</key>
-	<false/>
-	<key>UILaunchImageFile~iphone</key>
-	<string>iPhoneDefault.png</string>
-	<key>UIApplicationExitsOnSuspend</key>
-	<false/>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleBlackOpaque</string>
-	<key>LSRequiresIPhoneOS</key>
-	<false/>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 </dict>
 </plist>

@@ -24,9 +24,9 @@
 	maxImageSize=CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-60, self.frame.size.width-10, 18)];
-	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-40, self.frame.size.width-10, 18)];
-	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-20, self.frame.size.width-10, 18)];
+	label1=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-48, self.frame.size.width-10, 14)];
+	label2=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-32, self.frame.size.width-10, 14)];
+	label3=[self createLabelWithFrame:CGRectMake(5, self.frame.size.height-16, self.frame.size.width-10, 14)];
 	
 	[self.contentView addSubview:label1];
 	[self.contentView addSubview:label2];
@@ -38,10 +38,10 @@
 	UILabel * label=[[UILabel alloc] initWithFrame:frame];
 	label.textAlignment=UITextAlignmentCenter;
 	//label.font=[UIFont boldSystemFontOfSize:12];
-	label.font=[UIFont fontWithName:@"Verdana" size:16];
+	label.font=[UIFont fontWithName:@"Verdana" size:12];
 	
 	label.textColor=[UIColor whiteColor];
-	label.backgroundColor=[UIColor blackColor];
+	label.backgroundColor=[UIColor clearColor];
 	return label;
 }
 
